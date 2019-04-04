@@ -2,7 +2,7 @@
 
 platform :ios, '9.0'
 
-target 'C:\Users\Joseph\Documents\Repos\BarCrawlV3\BarCrawlV3Cord\platforms\ios\HelloCordova' do
-	project 'C:\Users\Joseph\Documents\Repos\BarCrawlV3\BarCrawlV3Cord\platforms\ios\HelloCordova.xcodeproj'
+target 'HelloCordova' do
+	project 'HelloCordova.xcodeproj'
 
 end
