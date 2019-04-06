@@ -1,0 +1,40 @@
+
+
+<div class="views">
+
+  <div class="view view-main">
+    <div class="pages">
+      <div data-page="shop" class="page">
+        <div class="page-content">
+
+
+          <app-header></app-header>
+
+          <!-- Page Loader -->
+
+
+
+
+
+          <!-- SlideInPage -->
+          <app-bar-page *ngIf="showBarPage"></app-bar-page>
+
+
+
+          <app-main-scroll *ngIf="true" (barCardClick)="activateBarSlide($event)"></app-main-scroll>
+
+
+
+
+
+          <app-navbar></app-navbar>
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
