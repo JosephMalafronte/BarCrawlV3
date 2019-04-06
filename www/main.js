@@ -66,6 +66,10 @@ var BarPageComponent = /** @class */ (function () {
     };
     BarPageComponent.prototype.getBarPage = function () {
     };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
+    ], BarPageComponent.prototype, "barPageId", void 0);
     BarPageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-bar-page',
@@ -195,7 +199,7 @@ var MainScrollComponent = /** @class */ (function () {
         });
     };
     MainScrollComponent.prototype.onBarCardClick = function () {
-        this.barCardClick.emit(true);
+        this.barCardClick.emit(1);
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),

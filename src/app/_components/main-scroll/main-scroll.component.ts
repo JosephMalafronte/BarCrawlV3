@@ -18,7 +18,7 @@ export class MainScrollComponent implements OnInit {
 
   displayPage: boolean = true;
 
-  @Output() barCardClick = new EventEmitter<boolean>();
+  @Output() barCardClick = new EventEmitter<number>();
   dayOfTheWeek: string = "Wednesday";
 
   //BarCards
@@ -43,7 +43,7 @@ export class MainScrollComponent implements OnInit {
   }
 
   onBarCardClick() {
-    this.barCardClick.emit(true);
+    this.barCardClick.emit(1);
   }
 
 

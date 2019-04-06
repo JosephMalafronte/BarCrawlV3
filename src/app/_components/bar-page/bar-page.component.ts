@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 
 import { AngularFireDatabase } from '@angular/fire/database';
@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class BarPageComponent implements OnInit {
 
-  
+  @Input() barPageId: number;
 
   constructor() { }
 
@@ -22,7 +22,7 @@ export class BarPageComponent implements OnInit {
 
 
   getBarPage(){
-
+    
   }
 
 }
