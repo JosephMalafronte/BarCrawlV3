@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
+import {BarPageComponent} from '../../_components/bar-page/bar-page.component';
+
 
 @Component({
   selector: 'app-main',
@@ -9,7 +11,8 @@ export class MainComponent implements OnInit {
 
   barSlide: boolean = false;
   showBarPage: boolean = false;
-  barPageId: number
+  barPageId: number = 0;
+
 
   constructor() { }
 
@@ -17,9 +20,16 @@ export class MainComponent implements OnInit {
   }
 
   activateBarSlide(barId: number){
-    console.log(barId);
     this.barSlide = true;
     this.showBarPage = true; //move later
+    this.barPageId = barId;
+    
+  }
+
+  reverseBarSlide(){
+    if(this.showBarPage == true){ //change later
+      this.showBarPage = false;
+    }
   }
 
 }

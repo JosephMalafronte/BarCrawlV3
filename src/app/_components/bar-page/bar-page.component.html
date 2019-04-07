@@ -5,13 +5,13 @@
 
   <div id="slider_maincontent">
 
-    <h2 class="page_title_slide" >Test</h2>
+    <h2 class="page_title_slide" >{{barName}}</h2>
 
-    <!-- <ul id="imageGallery">
+    <ul id="imageGallery">
       <li data-thumb="img/thumb/cS-1.jpg" data-src="img/largeImage.jpg">
-        <img data-bind="attr: { src: barPageImage1Url }" width="100%" id="barPageImage1" />
+        <img src={{barPictureUrl}} width="100%" id="barPageImage1" />
       </li>
-    </ul> -->
+    </ul>
 
     <div class="page_single layout_fullwidth_padding">
 
@@ -22,19 +22,19 @@
       </blockquote>
 
 
-      <!-- BAR DEALS
+      <!-- BAR DEALS -->
       <div class="barDealsSection">
         <h3 style="padding: 0 0 0 0;">
           <span data-bind="text: weekDay"></span> Deals & Features</h3>
-        <ul class="features_list" data-bind="foreach: barDeals" style="padding: 20px 0 0 0;">
+        <ul class="features_list" *ngFor="let dailyDeal of dailyDeals" style="padding: 20px 0 0 0;">
           <li>
             <span class="features_list_span">
-              <img data-bind="attr: { src: dealIcon }" alt="" title="" />
-              <span class="features_list_span_text" data-bind="text: dealDetail"></span>
+              <img src={{dailyDeal.dealIcon}} alt="" title="" />
+              <span class="features_list_span_text">{{dailyDeal.dealDetail}}</span>
             </span>
           </li>
         </ul>
-      </div> -->
+      </div>
 
       <a href="features.html" class="btn btn--full">VIEW ALL FEATURES</a>
 

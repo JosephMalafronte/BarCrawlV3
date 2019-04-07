@@ -10,6 +10,7 @@ import {MainScrollComponent} from '../../_components/main-scroll/main-scroll.com
 import {BarPageComponent} from '../../_components/bar-page/bar-page.component';
 
 
+
 @NgModule({
   declarations: [
     MainComponent,

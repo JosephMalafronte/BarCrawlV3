@@ -17,7 +17,7 @@
 
 
           <!-- SlideInPage -->
-          <app-bar-page *ngIf="showBarPage"></app-bar-page>
+          <app-bar-page *ngIf="showBarPage" [barPageIdChange]="barPageId"></app-bar-page>            
 
 
 
@@ -27,7 +27,7 @@
 
 
 
-          <app-navbar></app-navbar>
+          <app-navbar (samePageClick)="reverseBarSlide()" [samePageIndex]="0"></app-navbar>
 
 
 

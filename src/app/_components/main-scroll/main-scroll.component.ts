@@ -42,8 +42,8 @@ export class MainScrollComponent implements OnInit {
     });
   }
 
-  onBarCardClick() {
-    this.barCardClick.emit(1);
+  onBarCardClick(id: number) {
+    this.barCardClick.emit(id);
   }
 
 

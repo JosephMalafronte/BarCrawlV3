@@ -8,7 +8,7 @@
     <ul class="shop_items">
 
       <!-- BAR CARD -->
-      <li id="barCard" *ngFor="let barCard of barCards" (click)="onBarCardClick()">
+      <li id="barCard" *ngFor="let barCard of barCards" (click)="onBarCardClick(barCard.barId)">
         <div class="shop_thumb">
           <img src={{barCard.barPictureUrl}} alt="" title="" class="barCardPic" />
         </div>
