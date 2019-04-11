@@ -2676,6 +2676,14 @@ font-style:italic;
 /* 12. FORMS */
 /*===============================================*/	
 /* 12.1 LOGIN FORM */
+.loginblock{
+  position: absolute;
+  top:30%;
+  width:90%;
+}
+.loginblock h4{
+  padding: 0 0 0 40%;
+}
 .loginform{
 width:90%;
 padding:0 0 15px 5%;
@@ -2732,10 +2740,10 @@ font-weight:300;
 border: none;
 cursor:pointer;
 -webkit-appearance: none;
-color: #fff;
-background-color: #4f40f1;
-background: -webkit-linear-gradient(60deg, #4f40f1, #6100bc);
-background: linear-gradient(60deg, #4f40f1, #6100bc);
+color: black;
+background-color: #F2C843;
+background: -webkit-linear-gradient(60deg, #F2C843, #F2C843);
+background: linear-gradient(60deg, #F2C843, #F2C843);
 -webkit-border-radius: 20px;
 -moz-border-radius: 20px;
 border-radius: 20px;

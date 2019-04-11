@@ -1,0 +1,11 @@
+.fullLoadingPage{
+    position:fixed;
+    padding:0;
+    margin:0;
+    z-index: 150;
+
+    width: 100%;
+    height: 100%;
+    background:white;
+  
+  }

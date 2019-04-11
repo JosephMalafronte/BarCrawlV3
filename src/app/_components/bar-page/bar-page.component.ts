@@ -2,6 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable, Subject } from 'rxjs';
 import { BrowserModule } from '@angular/platform-browser';
+import {
+  animate, state, style, transition, trigger
+} from '@angular/animations'
 
 
 import { DateDirective} from '../../_directives/date.directive';
@@ -13,16 +16,25 @@ import {BarPage} from '../../models';
   templateUrl: './bar-page.component.html',
   styleUrls: ['./bar-page.component.css',
   '../../_pages/main/main.component.css'
-  ]
+  ],
+  animations: [
+    trigger('slideInBarTrigger', [
+      state('false', style({ transform: 'translateX(100%)' })),
+      state('true', style({ transform: 'translateX(0%)' })),
+      transition('* => *', animate(200))
+  ])]
 })
 export class BarPageComponent implements OnInit {
 
   barPageId: number;
   @Input() set barPageIdChange(barId: number) {
-    if(this.barPageId != 0){
+    if(this.barPageId != 0 && this.barPageId!=barId){
       this.getBarPage(barId);
     }
   }
+  @Input() slideInBar:boolean = false;
+  isLoading: boolean = true;
+  
 
   barPage: BarPage;
   //BarPage Variables
@@ -53,8 +65,7 @@ export class BarPageComponent implements OnInit {
 
   getBarPage(barId: number){
     this.barPageId = barId;
-    this.barPictureUrl = "";
-    this.barName = "";
+    this.clearBarPageData();
 
     this.db.object('barPages/'+this.barPageId.toString()).valueChanges().subscribe(result => {
       console.log(result);
@@ -65,6 +76,20 @@ export class BarPageComponent implements OnInit {
       this.getDailyDeals();
     });
    
+  }
+
+  clearBarPageData(){
+    this.isLoading = true;
+    this.barPictureUrl = "";
+    this.barName = "";
+    this.dailyDeals = [];
+    this.barPictureUrl = "";
+  }
+
+
+  imageLoaded() {
+    console.log("test");
+    this.isLoading = false;
   }
 
 

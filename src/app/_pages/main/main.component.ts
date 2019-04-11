@@ -27,9 +27,7 @@ export class MainComponent implements OnInit {
   }
 
   reverseBarSlide(){
-    if(this.showBarPage == true){ //change later
-      this.showBarPage = false;
-    }
+    this.barSlide = false;
   }
 
 }

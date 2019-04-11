@@ -1,7 +1,7 @@
 
 
-<div class="slideInPage">
-
+<div class="slideInPage" [@slideInBarTrigger]="slideInBar">
+  <app-full-loading *ngIf="isLoading"></app-full-loading>
 
   <div id="slider_maincontent">
 
@@ -9,7 +9,7 @@
 
     <ul id="imageGallery">
       <li data-thumb="img/thumb/cS-1.jpg" data-src="img/largeImage.jpg">
-        <img src={{barPictureUrl}} width="100%" id="barPageImage1" />
+        <img [src]="barPictureUrl" (load)="imageLoaded()" width="100%" id="barPageImage1" />
       </li>
     </ul>
 

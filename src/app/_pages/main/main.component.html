@@ -17,7 +17,11 @@
 
 
           <!-- SlideInPage -->
-          <app-bar-page *ngIf="showBarPage" [barPageIdChange]="barPageId"></app-bar-page>            
+          <app-bar-page 
+            *ngIf="showBarPage" 
+            [barPageIdChange]="barPageId"
+            [slideInBar]="barSlide">
+          </app-bar-page>            
 
 
 

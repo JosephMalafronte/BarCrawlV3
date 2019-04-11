@@ -12,7 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
 
 
-import { MainModule} from './_pages/main/main.module'
+import { MainModule} from './_pages/main/main.module';
+import { LoginModule} from './_pages/login/login.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -32,7 +33,8 @@ import {DateDirective} from './_directives/date.directive';
     AngularFireDatabaseModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MainModule
+    MainModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,7 +8,7 @@ import { NavbarComponent } from '../../_components/navbar/navbar.component';
 import {HeaderComponent} from '../../_components/header/header.component';
 import {MainScrollComponent} from '../../_components/main-scroll/main-scroll.component';
 import {BarPageComponent} from '../../_components/bar-page/bar-page.component';
-
+import {FullLoadingComponent} from '../../_components/full-loading/full-loading.component';
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import {BarPageComponent} from '../../_components/bar-page/bar-page.component';
     NavbarComponent,
     HeaderComponent,
     MainScrollComponent,
-    BarPageComponent
+    BarPageComponent,
+    FullLoadingComponent
   ],
   imports: [
     BrowserModule,
