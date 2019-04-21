@@ -10,14 +10,9 @@
 
           <app-header></app-header>
 
-          <!-- Page Loader -->
-
-
-
-
 
           <!-- SlideInPage -->
-          <app-bar-page 
+          <!-- <app-bar-page 
             *ngIf="showBarPage" 
             [barPageIdChange]="barPageId"
             [slideInBar]="barSlide">
@@ -25,13 +20,13 @@
 
 
 
-          <app-main-scroll *ngIf="true" (barCardClick)="activateBarSlide($event)"></app-main-scroll>
+          <app-main-scroll *ngIf="true" (barCardClick)="activateBarSlide($event)"></app-main-scroll> -->
+          <router-outlet></router-outlet>
 
 
 
 
-
-          <app-navbar (samePageClick)="reverseBarSlide()" [samePageIndex]="0"></app-navbar>
+          <app-navbar></app-navbar>
 
 
 

@@ -88,7 +88,6 @@ export class BarPageComponent implements OnInit {
 
 
   imageLoaded() {
-    console.log("test");
     this.isLoading = false;
   }
 

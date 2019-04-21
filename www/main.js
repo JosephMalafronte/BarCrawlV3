@@ -41,7 +41,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<div class=\"slideInPage\" [@slideInBarTrigger]=\"slideInBar\">\n  <app-full-loading *ngIf=\"isLoading\"></app-full-loading>\n\n  <div id=\"slider_maincontent\">\n\n    <h2 class=\"page_title_slide\" >{{barName}}</h2>\n\n    <ul id=\"imageGallery\">\n      <li data-thumb=\"img/thumb/cS-1.jpg\" data-src=\"img/largeImage.jpg\">\n        <img [src]=\"barPictureUrl\" (load)=\"imageLoaded()\" width=\"100%\" id=\"barPageImage1\" />\n      </li>\n    </ul>\n\n    <div class=\"page_single layout_fullwidth_padding\">\n\n      <blockquote style=\"display:none\">\n        This mobile template that can be used to create a mobile website, a mobile web app, or even a native mobile app. The design\n        is using a full width layout that works perfectly on tablets and desktop also.\n        <span>SINDEVO.COM</span>\n      </blockquote>\n\n\n      <!-- BAR DEALS -->\n      <div class=\"barDealsSection\">\n        <h3 style=\"padding: 0 0 0 0;\">\n          <span data-bind=\"text: weekDay\"></span> Deals & Features</h3>\n        <ul class=\"features_list\" *ngFor=\"let dailyDeal of dailyDeals\" style=\"padding: 20px 0 0 0;\">\n          <li>\n            <span class=\"features_list_span\">\n              <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\n              <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\n            </span>\n          </li>\n        </ul>\n      </div>\n\n      <a href=\"features.html\" class=\"btn btn--full\">VIEW ALL FEATURES</a>\n\n      <h4>You can use this mobile template for:</h4>\n      <ul class=\"simple_list\">\n        <li>Creating a mobile website</li>\n        <li>Creating a mobile web app</li>\n        <li>Creating a mobile native app (integrated with solutions like phonegap or cordova)</li>\n        <li>Works perfectly on tablets and desktop also</li>\n      </ul>\n\n\n      <a href=\"http://themeforest.net/user/sindevo\" class=\"btn btn--full\">BUY IT NOW!</a>\n\n\n    </div>\n\n  </div>\n</div>"
+module.exports = "\n\n<div class=\"slideInPage\" [@slideInBarTrigger]=\"slideInBar\">\n  <app-full-loading *ngIf=\"isLoading\"></app-full-loading>\n\n  <div id=\"slider_maincontent\">\n\n    <h2 class=\"page_title_slide\" >{{barName}}</h2>\n\n    <ul id=\"imageGallery\">\n      <li data-thumb=\"img/thumb/cS-1.jpg\" data-src=\"img/largeImage.jpg\">\n        <img [src]=\"barPictureUrl\" (load)=\"imageLoaded()\" width=\"100%\" id=\"barPageImage1\" />\n      </li>\n    </ul>\n\n    <div class=\"page_single layout_fullwidth_padding\">\n\n      <blockquote style=\"display:none\">\n        This mobile template that can be used to create a mobile website, a mobile web app, or even a native mobile app. The design\n        is using a full width layout that works perfectly on tablets and desktop also.\n        <span>SINDEVO.COM</span>\n      </blockquote>\n\n\n      <!-- BAR DEALS -->\n      <div class=\"barDealsSection\">\n        <h3 style=\"padding: 0 0 0 0;\">\n          <span data-bind=\"text: weekDay\"></span> Deals & Features - {{dayOfTheWeek}}</h3>\n        <ul class=\"features_list\" *ngFor=\"let dailyDeal of dailyDeals\" style=\"padding: 20px 0 0 0;\">\n          <li>\n            <span class=\"features_list_span\">\n              <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\n              <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\n            </span>\n          </li>\n        </ul>\n      </div>\n\n      <a href=\"features.html\" class=\"btn btn--full\">VIEW ALL FEATURES</a>\n\n      <h4>You can use this mobile template for:</h4>\n      <ul class=\"simple_list\">\n        <li>Creating a mobile website</li>\n        <li>Creating a mobile web app</li>\n        <li>Creating a mobile native app (integrated with solutions like phonegap or cordova)</li>\n        <li>Works perfectly on tablets and desktop also</li>\n      </ul>\n\n\n      <a href=\"http://themeforest.net/user/sindevo\" class=\"btn btn--full\">BUY IT NOW!</a>\n\n\n    </div>\n\n  </div>\n</div>"
 
 /***/ }),
 
@@ -108,7 +108,6 @@ var BarPageComponent = /** @class */ (function () {
         this.barPictureUrl = "";
     };
     BarPageComponent.prototype.imageLoaded = function () {
-        console.log("test");
         this.isLoading = false;
     };
     BarPageComponent.prototype.getDailyDeals = function () {
@@ -279,7 +278,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Main Content of Page       -->\n<div id=\"pages_maincontent\" *ngIf=\"displayPage\">\n  <h2 class=\"page_title\" style=\"text-align: center;\"></h2>\n\n  <div class=\"page_single layout_fullwidth_padding\">\n\n    <!-- For each here -->\n    <ul class=\"shop_items\">\n\n      <!-- BAR CARD -->\n      <li id=\"barCard\" *ngFor=\"let barCard of barCards\" (click)=\"onBarCardClick(barCard.barId)\">\n        <div class=\"shop_thumb\">\n          <img src={{barCard.barPictureUrl}} alt=\"\" title=\"\" class=\"barCardPic\" />\n        </div>\n        <div class=\"shop_item_details\">\n          <h4>{{barCard.barName}}</h4>\n          <ul class=\"features_list\" style=\"padding: 4% 0 0 0;\">\n            <li>\n              <span class=\"features_list_span\">\n                <img src={{barCard.highlight1Icon}} alt=\"\" title=\"\" />\n                <span class=\"features_list_span_text\">{{barCard.highlight1}}</span>\n              </span>\n            </li>\n            <li>\n              <span class=\"features_list_span\">\n                <img src={{barCard.highlight2Icon}} alt=\"\" title=\"\" />\n                <span class=\"features_list_span_text\">{{barCard.highlight2}}</span>\n              </span>\n            </li>\n          </ul>\n          <span class=\"open-popup shopfav\">\n            <img src=\"./assets/images/icons/black/love.png\" alt=\"\" title=\"\" />\n          </span>\n        </div>\n      </li>\n\n\n    </ul>\n\n    <div class=\"shop_pagination\">\n      <a href=\"\" class=\"prev_shop\">PREV PAGE</a>\n      <span class=\"shop_pagenr\">1/37</span>\n      <a href=\"\" class=\"next_shop\">NEXT PAGE</a>\n      <br />\n      <br />\n      <br />\n      <br />\n    </div>\n\n\n\n  </div>\n\n</div>"
+module.exports = "<!-- Main Content of Page       -->\n<div id=\"pages_maincontent\" *ngIf=\"displayPage\">\n  <h2 class=\"page_title\" style=\"text-align: center;\"></h2>\n\n  <div class=\"page_single layout_fullwidth_padding\">\n\n    <!-- For each here -->\n    <ul class=\"shop_items\">\n\n      <!-- BAR CARD -->\n      <li id=\"barCard\" *ngFor=\"let barCard of barCards\" (click)=\"onBarCardClick($event,barCard.barId)\">\n        <div class=\"shop_thumb\">\n          <img src={{barCard.barPictureUrl}} alt=\"\" title=\"\" class=\"barCardPic\" />\n        </div>\n        <div class=\"shop_item_details\">\n          <h4>{{barCard.barName}}</h4>\n          <ul class=\"features_list\" style=\"padding: 4% 0 0 0;\">\n            <li>\n              <span class=\"features_list_span\">\n                <img src={{barCard.highlight1Icon}} alt=\"\" title=\"\" />\n                <span class=\"features_list_span_text\">{{barCard.highlight1}}</span>\n              </span>\n            </li>\n            <li>\n              <span class=\"features_list_span\">\n                <img src={{barCard.highlight2Icon}} alt=\"\" title=\"\" />\n                <span class=\"features_list_span_text\">{{barCard.highlight2}}</span>\n              </span>\n            </li>\n          </ul>\n          <span class=\"open-popup shopfav\" (click)=\"likeBar(barCard)\">\n              <!-- <app-like></app-like> -->\n              <img *ngIf='checkLikedStatus(barCard)' id=\"like\"  src=\"./assets/images/icons/black/lovefilledblack.png\" alt=\"\" title=\"\" />            \n              <img *ngIf='!checkLikedStatus(barCard)' id=\"like\"  src=\"./assets/images/icons/black/love.png\" alt=\"\" title=\"\" />\n          </span>\n        </div>\n      </li>\n\n\n    </ul>\n\n    <div class=\"shop_pagination\">\n      <a href=\"\" class=\"prev_shop\">PREV PAGE</a>\n      <span class=\"shop_pagenr\">1/37</span>\n      <a href=\"\" class=\"next_shop\">NEXT PAGE</a>\n      <br />\n      <br />\n      <br />\n      <br />\n    </div>\n\n\n\n  </div>\n\n</div>"
 
 /***/ }),
 
@@ -295,12 +294,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MainScrollComponent", function() { return MainScrollComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_fire_database__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/database */ "./node_modules/@angular/fire/database/index.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../_services/auth.service */ "./src/app/_services/auth.service.ts");
+/* harmony import */ var _angular_fire_database__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/fire/database */ "./node_modules/@angular/fire/database/index.js");
+
 
 
 
 var MainScrollComponent = /** @class */ (function () {
-    function MainScrollComponent(dbA) {
+    function MainScrollComponent(dbA, authService) {
+        this.authService = authService;
         this.displayPage = true;
         this.barCardClick = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.dayOfTheWeek = "Wednesday";
@@ -315,11 +317,24 @@ var MainScrollComponent = /** @class */ (function () {
         var _this = this;
         this.db.list('barCards/' + this.dayOfTheWeek).valueChanges().subscribe(function (result) {
             _this.barCards = result;
-            console.log(_this.barCards);
         });
     };
-    MainScrollComponent.prototype.onBarCardClick = function (id) {
+    MainScrollComponent.prototype.checkLikedStatus = function (barCard) {
+        if (this.authService.currentUser.likedBars == undefined)
+            return;
+        if (this.authService.currentUser.likedBars.indexOf(barCard.barId) == -1) {
+            return false;
+        }
+        else
+            return true;
+    };
+    MainScrollComponent.prototype.onBarCardClick = function (event, id) {
+        if (event.target.id != undefined && event.target.id == "like")
+            return;
         this.barCardClick.emit(id);
+    };
+    MainScrollComponent.prototype.likeBar = function (barCard) {
+        this.authService.likeBar(barCard);
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
@@ -331,7 +346,7 @@ var MainScrollComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./main-scroll.component.html */ "./src/app/_components/main-scroll/main-scroll.component.html"),
             styles: [__webpack_require__(/*! ./main-scroll.component.css */ "./src/app/_components/main-scroll/main-scroll.component.css"), __webpack_require__(/*! ../../_pages/main/main.component.css */ "./src/app/_pages/main/main.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_database__WEBPACK_IMPORTED_MODULE_2__["AngularFireDatabase"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_database__WEBPACK_IMPORTED_MODULE_3__["AngularFireDatabase"], _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
     ], MainScrollComponent);
     return MainScrollComponent;
 }());
@@ -358,7 +373,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--       NAVBAR       -->\n<div class=\"swiper-container-toolbar swiper-toolbar\" style=\"background-color:black;\">\n  <div class=\"swiper-pagination-toolbar\"></div>\n  <div class=\"swiper-wrapper\">\n    <div class=\"swiper-slide toolbar-icon\">\n      <span class=\"toolbar-icon-span\" id=\"toolbarHome\">\n        <img src=\"./assets/images/icons/white/categories.png\" (click)=\"icon0Click()\"alt=\"\" title=\"\" />\n      </span>\n      <span class=\"toolbar-icon-span\" id=\"toolbarSearch\">\n        <img src=\"./assets/images/icons/white/search.png\" alt=\"\" title=\"\" />\n      </span>\n      <span class=\"toolbar-icon-span\">\n        <img src=\"./assets/images/icons/white/love.png\" alt=\"\" title=\"\" />\n      </span>\n      <span class=\"toolbar-icon-span\">\n        <img src=\"./assets/images/icons/white/photos.png\" alt=\"\" title=\"\" />\n      </span>\n      <span class=\"toolbar-icon-span\">\n        <img src=\"./assets/images/icons/white/contact.png\" alt=\"\" title=\"\" />\n      </span>\n    </div>\n  </div>\n</div>"
+module.exports = "<!--       NAVBAR       -->\n<div class=\"swiper-container-toolbar swiper-toolbar\" style=\"background-color:black;\">\n  <div class=\"swiper-pagination-toolbar\"></div>\n  <div class=\"swiper-wrapper\">\n    <div class=\"swiper-slide toolbar-icon\">\n      <span class=\"toolbar-icon-span\" id=\"toolbarHome\"  (click)=\"icon0Click()\">\n        <img src=\"./assets/images/icons/white/categories.png\"alt=\"\" title=\"\" />\n      </span>\n      <span class=\"toolbar-icon-span\" id=\"toolbarSearch\" (click)=\"icon1Click()\">\n        <img src=\"./assets/images/icons/white/search.png\"  alt=\"\" title=\"\" />\n      </span>\n      <span class=\"toolbar-icon-span\">\n        <img src=\"./assets/images/icons/white/love.png\" alt=\"\" title=\"\" />\n      </span>\n      <span class=\"toolbar-icon-span\">\n        <img src=\"./assets/images/icons/white/photos.png\" alt=\"\" title=\"\" />\n      </span>\n      <span class=\"toolbar-icon-span\">\n        <img src=\"./assets/images/icons/white/contact.png\" alt=\"\" title=\"\" />\n      </span>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -374,34 +389,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavbarComponent", function() { return NavbarComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_main_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../_services/main.service */ "./src/app/_services/main.service.ts");
+
 
 
 var NavbarComponent = /** @class */ (function () {
-    function NavbarComponent() {
-        this.samePageClick = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+    function NavbarComponent(mainService) {
+        this.mainService = mainService;
     }
     NavbarComponent.prototype.ngOnInit = function () {
     };
     NavbarComponent.prototype.icon0Click = function () {
-        if (this.samePageIndex == 0) {
-            this.samePageClick.emit();
+        if (this.mainService.currentPageValue == 0) {
+            this.mainService.reverseBarSlide();
+        }
+        else {
+            this.mainService.changePage(0);
         }
     };
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
-    ], NavbarComponent.prototype, "samePageClick", void 0);
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
-    ], NavbarComponent.prototype, "samePageIndex", void 0);
+    NavbarComponent.prototype.icon1Click = function () {
+        if (this.mainService.currentPageValue == 1) {
+        }
+        else {
+            this.mainService.changePage(1);
+        }
+    };
     NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-navbar',
             template: __webpack_require__(/*! ./navbar.component.html */ "./src/app/_components/navbar/navbar.component.html"),
             styles: [__webpack_require__(/*! ./navbar.component.css */ "./src/app/_components/navbar/navbar.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_main_service__WEBPACK_IMPORTED_MODULE_2__["MainService"]])
     ], NavbarComponent);
     return NavbarComponent;
 }());
@@ -442,6 +461,223 @@ var DateDirective = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/_models/User.Model.ts":
+/*!***************************************!*\
+  !*** ./src/app/_models/User.Model.ts ***!
+  \***************************************/
+/*! exports provided: User */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User", function() { return User; });
+var User = /** @class */ (function () {
+    function User(auth) {
+        this.uid = auth.uid;
+        this.email = auth.email;
+        this.displayName = auth.displayName;
+    }
+    return User;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/_pages/barlist/barlist.component.css":
+/*!******************************************************!*\
+  !*** ./src/app/_pages/barlist/barlist.component.css ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL19wYWdlcy9iYXJsaXN0L2Jhcmxpc3QuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/_pages/barlist/barlist.component.html":
+/*!*******************************************************!*\
+  !*** ./src/app/_pages/barlist/barlist.component.html ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!-- SlideInPage -->\n<app-bar-page *ngIf=\"showBarPage\" [barPageIdChange]=\"barPageId\" [slideInBar]=\"barSlide\">\n</app-bar-page>\n\n\n\n<app-main-scroll *ngIf=\"true\" (barCardClick)=\"activateBarSlide($event)\"></app-main-scroll>"
+
+/***/ }),
+
+/***/ "./src/app/_pages/barlist/barlist.component.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/_pages/barlist/barlist.component.ts ***!
+  \*****************************************************/
+/*! exports provided: BarlistComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BarlistComponent", function() { return BarlistComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_main_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../_services/main.service */ "./src/app/_services/main.service.ts");
+
+
+
+var BarlistComponent = /** @class */ (function () {
+    function BarlistComponent(mainService) {
+        this.mainService = mainService;
+        this.barSlide = false;
+        this.showBarPage = false;
+        this.barPageId = 0;
+    }
+    BarlistComponent.prototype.ngOnInit = function () {
+        this.reverseBarSlideInit();
+    };
+    BarlistComponent.prototype.activateBarSlide = function (barId) {
+        this.barSlide = true;
+        this.showBarPage = true; //move later
+        this.barPageId = barId;
+    };
+    BarlistComponent.prototype.reverseBarSlideInit = function () {
+        var _this = this;
+        //Function calls on same page click
+        this.mainService.barSlide.subscribe(function (_) {
+            if (_this.barSlide)
+                _this.barSlide = false;
+        });
+    };
+    BarlistComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-barlist',
+            template: __webpack_require__(/*! ./barlist.component.html */ "./src/app/_pages/barlist/barlist.component.html"),
+            styles: [__webpack_require__(/*! ./barlist.component.css */ "./src/app/_pages/barlist/barlist.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_main_service__WEBPACK_IMPORTED_MODULE_2__["MainService"]])
+    ], BarlistComponent);
+    return BarlistComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/_pages/init/init.component.css":
+/*!************************************************!*\
+  !*** ./src/app/_pages/init/init.component.css ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL19wYWdlcy9pbml0L2luaXQuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/_pages/init/init.component.html":
+/*!*************************************************!*\
+  !*** ./src/app/_pages/init/init.component.html ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/_pages/init/init.component.ts":
+/*!***********************************************!*\
+  !*** ./src/app/_pages/init/init.component.ts ***!
+  \***********************************************/
+/*! exports provided: InitComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InitComponent", function() { return InitComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../_services/auth.service */ "./src/app/_services/auth.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _models_User_Model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../_models/User.Model */ "./src/app/_models/User.Model.ts");
+
+
+
+
+
+var InitComponent = /** @class */ (function () {
+    function InitComponent(authService, router) {
+        this.authService = authService;
+        this.router = router;
+    }
+    InitComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.authService.af.authState.subscribe(function (auth) {
+            if (auth == null) {
+                _this.router.navigate(['/login']);
+            }
+            else {
+                _this.authService.setUser(new _models_User_Model__WEBPACK_IMPORTED_MODULE_4__["User"](auth));
+                console.log(_this.authService.currentUser.uid);
+                _this.router.navigate(['/main/barlist']);
+            }
+            // auth.updateProfile({
+            //   displayName: 'Joseph'
+            // })
+        });
+    };
+    InitComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-init',
+            template: __webpack_require__(/*! ./init.component.html */ "./src/app/_pages/init/init.component.html"),
+            styles: [__webpack_require__(/*! ./init.component.css */ "./src/app/_pages/init/init.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+    ], InitComponent);
+    return InitComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/_pages/init/init.module.ts":
+/*!********************************************!*\
+  !*** ./src/app/_pages/init/init.module.ts ***!
+  \********************************************/
+/*! exports provided: InitModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InitModule", function() { return InitModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _init_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./init.component */ "./src/app/_pages/init/init.component.ts");
+
+
+
+//Import Components
+var InitModule = /** @class */ (function () {
+    function InitModule() {
+    }
+    InitModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            declarations: [
+                _init_component__WEBPACK_IMPORTED_MODULE_2__["InitComponent"],
+            ],
+            imports: [],
+            exports: [
+                _init_component__WEBPACK_IMPORTED_MODULE_2__["InitComponent"]
+            ],
+            providers: [],
+            bootstrap: []
+        })
+    ], InitModule);
+    return InitModule;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/_pages/login/login.component.css":
 /*!**************************************************!*\
   !*** ./src/app/_pages/login/login.component.css ***!
@@ -460,7 +696,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<body id=\"mobile_wrap\">\n\n  <!-- Login Popup -->\n  <div class=\"content-block\">\n    <div class=\"close_popup_button\">\n      <a href=\"#\" class=\"close-popup\" data-popup=\".popup-login\">\n        <img src=\"./assets/images/icons/black/menu_close.png\" alt=\"\" title=\"\" />\n      </a>\n    </div>\n    <div class=\"loginblock\">\n      <h4>LOGIN</h4>\n      <div class=\"loginform\">\n        <form id=\"LoginForm\" method=\"post\">\n          <input type=\"text\" name=\"Username\" value=\"\" class=\"form_input required\" placeholder=\"username\" />\n          <input type=\"password\" name=\"Password\" value=\"\" class=\"form_input required\" placeholder=\"password\" />\n          <div class=\"forgot_pass\">\n            <a href=\"#\" data-popup=\".popup-forgot\" class=\"open-popup\">Forgot Password?</a>\n          </div>\n          <input type=\"submit\" name=\"submit\" class=\"form_submit\" id=\"submit\" value=\"SIGN IN\" />\n        </form>\n        <div class=\"signup_bottom\">\n          <p>Don't have an account?</p>\n          <a href=\"#\" data-popup=\".popup-signup\" class=\"open-popup\">SIGN UP</a>\n        </div>\n      </div>\n    </div>\n\n\n  </div>\n\n</body>"
+module.exports = "<body id=\"mobile_wrap\">\n\n\n  <!-- Login Popup -->\n  <div class=\"popup popup-login\">\n    <div class=\"content-block\">\n      <div class=\"close_popup_button\">\n        <a href=\"#\" class=\"close-popup\" data-popup=\".popup-login\">\n          <img src=\"./assets/images/icons/black/menu_close.png\" alt=\"\" title=\"\" />\n        </a>\n      </div>\n      <div class=\"loginblock\">\n        <h4>LOGIN</h4>\n        <div class=\"loginform\">\n          <input type=\"text\" [(ngModel)]=\"logInUsername\" name=\"Username\" class=\"form_input required\" placeholder=\"username\" />\n          <input type=\"password\" [(ngModel)]=\"logInPassword\" name=\"Password\" class=\"form_input required\" placeholder=\"password\" />\n          <div class=\"forgot_pass\">\n            <a href=\"#\" data-popup=\".popup-forgot\" class=\"open-popup\">Forgot Password?</a>\n          </div>\n          <input (click)=\"logIn()\" readonly=\"readonly\" class=\"form_submit\" id=\"submit\" value=\"SIGN IN\" />\n          <div class=\"signup_bottom\">\n            <p>Don't have an account?</p>\n            <a href=\"#\" data-popup=\".popup-signup\" class=\"open-popup\">SIGN UP</a>\n          </div>\n        </div>\n      </div>\n\n\n    </div>\n  </div>\n\n\n</body>"
 
 /***/ }),
 
@@ -476,12 +712,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../_services/auth.service */ "./src/app/_services/auth.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
 
 
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent() {
+    function LoginComponent(authService, router) {
+        this.authService = authService;
+        this.router = router;
+        this.logInUsername = 'testmail@test.com';
+        this.logInPassword = 'password';
     }
     LoginComponent.prototype.ngOnInit = function () {
+    };
+    LoginComponent.prototype.logIn = function () {
+        this.authService.logIn(this.logInUsername, this.logInPassword).then(function (success) {
+            console.log('Logged In');
+            //this.afterLogIn();
+        }).catch(function (err) {
+            console.log(err);
+            //this.error = err;
+        });
+    };
+    LoginComponent.prototype.afterLogIn = function () {
+        //Redirect
+        this.router.navigate(['/main']);
     };
     LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -489,7 +746,7 @@ var LoginComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./login.component.html */ "./src/app/_pages/login/login.component.html"),
             styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/_pages/login/login.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -511,7 +768,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
-/* harmony import */ var _login_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./login.component */ "./src/app/_pages/login/login.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _login_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./login.component */ "./src/app/_pages/login/login.component.ts");
+
 
 
 
@@ -523,13 +782,14 @@ var LoginModule = /** @class */ (function () {
     LoginModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"],
+                _login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"]
             ],
             exports: [
-                _login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"]
+                _login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"]
             ],
             providers: [],
             bootstrap: []
@@ -560,7 +820,7 @@ module.exports = ".barSlideIn{\n  background: white;\n  -webkit-transform: trans
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n\n<div class=\"views\">\n\n  <div class=\"view view-main\">\n    <div class=\"pages\">\n      <div data-page=\"shop\" class=\"page\">\n        <div class=\"page-content\">\n\n\n          <app-header></app-header>\n\n          <!-- Page Loader -->\n\n\n\n\n\n          <!-- SlideInPage -->\n          <app-bar-page \n            *ngIf=\"showBarPage\" \n            [barPageIdChange]=\"barPageId\"\n            [slideInBar]=\"barSlide\">\n          </app-bar-page>            \n\n\n\n          <app-main-scroll *ngIf=\"true\" (barCardClick)=\"activateBarSlide($event)\"></app-main-scroll>\n\n\n\n\n\n          <app-navbar (samePageClick)=\"reverseBarSlide()\" [samePageIndex]=\"0\"></app-navbar>\n\n\n\n\n\n        </div>\n      </div>\n    </div>\n  </div>\n</div>"
+module.exports = "\n\n<div class=\"views\">\n\n  <div class=\"view view-main\">\n    <div class=\"pages\">\n      <div data-page=\"shop\" class=\"page\">\n        <div class=\"page-content\">\n\n\n          <app-header></app-header>\n\n\n          <!-- SlideInPage -->\n          <!-- <app-bar-page \n            *ngIf=\"showBarPage\" \n            [barPageIdChange]=\"barPageId\"\n            [slideInBar]=\"barSlide\">\n          </app-bar-page>            \n\n\n\n          <app-main-scroll *ngIf=\"true\" (barCardClick)=\"activateBarSlide($event)\"></app-main-scroll> -->\n          <router-outlet></router-outlet>\n\n\n\n\n          <app-navbar></app-navbar>\n\n\n\n\n\n        </div>\n      </div>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -576,23 +836,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MainComponent", function() { return MainComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_main_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../_services/main.service */ "./src/app/_services/main.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
 
 
 var MainComponent = /** @class */ (function () {
-    function MainComponent() {
-        this.barSlide = false;
-        this.showBarPage = false;
-        this.barPageId = 0;
+    function MainComponent(mainService, router) {
+        this.mainService = mainService;
+        this.router = router;
     }
     MainComponent.prototype.ngOnInit = function () {
+        this.pageChangeInit();
     };
-    MainComponent.prototype.activateBarSlide = function (barId) {
-        this.barSlide = true;
-        this.showBarPage = true; //move later
-        this.barPageId = barId;
-    };
-    MainComponent.prototype.reverseBarSlide = function () {
-        this.barSlide = false;
+    MainComponent.prototype.pageChangeInit = function () {
+        var _this = this;
+        this.mainService.currentPage.subscribe(function (result) {
+            if (_this.mainService.currentPageValue == -1)
+                return;
+            if (result == 0) {
+                _this.router.navigate(['/main/barlist']);
+            }
+            else if (result == 1) {
+                _this.router.navigate(['/main/search']);
+            }
+        });
     };
     MainComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -600,7 +869,7 @@ var MainComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./main.component.html */ "./src/app/_pages/main/main.component.html"),
             styles: [__webpack_require__(/*! ./main.component.css */ "./src/app/_pages/main/main.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_main_service__WEBPACK_IMPORTED_MODULE_2__["MainService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], MainComponent);
     return MainComponent;
 }());
@@ -628,10 +897,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_main_scroll_main_scroll_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../_components/main-scroll/main-scroll.component */ "./src/app/_components/main-scroll/main-scroll.component.ts");
 /* harmony import */ var _components_bar_page_bar_page_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../_components/bar-page/bar-page.component */ "./src/app/_components/bar-page/bar-page.component.ts");
 /* harmony import */ var _components_full_loading_full_loading_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../_components/full-loading/full-loading.component */ "./src/app/_components/full-loading/full-loading.component.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _pages_barlist_barlist_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../_pages/barlist/barlist.component */ "./src/app/_pages/barlist/barlist.component.ts");
+/* harmony import */ var _pages_search_search_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../_pages/search/search.component */ "./src/app/_pages/search/search.component.ts");
 
 
 
 //Import Components
+
+
+
 
 
 
@@ -649,10 +924,13 @@ var MainModule = /** @class */ (function () {
                 _components_header_header_component__WEBPACK_IMPORTED_MODULE_5__["HeaderComponent"],
                 _components_main_scroll_main_scroll_component__WEBPACK_IMPORTED_MODULE_6__["MainScrollComponent"],
                 _components_bar_page_bar_page_component__WEBPACK_IMPORTED_MODULE_7__["BarPageComponent"],
-                _components_full_loading_full_loading_component__WEBPACK_IMPORTED_MODULE_8__["FullLoadingComponent"]
+                _components_full_loading_full_loading_component__WEBPACK_IMPORTED_MODULE_8__["FullLoadingComponent"],
+                _pages_barlist_barlist_component__WEBPACK_IMPORTED_MODULE_10__["BarlistComponent"],
+                _pages_search_search_component__WEBPACK_IMPORTED_MODULE_11__["SearchComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"]
             ],
             exports: [
                 _main_component__WEBPACK_IMPORTED_MODULE_3__["MainComponent"]
@@ -662,6 +940,200 @@ var MainModule = /** @class */ (function () {
         })
     ], MainModule);
     return MainModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/_pages/search/search.component.css":
+/*!****************************************************!*\
+  !*** ./src/app/_pages/search/search.component.css ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL19wYWdlcy9zZWFyY2gvc2VhcmNoLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/_pages/search/search.component.html":
+/*!*****************************************************!*\
+  !*** ./src/app/_pages/search/search.component.html ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<br />\n<br />\n<br />\n<br />\n<br />\n<br />\n\n<button (click)=\"testBtn()\"></button>\n\n<p>\n  {{test}}\n</p>\n\n"
+
+/***/ }),
+
+/***/ "./src/app/_pages/search/search.component.ts":
+/*!***************************************************!*\
+  !*** ./src/app/_pages/search/search.component.ts ***!
+  \***************************************************/
+/*! exports provided: SearchComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchComponent", function() { return SearchComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var SearchComponent = /** @class */ (function () {
+    function SearchComponent() {
+        this.test = "Test";
+    }
+    SearchComponent.prototype.ngOnInit = function () {
+    };
+    SearchComponent.prototype.testBtn = function () {
+        this.test = "Taco";
+    };
+    SearchComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-search',
+            template: __webpack_require__(/*! ./search.component.html */ "./src/app/_pages/search/search.component.html"),
+            styles: [__webpack_require__(/*! ./search.component.css */ "./src/app/_pages/search/search.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], SearchComponent);
+    return SearchComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/_services/auth.service.ts":
+/*!*******************************************!*\
+  !*** ./src/app/_services/auth.service.ts ***!
+  \*******************************************/
+/*! exports provided: AuthService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthService", function() { return AuthService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var angularfire2_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! angularfire2/auth */ "./node_modules/angularfire2/auth/index.js");
+/* harmony import */ var angularfire2_auth__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(angularfire2_auth__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _angular_fire_database__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/fire/database */ "./node_modules/@angular/fire/database/index.js");
+
+
+
+
+var AuthService = /** @class */ (function () {
+    function AuthService(dbA, afAuth) {
+        this.afAuth = afAuth;
+        this.currentUser = null;
+        this.af = afAuth;
+        this.db = dbA;
+    }
+    AuthService.prototype.setUser = function (user) {
+        if (this.currentUser != null && user.uid == this.currentUser.uid)
+            return;
+        this.currentUser = user;
+        this.getBarCardCountThenLiked();
+    };
+    AuthService.prototype.getBarCardCountThenLiked = function () {
+        var _this = this;
+        this.db.object('barCardCount').valueChanges().subscribe(function (result) {
+            _this.currentUser.barCardCount = +result;
+            _this.getLikedCards();
+        });
+    };
+    AuthService.prototype.logIn = function (email, password) {
+        return this.afAuth.auth.signInWithEmailAndPassword(email, password);
+    };
+    AuthService.prototype.createUser = function () {
+        return this.afAuth.auth.createUserWithEmailAndPassword("testmail@test.com", "password");
+    };
+    AuthService.prototype.getLikedCards = function () {
+        var _this = this;
+        var uid = this.currentUser.uid;
+        var itemRef = this.db.object('userInfo/' + uid + '/likedBars');
+        itemRef.valueChanges().subscribe(function (result) {
+            _this.currentUser.likedBars = [];
+            if (result != null) {
+                for (var i = 1; i <= _this.currentUser.barCardCount; i++) {
+                    if (result[i] != null) {
+                        _this.currentUser.likedBars.push(+result[i].id);
+                    }
+                }
+            }
+            // console.log(this.currentUser.likedBars);
+        });
+    };
+    AuthService.prototype.likeBar = function (barCard) {
+        var barId = barCard.barId.toString();
+        var uid = this.currentUser.uid;
+        if (this.currentUser.likedBars.indexOf(barCard.barId) == -1) {
+            var itemRef = this.db.object('userInfo/' + uid + '/likedBars/' + barId);
+            itemRef.set({ id: barId }).then(function (_) {
+            });
+        }
+        else {
+            var itemRef = this.db.object('userInfo/' + uid + '/likedBars/' + barId);
+            itemRef.remove().then(function (_) {
+            });
+        }
+    };
+    AuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_database__WEBPACK_IMPORTED_MODULE_3__["AngularFireDatabase"], angularfire2_auth__WEBPACK_IMPORTED_MODULE_2__["AngularFireAuth"]])
+    ], AuthService);
+    return AuthService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/_services/main.service.ts":
+/*!*******************************************!*\
+  !*** ./src/app/_services/main.service.ts ***!
+  \*******************************************/
+/*! exports provided: MainService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MainService", function() { return MainService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+
+
+
+var MainService = /** @class */ (function () {
+    function MainService() {
+        this.currentPageValue = 0;
+        this.barSlideValue = false;
+        this.barSlide = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](false);
+        this.currentPage = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](-1);
+    }
+    MainService.prototype.reverseBarSlide = function () {
+        this.barSlideValue = !this.barSlideValue;
+        this.barSlide.next(this.barSlideValue);
+    };
+    MainService.prototype.changePage = function (num) {
+        if (this.currentPageValue == num)
+            return;
+        this.currentPageValue = num;
+        this.currentPage.next(num);
+    };
+    MainService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], MainService);
+    return MainService;
 }());
 
 
@@ -681,10 +1153,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _pages_main_main_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_pages/main/main.component */ "./src/app/_pages/main/main.component.ts");
+/* harmony import */ var _pages_login_login_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_pages/login/login.component */ "./src/app/_pages/login/login.component.ts");
+/* harmony import */ var _pages_init_init_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./_pages/init/init.component */ "./src/app/_pages/init/init.component.ts");
+/* harmony import */ var _pages_barlist_barlist_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./_pages/barlist/barlist.component */ "./src/app/_pages/barlist/barlist.component.ts");
+/* harmony import */ var _pages_search_search_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./_pages/search/search.component */ "./src/app/_pages/search/search.component.ts");
 
 
 
-var routes = [];
+
+
+
+
+
+var routes = [
+    { path: 'main', component: _pages_main_main_component__WEBPACK_IMPORTED_MODULE_3__["MainComponent"],
+        children: [
+            {
+                path: 'barlist',
+                component: _pages_barlist_barlist_component__WEBPACK_IMPORTED_MODULE_6__["BarlistComponent"]
+            },
+            {
+                path: 'search',
+                component: _pages_search_search_component__WEBPACK_IMPORTED_MODULE_7__["SearchComponent"]
+            },
+            {
+                path: '**',
+                component: _pages_barlist_barlist_component__WEBPACK_IMPORTED_MODULE_6__["BarlistComponent"]
+            }
+        ]
+    },
+    { path: 'login', component: _pages_login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"] },
+    { path: '**', component: _pages_init_init_component__WEBPACK_IMPORTED_MODULE_5__["InitComponent"] },
+    { path: '404', component: _pages_init_init_component__WEBPACK_IMPORTED_MODULE_5__["InitComponent"] },
+];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
     }
@@ -719,7 +1221,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<!-- <app-main></app-main> -->\n<app-login></app-login>\n\n<router-outlet></router-outlet>\n"
+module.exports = "\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -780,10 +1282,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_fire_database__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/fire/database */ "./node_modules/@angular/fire/database/index.js");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var _pages_main_main_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./_pages/main/main.module */ "./src/app/_pages/main/main.module.ts");
-/* harmony import */ var _pages_login_login_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./_pages/login/login.module */ "./src/app/_pages/login/login.module.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _pages_init_init_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./_pages/init/init.module */ "./src/app/_pages/init/init.module.ts");
+/* harmony import */ var _pages_main_main_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./_pages/main/main.module */ "./src/app/_pages/main/main.module.ts");
+/* harmony import */ var _pages_login_login_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./_pages/login/login.module */ "./src/app/_pages/login/login.module.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _custom_reuse_strategy__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./custom-reuse-strategy */ "./src/app/custom-reuse-strategy.ts");
+
+
+
 
 
 
@@ -804,7 +1312,7 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_13__["AppComponent"],
+                _app_component__WEBPACK_IMPORTED_MODULE_14__["AppComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -814,15 +1322,65 @@ var AppModule = /** @class */ (function () {
                 _angular_fire_storage__WEBPACK_IMPORTED_MODULE_5__["AngularFireStorageModule"],
                 _angular_fire_database__WEBPACK_IMPORTED_MODULE_7__["AngularFireDatabaseModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__["BrowserAnimationsModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_12__["AppRoutingModule"],
-                _pages_main_main_module__WEBPACK_IMPORTED_MODULE_10__["MainModule"],
-                _pages_login_login_module__WEBPACK_IMPORTED_MODULE_11__["LoginModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_13__["AppRoutingModule"],
+                _pages_init_init_module__WEBPACK_IMPORTED_MODULE_10__["InitModule"],
+                _pages_main_main_module__WEBPACK_IMPORTED_MODULE_11__["MainModule"],
+                _pages_login_login_module__WEBPACK_IMPORTED_MODULE_12__["LoginModule"]
             ],
-            providers: [],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_13__["AppComponent"]]
+            providers: [
+                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_15__["RouteReuseStrategy"], useClass: _custom_reuse_strategy__WEBPACK_IMPORTED_MODULE_16__["CustomReuseStrategy"] }
+            ],
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_14__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/custom-reuse-strategy.ts":
+/*!******************************************!*\
+  !*** ./src/app/custom-reuse-strategy.ts ***!
+  \******************************************/
+/*! exports provided: CustomReuseStrategy */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomReuseStrategy", function() { return CustomReuseStrategy; });
+// This impl. bases upon one that can be found in the router's test cases.
+var CustomReuseStrategy = /** @class */ (function () {
+    function CustomReuseStrategy() {
+        this.handlers = {};
+        //List of routes to store and retrieve from
+        this.saveRoutes = ['barlist', 'search'];
+    }
+    //If true then store
+    CustomReuseStrategy.prototype.shouldDetach = function (route) {
+        if (this.saveRoutes.indexOf(route.routeConfig.path) < 0)
+            return false;
+        return true;
+    };
+    CustomReuseStrategy.prototype.store = function (route, handle) {
+        this.handlers[route.routeConfig.path] = handle;
+    };
+    //if true then retrieve
+    CustomReuseStrategy.prototype.shouldAttach = function (route) {
+        if (this.saveRoutes.indexOf(route.routeConfig.path) < 0)
+            return false;
+        return !!route.routeConfig && !!this.handlers[route.routeConfig.path];
+    };
+    CustomReuseStrategy.prototype.retrieve = function (route) {
+        if (!route.routeConfig)
+            return null;
+        return this.handlers[route.routeConfig.path];
+    };
+    CustomReuseStrategy.prototype.shouldReuseRoute = function (future, curr) {
+        return future.routeConfig === curr.routeConfig;
+    };
+    return CustomReuseStrategy;
 }());
 
 

@@ -9,15 +9,19 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
+
 import { environment } from '../environments/environment';
 
-
+import {InitModule} from './_pages/init/init.module';
 import { MainModule} from './_pages/main/main.module';
 import { LoginModule} from './_pages/login/login.module';
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 
 import {DateDirective} from './_directives/date.directive';
+import { RouteReuseStrategy } from '@angular/router';
+import { CustomReuseStrategy } from './custom-reuse-strategy';
 
 
 @NgModule({
@@ -33,10 +37,13 @@ import {DateDirective} from './_directives/date.directive';
     AngularFireDatabaseModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    InitModule,
     MainModule,
     LoginModule
   ],
-  providers: [],
+  providers: [
+    {provide: RouteReuseStrategy,useClass:CustomReuseStrategy}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

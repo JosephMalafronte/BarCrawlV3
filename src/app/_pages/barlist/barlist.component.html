@@ -1,0 +1,7 @@
+<!-- SlideInPage -->
+<app-bar-page *ngIf="showBarPage" [barPageIdChange]="barPageId" [slideInBar]="barSlide">
+</app-bar-page>
+
+
+
+<app-main-scroll *ngIf="true" (barCardClick)="activateBarSlide($event)"></app-main-scroll>

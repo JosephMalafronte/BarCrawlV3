@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {FormsModule} from '@angular/forms';
 
 
 //Import Components
@@ -11,6 +12,7 @@ import {LoginComponent} from './login.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule
   ],
   exports: [
     LoginComponent

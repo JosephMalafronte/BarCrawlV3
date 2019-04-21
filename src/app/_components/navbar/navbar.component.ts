@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {MainService} from '../../_services/main.service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -7,18 +9,27 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  @Output() samePageClick = new EventEmitter();
-  @Input() samePageIndex: number;
 
-  constructor() { }
+  constructor(private mainService: MainService) { }
 
   ngOnInit() {
   }
 
   icon0Click(){
-    if(this.samePageIndex == 0){
-      this.samePageClick.emit();
+    if(this.mainService.currentPageValue == 0){
+      this.mainService.reverseBarSlide();
+    }
+    else {
+      this.mainService.changePage(0);
     }
   }
 
+  icon1Click(){
+    if(this.mainService.currentPageValue == 1){
+
+    }
+    else {
+      this.mainService.changePage(1);
+    }
+  }
 }

@@ -9,7 +9,9 @@ import {HeaderComponent} from '../../_components/header/header.component';
 import {MainScrollComponent} from '../../_components/main-scroll/main-scroll.component';
 import {BarPageComponent} from '../../_components/bar-page/bar-page.component';
 import {FullLoadingComponent} from '../../_components/full-loading/full-loading.component';
-
+import { AppRoutingModule } from '../../app-routing.module';
+import { BarlistComponent} from '../../_pages/barlist/barlist.component';
+import { SearchComponent} from '../../_pages/search/search.component';
 
 @NgModule({
   declarations: [
@@ -18,10 +20,13 @@ import {FullLoadingComponent} from '../../_components/full-loading/full-loading.
     HeaderComponent,
     MainScrollComponent,
     BarPageComponent,
-    FullLoadingComponent
+    FullLoadingComponent,
+    BarlistComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule
   ],
   exports: [
     MainComponent

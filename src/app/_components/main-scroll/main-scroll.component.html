@@ -8,7 +8,7 @@
     <ul class="shop_items">
 
       <!-- BAR CARD -->
-      <li id="barCard" *ngFor="let barCard of barCards" (click)="onBarCardClick(barCard.barId)">
+      <li id="barCard" *ngFor="let barCard of barCards" (click)="onBarCardClick($event,barCard.barId)">
         <div class="shop_thumb">
           <img src={{barCard.barPictureUrl}} alt="" title="" class="barCardPic" />
         </div>
@@ -28,8 +28,10 @@
               </span>
             </li>
           </ul>
-          <span class="open-popup shopfav">
-            <img src="./assets/images/icons/black/love.png" alt="" title="" />
+          <span class="open-popup shopfav" (click)="likeBar(barCard)">
+              <!-- <app-like></app-like> -->
+              <img *ngIf='checkLikedStatus(barCard)' id="like"  src="./assets/images/icons/black/lovefilledblack.png" alt="" title="" />            
+              <img *ngIf='!checkLikedStatus(barCard)' id="like"  src="./assets/images/icons/black/love.png" alt="" title="" />
           </span>
         </div>
       </li>
