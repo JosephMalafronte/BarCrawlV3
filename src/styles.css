@@ -353,7 +353,7 @@ background-color: #86d6ed;
 .navbar--fixed{
 position: fixed;
 left:0;
-z-index:999999;
+z-index:1000;
 }
 .navbar--fixed-top{
 top:0;
@@ -523,7 +523,7 @@ color:#fff;
   
 }
 .panel {
-z-index: 1000;
+z-index: 10000;
 display: block;
 -webkit-box-sizing: border-box;
 -moz-box-sizing: border-box;
@@ -550,7 +550,7 @@ background-color:#fff;
   left: -85%;
 }
 .panel.panel-right.panel-reveal {
-  right: -85%;
+  right: 0%;
 }
 body.with-panel-left-reveal .views,
 body.with-panel-right-reveal .views {
@@ -4089,4 +4089,3 @@ padding:15px 0 0 0;
     /* Windows 8 IE 10 fix */
     -ms-perspective: 1200px;
   }
-  

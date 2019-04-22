@@ -7,26 +7,19 @@
       <div data-page="shop" class="page">
         <div class="page-content">
 
-
-          <app-header></app-header>
-
-
-          <!-- SlideInPage -->
-          <!-- <app-bar-page 
-            *ngIf="showBarPage" 
-            [barPageIdChange]="barPageId"
-            [slideInBar]="barSlide">
-          </app-bar-page>            
+          <div class="user_slide">
+            <app-user-slide></app-user-slide>
+          </div>
 
 
+          <div class="main_content">
+            <div class="block_clicks" style="pointer-events:none;">
+              <app-header></app-header>
+              <router-outlet></router-outlet>
+              <app-navbar></app-navbar>
+            </div>
+          </div>
 
-          <app-main-scroll *ngIf="true" (barCardClick)="activateBarSlide($event)"></app-main-scroll> -->
-          <router-outlet></router-outlet>
-
-
-
-
-          <app-navbar></app-navbar>
 
 
 

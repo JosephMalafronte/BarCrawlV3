@@ -11,7 +11,8 @@ import {BarPageComponent} from '../../_components/bar-page/bar-page.component';
 import {FullLoadingComponent} from '../../_components/full-loading/full-loading.component';
 import { AppRoutingModule } from '../../app-routing.module';
 import { BarlistComponent} from '../../_pages/barlist/barlist.component';
-import { SearchComponent} from '../../_pages/search/search.component';
+import { SearchComponent } from '../../_pages/search/search.component';
+import { UserSlideComponent } from '../../_components/user-slide/user-slide.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SearchComponent} from '../../_pages/search/search.component';
     BarPageComponent,
     FullLoadingComponent,
     BarlistComponent,
-    SearchComponent
+    SearchComponent,
+    UserSlideComponent
   ],
   imports: [
     BrowserModule,
@@ -35,4 +37,3 @@ import { SearchComponent} from '../../_pages/search/search.component';
   bootstrap: []
 })
 export class MainModule { }
-  

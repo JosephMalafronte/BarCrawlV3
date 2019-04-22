@@ -4,7 +4,8 @@ import { Observable, Subject } from 'rxjs';
 import { BrowserModule } from '@angular/platform-browser';
 import {
   animate, state, style, transition, trigger
-} from '@angular/animations'
+} from '@angular/animations';
+
 
 
 import { DateDirective} from '../../_directives/date.directive';
