@@ -3,6 +3,35 @@
   transform: translateX(50%);
 }
 
+.block_clicks{
+  pointer-events: none;
+  touch-action: none;
+}
+
+.out{
+  -webkit-transform: translateX(0%);
+  transform: translateX(0%);
+  transition: transform 150ms linear;
+  will-change: transform;
+}
+.in{
+  -webkit-transform: translateX(-80%);
+  transform: translateX(-80%);
+  transition: transform 150ms linear;
+}
+
+.pageClick{
+  position:absolute;
+  top:0;
+  left:0;
+  width: 15%;
+  height:100%;
+  z-index:15000;
+}
+
+.user_slide{
+
+}
   
   
   .centered {

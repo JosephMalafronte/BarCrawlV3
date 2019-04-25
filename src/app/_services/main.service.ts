@@ -10,10 +10,14 @@ export class MainService {
   currentPage: BehaviorSubject<number>;
   barSlideValue: boolean = false;
   barSlide: BehaviorSubject<boolean>;
+  userSlideValue: boolean = false;
+  userSlide: BehaviorSubject<boolean>
+  userSlideEvent: Event;
 
   constructor() {
     this.barSlide = new BehaviorSubject<boolean>(false);
     this.currentPage = new BehaviorSubject<number>(-1);
+    this.userSlide = new BehaviorSubject<boolean>(false);
    }
 
   reverseBarSlide() {
@@ -22,10 +26,19 @@ export class MainService {
   }
 
   changePage(num: number){
+    if(this.userSlideValue == true) this.changeUserSlide();
     if(this.currentPageValue == num) return;
     this.currentPageValue = num;
     this.currentPage.next(num);
-
   }
+
+  changeUserSlide(){
+    this.userSlideValue = !this.userSlideValue;
+    this.userSlide.next(this.userSlideValue);
+  }
+
+
+
+
 
 }

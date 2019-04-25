@@ -4,31 +4,26 @@ import {User} from '../../_models/User.Model';
 import {BarlistComponent} from '../../_pages/barlist/barlist.component';
 import {MainService} from '../../_services/main.service';
 import { Router } from '@angular/router';
-import {
-  animate, state, style, transition, trigger
-} from '@angular/animations';
+
 
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css'],
-  animations: [
-    trigger('slideInLogin', [
-      state('false', style({ transform: 'translateX(100%)' })),
-      state('true', style({ transform: 'translateX(0%)' })),
-      transition('* => *', animate(200))
-    ])]
+  styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
 
 
   @Input() slideInLogin: boolean = false;
+  userSlide: boolean = false;
 
   constructor(private mainService: MainService, private router: Router) { }
 
   ngOnInit() {
     this.pageChangeInit();
+    this.userSlideInit();
+
   }
 
   pageChangeInit(){
@@ -41,6 +36,28 @@ export class MainComponent implements OnInit {
         this.router.navigate(['/main/search']);
       }
     });
+  }
+
+  userSlideInit(){
+    this.mainService.userSlide.subscribe(result => {
+      this.userSlide = result;
+      let elm = document.getElementById("headerAndRouter");
+      if(result == true){
+        elm.classList.add("block_clicks");
+        //elm.classList.add("out");
+      }
+      else{
+        elm.classList.remove("block_clicks");
+        //elm.classList.remove("out");
+      }
+    });
+  }
+
+
+  pageClick(){
+    if(this.mainService.userSlideValue == true){
+      this.mainService.changeUserSlide();
+    }
   }
 
 }

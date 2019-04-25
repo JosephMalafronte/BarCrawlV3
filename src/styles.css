@@ -545,6 +545,7 @@ background-color:#fff;
 }
 .panel-right{
 background-color:#fff;
+left:100%;
 }
 .panel.panel-left.panel-reveal {
   left: -85%;

@@ -15,21 +15,16 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
+
+
   icon0Click(){
     if(this.mainService.currentPageValue == 0){
       this.mainService.reverseBarSlide();
     }
-    else {
-      this.mainService.changePage(0);
-    }
+    this.mainService.changePage(0);
   }
 
   icon1Click(){
-    if(this.mainService.currentPageValue == 1){
-
-    }
-    else {
-      this.mainService.changePage(1);
-    }
+    this.mainService.changePage(1);
   }
 }
