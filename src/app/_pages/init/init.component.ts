@@ -16,19 +16,25 @@ export class InitComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    //When user is set run this
+    this.authService.authStateSet.subscribe(value => {
+      if(value == true){
+        console.log(this.authService.currentUser.uid);
+        this.router.navigate(['/main/barlist']);
+      }
+    });
+
+
+
     this.authService.af.authState.subscribe((auth) => {
+      console.log(auth);
       if(auth == null){
         this.router.navigate(['/login']);
       }
       else{
         this.authService.setUser(new User(auth));
-        console.log(this.authService.currentUser.uid);
-        this.router.navigate(['/main/barlist']);
       }
-      
-      // auth.updateProfile({
-      //   displayName: 'Joseph'
-      // })
     });
     
   }

@@ -18,6 +18,10 @@ const routes: Routes = [
         component: SearchComponent
       },
       {
+        path:'404',
+        component: BarlistComponent
+      },
+      {
         path:'**',
         component: BarlistComponent
       }

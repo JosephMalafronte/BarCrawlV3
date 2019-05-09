@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MainService} from '../../_services/main.service';
+import {AuthService} from '../../_services/auth.service';
 
 
 @Component({
@@ -11,7 +12,11 @@ export class UserSlideComponent implements OnInit {
 
   slideInLogin: boolean = false;
 
-  constructor(private mainService: MainService) { }
+
+  //AuthService used in html
+  constructor(private mainService: MainService, private authService: AuthService) {
+
+  }
 
   ngOnInit() {
     this.userSlideInit();
