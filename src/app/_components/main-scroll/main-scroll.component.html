@@ -30,8 +30,7 @@
           </ul>
           <span class="open-popup shopfav" (click)="likeBar(barCard)">
               <!-- <app-like></app-like> -->
-              <img *ngIf='checkLikedStatus(barCard)' id="like"  src="./assets/images/icons/black/lovefilledblack.png" alt="" title="" />            
-              <img *ngIf='!checkLikedStatus(barCard)' id="like"  src="./assets/images/icons/black/love.png" alt="" title="" />
+              <img  id="like"  [src]="checkLikedStatus(barCard)? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'" alt="" title="" />            
           </span>
         </div>
       </li>

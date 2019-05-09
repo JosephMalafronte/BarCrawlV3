@@ -9,6 +9,7 @@ import {
 
 
 import { DateDirective} from '../../_directives/date.directive';
+import { AuthService } from '../../_services/auth.service';
 
 import {BarPage} from '../../models';
 
@@ -41,20 +42,24 @@ export class BarPageComponent implements OnInit {
   //BarPage Variables
   barName = "";
   barPictureUrl = "";
+  likeImageStatus = "lovefilledblack";
+  activeInfoPage = 0;
 
   dailyDeals = [];
   dayOfTheWeek: String;
 
   db: AngularFireDatabase;
-
+  authService: AuthService;
   
 
   constructor(
-    dbA: AngularFireDatabase,
-    dateDirective: DateDirective
+    _dbA: AngularFireDatabase,
+    _dateDirective: DateDirective,
+    _authService: AuthService
   ) { 
-    this.db = dbA;
-    //this.dayOfTheWeek = dateDirective.getDayOfWeek();
+    this.db = _dbA;
+    this.authService = _authService;
+    //this.dayOfTheWeek = _dateDirective.getDayOfWeek();
     this.dayOfTheWeek = "Wednesday";
   }
 
@@ -94,9 +99,32 @@ export class BarPageComponent implements OnInit {
 
 
   getDailyDeals(){
-    this.db.list('dailyDeals/'+this.dayOfTheWeek+'/'+this.barName).valueChanges().subscribe(result => {
+    this.db.list('dailyDeals/' + this.dayOfTheWeek+'/'+this.barName).valueChanges().subscribe(result => {
       this.dailyDeals = result;
     });
+  }
+
+
+  checkLikedStatus(){
+    if(this.authService.currentUser.likedBars == undefined) return;
+    if(this.authService.currentUser.likedBars.indexOf(this.barPageId) == -1){
+      return false;
+    }
+    else return true;
+  }
+
+  likeBar(){
+    this.authService.likeBar(this.barPageId);
+  }
+
+
+  activeNavIcon(index: number){
+    if(this.activeInfoPage == index) return true;
+    return false;
+  }
+
+  setActiveInfoPage(index: number){
+    this.activeInfoPage = index;
   }
 
 }

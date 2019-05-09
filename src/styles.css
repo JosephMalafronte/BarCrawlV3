@@ -1941,6 +1941,7 @@ ul.shop_items li span.shopfav{
   }
 
 ul.shop_items li a.shopfav img{
+position: relative;
 width:100%;
 display:block;
 }

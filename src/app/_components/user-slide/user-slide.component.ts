@@ -10,7 +10,7 @@ import {AuthService} from '../../_services/auth.service';
 })
 export class UserSlideComponent implements OnInit {
 
-  slideInLogin: boolean = false;
+  slideInLogin: boolean = true;
 
 
   //AuthService used in html
@@ -24,6 +24,7 @@ export class UserSlideComponent implements OnInit {
 
   userSlideInit(){
     this.mainService.userSlide.subscribe(result => {
+      //this.slideInLogin = result;
        if(result == true){
         document.getElementById("userSlide").classList.add("in");
        }

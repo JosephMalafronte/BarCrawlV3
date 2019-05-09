@@ -85,17 +85,17 @@ export class AuthService {
 
 
 
-  likeBar(barCard:BarCard){
+  likeBar(barId: number){
     console.log("Like");
-    let barId: string = barCard.barId.toString();
+    let barIdString: string = barId.toString();
     let uid: string = this.currentUser.uid;
-    let index = this.currentUser.likedBars.indexOf(barCard.barId);
+    let index = this.currentUser.likedBars.indexOf(barId);
 
     //If bar was not liked before
     if(index == -1){
-      this.currentUser.likedBars.push(barCard.barId);
-      const itemRef = this.db.object('userInfo/' + uid + '/likedBars/' + barId);
-      itemRef.set({id : barId }).then(_ => {
+      this.currentUser.likedBars.push(barId);
+      const itemRef = this.db.object('userInfo/' + uid + '/likedBars/' + barIdString);
+      itemRef.set({id : barIdString }).then(_ => {
 
       });
     }
@@ -103,7 +103,7 @@ export class AuthService {
     else{
       this.currentUser.likedBars.splice(index,1);
       
-      const itemRef = this.db.object('userInfo/' + uid + '/likedBars/' + barId);
+      const itemRef = this.db.object('userInfo/' + uid + '/likedBars/' + barIdString);
       itemRef.remove().then(_ => {
 
       });

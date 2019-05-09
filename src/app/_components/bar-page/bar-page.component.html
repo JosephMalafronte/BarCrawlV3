@@ -5,9 +5,12 @@
 
   <div id="slider_maincontent">
 
-    <h2 class="page_title_slide" >{{barName}}</h2>
+    <h2 class="page_title_slide">{{barName}}</h2>
+    <span class="barPageLike"  (click)="likeBar()">
+      <img id="like" [src]="checkLikedStatus()? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'" alt="" title="" />
+    </span>
 
-    <ul id="imageGallery">
+    <ul id="imageGallery" style="margin-bottom: -12px;">
       <li data-thumb="img/thumb/cS-1.jpg" data-src="img/largeImage.jpg">
         <img [src]="barPictureUrl" (load)="imageLoaded()" width="100%" id="barPageImage1" />
       </li>
@@ -15,40 +18,61 @@
 
     <div class="page_single layout_fullwidth_padding">
 
-      <blockquote style="display:none">
+
+      <div class="topnav">
+        <div class="adjust">
+          <div (click)="setActiveInfoPage(0)" [className]="activeNavIcon(0)? 'holder active'  : 'holder'">
+            <span>Deals</span>
+          </div>
+          <div (click)="setActiveInfoPage(1)" [className]="activeNavIcon(1)? 'holder active'  : 'holder'">
+              <span>Cover</span>
+          </div>
+          <div (click)="setActiveInfoPage(2)" [className]="activeNavIcon(2)? 'holder active'  : 'holder'">
+              <span>Friends</span>
+          </div>
+          <div (click)="setActiveInfoPage(3)" [className]="activeNavIcon(3)? 'holder active'  : 'holder'">
+              <span>Map</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- <blockquote style="display:none">
         This mobile template that can be used to create a mobile website, a mobile web app, or even a native mobile app. The design
         is using a full width layout that works perfectly on tablets and desktop also.
         <span>SINDEVO.COM</span>
-      </blockquote>
+      </blockquote> -->
 
 
       <!-- BAR DEALS -->
-      <div class="barDealsSection">
-        <h3 style="padding: 0 0 0 0;">
-          <span data-bind="text: weekDay"></span> Deals & Features - {{dayOfTheWeek}}</h3>
-        <ul class="features_list" *ngFor="let dailyDeal of dailyDeals" style="padding: 20px 0 0 0;">
-          <li>
-            <span class="features_list_span">
-              <img src={{dailyDeal.dealIcon}} alt="" title="" />
-              <span class="features_list_span_text">{{dailyDeal.dealDetail}}</span>
-            </span>
-          </li>
-        </ul>
+      <div *ngIf="activeInfoPage==0">
+          <div class="barDealsSection" >
+              <h3 style="padding: 0 0 0 0;">
+                <span data-bind="text: weekDay"></span> Deals & Features - {{dayOfTheWeek}}
+              </h3>
+              <ul class="features_list" *ngFor="let dailyDeal of dailyDeals" style="padding: 20px 0 0 0;">
+                <li>
+                  <span class="features_list_span">
+                    <img src={{dailyDeal.dealIcon}} alt="" title="" />
+                    <span class="features_list_span_text">{{dailyDeal.dealDetail}}</span>
+                  </span>
+                </li>
+              </ul>
+            </div>
+      
+            <a href="features.html" class="btn btn--full">VIEW ALL FEATURES</a>
+      
+            <h4>You can use this mobile template for:</h4>
+            <ul class="simple_list">
+              <li>Creating a mobile website</li>
+              <li>Creating a mobile web app</li>
+              <li>Creating a mobile native app (integrated with solutions like phonegap or cordova)</li>
+              <li>Works perfectly on tablets and desktop also</li>
+            </ul>
+      
+      
+            <a href="http://themeforest.net/user/sindevo" class="btn btn--full">BUY IT NOW!</a>
       </div>
-
-      <a href="features.html" class="btn btn--full">VIEW ALL FEATURES</a>
-
-      <h4>You can use this mobile template for:</h4>
-      <ul class="simple_list">
-        <li>Creating a mobile website</li>
-        <li>Creating a mobile web app</li>
-        <li>Creating a mobile native app (integrated with solutions like phonegap or cordova)</li>
-        <li>Works perfectly on tablets and desktop also</li>
-      </ul>
-
-
-      <a href="http://themeforest.net/user/sindevo" class="btn btn--full">BUY IT NOW!</a>
-
+      
 
     </div>
 

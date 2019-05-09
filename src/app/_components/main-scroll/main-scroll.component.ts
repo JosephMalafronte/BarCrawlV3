@@ -7,7 +7,6 @@ import { BarCard} from '../../models';
 
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
-import { LEAVE_SELECTOR } from '@angular/animations/browser/src/util';
 
 @Component({
   selector: 'app-main-scroll',
@@ -60,7 +59,7 @@ export class MainScrollComponent implements OnInit {
 
 
   likeBar(barCard: BarCard){
-    this.authService.likeBar(barCard);
+    this.authService.likeBar(barCard.barId);
   }
 
 
