@@ -29,8 +29,8 @@
   z-index:15000;
 }
 
-.user_slide{
-
+.user_slide_hidden{
+  display: none;
 }
   
   

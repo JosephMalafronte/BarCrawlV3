@@ -19,17 +19,31 @@ export class UserSlideComponent implements OnInit {
   }
 
   ngOnInit() {
+    //this.userSlideInit();
+  }
+
+  ngAfterViewInit(){
+    document.getElementById("userSlide").classList.add("hidden");
+    document.getElementById("userSlide").classList.add("out");
     this.userSlideInit();
   }
 
   userSlideInit(){
     this.mainService.userSlide.subscribe(result => {
-      //this.slideInLogin = result;
+      var self = this;
+      this.slideInLogin = result;
        if(result == true){
-        document.getElementById("userSlide").classList.add("in");
-       }
+        document.getElementById("userSlide").classList.remove("hidden");
+        setTimeout(function() {document.getElementById("userSlide").classList.add("in")}, 50);
+      }
        else {
-        document.getElementById("userSlide").classList.remove("in");
+        var dom = document.getElementById("userSlide");
+        dom.classList.remove("in");
+        dom.addEventListener("transitionend", function () {
+          if(self.slideInLogin == false){
+            dom.classList.add("hidden");
+          }
+        });
        }
     });
   }
