@@ -1,10 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { Observable, Subject } from 'rxjs';
 import { BrowserModule } from '@angular/platform-browser';
 import {
   animate, state, style, transition, trigger
 } from '@angular/animations';
+import { forkJoin, Observable, BehaviorSubject } from 'rxjs';  // RxJS 6 syntax
+import { take } from 'rxjs/operators'
 
 
 
@@ -37,15 +38,18 @@ export class BarPageComponent implements OnInit {
   @Input() slideInBar:boolean = false;
   isLoading: boolean = true;
   
-
-  barPage: BarPage;
   //BarPage Variables
+  barPage: BarPage;
   barName = "";
   barPictureUrl = "";
   likeImageStatus = "lovefilledblack";
   activeInfoPage = 0;
+  noDailyDeals = false;
+  dailyDealsExpanded = false;
+  expandDealsButtonText = "VIEW MORE DEALS & EVENTS FOR TODAY";
 
-  dailyDeals = [];
+  displayDailyDeals = [];
+  allDailyDeals = [];
   dayOfTheWeek: String;
 
   db: AngularFireDatabase;
@@ -68,6 +72,14 @@ export class BarPageComponent implements OnInit {
     
   }
 
+  clearBarPageData(){
+    this.isLoading = true;
+    this.barPictureUrl = "";
+    this.barName = "";
+    this.displayDailyDeals = [];
+    this.allDailyDeals = [];
+    this.barPictureUrl = "";
+  }
 
   getBarPage(barId: number){
     this.barPageId = barId;
@@ -84,14 +96,6 @@ export class BarPageComponent implements OnInit {
    
   }
 
-  clearBarPageData(){
-    this.isLoading = true;
-    this.barPictureUrl = "";
-    this.barName = "";
-    this.dailyDeals = [];
-    this.barPictureUrl = "";
-  }
-
 
   imageLoaded() {
     this.isLoading = false;
@@ -100,8 +104,43 @@ export class BarPageComponent implements OnInit {
 
   getDailyDeals(){
     this.db.list('dailyDeals/' + this.dayOfTheWeek+'/'+this.barName).valueChanges().subscribe(result => {
-      this.dailyDeals = result;
+      this.allDailyDeals = [];
+      this.allDailyDeals = result;
+
+      if(this.allDailyDeals.length == 0){
+        this.noDailyDeals = true;
+      }
+      else this.noDailyDeals = false;
+
+      //Set display deals
+      this.show2DailyDeals();    
+      
     });
+  }
+
+  show2DailyDeals() {
+    this.displayDailyDeals = [];
+    for(var i = 0; i<this.allDailyDeals.length && i<2; i++){
+      this.displayDailyDeals.push(this.allDailyDeals[i]);
+    }
+  }
+
+  showAllDailyDeals() {
+    this.displayDailyDeals = this.allDailyDeals;
+  }
+
+
+  handleExpandButtonClick() {
+    if(this.dailyDealsExpanded == false){
+      this.showAllDailyDeals();
+      this.dailyDealsExpanded = true;
+      this.expandDealsButtonText = "VIEW LESS DEALS & EVENTS FOR TODAY";
+    }
+    else {
+      this.show2DailyDeals();
+      this.dailyDealsExpanded = false;
+      this.expandDealsButtonText = "VIEW MORE DEALS & EVENTS FOR TODAY";
+    }
   }
 
 

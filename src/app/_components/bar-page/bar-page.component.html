@@ -1,13 +1,13 @@
-
-
 <div class="slideInPage" [@slideInBarTrigger]="slideInBar">
   <app-full-loading *ngIf="isLoading"></app-full-loading>
 
   <div id="slider_maincontent">
 
     <h2 class="page_title_slide">{{barName}}</h2>
-    <span class="barPageLike"  (click)="likeBar()">
-      <img id="like" [src]="checkLikedStatus()? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'" alt="" title="" />
+    <span class="barPageLike" (click)="likeBar()">
+      <img id="like"
+        [src]="checkLikedStatus()? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'"
+        alt="" title="" />
     </span>
 
     <ul id="imageGallery" style="margin-bottom: -12px;">
@@ -25,13 +25,13 @@
             <span>Deals</span>
           </div>
           <div (click)="setActiveInfoPage(1)" [className]="activeNavIcon(1)? 'holder active'  : 'holder'">
-              <span>Cover</span>
+            <span>Cover</span>
           </div>
           <div (click)="setActiveInfoPage(2)" [className]="activeNavIcon(2)? 'holder active'  : 'holder'">
-              <span>Friends</span>
+            <span>Friends</span>
           </div>
           <div (click)="setActiveInfoPage(3)" [className]="activeNavIcon(3)? 'holder active'  : 'holder'">
-              <span>Map</span>
+            <span>Map</span>
           </div>
         </div>
       </div>
@@ -44,35 +44,43 @@
 
 
       <!-- BAR DEALS -->
-      <div *ngIf="activeInfoPage==0">
-          <div class="barDealsSection" >
-              <h3 style="padding: 0 0 0 0;">
-                <span data-bind="text: weekDay"></span> Deals & Features - {{dayOfTheWeek}}
-              </h3>
-              <ul class="features_list" *ngFor="let dailyDeal of dailyDeals" style="padding: 20px 0 0 0;">
-                <li>
-                  <span class="features_list_span">
-                    <img src={{dailyDeal.dealIcon}} alt="" title="" />
-                    <span class="features_list_span_text">{{dailyDeal.dealDetail}}</span>
-                  </span>
-                </li>
-              </ul>
-            </div>
-      
-            <a href="features.html" class="btn btn--full">VIEW ALL FEATURES</a>
-      
-            <h4>You can use this mobile template for:</h4>
-            <ul class="simple_list">
-              <li>Creating a mobile website</li>
-              <li>Creating a mobile web app</li>
-              <li>Creating a mobile native app (integrated with solutions like phonegap or cordova)</li>
-              <li>Works perfectly on tablets and desktop also</li>
+      <div *ngIf="activeInfoPage==0" style="padding-top: 50px;">
+        <div class="barDealsSection">
+          <h3 style="padding: 0 0 0 0;">
+            <span data-bind="text: weekDay"></span> Deals & Events - {{dayOfTheWeek}}
+          </h3>
+
+          <div *ngIf="!noDailyDeals">
+            <ul  class="features_list" *ngFor="let dailyDeal of displayDailyDeals" style="padding: 20px 0 0 0;">
+              <li>
+                <span class="features_list_span">
+                  <img src={{dailyDeal.dealIcon}} alt="" title="" />
+                  <span class="features_list_span_text">{{dailyDeal.dealDetail}}</span>
+                </span>
+              </li>
             </ul>
-      
-      
-            <a href="http://themeforest.net/user/sindevo" class="btn btn--full">BUY IT NOW!</a>
+          </div>
+          
+        </div>
+
+        <span *ngIf="!noDailyDeals" (click)="handleExpandButtonClick()" class="btn btn--full">{{expandDealsButtonText}}</span>
+
+        <h5 *ngIf="noDailyDeals">There are no deals or events for today.</h5>
+
+
+        <h4>You can use this mobile template for:</h4>
+        <ul class="simple_list">
+          <li>Creating a mobile website</li>
+          <li>Creating a mobile web app</li>
+          <li>Creating a mobile native app (integrated with solutions like phonegap or cordova)</li>
+          <li>Works perfectly on tablets and desktop also</li>
+        </ul>
+
+
+        <a href="http://themeforest.net/user/sindevo" class="btn btn--full">BUY IT NOW!</a>
       </div>
-      
+
+
 
     </div>
 

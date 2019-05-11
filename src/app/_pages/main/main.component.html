@@ -5,10 +5,10 @@
   <div class="view view-main">
     <div class="pages">
       <div data-page="shop" class="page">
-        <div class="page-content">
+        <div class="page-content" id="mainPage">
 
 
-          <div class="user_slide">
+          <div class="user_slide" style="-webkit-overflow-scrolling:touch;">
             <app-user-slide></app-user-slide>
           </div>
 
@@ -17,7 +17,9 @@
               <div *ngIf="userSlide" class="pageClick" (click)="pageClick()"></div>
               <div id="headerAndRouter">
                 <app-header></app-header>
-                <router-outlet></router-outlet>
+                <div id="routerHolder" >
+                  <router-outlet></router-outlet>
+                </div>
               </div>
               <app-navbar></app-navbar>
           </div>

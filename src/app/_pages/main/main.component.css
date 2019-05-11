@@ -152,3 +152,6 @@
   }
 
 
+.preventScroll{
+  overflow: auto;
+}

@@ -23,6 +23,7 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     this.pageChangeInit();
     this.userSlideInit();
+    
 
   }
 
@@ -39,16 +40,27 @@ export class MainComponent implements OnInit {
   }
 
   userSlideInit(){
+    var self = this;
+
+
+
+    var fixed = document.getElementById('mainPage');
+    function blockScrolling(e) {
+      if(self.userSlide == false) return; 
+      e.preventDefault();
+    }
+
+    fixed.addEventListener('touchmove', blockScrolling, false);
+
+    let elm = document.getElementById("headerAndRouter");
     this.mainService.userSlide.subscribe(result => {
       this.userSlide = result;
-      let elm = document.getElementById("headerAndRouter");
       if(result == true){
         elm.classList.add("block_clicks");
-        //elm.classList.add("out");
       }
       else{
         elm.classList.remove("block_clicks");
-        //elm.classList.remove("out");
+
       }
     });
   }
