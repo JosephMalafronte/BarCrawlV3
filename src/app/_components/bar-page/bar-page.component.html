@@ -49,9 +49,15 @@
           <h3 style="padding: 0 0 0 0;">
             <span data-bind="text: weekDay"></span> Deals & Events - {{dayOfTheWeek}}
           </h3>
+        </div>
 
-          <div *ngIf="!noDailyDeals">
-            <ul  class="features_list" *ngFor="let dailyDeal of displayDailyDeals" style="padding: 20px 0 0 0;">
+
+
+        <div *ngIf="!noDailyDeals">
+
+
+          <!-- Head Daily Deals -->
+          <ul class="features_list" *ngFor="let dailyDeal of headDailyDeals" style="padding: 20px 0 0 0;">
               <li>
                 <span class="features_list_span">
                   <img src={{dailyDeal.dealIcon}} alt="" title="" />
@@ -59,11 +65,32 @@
                 </span>
               </li>
             </ul>
+
+
+          <!-- Tail Daily Deals -->
+          <div *ngIf="dailyDealsExpanded">
+              <ul class="features_list" *ngFor="let dailyDeal of tailDailyDeals" style="padding: 20px 0 0 0;">
+                  <li>
+                    <span class="features_list_span">
+                      <img src={{dailyDeal.dealIcon}} alt="" title="" />
+                      <span class="features_list_span_text">{{dailyDeal.dealDetail}}</span>
+                    </span>
+                  </li>
+                </ul>
           </div>
+              
+
+      
           
+
+
+
+
         </div>
 
-        <span *ngIf="!noDailyDeals" (click)="handleExpandButtonClick()" class="btn btn--full">{{expandDealsButtonText}}</span>
+
+        <span *ngIf="!noDailyDeals" (click)="handleExpandButtonClick()"
+          class="btn btn--full">{{expandDealsButtonText}}</span>
 
         <h5 *ngIf="noDailyDeals">There are no deals or events for today.</h5>
 
@@ -79,7 +106,6 @@
 
         <a href="http://themeforest.net/user/sindevo" class="btn btn--full">BUY IT NOW!</a>
       </div>
-
 
 
     </div>

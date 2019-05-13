@@ -41,7 +41,7 @@ module.exports = ".barPageLike {\n    position: absolute;\n    top:9px;\n    rig
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"slideInPage\" [@slideInBarTrigger]=\"slideInBar\">\n  <app-full-loading *ngIf=\"isLoading\"></app-full-loading>\n\n  <div id=\"slider_maincontent\">\n\n    <h2 class=\"page_title_slide\">{{barName}}</h2>\n    <span class=\"barPageLike\" (click)=\"likeBar()\">\n      <img id=\"like\"\n        [src]=\"checkLikedStatus()? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'\"\n        alt=\"\" title=\"\" />\n    </span>\n\n    <ul id=\"imageGallery\" style=\"margin-bottom: -12px;\">\n      <li data-thumb=\"img/thumb/cS-1.jpg\" data-src=\"img/largeImage.jpg\">\n        <img [src]=\"barPictureUrl\" (load)=\"imageLoaded()\" width=\"100%\" id=\"barPageImage1\" />\n      </li>\n    </ul>\n\n    <div class=\"page_single layout_fullwidth_padding\">\n\n\n      <div class=\"topnav\">\n        <div class=\"adjust\">\n          <div (click)=\"setActiveInfoPage(0)\" [className]=\"activeNavIcon(0)? 'holder active'  : 'holder'\">\n            <span>Deals</span>\n          </div>\n          <div (click)=\"setActiveInfoPage(1)\" [className]=\"activeNavIcon(1)? 'holder active'  : 'holder'\">\n            <span>Cover</span>\n          </div>\n          <div (click)=\"setActiveInfoPage(2)\" [className]=\"activeNavIcon(2)? 'holder active'  : 'holder'\">\n            <span>Friends</span>\n          </div>\n          <div (click)=\"setActiveInfoPage(3)\" [className]=\"activeNavIcon(3)? 'holder active'  : 'holder'\">\n            <span>Map</span>\n          </div>\n        </div>\n      </div>\n\n      <!-- <blockquote style=\"display:none\">\n        This mobile template that can be used to create a mobile website, a mobile web app, or even a native mobile app. The design\n        is using a full width layout that works perfectly on tablets and desktop also.\n        <span>SINDEVO.COM</span>\n      </blockquote> -->\n\n\n      <!-- BAR DEALS -->\n      <div *ngIf=\"activeInfoPage==0\" style=\"padding-top: 50px;\">\n        <div class=\"barDealsSection\">\n          <h3 style=\"padding: 0 0 0 0;\">\n            <span data-bind=\"text: weekDay\"></span> Deals & Events - {{dayOfTheWeek}}\n          </h3>\n\n          <div *ngIf=\"!noDailyDeals\">\n            <ul  class=\"features_list\" *ngFor=\"let dailyDeal of displayDailyDeals\" style=\"padding: 20px 0 0 0;\">\n              <li>\n                <span class=\"features_list_span\">\n                  <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\n                  <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\n                </span>\n              </li>\n            </ul>\n          </div>\n          \n        </div>\n\n        <span *ngIf=\"!noDailyDeals\" (click)=\"handleExpandButtonClick()\" class=\"btn btn--full\">{{expandDealsButtonText}}</span>\n\n        <h5 *ngIf=\"noDailyDeals\">There are no deals or events for today.</h5>\n\n\n        <h4>You can use this mobile template for:</h4>\n        <ul class=\"simple_list\">\n          <li>Creating a mobile website</li>\n          <li>Creating a mobile web app</li>\n          <li>Creating a mobile native app (integrated with solutions like phonegap or cordova)</li>\n          <li>Works perfectly on tablets and desktop also</li>\n        </ul>\n\n\n        <a href=\"http://themeforest.net/user/sindevo\" class=\"btn btn--full\">BUY IT NOW!</a>\n      </div>\n\n\n\n    </div>\n\n  </div>\n</div>"
+module.exports = "<div class=\"slideInPage\" [@slideInBarTrigger]=\"slideInBar\">\n  <app-full-loading *ngIf=\"isLoading\"></app-full-loading>\n\n  <div id=\"slider_maincontent\">\n\n    <h2 class=\"page_title_slide\">{{barName}}</h2>\n    <span class=\"barPageLike\" (click)=\"likeBar()\">\n      <img id=\"like\"\n        [src]=\"checkLikedStatus()? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'\"\n        alt=\"\" title=\"\" />\n    </span>\n\n    <ul id=\"imageGallery\" style=\"margin-bottom: -12px;\">\n      <li data-thumb=\"img/thumb/cS-1.jpg\" data-src=\"img/largeImage.jpg\">\n        <img [src]=\"barPictureUrl\" (load)=\"imageLoaded()\" width=\"100%\" id=\"barPageImage1\" />\n      </li>\n    </ul>\n\n    <div class=\"page_single layout_fullwidth_padding\">\n\n\n      <div class=\"topnav\">\n        <div class=\"adjust\">\n          <div (click)=\"setActiveInfoPage(0)\" [className]=\"activeNavIcon(0)? 'holder active'  : 'holder'\">\n            <span>Deals</span>\n          </div>\n          <div (click)=\"setActiveInfoPage(1)\" [className]=\"activeNavIcon(1)? 'holder active'  : 'holder'\">\n            <span>Cover</span>\n          </div>\n          <div (click)=\"setActiveInfoPage(2)\" [className]=\"activeNavIcon(2)? 'holder active'  : 'holder'\">\n            <span>Friends</span>\n          </div>\n          <div (click)=\"setActiveInfoPage(3)\" [className]=\"activeNavIcon(3)? 'holder active'  : 'holder'\">\n            <span>Map</span>\n          </div>\n        </div>\n      </div>\n\n      <!-- <blockquote style=\"display:none\">\n        This mobile template that can be used to create a mobile website, a mobile web app, or even a native mobile app. The design\n        is using a full width layout that works perfectly on tablets and desktop also.\n        <span>SINDEVO.COM</span>\n      </blockquote> -->\n\n\n      <!-- BAR DEALS -->\n      <div *ngIf=\"activeInfoPage==0\" style=\"padding-top: 50px;\">\n        <div class=\"barDealsSection\">\n          <h3 style=\"padding: 0 0 0 0;\">\n            <span data-bind=\"text: weekDay\"></span> Deals & Events - {{dayOfTheWeek}}\n          </h3>\n        </div>\n\n\n\n        <div *ngIf=\"!noDailyDeals\">\n\n\n          <!-- Head Daily Deals -->\n          <ul class=\"features_list\" *ngFor=\"let dailyDeal of headDailyDeals\" style=\"padding: 20px 0 0 0;\">\n              <li>\n                <span class=\"features_list_span\">\n                  <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\n                  <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\n                </span>\n              </li>\n            </ul>\n\n\n          <!-- Tail Daily Deals -->\n          <div *ngIf=\"dailyDealsExpanded\">\n              <ul class=\"features_list\" *ngFor=\"let dailyDeal of tailDailyDeals\" style=\"padding: 20px 0 0 0;\">\n                  <li>\n                    <span class=\"features_list_span\">\n                      <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\n                      <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\n                    </span>\n                  </li>\n                </ul>\n          </div>\n              \n\n      \n          \n\n\n\n\n        </div>\n\n\n        <span *ngIf=\"!noDailyDeals\" (click)=\"handleExpandButtonClick()\"\n          class=\"btn btn--full\">{{expandDealsButtonText}}</span>\n\n        <h5 *ngIf=\"noDailyDeals\">There are no deals or events for today.</h5>\n\n\n        <h4>You can use this mobile template for:</h4>\n        <ul class=\"simple_list\">\n          <li>Creating a mobile website</li>\n          <li>Creating a mobile web app</li>\n          <li>Creating a mobile native app (integrated with solutions like phonegap or cordova)</li>\n          <li>Works perfectly on tablets and desktop also</li>\n        </ul>\n\n\n        <a href=\"http://themeforest.net/user/sindevo\" class=\"btn btn--full\">BUY IT NOW!</a>\n      </div>\n\n\n    </div>\n\n  </div>\n</div>"
 
 /***/ }),
 
@@ -78,7 +78,8 @@ var BarPageComponent = /** @class */ (function () {
         this.noDailyDeals = false;
         this.dailyDealsExpanded = false;
         this.expandDealsButtonText = "VIEW MORE DEALS & EVENTS FOR TODAY";
-        this.displayDailyDeals = [];
+        this.headDailyDeals = [];
+        this.tailDailyDeals = [];
         this.allDailyDeals = [];
         this.db = _dbA;
         this.authService = _authService;
@@ -100,7 +101,8 @@ var BarPageComponent = /** @class */ (function () {
         this.isLoading = true;
         this.barPictureUrl = "";
         this.barName = "";
-        this.displayDailyDeals = [];
+        this.headDailyDeals = [];
+        this.tailDailyDeals = [];
         this.allDailyDeals = [];
         this.barPictureUrl = "";
     };
@@ -130,26 +132,31 @@ var BarPageComponent = /** @class */ (function () {
             else
                 _this.noDailyDeals = false;
             //Set display deals
-            _this.show2DailyDeals();
+            _this.headDailyDeals = [];
+            for (var i = 0; i < _this.allDailyDeals.length && i < 2; i++) {
+                _this.headDailyDeals.push(_this.allDailyDeals[i]);
+            }
+            _this.tailDailyDeals = [];
+            for (var i = 2; i < _this.allDailyDeals.length; i++) {
+                _this.tailDailyDeals.push(_this.allDailyDeals[i]);
+            }
         });
     };
-    BarPageComponent.prototype.show2DailyDeals = function () {
-        this.displayDailyDeals = [];
-        for (var i = 0; i < this.allDailyDeals.length && i < 2; i++) {
-            this.displayDailyDeals.push(this.allDailyDeals[i]);
-        }
-    };
-    BarPageComponent.prototype.showAllDailyDeals = function () {
-        this.displayDailyDeals = this.allDailyDeals;
-    };
+    // show2DailyDeals() {
+    //   this.displayDailyDeals = [];
+    //   for(var i = 0; i<this.allDailyDeals.length && i<2; i++){
+    //     this.displayDailyDeals.push(this.allDailyDeals[i]);
+    //   }
+    // }
+    // showAllDailyDeals() {
+    //   this.displayDailyDeals = this.allDailyDeals;
+    // }
     BarPageComponent.prototype.handleExpandButtonClick = function () {
         if (this.dailyDealsExpanded == false) {
-            this.showAllDailyDeals();
             this.dailyDealsExpanded = true;
             this.expandDealsButtonText = "VIEW LESS DEALS & EVENTS FOR TODAY";
         }
         else {
-            this.show2DailyDeals();
             this.dailyDealsExpanded = false;
             this.expandDealsButtonText = "VIEW MORE DEALS & EVENTS FOR TODAY";
         }
@@ -1086,10 +1093,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_barlist_barlist_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../_pages/barlist/barlist.component */ "./src/app/_pages/barlist/barlist.component.ts");
 /* harmony import */ var _pages_search_search_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../_pages/search/search.component */ "./src/app/_pages/search/search.component.ts");
 /* harmony import */ var _components_user_slide_user_slide_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../_components/user-slide/user-slide.component */ "./src/app/_components/user-slide/user-slide.component.ts");
+/* harmony import */ var _material_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../material.module */ "./src/app/material.module.ts");
 
 
 
 //Import Components
+
 
 
 
@@ -1118,7 +1127,8 @@ var MainModule = /** @class */ (function () {
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"],
+                _material_module__WEBPACK_IMPORTED_MODULE_13__["MaterialModule"]
             ],
             exports: [
                 _main_component__WEBPACK_IMPORTED_MODULE_3__["MainComponent"]
@@ -1501,14 +1511,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/index.js");
 /* harmony import */ var _angular_fire_database__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/fire/database */ "./node_modules/@angular/fire/database/index.js");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var _pages_init_init_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./_pages/init/init.module */ "./src/app/_pages/init/init.module.ts");
-/* harmony import */ var _pages_main_main_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./_pages/main/main.module */ "./src/app/_pages/main/main.module.ts");
-/* harmony import */ var _pages_login_login_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./_pages/login/login.module */ "./src/app/_pages/login/login.module.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _custom_reuse_strategy__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./custom-reuse-strategy */ "./src/app/custom-reuse-strategy.ts");
+/* harmony import */ var _material_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./material.module */ "./src/app/material.module.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _pages_init_init_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./_pages/init/init.module */ "./src/app/_pages/init/init.module.ts");
+/* harmony import */ var _pages_main_main_module__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./_pages/main/main.module */ "./src/app/_pages/main/main.module.ts");
+/* harmony import */ var _pages_login_login_module__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./_pages/login/login.module */ "./src/app/_pages/login/login.module.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _custom_reuse_strategy__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./custom-reuse-strategy */ "./src/app/custom-reuse-strategy.ts");
+
+
+
 
 
 
@@ -1532,25 +1548,29 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_14__["AppComponent"],
+                _app_component__WEBPACK_IMPORTED_MODULE_17__["AppComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-                _angular_fire__WEBPACK_IMPORTED_MODULE_3__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_9__["environment"].firebase),
+                _angular_fire__WEBPACK_IMPORTED_MODULE_3__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_12__["environment"].firebase),
                 _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_4__["AngularFirestoreModule"],
                 _angular_fire_auth__WEBPACK_IMPORTED_MODULE_6__["AngularFireAuthModule"],
                 _angular_fire_storage__WEBPACK_IMPORTED_MODULE_5__["AngularFireStorageModule"],
                 _angular_fire_database__WEBPACK_IMPORTED_MODULE_7__["AngularFireDatabaseModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__["BrowserAnimationsModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_13__["AppRoutingModule"],
-                _pages_init_init_module__WEBPACK_IMPORTED_MODULE_10__["InitModule"],
-                _pages_main_main_module__WEBPACK_IMPORTED_MODULE_11__["MainModule"],
-                _pages_login_login_module__WEBPACK_IMPORTED_MODULE_12__["LoginModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_16__["AppRoutingModule"],
+                _pages_init_init_module__WEBPACK_IMPORTED_MODULE_13__["InitModule"],
+                _pages_main_main_module__WEBPACK_IMPORTED_MODULE_14__["MainModule"],
+                _pages_login_login_module__WEBPACK_IMPORTED_MODULE_15__["LoginModule"],
+                _material_module__WEBPACK_IMPORTED_MODULE_9__["MaterialModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_11__["MatNativeDateModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormsModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ReactiveFormsModule"]
             ],
             providers: [
-                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_15__["RouteReuseStrategy"], useClass: _custom_reuse_strategy__WEBPACK_IMPORTED_MODULE_16__["CustomReuseStrategy"] }
+                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_18__["RouteReuseStrategy"], useClass: _custom_reuse_strategy__WEBPACK_IMPORTED_MODULE_19__["CustomReuseStrategy"] }
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_14__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_17__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -1601,6 +1621,35 @@ var CustomReuseStrategy = /** @class */ (function () {
         return future.routeConfig === curr.routeConfig;
     };
     return CustomReuseStrategy;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/material.module.ts":
+/*!************************************!*\
+  !*** ./src/app/material.module.ts ***!
+  \************************************/
+/*! exports provided: MaterialModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MaterialModule", function() { return MaterialModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var MaterialModule = /** @class */ (function () {
+    function MaterialModule() {
+    }
+    MaterialModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            exports: []
+        })
+    ], MaterialModule);
+    return MaterialModule;
 }());
 
 

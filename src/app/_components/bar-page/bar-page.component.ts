@@ -48,7 +48,8 @@ export class BarPageComponent implements OnInit {
   dailyDealsExpanded = false;
   expandDealsButtonText = "VIEW MORE DEALS & EVENTS FOR TODAY";
 
-  displayDailyDeals = [];
+  headDailyDeals = [];
+  tailDailyDeals = [];
   allDailyDeals = [];
   dayOfTheWeek: String;
 
@@ -76,7 +77,8 @@ export class BarPageComponent implements OnInit {
     this.isLoading = true;
     this.barPictureUrl = "";
     this.barName = "";
-    this.displayDailyDeals = [];
+    this.headDailyDeals = [];
+    this.tailDailyDeals = [];
     this.allDailyDeals = [];
     this.barPictureUrl = "";
   }
@@ -113,31 +115,38 @@ export class BarPageComponent implements OnInit {
       else this.noDailyDeals = false;
 
       //Set display deals
-      this.show2DailyDeals();    
-      
+      this.headDailyDeals = [];
+      for(var i = 0; i<this.allDailyDeals.length && i<2; i++){
+        this.headDailyDeals.push(this.allDailyDeals[i]);
+      }
+
+      this.tailDailyDeals = [];
+      for(var i = 2; i<this.allDailyDeals.length; i++){
+        this.tailDailyDeals.push(this.allDailyDeals[i]);
+      }
+
+
     });
   }
 
-  show2DailyDeals() {
-    this.displayDailyDeals = [];
-    for(var i = 0; i<this.allDailyDeals.length && i<2; i++){
-      this.displayDailyDeals.push(this.allDailyDeals[i]);
-    }
-  }
+  // show2DailyDeals() {
+  //   this.displayDailyDeals = [];
+  //   for(var i = 0; i<this.allDailyDeals.length && i<2; i++){
+  //     this.displayDailyDeals.push(this.allDailyDeals[i]);
+  //   }
+  // }
 
-  showAllDailyDeals() {
-    this.displayDailyDeals = this.allDailyDeals;
-  }
+  // showAllDailyDeals() {
+  //   this.displayDailyDeals = this.allDailyDeals;
+  // }
 
 
   handleExpandButtonClick() {
     if(this.dailyDealsExpanded == false){
-      this.showAllDailyDeals();
       this.dailyDealsExpanded = true;
       this.expandDealsButtonText = "VIEW LESS DEALS & EVENTS FOR TODAY";
     }
     else {
-      this.show2DailyDeals();
       this.dailyDealsExpanded = false;
       this.expandDealsButtonText = "VIEW MORE DEALS & EVENTS FOR TODAY";
     }
