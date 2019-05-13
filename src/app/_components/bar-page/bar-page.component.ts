@@ -7,7 +7,7 @@ import {
 import { forkJoin, Observable, BehaviorSubject } from 'rxjs';  // RxJS 6 syntax
 import { take } from 'rxjs/operators'
 
-
+import * as $ from 'jquery'; 
 
 import { DateDirective} from '../../_directives/date.directive';
 import { AuthService } from '../../_services/auth.service';
@@ -142,6 +142,7 @@ export class BarPageComponent implements OnInit {
 
 
   handleExpandButtonClick() {
+    //$('.collapse').collapse();
     if(this.dailyDealsExpanded == false){
       this.dailyDealsExpanded = true;
       this.expandDealsButtonText = "VIEW LESS DEALS & EVENTS FOR TODAY";

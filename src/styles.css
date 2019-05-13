@@ -1277,7 +1277,6 @@ padding:0 0 0 0;
 width:100%;
 margin:0px;
 list-style:none;
-float:left;
 clear:both;
 }
 
@@ -1287,7 +1286,6 @@ padding:0 2% 20px 2%;
 margin:0 0 20px 0;
 display:block;
 width:43%;
-float:left;
 font-size:18px;
 }
 ul.features_list li:nth-child(even){
@@ -1304,14 +1302,12 @@ margin:0px;
   margin:0px;
   }
 ul.features_list li img{
-display:inline-block;
 width:10%;
 float:left;
 margin:0px;
 padding:0px;
 }
 .features_list_span_text{
-display:inline-block;
 max-width:90%;
 padding:2% 0 0 5%;
 font-weight:400;

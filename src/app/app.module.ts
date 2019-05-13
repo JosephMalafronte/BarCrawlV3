@@ -8,9 +8,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MaterialModule} from './material.module'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatNativeDateModule} from '@angular/material';
 
 
 import { environment } from '../environments/environment';
@@ -43,8 +41,6 @@ import { CustomReuseStrategy } from './custom-reuse-strategy';
     InitModule,
     MainModule,
     LoginModule,
-    MaterialModule,
-    MatNativeDateModule,
     FormsModule,
     ReactiveFormsModule
   ],
