@@ -33,4 +33,16 @@ export class DateDirective {
         }
       }
     }
+
+    backOneDay(day: string): string {
+      switch(day){
+        case "Sunday": return "Saturday"
+        case "Saturday": return "Friday";
+        case "Friday": return "Thursday";
+        case "Thursday": return "Wednesday";
+        case "Wednesday": return "Tuesday";
+        case "Tuesday": return "Monday";
+        case "Monday": return "Sunday";
+      }
+    }
 }

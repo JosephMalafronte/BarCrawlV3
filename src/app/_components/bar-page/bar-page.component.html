@@ -107,7 +107,10 @@
         </div>
 
 
-        <div *ngFor="let upcomingDeal of upcomingDeals">
+
+
+
+        <div *ngFor="let upcomingDeal of upcomingDealsHead">
           <div class="upcomingTitle" (click) = "upcomingDeal.expand()" data-toggle="collapse" [attr.data-target]="'#' + upcomingDeal.dayOfTheWeek">
             <div class="upcomingTitleAst">
               <span>  <span [innerHtml]="upcomingDeal.arrowText" style="padding: 0 8px 0 13px;"> </span> {{upcomingDeal.dayOfTheWeek}} </span>
@@ -131,9 +134,53 @@
           </div>
         </div>
 
+        <div id="upcomingCollapse" class="collapse">
+          <div *ngFor="let upcomingDeal of upcomingDealsTail">
+            <div class="upcomingTitle" (click)="upcomingDeal.expand()" data-toggle="collapse"
+              [attr.data-target]="'#' + upcomingDeal.dayOfTheWeek">
+              <div class="upcomingTitleAst">
+                <span> <span [innerHtml]="upcomingDeal.arrowText" style="padding: 0 8px 0 13px;"> </span>
+                  {{upcomingDeal.dayOfTheWeek}} </span>
+              </div>
+            </div>
+        
+            <div [attr.id]="upcomingDeal.dayOfTheWeek" class="collapse">
+              <div id="upcomingDeals" style="margin: 0 20px 0 20px;">
+                <ul class="features_list" *ngFor="let dailyDeal of upcomingDeal.deals"
+                  style="padding: 0px 0 0 0; position:relative">
+                  <li>
+                    <div style="padding-bottom: 10px;">
+                      <span class="features_list_span">
+                        <img src={{dailyDeal.dealIcon}} alt="" title="" />
+                        <span class="features_list_span_text">{{dailyDeal.dealDetail}}</span>
+                      </span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <span style="margin-top: 10px;" data-toggle="collapse" data-target="#upcomingCollapse" *ngIf="upcomingDealsTail.length!=0"
+          (click)="handleUpcomingExpandButtonClick()" class="btn btn--full">{{expandUpcomingText}}</span>
+        
+
 
 
       </div>
+
+
+      <!-- BAR COVER -->
+      <div *ngIf="activeInfoPage==1" style="padding-top:50px;">
+        <p>Estimated Cover is {{currentEstCover}}</p>
+      </div>
+
+      <button (click)="reportCover(5)">Report Cover</button>
+
+      <h5>Projected Cover by Hour</h5>
+
 
 
     </div>

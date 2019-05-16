@@ -4,7 +4,7 @@ import {
   animate, state, style, transition, trigger
 } from '@angular/animations';
 
-
+import { take } from 'rxjs/operators'
 import * as $ from 'jquery'; 
 
 import { DateDirective} from '../../_directives/date.directive';
@@ -45,17 +45,33 @@ export class BarPageComponent implements OnInit {
   noDailyDeals = false;
   dailyDealsExpanded = false;
   expandDealsButtonText = "VIEW MORE";
+  upcomingExpanded = false;
+  expandUpcomingText = "VIEW MORE";
 
+  //Deals Variables
   headDailyDeals = [];
   tailDailyDeals = [];
   allDailyDeals = [];
   dayOfTheWeek: string;
 
+  //Cover Variables
+  coverResult: any;
+  currentDate: Date;
+  coverDayOfTheWeek: string;
+  currentHour: number;
+  currentHourString: string;
+  currentEstCover: number = 0;
+
+  //Cover Timing
+  numberSinceRefresh = 0;
+
   db: AngularFireDatabase;
   authService: AuthService;
   dateDirective: DateDirective;
 
-  upcomingDeals: UpcomingDeal[];
+  upcomingDeals: UpcomingDeal[] = [];
+  upcomingDealsHead: UpcomingDeal[] = [];
+  upcomingDealsTail: UpcomingDeal[] = [];
 
   
 
@@ -75,6 +91,12 @@ export class BarPageComponent implements OnInit {
 
     
   }
+
+
+  //COVERS: Get Mode of day.values and mode of day.hourValues. If hourvalues mode> values mode display hourvalues
+  //If current Hour > Last Hour wipe hour Values and update last hour
+
+
 
   clearBarPageData(){
     this.isLoading = true;
@@ -97,6 +119,15 @@ export class BarPageComponent implements OnInit {
       this.barName = this.barPage.barName;
 
       this.getDailyDeals();
+
+      function startRefreshTimer(repeat) {
+        setTimeout(function () {
+          this.numberSinceRefresh = 0;
+          repeat();
+        }, 30000);
+      }
+
+      startRefreshTimer(startRefreshTimer);
     });
    
   }
@@ -107,10 +138,42 @@ export class BarPageComponent implements OnInit {
   }
 
 
+
+
+
+  checkLikedStatus(){
+    if(this.authService.currentUser.likedBars == undefined) return;
+    if(this.authService.currentUser.likedBars.indexOf(this.barPageId) == -1){
+      return false;
+    }
+    else return true;
+  }
+
+  likeBar(){
+    this.authService.likeBar(this.barPageId);
+  }
+
+
+  activeNavIcon(index: number){
+    if(this.activeInfoPage == index) return true;
+    return false;
+  }
+
+  setActiveInfoPage(index: number){
+    if(index == 1){
+      this.getCoverInfo();
+    }
+    this.activeInfoPage = index;
+  }
+
+
+  //Daily Deal Functions
   getDailyDeals(){
 
     this.db.object('dailyDeals/'+ this.barName).valueChanges().subscribe((result: any) => {
 
+
+      //Upcoming Deals
       var handleObject: UpcomingDeal = new UpcomingDeal();
       this.upcomingDeals = handleObject.insertAll(result);
 
@@ -121,8 +184,8 @@ export class BarPageComponent implements OnInit {
           index = i;
         }
       }
-      if(i>-1){
-        this.allDailyDeals = this.upcomingDeals[1].deals;
+      if(i>-1){ //Set Daily Deal
+        this.allDailyDeals = this.upcomingDeals[index].deals;
         this.upcomingDeals.splice(index,1);
       }
 
@@ -132,7 +195,19 @@ export class BarPageComponent implements OnInit {
         return order[a.dayOfTheWeek] - order[b.dayOfTheWeek];
       });
 
+      //Split into head and tail
+      this.upcomingDealsHead = [];
+      for(var i = 0; i<this.upcomingDeals.length && i<2; i++){
+        this.upcomingDealsHead.push(this.upcomingDeals[i]);
+      }
+      this.upcomingDealsTail = [];
+      for(var i = 2; i<this.upcomingDeals.length; i++){
+        this.upcomingDealsTail.push(this.upcomingDeals[i]);
+      }
 
+
+
+      //Daily Deals
       if(this.allDailyDeals.length == 0){
         this.noDailyDeals = true;
       }
@@ -190,27 +265,198 @@ export class BarPageComponent implements OnInit {
     }
   }
 
-
-  checkLikedStatus(){
-    if(this.authService.currentUser.likedBars == undefined) return;
-    if(this.authService.currentUser.likedBars.indexOf(this.barPageId) == -1){
-      return false;
+  handleUpcomingExpandButtonClick(){
+    if(this.dailyDealsExpanded == false){
+      this.dailyDealsExpanded = true;
+      this.expandUpcomingText = "VIEW LESS";
     }
-    else return true;
+    else {
+      this.dailyDealsExpanded = false;
+      this.expandUpcomingText = "VIEW MORE";
+    }
   }
 
-  likeBar(){
-    this.authService.likeBar(this.barPageId);
+
+
+  //Cover Functions
+  getCoverInfo(){
+
+    this.coverDateSetup();
+
+
+    this.db.object('/coverReports/' + this.barPageId.toString() + '/' + this.coverDayOfTheWeek).valueChanges().pipe(take(1)).subscribe(
+      (result: any) => {
+
+        this.coverResult = result;
+
+        this.cleanCoverDatabase();
+
+        this.estimateCurrentCover();
+      }
+    );
+  }
+
+  coverDateSetup(){
+
+    this.currentDate = new Date;
+
+    var date = this.currentDate;
+    this.currentHour = date.getHours();
+    this.currentHourString = this.currentHour.toString();
+    
+
+    if(this.currentHour < 5) {
+      this.coverDayOfTheWeek = this.dateDirective.backOneDay(this.dayOfTheWeek);
+    }
+    else this.coverDayOfTheWeek = this.dayOfTheWeek;
+
+
+
+  }
+
+  cleanCoverDatabase(){
+    var currentMonth = this.currentDate.getMonth()+1;
+    var currentDay = this.currentDate.getDate();
+    var postedDateMonth = this.coverResult.lastMonth;
+    var postedDateDay = this.coverResult.lastDay;
+    var dayDif = currentDay - postedDateDay;
+
+    var notValidDate = false;
+    var needToUpdate = false;
+    if(currentMonth != postedDateMonth) notValidDate = true;
+    if(currentMonth == postedDateMonth && dayDif> 1 && dayDif < 0) notValidDate = true;
+
+    var lastRecordedHour = +this.coverResult.lastHour;
+
+    if(notValidDate == true){
+      needToUpdate = true;
+      this.coverResult.lastDay = currentDay;
+      this.coverResult.lastMonth = currentMonth;
+      this.coverResult.hourValues = "[]";
+      this.coverResult.values = "[]";
+      this.coverResult.lastHour = "null";
+      this.coverResult.hourValues = "[]";
+
+    }
+    else if(this.currentHour - lastRecordedHour > 1){
+      needToUpdate = true;
+      this.coverResult.lastHour = "null";
+      this.coverResult.hourValues = "[]";
+    }
+    
+
+
+    if(needToUpdate == true) this.db.object('/coverReports/' + this.barPageId.toString() + '/' + this.coverDayOfTheWeek).set(this.coverResult);
+      
+
+  }
+
+  estimateCurrentCover(){
+
+    //Get mode for the entire night
+    var valuesNight: number[] = JSON.parse(this.coverResult.values);
+
+    //if this is empty use historical values
+    if(valuesNight.length == 0){
+      var historicalValues: number[] = JSON.parse(this.coverResult.hourlyEstimates[this.currentHourString]);
+      this.currentEstCover = this.getMode(historicalValues);
+      return
+    }
+    var modeNight = this.getMode(valuesNight);
+
+    //get mode for the past hour if its the past hour
+    if(this.coverResult.lastHour == "null"){
+      this.currentEstCover = modeNight;
+      return;
+    }
+    var lastRecordedHour = +this.coverResult.lastHour;
+    var modeHour = 0;
+    if(this.currentHour - lastRecordedHour <= 1){
+      var valuesHour: number[] = JSON.parse(this.coverResult.hourValues);
+      if(valuesHour.length>1) modeHour = this.getMode(valuesHour);
+    }
+    
+    this.currentEstCover = Math.max(modeHour, modeNight);
+
+  }
+
+  getMode(array): number {
+    var frequency = {}; // array of frequency.
+    var maxFreq = 0; // holds the max frequency.
+    var modes = [];
+  
+    for (var i in array) {
+      frequency[array[i]] = (frequency[array[i]] || 0) + 1; // increment frequency.
+  
+      if (frequency[array[i]] > maxFreq) { // is this frequency > max so far ?
+        maxFreq = frequency[array[i]]; // update max.
+      }
+    }
+  
+    for (var k in frequency) {
+      if (frequency[k] == maxFreq) {
+        modes.push(k);
+      }
+    }
+  
+    return Math.max.apply(Math, modes);
+  }
+
+  reportCover(num: number){
+
+    this.numberSinceRefresh++;
+    if(this.numberSinceRefresh>2){
+      console.log("Please wait 30 seconds");
+      return;
+    }
+
+
+    //TODO add logic to make sure dates arent messed up if user waits too long to report
+    this.coverDateSetup();
+    var estimateArray: number[] = JSON.parse(this.coverResult.hourlyEstimates[this.currentHourString]);
+
+    //If length is greater than 30 wipe it and add 5 reps for weighting
+    if(estimateArray.length>30){
+      estimateArray = [];
+      for(var i =0; i<5;i++){
+        estimateArray.push(num);
+      }
+    }
+    else estimateArray.push(num);
+    this.coverResult.hourlyEstimates[this.currentHourString] = this.convertArrayJson(estimateArray);
+
+
+    var valuesArray: number [] = JSON.parse(this.coverResult.values);
+    valuesArray.push(num);
+    this.coverResult.values = this.convertArrayJson(valuesArray);
+    this.coverResult.lastHour = this.currentHourString;
+    var hoursArray: number [] = JSON.parse(this.coverResult.hourValues);
+    hoursArray.push(num);
+    this.coverResult.hourValues = this.convertArrayJson(hoursArray);
+
+
+    this.db.object('/coverReports/' + this.barPageId.toString() + '/' + this.coverDayOfTheWeek).set(this.coverResult);
+    
   }
 
 
-  activeNavIcon(index: number){
-    if(this.activeInfoPage == index) return true;
-    return false;
+  
+
+
+
+  convertArrayJson(array: number[]){
+    return '[' + array.toString() + ']';
   }
 
-  setActiveInfoPage(index: number){
-    this.activeInfoPage = index;
+  getLast30(array: number[]){
+    var length = array.length;
+    if(length <= 30) return array;
+
+    var returnArray: number[] = [];
+    var j= 0;
+    for(var i=length; i>=length-30;i--){
+      returnArray[j] = array[i];
+    }
   }
 
 }
