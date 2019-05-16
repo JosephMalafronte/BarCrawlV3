@@ -51,6 +51,7 @@
     position: relative;
     height: 0;
     overflow: hidden;
+    padding: 0 0 0 0;
     -webkit-transition-property: height, visibility;
     -o-transition-property: height, visibility;
     transition-property: height, visibility;
@@ -66,4 +67,35 @@
     display: block !important;
   }
 
+  .barDealsSectionBelow {
+    margin-top: -20px;
+    padding: 0 0 0 0;
+    border-bottom:1px black solid;
+  }
 
+
+  .upcomingTitle {
+    margin-top: 10px;
+    border-radius: 10px 10px 10px 10px;
+    position: relative;
+    width: 100%;
+    right: 0%;
+    background-color: #333;
+    overflow: hidden;
+  }
+
+  .upcomingTitleAst  {
+    float: left;
+    color: #f2f2f2;
+    text-align: left;
+    padding: 12px 0px;
+    width: 100%;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+
+
+.right-pointing-triangle::after {
+  content: "\25B6 \FE0E";
+}

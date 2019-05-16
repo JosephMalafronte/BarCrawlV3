@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".barPageLike {\r\n    position: absolute;\r\n    top:9px;\r\n    right:20px;\r\n    z-index:5;\r\n    width:33px;\r\n}\r\n\r\n.barPageLike img {\r\n    width: 100%;\r\n}\r\n\r\n/* Add a black background color to the top navigation */\r\n\r\n.topnav {\r\n    position: absolute;\r\n    width: 100%;\r\n    right: 0%;\r\n    background-color: #333;\r\n    overflow: hidden;\r\n  }\r\n\r\n.adjust {\r\n    padding-left: 0px;\r\n    padding-right: 0px;\r\n}\r\n\r\n/* Style the links inside the navigation bar */\r\n\r\n.holder  {\r\n    float: left;\r\n    color: #f2f2f2;\r\n    text-align: center;\r\n    padding: 12px 0px;\r\n    width: 25%;\r\n    text-decoration: none;\r\n    font-size: 17px;\r\n}\r\n\r\n/* Add a color to the active/current link */\r\n\r\n.active {\r\n    background-color: #F2C843;\r\n    color: black;\r\n}\r\n\r\n.collapse {\r\n    display: none;\r\n  }\r\n\r\n.collapsing {\r\n    position: relative;\r\n    height: 0;\r\n    overflow: hidden;\r\n    transition-property: height, visibility;\r\n    transition-duration: 0.35s;\r\n    transition-timing-function: ease;\r\n  }\r\n\r\n.show {\r\n    display: block !important;\r\n  }\r\n\r\n\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9jb21wb25lbnRzL2Jhci1wYWdlL2Jhci1wYWdlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxrQkFBa0I7SUFDbEIsT0FBTztJQUNQLFVBQVU7SUFDVixTQUFTO0lBQ1QsVUFBVTtBQUNkOztBQUVBO0lBQ0ksV0FBVztBQUNmOztBQUVBLHVEQUF1RDs7QUFDdkQ7SUFDSSxrQkFBa0I7SUFDbEIsV0FBVztJQUNYLFNBQVM7SUFDVCxzQkFBc0I7SUFDdEIsZ0JBQWdCO0VBQ2xCOztBQUVGO0lBQ0ksaUJBQWlCO0lBQ2pCLGtCQUFrQjtBQUN0Qjs7QUFFQSw4Q0FBOEM7O0FBQzlDO0lBQ0ksV0FBVztJQUNYLGNBQWM7SUFDZCxrQkFBa0I7SUFDbEIsaUJBQWlCO0lBQ2pCLFVBQVU7SUFDVixxQkFBcUI7SUFDckIsZUFBZTtBQUNuQjs7QUFHQSwyQ0FBMkM7O0FBQzNDO0lBQ0kseUJBQXlCO0lBQ3pCLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxhQUFhO0VBQ2Y7O0FBR0E7SUFDRSxrQkFBa0I7SUFDbEIsU0FBUztJQUNULGdCQUFnQjtJQUdoQix1Q0FBdUM7SUFHdkMsMEJBQTBCO0lBRzFCLGdDQUFnQztFQUNsQzs7QUFFQTtJQUNFLHlCQUF5QjtFQUMzQiIsImZpbGUiOiJfY29tcG9uZW50cy9iYXItcGFnZS9iYXItcGFnZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJhclBhZ2VMaWtlIHtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRvcDo5cHg7XHJcbiAgICByaWdodDoyMHB4O1xyXG4gICAgei1pbmRleDo1O1xyXG4gICAgd2lkdGg6MzNweDtcclxufVxyXG5cclxuLmJhclBhZ2VMaWtlIGltZyB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufVxyXG5cclxuLyogQWRkIGEgYmxhY2sgYmFja2dyb3VuZCBjb2xvciB0byB0aGUgdG9wIG5hdmlnYXRpb24gKi9cclxuLnRvcG5hdiB7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIHJpZ2h0OiAwJTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICMzMzM7XHJcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xyXG4gIH1cclxuXHJcbi5hZGp1c3Qge1xyXG4gICAgcGFkZGluZy1sZWZ0OiAwcHg7XHJcbiAgICBwYWRkaW5nLXJpZ2h0OiAwcHg7XHJcbn1cclxuICBcclxuLyogU3R5bGUgdGhlIGxpbmtzIGluc2lkZSB0aGUgbmF2aWdhdGlvbiBiYXIgKi9cclxuLmhvbGRlciAge1xyXG4gICAgZmxvYXQ6IGxlZnQ7XHJcbiAgICBjb2xvcjogI2YyZjJmMjtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIHBhZGRpbmc6IDEycHggMHB4O1xyXG4gICAgd2lkdGg6IDI1JTtcclxuICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcclxuICAgIGZvbnQtc2l6ZTogMTdweDtcclxufVxyXG5cclxuXHJcbi8qIEFkZCBhIGNvbG9yIHRvIHRoZSBhY3RpdmUvY3VycmVudCBsaW5rICovXHJcbi5hY3RpdmUge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI0YyQzg0MztcclxuICAgIGNvbG9yOiBibGFjaztcclxufVxyXG5cclxuLmNvbGxhcHNlIHtcclxuICAgIGRpc3BsYXk6IG5vbmU7XHJcbiAgfVxyXG5cclxuXHJcbiAgLmNvbGxhcHNpbmcge1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgaGVpZ2h0OiAwO1xyXG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcclxuICAgIC13ZWJraXQtdHJhbnNpdGlvbi1wcm9wZXJ0eTogaGVpZ2h0LCB2aXNpYmlsaXR5O1xyXG4gICAgLW8tdHJhbnNpdGlvbi1wcm9wZXJ0eTogaGVpZ2h0LCB2aXNpYmlsaXR5O1xyXG4gICAgdHJhbnNpdGlvbi1wcm9wZXJ0eTogaGVpZ2h0LCB2aXNpYmlsaXR5O1xyXG4gICAgLXdlYmtpdC10cmFuc2l0aW9uLWR1cmF0aW9uOiAwLjM1cztcclxuICAgIC1vLXRyYW5zaXRpb24tZHVyYXRpb246IDAuMzVzO1xyXG4gICAgdHJhbnNpdGlvbi1kdXJhdGlvbjogMC4zNXM7XHJcbiAgICAtd2Via2l0LXRyYW5zaXRpb24tdGltaW5nLWZ1bmN0aW9uOiBlYXNlO1xyXG4gICAgLW8tdHJhbnNpdGlvbi10aW1pbmctZnVuY3Rpb246IGVhc2U7XHJcbiAgICB0cmFuc2l0aW9uLXRpbWluZy1mdW5jdGlvbjogZWFzZTtcclxuICB9XHJcblxyXG4gIC5zaG93IHtcclxuICAgIGRpc3BsYXk6IGJsb2NrICFpbXBvcnRhbnQ7XHJcbiAgfVxyXG5cclxuXHJcbiJdfQ== */"
+module.exports = ".barPageLike {\n    position: absolute;\n    top:9px;\n    right:20px;\n    z-index:5;\n    width:33px;\n}\n\n.barPageLike img {\n    width: 100%;\n}\n\n/* Add a black background color to the top navigation */\n\n.topnav {\n    position: absolute;\n    width: 100%;\n    right: 0%;\n    background-color: #333;\n    overflow: hidden;\n  }\n\n.adjust {\n    padding-left: 0px;\n    padding-right: 0px;\n}\n\n/* Style the links inside the navigation bar */\n\n.holder  {\n    float: left;\n    color: #f2f2f2;\n    text-align: center;\n    padding: 12px 0px;\n    width: 25%;\n    text-decoration: none;\n    font-size: 17px;\n}\n\n/* Add a color to the active/current link */\n\n.active {\n    background-color: #F2C843;\n    color: black;\n}\n\n.collapse {\n    display: none;\n  }\n\n.collapsing {\n    position: relative;\n    height: 0;\n    overflow: hidden;\n    padding: 0 0 0 0;\n    transition-property: height, visibility;\n    transition-duration: 0.35s;\n    transition-timing-function: ease;\n  }\n\n.show {\n    display: block !important;\n  }\n\n.barDealsSectionBelow {\n    margin-top: -20px;\n    padding: 0 0 0 0;\n    border-bottom:1px black solid;\n  }\n\n.upcomingTitle {\n    margin-top: 10px;\n    border-radius: 10px 10px 10px 10px;\n    position: relative;\n    width: 100%;\n    right: 0%;\n    background-color: #333;\n    overflow: hidden;\n  }\n\n.upcomingTitleAst  {\n    float: left;\n    color: #f2f2f2;\n    text-align: left;\n    padding: 12px 0px;\n    width: 100%;\n    text-decoration: none;\n    font-size: 17px;\n}\n\n.right-pointing-triangle::after {\n  content: \"\\25B6 \\FE0E\";\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9jb21wb25lbnRzL2Jhci1wYWdlL2Jhci1wYWdlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxrQkFBa0I7SUFDbEIsT0FBTztJQUNQLFVBQVU7SUFDVixTQUFTO0lBQ1QsVUFBVTtBQUNkOztBQUVBO0lBQ0ksV0FBVztBQUNmOztBQUVBLHVEQUF1RDs7QUFDdkQ7SUFDSSxrQkFBa0I7SUFDbEIsV0FBVztJQUNYLFNBQVM7SUFDVCxzQkFBc0I7SUFDdEIsZ0JBQWdCO0VBQ2xCOztBQUVGO0lBQ0ksaUJBQWlCO0lBQ2pCLGtCQUFrQjtBQUN0Qjs7QUFFQSw4Q0FBOEM7O0FBQzlDO0lBQ0ksV0FBVztJQUNYLGNBQWM7SUFDZCxrQkFBa0I7SUFDbEIsaUJBQWlCO0lBQ2pCLFVBQVU7SUFDVixxQkFBcUI7SUFDckIsZUFBZTtBQUNuQjs7QUFHQSwyQ0FBMkM7O0FBQzNDO0lBQ0kseUJBQXlCO0lBQ3pCLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxhQUFhO0VBQ2Y7O0FBR0E7SUFDRSxrQkFBa0I7SUFDbEIsU0FBUztJQUNULGdCQUFnQjtJQUNoQixnQkFBZ0I7SUFHaEIsdUNBQXVDO0lBR3ZDLDBCQUEwQjtJQUcxQixnQ0FBZ0M7RUFDbEM7O0FBRUE7SUFDRSx5QkFBeUI7RUFDM0I7O0FBRUE7SUFDRSxpQkFBaUI7SUFDakIsZ0JBQWdCO0lBQ2hCLDZCQUE2QjtFQUMvQjs7QUFHQTtJQUNFLGdCQUFnQjtJQUNoQixrQ0FBa0M7SUFDbEMsa0JBQWtCO0lBQ2xCLFdBQVc7SUFDWCxTQUFTO0lBQ1Qsc0JBQXNCO0lBQ3RCLGdCQUFnQjtFQUNsQjs7QUFFQTtJQUNFLFdBQVc7SUFDWCxjQUFjO0lBQ2QsZ0JBQWdCO0lBQ2hCLGlCQUFpQjtJQUNqQixXQUFXO0lBQ1gscUJBQXFCO0lBQ3JCLGVBQWU7QUFDbkI7O0FBSUE7RUFDRSxzQkFBc0I7QUFDeEIiLCJmaWxlIjoiX2NvbXBvbmVudHMvYmFyLXBhZ2UvYmFyLXBhZ2UuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5iYXJQYWdlTGlrZSB7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHRvcDo5cHg7XG4gICAgcmlnaHQ6MjBweDtcbiAgICB6LWluZGV4OjU7XG4gICAgd2lkdGg6MzNweDtcbn1cblxuLmJhclBhZ2VMaWtlIGltZyB7XG4gICAgd2lkdGg6IDEwMCU7XG59XG5cbi8qIEFkZCBhIGJsYWNrIGJhY2tncm91bmQgY29sb3IgdG8gdGhlIHRvcCBuYXZpZ2F0aW9uICovXG4udG9wbmF2IHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgcmlnaHQ6IDAlO1xuICAgIGJhY2tncm91bmQtY29sb3I6ICMzMzM7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgfVxuXG4uYWRqdXN0IHtcbiAgICBwYWRkaW5nLWxlZnQ6IDBweDtcbiAgICBwYWRkaW5nLXJpZ2h0OiAwcHg7XG59XG4gIFxuLyogU3R5bGUgdGhlIGxpbmtzIGluc2lkZSB0aGUgbmF2aWdhdGlvbiBiYXIgKi9cbi5ob2xkZXIgIHtcbiAgICBmbG9hdDogbGVmdDtcbiAgICBjb2xvcjogI2YyZjJmMjtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgcGFkZGluZzogMTJweCAwcHg7XG4gICAgd2lkdGg6IDI1JTtcbiAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG4gICAgZm9udC1zaXplOiAxN3B4O1xufVxuXG5cbi8qIEFkZCBhIGNvbG9yIHRvIHRoZSBhY3RpdmUvY3VycmVudCBsaW5rICovXG4uYWN0aXZlIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjRjJDODQzO1xuICAgIGNvbG9yOiBibGFjaztcbn1cblxuLmNvbGxhcHNlIHtcbiAgICBkaXNwbGF5OiBub25lO1xuICB9XG5cblxuICAuY29sbGFwc2luZyB7XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgIGhlaWdodDogMDtcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuICAgIHBhZGRpbmc6IDAgMCAwIDA7XG4gICAgLXdlYmtpdC10cmFuc2l0aW9uLXByb3BlcnR5OiBoZWlnaHQsIHZpc2liaWxpdHk7XG4gICAgLW8tdHJhbnNpdGlvbi1wcm9wZXJ0eTogaGVpZ2h0LCB2aXNpYmlsaXR5O1xuICAgIHRyYW5zaXRpb24tcHJvcGVydHk6IGhlaWdodCwgdmlzaWJpbGl0eTtcbiAgICAtd2Via2l0LXRyYW5zaXRpb24tZHVyYXRpb246IDAuMzVzO1xuICAgIC1vLXRyYW5zaXRpb24tZHVyYXRpb246IDAuMzVzO1xuICAgIHRyYW5zaXRpb24tZHVyYXRpb246IDAuMzVzO1xuICAgIC13ZWJraXQtdHJhbnNpdGlvbi10aW1pbmctZnVuY3Rpb246IGVhc2U7XG4gICAgLW8tdHJhbnNpdGlvbi10aW1pbmctZnVuY3Rpb246IGVhc2U7XG4gICAgdHJhbnNpdGlvbi10aW1pbmctZnVuY3Rpb246IGVhc2U7XG4gIH1cblxuICAuc2hvdyB7XG4gICAgZGlzcGxheTogYmxvY2sgIWltcG9ydGFudDtcbiAgfVxuXG4gIC5iYXJEZWFsc1NlY3Rpb25CZWxvdyB7XG4gICAgbWFyZ2luLXRvcDogLTIwcHg7XG4gICAgcGFkZGluZzogMCAwIDAgMDtcbiAgICBib3JkZXItYm90dG9tOjFweCBibGFjayBzb2xpZDtcbiAgfVxuXG5cbiAgLnVwY29taW5nVGl0bGUge1xuICAgIG1hcmdpbi10b3A6IDEwcHg7XG4gICAgYm9yZGVyLXJhZGl1czogMTBweCAxMHB4IDEwcHggMTBweDtcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgcmlnaHQ6IDAlO1xuICAgIGJhY2tncm91bmQtY29sb3I6ICMzMzM7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgfVxuXG4gIC51cGNvbWluZ1RpdGxlQXN0ICB7XG4gICAgZmxvYXQ6IGxlZnQ7XG4gICAgY29sb3I6ICNmMmYyZjI7XG4gICAgdGV4dC1hbGlnbjogbGVmdDtcbiAgICBwYWRkaW5nOiAxMnB4IDBweDtcbiAgICB3aWR0aDogMTAwJTtcbiAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG4gICAgZm9udC1zaXplOiAxN3B4O1xufVxuXG5cblxuLnJpZ2h0LXBvaW50aW5nLXRyaWFuZ2xlOjphZnRlciB7XG4gIGNvbnRlbnQ6IFwiXFwyNUI2IFxcRkUwRVwiO1xufSJdfQ== */"
 
 /***/ }),
 
@@ -41,7 +41,7 @@ module.exports = ".barPageLike {\r\n    position: absolute;\r\n    top:9px;\r\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"slideInPage\" [@slideInBarTrigger]=\"slideInBar\">\r\n  <app-full-loading *ngIf=\"isLoading\"></app-full-loading>\r\n\r\n  <div id=\"slider_maincontent\">\r\n\r\n    <h2 class=\"page_title_slide\">{{barName}}</h2>\r\n    <span class=\"barPageLike\" (click)=\"likeBar()\">\r\n      <img id=\"like\"\r\n        [src]=\"checkLikedStatus()? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'\"\r\n        alt=\"\" title=\"\" />\r\n    </span>\r\n\r\n    <ul id=\"imageGallery\" style=\"margin-bottom: -12px;\">\r\n      <li data-thumb=\"img/thumb/cS-1.jpg\" data-src=\"img/largeImage.jpg\">\r\n        <img [src]=\"barPictureUrl\" (load)=\"imageLoaded()\" width=\"100%\" id=\"barPageImage1\" />\r\n      </li>\r\n    </ul>\r\n\r\n    <div class=\"page_single layout_fullwidth_padding\">\r\n\r\n\r\n      <div class=\"topnav\">\r\n        <div class=\"adjust\">\r\n          <div (click)=\"setActiveInfoPage(0)\" [className]=\"activeNavIcon(0)? 'holder active'  : 'holder'\">\r\n            <span>Deals</span>\r\n          </div>\r\n          <div (click)=\"setActiveInfoPage(1)\" [className]=\"activeNavIcon(1)? 'holder active'  : 'holder'\">\r\n            <span>Cover</span>\r\n          </div>\r\n          <div (click)=\"setActiveInfoPage(2)\" [className]=\"activeNavIcon(2)? 'holder active'  : 'holder'\">\r\n            <span>Friends</span>\r\n          </div>\r\n          <div (click)=\"setActiveInfoPage(3)\" [className]=\"activeNavIcon(3)? 'holder active'  : 'holder'\">\r\n            <span>Map</span>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <!-- <blockquote style=\"display:none\">\r\n        This mobile template that can be used to create a mobile website, a mobile web app, or even a native mobile app. The design\r\n        is using a full width layout that works perfectly on tablets and desktop also.\r\n        <span>SINDEVO.COM</span>\r\n      </blockquote> -->\r\n\r\n\r\n      <!-- BAR DEALS -->\r\n      <div *ngIf=\"activeInfoPage==0\" style=\"padding-top: 50px;\">\r\n        <div class=\"barDealsSection\">\r\n          <h3 style=\"padding: 0 0 0 0;\">\r\n            <span data-bind=\"text: weekDay\"></span> Deals & Events - {{dayOfTheWeek}}\r\n          </h3>\r\n        </div>\r\n\r\n\r\n\r\n        <div *ngIf=\"!noDailyDeals\">\r\n\r\n\r\n\r\n          <!-- Head Daily Deals -->\r\n          <div id=\"headDeals\" style=\"padding-top: 13px;\">\r\n            <ul class=\"features_list\" *ngFor=\"let dailyDeal of headDailyDeals\"\r\n              style=\"padding: 0px 0 0 0; position:relative\">\r\n              <li>\r\n                <div style=\"padding-bottom: 10px;\">\r\n                  <span class=\"features_list_span\">\r\n                    <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\r\n                    <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\r\n                  </span>\r\n                </div>\r\n              </li>\r\n            </ul>\r\n          </div>\r\n\r\n\r\n          <!-- Tail Daily Deals -->\r\n          <div id=\"demo\" class=\"collapse\">\r\n            <ul class=\"features_list\" *ngFor=\"let dailyDeal of tailDailyDeals\"\r\n              style=\"padding: 0 0 0px 0; position: relative;\">\r\n              <li>\r\n                <div style=\"padding-bottom: 10px;\">\r\n                  <span class=\"features_list_span\">\r\n                    <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\r\n                    <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\r\n                  </span>\r\n                </div>\r\n              </li>\r\n            </ul>\r\n          </div>\r\n\r\n\r\n\r\n\r\n        </div>\r\n\r\n\r\n        <span data-toggle=\"collapse\" data-target=\"#demo\" *ngIf=\"!noDailyDeals && tailDailyDeals.length!=0\" (click)=\"handleExpandButtonClick()\"\r\n          class=\"btn btn--full\">{{expandDealsButtonText}}</span>\r\n\r\n        <h5 *ngIf=\"noDailyDeals\">There are no deals or events for today.</h5>\r\n\r\n\r\n        <h4>You can use this mobile template for:</h4>\r\n        <ul class=\"simple_list\">\r\n          <li>Creating a mobile website</li>\r\n          <li>Creating a mobile web app</li>\r\n          <li>Creating a mobile native app (integrated with solutions like phonegap or cordova)</li>\r\n          <li>Works perfectly on tablets and desktop also</li>\r\n        </ul>\r\n\r\n\r\n        <a href=\"http://themeforest.net/user/sindevo\" class=\"btn btn--full\">BUY IT NOW!</a>\r\n      </div>\r\n\r\n\r\n    </div>\r\n\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"slideInPage\" [@slideInBarTrigger]=\"slideInBar\">\n  <app-full-loading *ngIf=\"isLoading\"></app-full-loading>\n\n  <div id=\"slider_maincontent\">\n\n    <h2 class=\"page_title_slide\">{{barName}}</h2>\n    <span class=\"barPageLike\" (click)=\"likeBar()\">\n      <img id=\"like\"\n        [src]=\"checkLikedStatus()? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'\"\n        alt=\"\" title=\"\" />\n    </span>\n\n    <ul id=\"imageGallery\" style=\"margin-bottom: -12px;\">\n      <li data-thumb=\"img/thumb/cS-1.jpg\" data-src=\"img/largeImage.jpg\">\n        <img [src]=\"barPictureUrl\" (load)=\"imageLoaded()\" width=\"100%\" id=\"barPageImage1\" />\n      </li>\n    </ul>\n\n    <div class=\"page_single layout_fullwidth_padding\" style=\"margin-bottom: 40px;\">\n\n\n      <div class=\"topnav\">\n        <div class=\"adjust\">\n          <div (click)=\"setActiveInfoPage(0)\" [className]=\"activeNavIcon(0)? 'holder active'  : 'holder'\">\n            <span>Deals</span>\n          </div>\n          <div (click)=\"setActiveInfoPage(1)\" [className]=\"activeNavIcon(1)? 'holder active'  : 'holder'\">\n            <span>Cover</span>\n          </div>\n          <div (click)=\"setActiveInfoPage(2)\" [className]=\"activeNavIcon(2)? 'holder active'  : 'holder'\">\n            <span>Friends</span>\n          </div>\n          <div (click)=\"setActiveInfoPage(3)\" [className]=\"activeNavIcon(3)? 'holder active'  : 'holder'\">\n            <span>Map</span>\n          </div>\n        </div>\n      </div>\n\n      <!-- <blockquote style=\"display:none\">\n        This mobile template that can be used to create a mobile website, a mobile web app, or even a native mobile app. The design\n        is using a full width layout that works perfectly on tablets and desktop also.\n        <span>SINDEVO.COM</span>\n      </blockquote> -->\n\n\n      <!-- BAR DEALS -->\n      <div *ngIf=\"activeInfoPage==0\" style=\"padding-top: 50px;\">\n        <div class=\"barDealsSection\">\n          <h3 style=\"padding: 0 0 0 0;\">\n            <span>Deals & Events - {{dayOfTheWeek}}</span>\n          </h3>\n        </div>\n\n\n\n        <div *ngIf=\"!noDailyDeals\">\n\n\n\n          <!-- Head Daily Deals -->\n          <div id=\"headDeals\" style=\"\">\n            <ul class=\"features_list\" *ngFor=\"let dailyDeal of headDailyDeals\"\n              style=\"padding: 0px 0 0 0; position:relative\">\n              <li>\n                <div style=\"padding-bottom: 10px;\">\n                  <span class=\"features_list_span\">\n                    <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\n                    <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\n                  </span>\n                </div>\n              </li>\n            </ul>\n          </div>\n\n\n          <!-- Tail Daily Deals -->\n          <div id=\"demo\" class=\"collapse\">\n            <ul class=\"features_list\" *ngFor=\"let dailyDeal of tailDailyDeals\"\n              style=\"padding: 0 0 0px 0; position: relative;\">\n              <li>\n                <div style=\"padding-bottom: 10px;\">\n                  <span class=\"features_list_span\">\n                    <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\n                    <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\n                  </span>\n                </div>\n              </li>\n            </ul>\n          </div>\n\n\n\n\n        </div>\n\n\n        <span style=\"margin-top: 10px;\" data-toggle=\"collapse\" data-target=\"#demo\" *ngIf=\"!noDailyDeals && tailDailyDeals.length!=0\"\n          (click)=\"handleExpandButtonClick()\" class=\"btn btn--full\">{{expandDealsButtonText}}</span>\n\n        <h5 *ngIf=\"noDailyDeals\">There are no deals or events for today.</h5>\n\n\n        <div class=\"barDealsSectionBelow\">\n          <h3 style=\"padding: 0 0 0 0;\">\n            <span>Upcoming Deals & Events</span>\n          </h3>\n        </div>\n\n\n        <div *ngFor=\"let upcomingDeal of upcomingDeals\">\n          <div class=\"upcomingTitle\" (click) = \"upcomingDeal.expand()\" data-toggle=\"collapse\" [attr.data-target]=\"'#' + upcomingDeal.dayOfTheWeek\">\n            <div class=\"upcomingTitleAst\">\n              <span>  <span [innerHtml]=\"upcomingDeal.arrowText\" style=\"padding: 0 8px 0 13px;\"> </span> {{upcomingDeal.dayOfTheWeek}} </span>\n            </div>\n          </div>\n\n          <div [attr.id]=\"upcomingDeal.dayOfTheWeek\" class=\"collapse\">\n            <div id=\"upcomingDeals\" style=\"margin: 0 20px 0 20px;\">\n              <ul class=\"features_list\" *ngFor=\"let dailyDeal of upcomingDeal.deals\"\n                style=\"padding: 0px 0 0 0; position:relative\">\n                <li>\n                  <div style=\"padding-bottom: 10px;\">\n                    <span class=\"features_list_span\">\n                      <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\n                      <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\n                    </span>\n                  </div>\n                </li>\n              </ul>\n            </div>\n          </div>\n        </div>\n\n\n\n      </div>\n\n\n    </div>\n\n  </div>\n</div>"
 
 /***/ }),
 
@@ -61,6 +61,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/fesm5/animations.js");
 /* harmony import */ var _directives_date_directive__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../_directives/date.directive */ "./src/app/_directives/date.directive.ts");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../_services/auth.service */ "./src/app/_services/auth.service.ts");
+/* harmony import */ var _models__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../models */ "./src/app/models.ts");
+
 
 
 
@@ -77,12 +79,13 @@ var BarPageComponent = /** @class */ (function () {
         this.activeInfoPage = 0;
         this.noDailyDeals = false;
         this.dailyDealsExpanded = false;
-        this.expandDealsButtonText = "VIEW MORE DEALS & EVENTS FOR TODAY";
+        this.expandDealsButtonText = "VIEW MORE";
         this.headDailyDeals = [];
         this.tailDailyDeals = [];
         this.allDailyDeals = [];
         this.db = _dbA;
         this.authService = _authService;
+        this.dateDirective = _dateDirective;
         //this.dayOfTheWeek = _dateDirective.getDayOfWeek();
         this.dayOfTheWeek = "Wednesday";
     }
@@ -123,9 +126,25 @@ var BarPageComponent = /** @class */ (function () {
     };
     BarPageComponent.prototype.getDailyDeals = function () {
         var _this = this;
-        this.db.list('dailyDeals/' + this.dayOfTheWeek + '/' + this.barName).valueChanges().subscribe(function (result) {
-            _this.allDailyDeals = [];
-            _this.allDailyDeals = result;
+        this.db.object('dailyDeals/' + this.barName).valueChanges().subscribe(function (result) {
+            var handleObject = new _models__WEBPACK_IMPORTED_MODULE_6__["UpcomingDeal"]();
+            _this.upcomingDeals = handleObject.insertAll(result);
+            var index = -1;
+            for (var i = 0; i < _this.upcomingDeals.length; i++) {
+                var deal = _this.upcomingDeals[i];
+                if (deal.dayOfTheWeek == _this.dayOfTheWeek) {
+                    index = i;
+                }
+            }
+            if (i > -1) {
+                _this.allDailyDeals = _this.upcomingDeals[1].deals;
+                _this.upcomingDeals.splice(index, 1);
+            }
+            //sort by weekday
+            var order = _this.dateDirective.weekOrderSwitch(_this.dayOfTheWeek);
+            _this.upcomingDeals.sort(function (a, b) {
+                return order[a.dayOfTheWeek] - order[b.dayOfTheWeek];
+            });
             if (_this.allDailyDeals.length == 0) {
                 _this.noDailyDeals = true;
             }
@@ -140,26 +159,35 @@ var BarPageComponent = /** @class */ (function () {
             for (var i = 2; i < _this.allDailyDeals.length; i++) {
                 _this.tailDailyDeals.push(_this.allDailyDeals[i]);
             }
+            console.log(_this.upcomingDeals);
         });
+        // this.db.list('dailyDeals/' + this.barName+'/'+ this.dayOfTheWeek).valueChanges().subscribe(result => {
+        //   this.allDailyDeals = [];
+        //   this.allDailyDeals = result;
+        //   if(this.allDailyDeals.length == 0){
+        //     this.noDailyDeals = true;
+        //   }
+        //   else this.noDailyDeals = false;
+        //   //Set display deals
+        //   this.headDailyDeals = [];
+        //   for(var i = 0; i<this.allDailyDeals.length && i<2; i++){
+        //     this.headDailyDeals.push(this.allDailyDeals[i]);
+        //   }
+        //   this.tailDailyDeals = [];
+        //   for(var i = 2; i<this.allDailyDeals.length; i++){
+        //     this.tailDailyDeals.push(this.allDailyDeals[i]);
+        //   }
+        // });
     };
-    // show2DailyDeals() {
-    //   this.displayDailyDeals = [];
-    //   for(var i = 0; i<this.allDailyDeals.length && i<2; i++){
-    //     this.displayDailyDeals.push(this.allDailyDeals[i]);
-    //   }
-    // }
-    // showAllDailyDeals() {
-    //   this.displayDailyDeals = this.allDailyDeals;
-    // }
     BarPageComponent.prototype.handleExpandButtonClick = function () {
         //$('.collapse').collapse();
         if (this.dailyDealsExpanded == false) {
             this.dailyDealsExpanded = true;
-            this.expandDealsButtonText = "VIEW LESS DEALS & EVENTS FOR TODAY";
+            this.expandDealsButtonText = "VIEW LESS";
         }
         else {
             this.dailyDealsExpanded = false;
-            this.expandDealsButtonText = "VIEW MORE DEALS & EVENTS FOR TODAY";
+            this.expandDealsButtonText = "VIEW MORE";
         }
     };
     BarPageComponent.prototype.checkLikedStatus = function () {
@@ -222,7 +250,7 @@ var BarPageComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".fullLoadingPage{\r\n    position:fixed;\r\n    padding:0;\r\n    margin:0;\r\n    z-index: 150;\r\n\r\n    width: 100%;\r\n    height: 100%;\r\n    background:white;\r\n  \r\n  }\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9jb21wb25lbnRzL2Z1bGwtbG9hZGluZy9mdWxsLWxvYWRpbmcuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGNBQWM7SUFDZCxTQUFTO0lBQ1QsUUFBUTtJQUNSLFlBQVk7O0lBRVosV0FBVztJQUNYLFlBQVk7SUFDWixnQkFBZ0I7O0VBRWxCIiwiZmlsZSI6Il9jb21wb25lbnRzL2Z1bGwtbG9hZGluZy9mdWxsLWxvYWRpbmcuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5mdWxsTG9hZGluZ1BhZ2V7XHJcbiAgICBwb3NpdGlvbjpmaXhlZDtcclxuICAgIHBhZGRpbmc6MDtcclxuICAgIG1hcmdpbjowO1xyXG4gICAgei1pbmRleDogMTUwO1xyXG5cclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgaGVpZ2h0OiAxMDAlO1xyXG4gICAgYmFja2dyb3VuZDp3aGl0ZTtcclxuICBcclxuICB9Il19 */"
+module.exports = ".fullLoadingPage{\n    position:fixed;\n    padding:0;\n    margin:0;\n    z-index: 150;\n\n    width: 100%;\n    height: 100%;\n    background:white;\n  \n  }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9jb21wb25lbnRzL2Z1bGwtbG9hZGluZy9mdWxsLWxvYWRpbmcuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGNBQWM7SUFDZCxTQUFTO0lBQ1QsUUFBUTtJQUNSLFlBQVk7O0lBRVosV0FBVztJQUNYLFlBQVk7SUFDWixnQkFBZ0I7O0VBRWxCIiwiZmlsZSI6Il9jb21wb25lbnRzL2Z1bGwtbG9hZGluZy9mdWxsLWxvYWRpbmcuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5mdWxsTG9hZGluZ1BhZ2V7XG4gICAgcG9zaXRpb246Zml4ZWQ7XG4gICAgcGFkZGluZzowO1xuICAgIG1hcmdpbjowO1xuICAgIHotaW5kZXg6IDE1MDtcblxuICAgIHdpZHRoOiAxMDAlO1xuICAgIGhlaWdodDogMTAwJTtcbiAgICBiYWNrZ3JvdW5kOndoaXRlO1xuICBcbiAgfSJdfQ== */"
 
 /***/ }),
 
@@ -233,7 +261,7 @@ module.exports = ".fullLoadingPage{\r\n    position:fixed;\r\n    padding:0;\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"fullLoadingPage\">\r\n    <!-- Page Loader -->\r\n    <div class=\"centered\" id=\"pageLoader\">\r\n        <div class=\"lds-ring\"><div></div><div></div><div></div><div></div></div>\r\n    </div>\r\n</div>\r\n"
+module.exports = "<div class=\"fullLoadingPage\">\n    <!-- Page Loader -->\n    <div class=\"centered\" id=\"pageLoader\">\n        <div class=\"lds-ring\"><div></div><div></div><div></div><div></div></div>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -289,7 +317,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"navbar navbar--fixed navbar--fixed-top navbar--bg\" style=\"background-color:black;\">\r\n  <div class=\"navbar__col navbar__col--icon navbar__col--icon-right\">\r\n    <a href=\"#\" data-panel=\"left\" class=\"open-panel\">\r\n      <img src=\"./assets/images/icons/white/menu.png\" alt=\"\" title=\"\" />\r\n    </a>\r\n  </div>\r\n  <div class=\"navbar__col navbar__col--title\">\r\n    <a href=\"index.html\">\r\n      <img src=\"./assets/images/TextLogo.png\" width=\"150px\" style=\"padding-top:16px;\">\r\n    </a>\r\n  </div>\r\n  <div class=\"navbar__col navbar__col--icon navbar__col--icon-right\" (click)=\"userClick()\" style=\"padding-right:7px;\">\r\n    <a data-panel=\"right\" class=\"open-panel\">\r\n      <img src=\"./assets/images/icons/white/user.png\" alt=\"\" title=\"\" />\r\n    </a>\r\n  </div>\r\n\r\n</div>"
+module.exports = "<div class=\"navbar navbar--fixed navbar--fixed-top navbar--bg\" style=\"background-color:black;\">\n  <div class=\"navbar__col navbar__col--icon navbar__col--icon-right\">\n    <a href=\"#\" data-panel=\"left\" class=\"open-panel\">\n      <img src=\"./assets/images/icons/white/menu.png\" alt=\"\" title=\"\" />\n    </a>\n  </div>\n  <div class=\"navbar__col navbar__col--title\">\n    <a href=\"index.html\">\n      <img src=\"./assets/images/TextLogo.png\" width=\"150px\" style=\"padding-top:16px;\">\n    </a>\n  </div>\n  <div class=\"navbar__col navbar__col--icon navbar__col--icon-right\" (click)=\"userClick()\" style=\"padding-right:7px;\">\n    <a data-panel=\"right\" class=\"open-panel\">\n      <img src=\"./assets/images/icons/white/user.png\" alt=\"\" title=\"\" />\n    </a>\n  </div>\n\n</div>"
 
 /***/ }),
 
@@ -351,7 +379,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- Main Content of Page       -->\r\n<div id=\"pages_maincontent\" *ngIf=\"displayPage\">\r\n  <h2 class=\"page_title\" style=\"text-align: center;\"></h2>\r\n\r\n  <div class=\"page_single layout_fullwidth_padding\">\r\n\r\n    <!-- For each here -->\r\n    <ul class=\"shop_items\">\r\n\r\n      <!-- BAR CARD -->\r\n      <li id=\"barCard\" *ngFor=\"let barCard of barCards\" (click)=\"onBarCardClick($event,barCard.barId)\">\r\n        <div class=\"shop_thumb\">\r\n          <img src={{barCard.barPictureUrl}} alt=\"\" title=\"\" class=\"barCardPic\" />\r\n        </div>\r\n        <div class=\"shop_item_details\">\r\n          <h4>{{barCard.barName}}</h4>\r\n          <ul class=\"features_list\" style=\"padding: 4% 0 0 0;\">\r\n            <li>\r\n              <span class=\"features_list_span\">\r\n                <img src={{barCard.highlight1Icon}} alt=\"\" title=\"\" />\r\n                <span class=\"features_list_span_text\">{{barCard.highlight1}}</span>\r\n              </span>\r\n            </li>\r\n            <li>\r\n              <span class=\"features_list_span\">\r\n                <img src={{barCard.highlight2Icon}} alt=\"\" title=\"\" />\r\n                <span class=\"features_list_span_text\">{{barCard.highlight2}}</span>\r\n              </span>\r\n            </li>\r\n          </ul>\r\n          <span class=\"open-popup shopfav\" (click)=\"likeBar(barCard)\">\r\n              <!-- <app-like></app-like> -->\r\n              <img  id=\"like\"  [src]=\"checkLikedStatus(barCard)? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'\" alt=\"\" title=\"\" />            \r\n          </span>\r\n        </div>\r\n      </li>\r\n\r\n\r\n    </ul>\r\n\r\n    <div class=\"shop_pagination\">\r\n      <a href=\"\" class=\"prev_shop\">PREV PAGE</a>\r\n      <span class=\"shop_pagenr\">1/37</span>\r\n      <a href=\"\" class=\"next_shop\">NEXT PAGE</a>\r\n      <br />\r\n      <br />\r\n      <br />\r\n      <br />\r\n    </div>\r\n\r\n\r\n\r\n  </div>\r\n\r\n</div>"
+module.exports = "<!-- Main Content of Page       -->\n<div id=\"pages_maincontent\" *ngIf=\"displayPage\">\n  <h2 class=\"page_title\" style=\"text-align: center;\"></h2>\n\n  <div class=\"page_single layout_fullwidth_padding\">\n\n    <!-- For each here -->\n    <ul class=\"shop_items\">\n\n      <!-- BAR CARD -->\n      <li id=\"barCard\" *ngFor=\"let barCard of barCards\" (click)=\"onBarCardClick($event,barCard.barId)\">\n        <div class=\"shop_thumb\">\n          <img src={{barCard.barPictureUrl}} alt=\"\" title=\"\" class=\"barCardPic\" />\n        </div>\n        <div class=\"shop_item_details\">\n          <h4>{{barCard.barName}}</h4>\n          <ul class=\"features_list\" style=\"padding: 0% 0 0 0;\">\n            <li>\n              <span class=\"features_list_span\">\n                <img src={{barCard.highlight1Icon}} alt=\"\" title=\"\" />\n                <span class=\"features_list_span_text\">{{barCard.highlight1}}</span>\n              </span>\n            </li>\n            <li>\n              <span class=\"features_list_span\">\n                <img src={{barCard.highlight2Icon}} alt=\"\" title=\"\" />\n                <span class=\"features_list_span_text\">{{barCard.highlight2}}</span>\n              </span>\n            </li>\n          </ul>\n          <span class=\"open-popup shopfav\" (click)=\"likeBar(barCard)\">\n              <!-- <app-like></app-like> -->\n              <img  id=\"like\"  [src]=\"checkLikedStatus(barCard)? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'\" alt=\"\" title=\"\" />            \n          </span>\n        </div>\n      </li>\n\n\n    </ul>\n\n    <div class=\"shop_pagination\">\n      <a href=\"\" class=\"prev_shop\">PREV PAGE</a>\n      <span class=\"shop_pagenr\">1/37</span>\n      <a href=\"\" class=\"next_shop\">NEXT PAGE</a>\n      <br />\n      <br />\n      <br />\n      <br />\n    </div>\n\n\n\n  </div>\n\n</div>"
 
 /***/ }),
 
@@ -446,7 +474,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--       NAVBAR       -->\r\n<div class=\"swiper-container-toolbar swiper-toolbar\" style=\"background-color:black;\">\r\n  <div class=\"swiper-pagination-toolbar\"></div>\r\n  <div class=\"swiper-wrapper\">\r\n    <div class=\"swiper-slide toolbar-icon\">\r\n      <span class=\"toolbar-icon-span\" id=\"toolbarHome\"  (click)=\"icon0Click()\">\r\n        <img src=\"./assets/images/icons/white/categories.png\"alt=\"\" title=\"\" />\r\n      </span>\r\n      <span class=\"toolbar-icon-span\" id=\"toolbarSearch\" (click)=\"icon1Click()\">\r\n        <img src=\"./assets/images/icons/white/search.png\"  alt=\"\" title=\"\" />\r\n      </span>\r\n      <span class=\"toolbar-icon-span\">\r\n        <img src=\"./assets/images/icons/white/love.png\" alt=\"\" title=\"\" />\r\n      </span>\r\n      <span class=\"toolbar-icon-span\">\r\n        <img src=\"./assets/images/icons/white/photos.png\" alt=\"\" title=\"\" />\r\n      </span>\r\n      <span class=\"toolbar-icon-span\">\r\n        <img src=\"./assets/images/icons/white/contact.png\" alt=\"\" title=\"\" />\r\n      </span>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<!--       NAVBAR       -->\n<div class=\"swiper-container-toolbar swiper-toolbar\" style=\"background-color:black;\">\n  <div class=\"swiper-pagination-toolbar\"></div>\n  <div class=\"swiper-wrapper\">\n    <div class=\"swiper-slide toolbar-icon\">\n      <span class=\"toolbar-icon-span\" id=\"toolbarHome\"  (click)=\"icon0Click()\">\n        <img src=\"./assets/images/icons/white/categories.png\"alt=\"\" title=\"\" />\n      </span>\n      <span class=\"toolbar-icon-span\" id=\"toolbarSearch\" (click)=\"icon1Click()\">\n        <img src=\"./assets/images/icons/white/search.png\"  alt=\"\" title=\"\" />\n      </span>\n      <span class=\"toolbar-icon-span\">\n        <img src=\"./assets/images/icons/white/love.png\" alt=\"\" title=\"\" />\n      </span>\n      <span class=\"toolbar-icon-span\">\n        <img src=\"./assets/images/icons/white/photos.png\" alt=\"\" title=\"\" />\n      </span>\n      <span class=\"toolbar-icon-span\">\n        <img src=\"./assets/images/icons/white/contact.png\" alt=\"\" title=\"\" />\n      </span>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -503,7 +531,7 @@ var NavbarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".out{\r\n    -webkit-transform: translateX(0%);\r\n    transform: translateX(0%);\r\n    transition: -webkit-transform 150ms linear;\r\n    transition: transform 150ms linear;\r\n    transition: transform 150ms linear, -webkit-transform 150ms linear;\r\n    will-change: transform;\r\n}\r\n.in{\r\n    -webkit-transform: translateX(-100%);\r\n    transform: translateX(-100%);\r\n    transition: -webkit-transform 150ms linear;\r\n    transition: transform 150ms linear;\r\n    transition: transform 150ms linear, -webkit-transform 150ms linear;\r\n}\r\n.hidden{\r\n    display: none;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9jb21wb25lbnRzL3VzZXItc2xpZGUvdXNlci1zbGlkZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksaUNBQWlDO0lBQ2pDLHlCQUF5QjtJQUN6QiwwQ0FBa0M7SUFBbEMsa0NBQWtDO0lBQWxDLGtFQUFrQztJQUNsQyxzQkFBc0I7QUFDMUI7QUFDQTtJQUNJLG9DQUFvQztJQUNwQyw0QkFBNEI7SUFDNUIsMENBQWtDO0lBQWxDLGtDQUFrQztJQUFsQyxrRUFBa0M7QUFDdEM7QUFFQTtJQUNJLGFBQWE7QUFDakIiLCJmaWxlIjoiX2NvbXBvbmVudHMvdXNlci1zbGlkZS91c2VyLXNsaWRlLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIub3V0e1xyXG4gICAgLXdlYmtpdC10cmFuc2Zvcm06IHRyYW5zbGF0ZVgoMCUpO1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKDAlKTtcclxuICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAxNTBtcyBsaW5lYXI7XHJcbiAgICB3aWxsLWNoYW5nZTogdHJhbnNmb3JtO1xyXG59XHJcbi5pbntcclxuICAgIC13ZWJraXQtdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC0xMDAlKTtcclxuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgtMTAwJSk7XHJcbiAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMTUwbXMgbGluZWFyO1xyXG59XHJcblxyXG4uaGlkZGVue1xyXG4gICAgZGlzcGxheTogbm9uZTtcclxufSJdfQ== */"
+module.exports = ".out{\n    -webkit-transform: translateX(0%);\n    transform: translateX(0%);\n    transition: -webkit-transform 150ms linear;\n    transition: transform 150ms linear;\n    transition: transform 150ms linear, -webkit-transform 150ms linear;\n    will-change: transform;\n}\n.in{\n    -webkit-transform: translateX(-100%);\n    transform: translateX(-100%);\n    transition: -webkit-transform 150ms linear;\n    transition: transform 150ms linear;\n    transition: transform 150ms linear, -webkit-transform 150ms linear;\n}\n.hidden{\n    display: none;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9jb21wb25lbnRzL3VzZXItc2xpZGUvdXNlci1zbGlkZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksaUNBQWlDO0lBQ2pDLHlCQUF5QjtJQUN6QiwwQ0FBa0M7SUFBbEMsa0NBQWtDO0lBQWxDLGtFQUFrQztJQUNsQyxzQkFBc0I7QUFDMUI7QUFDQTtJQUNJLG9DQUFvQztJQUNwQyw0QkFBNEI7SUFDNUIsMENBQWtDO0lBQWxDLGtDQUFrQztJQUFsQyxrRUFBa0M7QUFDdEM7QUFFQTtJQUNJLGFBQWE7QUFDakIiLCJmaWxlIjoiX2NvbXBvbmVudHMvdXNlci1zbGlkZS91c2VyLXNsaWRlLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIub3V0e1xuICAgIC13ZWJraXQtdHJhbnNmb3JtOiB0cmFuc2xhdGVYKDAlKTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoMCUpO1xuICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAxNTBtcyBsaW5lYXI7XG4gICAgd2lsbC1jaGFuZ2U6IHRyYW5zZm9ybTtcbn1cbi5pbntcbiAgICAtd2Via2l0LXRyYW5zZm9ybTogdHJhbnNsYXRlWCgtMTAwJSk7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC0xMDAlKTtcbiAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMTUwbXMgbGluZWFyO1xufVxuXG4uaGlkZGVue1xuICAgIGRpc3BsYXk6IG5vbmU7XG59Il19 */"
 
 /***/ }),
 
@@ -514,7 +542,7 @@ module.exports = ".out{\r\n    -webkit-transform: translateX(0%);\r\n    transfo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div  id=\"userSlide\" class=\"panel panel-right panel-reveal out\" >\r\n  <div class=\"user_login_info\">\r\n\r\n    <div class=\"user_thumb\">\r\n\r\n      <div class=\"user_details\">\r\n        <p>Welcome, <span>{{authService.currentUser.firstName}}</span></p>\r\n      </div>\r\n      <div class=\"user_avatar\"><img src=\"./assets/images/avatar3.jpg\" alt=\"\" title=\"\" /></div>\r\n    </div>\r\n\r\n    <nav class=\"user-nav\">\r\n      <ul>\r\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/settings.png\" alt=\"\" title=\"\" /><span>Account\r\n              Settings</span></a></li>\r\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/briefcase.png\" alt=\"\" title=\"\" /><span>My\r\n              Account</span></a></li>\r\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/message.png\" alt=\"\"\r\n              title=\"\" /><span>Messages</span><strong>12</strong></a></li>\r\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/love.png\" alt=\"\"\r\n              title=\"\" /><span>Favorites</span><strong>5</strong></a></li>\r\n        <li><a href=\"index.html\"><img src=\"./assets/images/icons/gray/lock.png\" alt=\"\" title=\"\" /><span>Logout</span></a></li>\r\n      </ul>\r\n    </nav>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div  id=\"userSlide\" class=\"panel panel-right panel-reveal out\" >\n  <div class=\"user_login_info\">\n\n    <div class=\"user_thumb\">\n\n      <div class=\"user_details\">\n        <p>Welcome, <span>{{authService.currentUser.firstName}}</span></p>\n      </div>\n      <div class=\"user_avatar\"><img src=\"./assets/images/avatar3.jpg\" alt=\"\" title=\"\" /></div>\n    </div>\n\n    <nav class=\"user-nav\">\n      <ul>\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/settings.png\" alt=\"\" title=\"\" /><span>Account\n              Settings</span></a></li>\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/briefcase.png\" alt=\"\" title=\"\" /><span>My\n              Account</span></a></li>\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/message.png\" alt=\"\"\n              title=\"\" /><span>Messages</span><strong>12</strong></a></li>\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/love.png\" alt=\"\"\n              title=\"\" /><span>Favorites</span><strong>5</strong></a></li>\n        <li><a href=\"index.html\"><img src=\"./assets/images/icons/gray/lock.png\" alt=\"\" title=\"\" /><span>Logout</span></a></li>\n      </ul>\n    </nav>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -606,12 +634,119 @@ var DateDirective = /** @class */ (function () {
     DateDirective.prototype.getDayOfWeek = function () {
         return new Date().toLocaleString('en-us', { weekday: 'long' });
     };
+    DateDirective.prototype.weekOrderSwitch = function (dayIndex) {
+        switch (dayIndex) {
+            case "Sunday": {
+                return { Sunday: 1, Monday: 2, Tuesday: 3, Wednesday: 4, Thursday: 5, Friday: 6, Saturday: 7 };
+            }
+            case "Monday": {
+                return { Sunday: 7, Monday: 1, Tuesday: 2, Wednesday: 3, Thursday: 4, Friday: 5, Saturday: 6 };
+            }
+            case "Tuesday": {
+                return { Sunday: 6, Monday: 7, Tuesday: 1, Wednesday: 2, Thursday: 3, Friday: 4, Saturday: 5 };
+            }
+            case "Wednesday": {
+                return { Sunday: 5, Monday: 6, Tuesday: 7, Wednesday: 1, Thursday: 2, Friday: 3, Saturday: 4 };
+            }
+            case "Thursday": {
+                return { Sunday: 4, Monday: 5, Tuesday: 6, Wednesday: 7, Thursday: 1, Friday: 2, Saturday: 3 };
+            }
+            case "Friday": {
+                return { Sunday: 3, Monday: 4, Tuesday: 5, Wednesday: 6, Thursday: 7, Friday: 1, Saturday: 2 };
+            }
+            case "Saturday": {
+                return { Sunday: 2, Monday: 3, Tuesday: 4, Wednesday: 5, Thursday: 6, Friday: 7, Saturday: 1 };
+            }
+        }
+    };
     DateDirective = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root',
         })
     ], DateDirective);
     return DateDirective;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/_models/BarCard.Model.ts":
+/*!******************************************!*\
+  !*** ./src/app/_models/BarCard.Model.ts ***!
+  \******************************************/
+/*! exports provided: BarCard */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BarCard", function() { return BarCard; });
+var BarCard = /** @class */ (function () {
+    function BarCard() {
+    }
+    return BarCard;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/_models/UpcomingDeal.Model.ts":
+/*!***********************************************!*\
+  !*** ./src/app/_models/UpcomingDeal.Model.ts ***!
+  \***********************************************/
+/*! exports provided: UpcomingDeal */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UpcomingDeal", function() { return UpcomingDeal; });
+var UpcomingDeal = /** @class */ (function () {
+    function UpcomingDeal() {
+        this.expanded = false;
+        this.arrowText = "&#x25ba";
+    }
+    UpcomingDeal.prototype.insertAll = function (result) {
+        var returnArray = [];
+        //For each day of the week
+        var Wednesday = new UpcomingDeal();
+        Wednesday.dayOfTheWeek = "Wednesday";
+        Wednesday.deals = Object.keys(result.Wednesday).map(function (key) { return result.Wednesday[key]; });
+        returnArray.push(Wednesday);
+        var Thursday = new UpcomingDeal();
+        Thursday.dayOfTheWeek = "Thursday";
+        Thursday.deals = Object.keys(result.Thursday).map(function (key) { return result.Thursday[key]; });
+        returnArray.push(Thursday);
+        var Friday = new UpcomingDeal();
+        Friday.dayOfTheWeek = "Friday";
+        Friday.deals = Object.keys(result.Friday).map(function (key) { return result.Friday[key]; });
+        returnArray.push(Friday);
+        var Saturday = new UpcomingDeal();
+        Saturday.dayOfTheWeek = "Saturday";
+        Saturday.deals = Object.keys(result.Saturday).map(function (key) { return result.Saturday[key]; });
+        returnArray.push(Saturday);
+        var Sunday = new UpcomingDeal();
+        Sunday.dayOfTheWeek = "Sunday";
+        Sunday.deals = Object.keys(result.Sunday).map(function (key) { return result.Sunday[key]; });
+        returnArray.push(Sunday);
+        var Monday = new UpcomingDeal();
+        Monday.dayOfTheWeek = "Monday";
+        Monday.deals = Object.keys(result.Monday).map(function (key) { return result.Monday[key]; });
+        returnArray.push(Monday);
+        var Tuesday = new UpcomingDeal();
+        Tuesday.dayOfTheWeek = "Tuesday";
+        Tuesday.deals = Object.keys(result.Tuesday).map(function (key) { return result.Tuesday[key]; });
+        returnArray.push(Tuesday);
+        return returnArray;
+    };
+    UpcomingDeal.prototype.expand = function () {
+        this.expanded = !this.expanded;
+        if (this.expanded == true)
+            this.arrowText = "&#x25bc";
+        else
+            this.arrowText = "&#x25ba";
+    };
+    return UpcomingDeal;
 }());
 
 
@@ -659,7 +794,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- SlideInPage -->\r\n<app-bar-page *ngIf=\"showBarPage\" [barPageIdChange]=\"barPageId\" [slideInBar]=\"barSlide\">\r\n</app-bar-page>\r\n\r\n\r\n\r\n<app-main-scroll *ngIf=\"true\" (barCardClick)=\"activateBarSlide($event)\"></app-main-scroll>"
+module.exports = "<!-- SlideInPage -->\n<app-bar-page *ngIf=\"showBarPage\" [barPageIdChange]=\"barPageId\" [slideInBar]=\"barSlide\">\n</app-bar-page>\n\n\n\n<app-main-scroll *ngIf=\"true\" (barCardClick)=\"activateBarSlide($event)\"></app-main-scroll>"
 
 /***/ }),
 
@@ -856,7 +991,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<body id=\"mobile_wrap\">\r\n\r\n\r\n  <!-- Login Popup -->\r\n  <div class=\"popup popup-login\">\r\n    <div class=\"content-block\">\r\n      <div class=\"close_popup_button\">\r\n        <a href=\"#\" class=\"close-popup\" data-popup=\".popup-login\">\r\n          <img src=\"./assets/images/icons/black/menu_close.png\" alt=\"\" title=\"\" />\r\n        </a>\r\n      </div>\r\n      <div class=\"loginblock\">\r\n        <h4>LOGIN</h4>\r\n        <div class=\"loginform\">\r\n          <input type=\"text\" [(ngModel)]=\"logInUsername\" name=\"Username\" class=\"form_input required\" placeholder=\"username\" />\r\n          <input type=\"password\" [(ngModel)]=\"logInPassword\" name=\"Password\" class=\"form_input required\" placeholder=\"password\" />\r\n          <div class=\"forgot_pass\">\r\n            <a href=\"#\" data-popup=\".popup-forgot\" class=\"open-popup\">Forgot Password?</a>\r\n          </div>\r\n          <input (click)=\"logIn()\" readonly=\"readonly\" class=\"form_submit\" id=\"submit\" value=\"SIGN IN\" />\r\n          <div class=\"signup_bottom\">\r\n            <p>Don't have an account?</p>\r\n            <a href=\"#\" data-popup=\".popup-signup\" class=\"open-popup\">SIGN UP</a>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n\r\n    </div>\r\n  </div>\r\n\r\n\r\n</body>"
+module.exports = "<body id=\"mobile_wrap\">\n\n\n  <!-- Login Popup -->\n  <div class=\"popup popup-login\">\n    <div class=\"content-block\">\n      <div class=\"close_popup_button\">\n        <a href=\"#\" class=\"close-popup\" data-popup=\".popup-login\">\n          <img src=\"./assets/images/icons/black/menu_close.png\" alt=\"\" title=\"\" />\n        </a>\n      </div>\n      <div class=\"loginblock\">\n        <h4>LOGIN</h4>\n        <div class=\"loginform\">\n          <input type=\"text\" [(ngModel)]=\"logInUsername\" name=\"Username\" class=\"form_input required\" placeholder=\"username\" />\n          <input type=\"password\" [(ngModel)]=\"logInPassword\" name=\"Password\" class=\"form_input required\" placeholder=\"password\" />\n          <div class=\"forgot_pass\">\n            <a href=\"#\" data-popup=\".popup-forgot\" class=\"open-popup\">Forgot Password?</a>\n          </div>\n          <input (click)=\"logIn()\" readonly=\"readonly\" class=\"form_submit\" id=\"submit\" value=\"SIGN IN\" />\n          <div class=\"signup_bottom\">\n            <p>Don't have an account?</p>\n            <a href=\"#\" data-popup=\".popup-signup\" class=\"open-popup\">SIGN UP</a>\n          </div>\n        </div>\n      </div>\n\n\n    </div>\n  </div>\n\n\n</body>"
 
 /***/ }),
 
@@ -969,7 +1104,7 @@ var LoginModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".barSlideIn{\r\n  background: white;\r\n  -webkit-transform: translateX(50%);\r\n          transform: translateX(50%);\r\n}\r\n\r\n.block_clicks{\r\n  pointer-events: none;\r\n  touch-action: none;\r\n}\r\n\r\n.out{\r\n  -webkit-transform: translateX(0%);\r\n  transform: translateX(0%);\r\n  transition: -webkit-transform 150ms linear;\r\n  transition: transform 150ms linear;\r\n  transition: transform 150ms linear, -webkit-transform 150ms linear;\r\n  will-change: transform;\r\n}\r\n\r\n.in{\r\n  -webkit-transform: translateX(-80%);\r\n  transform: translateX(-80%);\r\n  transition: -webkit-transform 150ms linear;\r\n  transition: transform 150ms linear;\r\n  transition: transform 150ms linear, -webkit-transform 150ms linear;\r\n}\r\n\r\n.pageClick{\r\n  position:absolute;\r\n  top:0;\r\n  left:0;\r\n  width: 15%;\r\n  height:100%;\r\n  z-index:15000;\r\n}\r\n\r\n.user_slide_hidden{\r\n  display: none;\r\n}\r\n\r\n.centered {\r\n    position: fixed;\r\n    top: 40%;\r\n    left: 50%;\r\n    /* bring your own prefixes */\r\n    -webkit-transform: translate(-50%, -50%);\r\n            transform: translate(-50%, -50%);\r\n  }\r\n\r\n.slideCentered {\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 150%;\r\n    /* bring your own prefixes */\r\n    -webkit-transform: translate(-50%, -50%);\r\n            transform: translate(-50%, -50%);\r\n  }\r\n\r\n.slideCentered-hidden {\r\n    display:none;\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 150%;\r\n    /* bring your own prefixes */\r\n    -webkit-transform: translate(-50%, -50%);\r\n            transform: translate(-50%, -50%);\r\n  }\r\n\r\n.centered-hidden {\r\n    display:none;\r\n    position: fixed;\r\n    top: 50%;\r\n    left: 50%;\r\n    /* bring your own prefixes */\r\n    -webkit-transform: translate(-50%, -50%);\r\n            transform: translate(-50%, -50%);\r\n  }\r\n\r\n.lds-ring {\r\n    display: inline-block;\r\n    position: relative;\r\n    width: 64px;\r\n    height: 64px;\r\n  }\r\n\r\n.lds-ring div {\r\n    box-sizing: border-box;\r\n    display: block;\r\n    position: absolute;\r\n    width: 51px;\r\n    height: 51px;\r\n    margin: 6px;\r\n    border: 6px solid #eec536;\r\n    border-radius: 50%;\r\n    -webkit-animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;\r\n            animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;\r\n    border-color: #eec536 transparent transparent transparent;\r\n  }\r\n\r\n.lds-ring div:nth-child(1) {\r\n    -webkit-animation-delay: -0.45s;\r\n            animation-delay: -0.45s;\r\n  }\r\n\r\n.lds-ring div:nth-child(2) {\r\n    -webkit-animation-delay: -0.3s;\r\n            animation-delay: -0.3s;\r\n  }\r\n\r\n.lds-ring div:nth-child(3) {\r\n    -webkit-animation-delay: -0.15s;\r\n            animation-delay: -0.15s;\r\n  }\r\n\r\n@-webkit-keyframes lds-ring {\r\n    0% {\r\n      -webkit-transform: rotate(0deg);\r\n              transform: rotate(0deg);\r\n    }\r\n    100% {\r\n      -webkit-transform: rotate(360deg);\r\n              transform: rotate(360deg);\r\n    }\r\n  }\r\n\r\n@keyframes lds-ring {\r\n    0% {\r\n      -webkit-transform: rotate(0deg);\r\n              transform: rotate(0deg);\r\n    }\r\n    100% {\r\n      -webkit-transform: rotate(360deg);\r\n              transform: rotate(360deg);\r\n    }\r\n  }\r\n\r\n.slideInPage{\r\n    position:fixed;\r\n    padding:0;\r\n    margin:0;\r\n    z-index: 100;\r\n    top:50px;\r\n\r\n    -webkit-transform: translateX(100%);\r\n\r\n            transform: translateX(100%);\r\n\r\n  \r\n    width: 100%;\r\n    height: 100%;\r\n    background:white;\r\n  \r\n  }\r\n\r\n.picture-swipe-container {\r\n    width: 100%;\r\n    height: 100%;\r\n  }\r\n\r\n.picture-swipe-slide {\r\n    text-align: center;\r\n    font-size: 18px;\r\n    background: #fff;\r\n    /* Center slide text vertically */\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n  }\r\n\r\n.barDealsSection {\r\n    padding: 10px 0 0 0;\r\n    border-bottom:1px black solid;\r\n  }\r\n\r\n.preventScroll{\r\n  overflow: auto;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9wYWdlcy9tYWluL21haW4uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGlCQUFpQjtFQUNqQixrQ0FBMEI7VUFBMUIsMEJBQTBCO0FBQzVCOztBQUVBO0VBQ0Usb0JBQW9CO0VBQ3BCLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLGlDQUFpQztFQUNqQyx5QkFBeUI7RUFDekIsMENBQWtDO0VBQWxDLGtDQUFrQztFQUFsQyxrRUFBa0M7RUFDbEMsc0JBQXNCO0FBQ3hCOztBQUNBO0VBQ0UsbUNBQW1DO0VBQ25DLDJCQUEyQjtFQUMzQiwwQ0FBa0M7RUFBbEMsa0NBQWtDO0VBQWxDLGtFQUFrQztBQUNwQzs7QUFFQTtFQUNFLGlCQUFpQjtFQUNqQixLQUFLO0VBQ0wsTUFBTTtFQUNOLFVBQVU7RUFDVixXQUFXO0VBQ1gsYUFBYTtBQUNmOztBQUVBO0VBQ0UsYUFBYTtBQUNmOztBQUdFO0lBQ0UsZUFBZTtJQUNmLFFBQVE7SUFDUixTQUFTO0lBQ1QsNEJBQTRCO0lBQzVCLHdDQUFnQztZQUFoQyxnQ0FBZ0M7RUFDbEM7O0FBRUE7SUFDRSxlQUFlO0lBQ2YsUUFBUTtJQUNSLFVBQVU7SUFDViw0QkFBNEI7SUFDNUIsd0NBQWdDO1lBQWhDLGdDQUFnQztFQUNsQzs7QUFFQTtJQUNFLFlBQVk7SUFDWixlQUFlO0lBQ2YsUUFBUTtJQUNSLFVBQVU7SUFDViw0QkFBNEI7SUFDNUIsd0NBQWdDO1lBQWhDLGdDQUFnQztFQUNsQzs7QUFHQTtJQUNFLFlBQVk7SUFDWixlQUFlO0lBQ2YsUUFBUTtJQUNSLFNBQVM7SUFDVCw0QkFBNEI7SUFDNUIsd0NBQWdDO1lBQWhDLGdDQUFnQztFQUNsQzs7QUFHQTtJQUNFLHFCQUFxQjtJQUNyQixrQkFBa0I7SUFDbEIsV0FBVztJQUNYLFlBQVk7RUFDZDs7QUFDQTtJQUNFLHNCQUFzQjtJQUN0QixjQUFjO0lBQ2Qsa0JBQWtCO0lBQ2xCLFdBQVc7SUFDWCxZQUFZO0lBQ1osV0FBVztJQUNYLHlCQUF5QjtJQUN6QixrQkFBa0I7SUFDbEIsc0VBQThEO1lBQTlELDhEQUE4RDtJQUM5RCx5REFBeUQ7RUFDM0Q7O0FBQ0E7SUFDRSwrQkFBdUI7WUFBdkIsdUJBQXVCO0VBQ3pCOztBQUNBO0lBQ0UsOEJBQXNCO1lBQXRCLHNCQUFzQjtFQUN4Qjs7QUFDQTtJQUNFLCtCQUF1QjtZQUF2Qix1QkFBdUI7RUFDekI7O0FBQ0E7SUFDRTtNQUNFLCtCQUF1QjtjQUF2Qix1QkFBdUI7SUFDekI7SUFDQTtNQUNFLGlDQUF5QjtjQUF6Qix5QkFBeUI7SUFDM0I7RUFDRjs7QUFQQTtJQUNFO01BQ0UsK0JBQXVCO2NBQXZCLHVCQUF1QjtJQUN6QjtJQUNBO01BQ0UsaUNBQXlCO2NBQXpCLHlCQUF5QjtJQUMzQjtFQUNGOztBQUVBO0lBQ0UsY0FBYztJQUNkLFNBQVM7SUFDVCxRQUFRO0lBQ1IsWUFBWTtJQUNaLFFBQVE7O0lBRVIsbUNBQTJCOztZQUEzQiwyQkFBMkI7OztJQUczQixXQUFXO0lBQ1gsWUFBWTtJQUNaLGdCQUFnQjs7RUFFbEI7O0FBR0E7SUFDRSxXQUFXO0lBQ1gsWUFBWTtFQUNkOztBQUNBO0lBQ0Usa0JBQWtCO0lBQ2xCLGVBQWU7SUFDZixnQkFBZ0I7SUFDaEIsaUNBQWlDO0lBSWpDLGFBQWE7SUFJYix1QkFBdUI7SUFJdkIsbUJBQW1CO0VBQ3JCOztBQUVBO0lBQ0UsbUJBQW1CO0lBQ25CLDZCQUE2QjtFQUMvQjs7QUFHRjtFQUNFLGNBQWM7QUFDaEIiLCJmaWxlIjoiX3BhZ2VzL21haW4vbWFpbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJhclNsaWRlSW57XHJcbiAgYmFja2dyb3VuZDogd2hpdGU7XHJcbiAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKDUwJSk7XHJcbn1cclxuXHJcbi5ibG9ja19jbGlja3N7XHJcbiAgcG9pbnRlci1ldmVudHM6IG5vbmU7XHJcbiAgdG91Y2gtYWN0aW9uOiBub25lO1xyXG59XHJcblxyXG4ub3V0e1xyXG4gIC13ZWJraXQtdHJhbnNmb3JtOiB0cmFuc2xhdGVYKDAlKTtcclxuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoMCUpO1xyXG4gIHRyYW5zaXRpb246IHRyYW5zZm9ybSAxNTBtcyBsaW5lYXI7XHJcbiAgd2lsbC1jaGFuZ2U6IHRyYW5zZm9ybTtcclxufVxyXG4uaW57XHJcbiAgLXdlYmtpdC10cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLTgwJSk7XHJcbiAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC04MCUpO1xyXG4gIHRyYW5zaXRpb246IHRyYW5zZm9ybSAxNTBtcyBsaW5lYXI7XHJcbn1cclxuXHJcbi5wYWdlQ2xpY2t7XHJcbiAgcG9zaXRpb246YWJzb2x1dGU7XHJcbiAgdG9wOjA7XHJcbiAgbGVmdDowO1xyXG4gIHdpZHRoOiAxNSU7XHJcbiAgaGVpZ2h0OjEwMCU7XHJcbiAgei1pbmRleDoxNTAwMDtcclxufVxyXG5cclxuLnVzZXJfc2xpZGVfaGlkZGVue1xyXG4gIGRpc3BsYXk6IG5vbmU7XHJcbn1cclxuICBcclxuICBcclxuICAuY2VudGVyZWQge1xyXG4gICAgcG9zaXRpb246IGZpeGVkO1xyXG4gICAgdG9wOiA0MCU7XHJcbiAgICBsZWZ0OiA1MCU7XHJcbiAgICAvKiBicmluZyB5b3VyIG93biBwcmVmaXhlcyAqL1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XHJcbiAgfVxyXG4gIFxyXG4gIC5zbGlkZUNlbnRlcmVkIHtcclxuICAgIHBvc2l0aW9uOiBmaXhlZDtcclxuICAgIHRvcDogNTAlO1xyXG4gICAgbGVmdDogMTUwJTtcclxuICAgIC8qIGJyaW5nIHlvdXIgb3duIHByZWZpeGVzICovXHJcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcclxuICB9XHJcbiAgXHJcbiAgLnNsaWRlQ2VudGVyZWQtaGlkZGVuIHtcclxuICAgIGRpc3BsYXk6bm9uZTtcclxuICAgIHBvc2l0aW9uOiBmaXhlZDtcclxuICAgIHRvcDogNTAlO1xyXG4gICAgbGVmdDogMTUwJTtcclxuICAgIC8qIGJyaW5nIHlvdXIgb3duIHByZWZpeGVzICovXHJcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcclxuICB9XHJcbiAgXHJcbiAgXHJcbiAgLmNlbnRlcmVkLWhpZGRlbiB7XHJcbiAgICBkaXNwbGF5Om5vbmU7XHJcbiAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICB0b3A6IDUwJTtcclxuICAgIGxlZnQ6IDUwJTtcclxuICAgIC8qIGJyaW5nIHlvdXIgb3duIHByZWZpeGVzICovXHJcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcclxuICB9XHJcbiAgXHJcbiAgXHJcbiAgLmxkcy1yaW5nIHtcclxuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIHdpZHRoOiA2NHB4O1xyXG4gICAgaGVpZ2h0OiA2NHB4O1xyXG4gIH1cclxuICAubGRzLXJpbmcgZGl2IHtcclxuICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XHJcbiAgICBkaXNwbGF5OiBibG9jaztcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHdpZHRoOiA1MXB4O1xyXG4gICAgaGVpZ2h0OiA1MXB4O1xyXG4gICAgbWFyZ2luOiA2cHg7XHJcbiAgICBib3JkZXI6IDZweCBzb2xpZCAjZWVjNTM2O1xyXG4gICAgYm9yZGVyLXJhZGl1czogNTAlO1xyXG4gICAgYW5pbWF0aW9uOiBsZHMtcmluZyAxLjJzIGN1YmljLWJlemllcigwLjUsIDAsIDAuNSwgMSkgaW5maW5pdGU7XHJcbiAgICBib3JkZXItY29sb3I6ICNlZWM1MzYgdHJhbnNwYXJlbnQgdHJhbnNwYXJlbnQgdHJhbnNwYXJlbnQ7XHJcbiAgfVxyXG4gIC5sZHMtcmluZyBkaXY6bnRoLWNoaWxkKDEpIHtcclxuICAgIGFuaW1hdGlvbi1kZWxheTogLTAuNDVzO1xyXG4gIH1cclxuICAubGRzLXJpbmcgZGl2Om50aC1jaGlsZCgyKSB7XHJcbiAgICBhbmltYXRpb24tZGVsYXk6IC0wLjNzO1xyXG4gIH1cclxuICAubGRzLXJpbmcgZGl2Om50aC1jaGlsZCgzKSB7XHJcbiAgICBhbmltYXRpb24tZGVsYXk6IC0wLjE1cztcclxuICB9XHJcbiAgQGtleWZyYW1lcyBsZHMtcmluZyB7XHJcbiAgICAwJSB7XHJcbiAgICAgIHRyYW5zZm9ybTogcm90YXRlKDBkZWcpO1xyXG4gICAgfVxyXG4gICAgMTAwJSB7XHJcbiAgICAgIHRyYW5zZm9ybTogcm90YXRlKDM2MGRlZyk7XHJcbiAgICB9XHJcbiAgfVxyXG4gIFxyXG4gIC5zbGlkZUluUGFnZXtcclxuICAgIHBvc2l0aW9uOmZpeGVkO1xyXG4gICAgcGFkZGluZzowO1xyXG4gICAgbWFyZ2luOjA7XHJcbiAgICB6LWluZGV4OiAxMDA7XHJcbiAgICB0b3A6NTBweDtcclxuXHJcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoMTAwJSk7XHJcblxyXG4gIFxyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBoZWlnaHQ6IDEwMCU7XHJcbiAgICBiYWNrZ3JvdW5kOndoaXRlO1xyXG4gIFxyXG4gIH1cclxuICBcclxuICBcclxuICAucGljdHVyZS1zd2lwZS1jb250YWluZXIge1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBoZWlnaHQ6IDEwMCU7XHJcbiAgfVxyXG4gIC5waWN0dXJlLXN3aXBlLXNsaWRlIHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGZvbnQtc2l6ZTogMThweDtcclxuICAgIGJhY2tncm91bmQ6ICNmZmY7XHJcbiAgICAvKiBDZW50ZXIgc2xpZGUgdGV4dCB2ZXJ0aWNhbGx5ICovXHJcbiAgICBkaXNwbGF5OiAtd2Via2l0LWJveDtcclxuICAgIGRpc3BsYXk6IC1tcy1mbGV4Ym94O1xyXG4gICAgZGlzcGxheTogLXdlYmtpdC1mbGV4O1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIC13ZWJraXQtYm94LXBhY2s6IGNlbnRlcjtcclxuICAgIC1tcy1mbGV4LXBhY2s6IGNlbnRlcjtcclxuICAgIC13ZWJraXQtanVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIC13ZWJraXQtYm94LWFsaWduOiBjZW50ZXI7XHJcbiAgICAtbXMtZmxleC1hbGlnbjogY2VudGVyO1xyXG4gICAgLXdlYmtpdC1hbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICB9XHJcbiAgXHJcbiAgLmJhckRlYWxzU2VjdGlvbiB7XHJcbiAgICBwYWRkaW5nOiAxMHB4IDAgMCAwO1xyXG4gICAgYm9yZGVyLWJvdHRvbToxcHggYmxhY2sgc29saWQ7XHJcbiAgfVxyXG5cclxuXHJcbi5wcmV2ZW50U2Nyb2xse1xyXG4gIG92ZXJmbG93OiBhdXRvO1xyXG59Il19 */"
+module.exports = ".barSlideIn{\n  background: white;\n  -webkit-transform: translateX(50%);\n          transform: translateX(50%);\n}\n\n.block_clicks{\n  pointer-events: none;\n  touch-action: none;\n}\n\n.out{\n  -webkit-transform: translateX(0%);\n  transform: translateX(0%);\n  transition: -webkit-transform 150ms linear;\n  transition: transform 150ms linear;\n  transition: transform 150ms linear, -webkit-transform 150ms linear;\n  will-change: transform;\n}\n\n.in{\n  -webkit-transform: translateX(-80%);\n  transform: translateX(-80%);\n  transition: -webkit-transform 150ms linear;\n  transition: transform 150ms linear;\n  transition: transform 150ms linear, -webkit-transform 150ms linear;\n}\n\n.pageClick{\n  position:absolute;\n  top:0;\n  left:0;\n  width: 15%;\n  height:100%;\n  z-index:15000;\n}\n\n.user_slide_hidden{\n  display: none;\n}\n\n.centered {\n    position: fixed;\n    top: 40%;\n    left: 50%;\n    /* bring your own prefixes */\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n  }\n\n.slideCentered {\n    position: fixed;\n    top: 50%;\n    left: 150%;\n    /* bring your own prefixes */\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n  }\n\n.slideCentered-hidden {\n    display:none;\n    position: fixed;\n    top: 50%;\n    left: 150%;\n    /* bring your own prefixes */\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n  }\n\n.centered-hidden {\n    display:none;\n    position: fixed;\n    top: 50%;\n    left: 50%;\n    /* bring your own prefixes */\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n  }\n\n.lds-ring {\n    display: inline-block;\n    position: relative;\n    width: 64px;\n    height: 64px;\n  }\n\n.lds-ring div {\n    box-sizing: border-box;\n    display: block;\n    position: absolute;\n    width: 51px;\n    height: 51px;\n    margin: 6px;\n    border: 6px solid #eec536;\n    border-radius: 50%;\n    -webkit-animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;\n            animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;\n    border-color: #eec536 transparent transparent transparent;\n  }\n\n.lds-ring div:nth-child(1) {\n    -webkit-animation-delay: -0.45s;\n            animation-delay: -0.45s;\n  }\n\n.lds-ring div:nth-child(2) {\n    -webkit-animation-delay: -0.3s;\n            animation-delay: -0.3s;\n  }\n\n.lds-ring div:nth-child(3) {\n    -webkit-animation-delay: -0.15s;\n            animation-delay: -0.15s;\n  }\n\n@-webkit-keyframes lds-ring {\n    0% {\n      -webkit-transform: rotate(0deg);\n              transform: rotate(0deg);\n    }\n    100% {\n      -webkit-transform: rotate(360deg);\n              transform: rotate(360deg);\n    }\n  }\n\n@keyframes lds-ring {\n    0% {\n      -webkit-transform: rotate(0deg);\n              transform: rotate(0deg);\n    }\n    100% {\n      -webkit-transform: rotate(360deg);\n              transform: rotate(360deg);\n    }\n  }\n\n.slideInPage{\n    position:fixed;\n    padding:0;\n    margin:0;\n    z-index: 100;\n    top:50px;\n\n    -webkit-transform: translateX(100%);\n\n            transform: translateX(100%);\n\n  \n    width: 100%;\n    height: 100%;\n    background:white;\n  \n  }\n\n.picture-swipe-container {\n    width: 100%;\n    height: 100%;\n  }\n\n.picture-swipe-slide {\n    text-align: center;\n    font-size: 18px;\n    background: #fff;\n    /* Center slide text vertically */\n    display: flex;\n    justify-content: center;\n    align-items: center;\n  }\n\n.barDealsSection {\n    padding: 10px 0 0 0;\n    border-bottom:1px black solid;\n  }\n\n.preventScroll{\n  overflow: auto;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9wYWdlcy9tYWluL21haW4uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGlCQUFpQjtFQUNqQixrQ0FBMEI7VUFBMUIsMEJBQTBCO0FBQzVCOztBQUVBO0VBQ0Usb0JBQW9CO0VBQ3BCLGtCQUFrQjtBQUNwQjs7QUFFQTtFQUNFLGlDQUFpQztFQUNqQyx5QkFBeUI7RUFDekIsMENBQWtDO0VBQWxDLGtDQUFrQztFQUFsQyxrRUFBa0M7RUFDbEMsc0JBQXNCO0FBQ3hCOztBQUNBO0VBQ0UsbUNBQW1DO0VBQ25DLDJCQUEyQjtFQUMzQiwwQ0FBa0M7RUFBbEMsa0NBQWtDO0VBQWxDLGtFQUFrQztBQUNwQzs7QUFFQTtFQUNFLGlCQUFpQjtFQUNqQixLQUFLO0VBQ0wsTUFBTTtFQUNOLFVBQVU7RUFDVixXQUFXO0VBQ1gsYUFBYTtBQUNmOztBQUVBO0VBQ0UsYUFBYTtBQUNmOztBQUdFO0lBQ0UsZUFBZTtJQUNmLFFBQVE7SUFDUixTQUFTO0lBQ1QsNEJBQTRCO0lBQzVCLHdDQUFnQztZQUFoQyxnQ0FBZ0M7RUFDbEM7O0FBRUE7SUFDRSxlQUFlO0lBQ2YsUUFBUTtJQUNSLFVBQVU7SUFDViw0QkFBNEI7SUFDNUIsd0NBQWdDO1lBQWhDLGdDQUFnQztFQUNsQzs7QUFFQTtJQUNFLFlBQVk7SUFDWixlQUFlO0lBQ2YsUUFBUTtJQUNSLFVBQVU7SUFDViw0QkFBNEI7SUFDNUIsd0NBQWdDO1lBQWhDLGdDQUFnQztFQUNsQzs7QUFHQTtJQUNFLFlBQVk7SUFDWixlQUFlO0lBQ2YsUUFBUTtJQUNSLFNBQVM7SUFDVCw0QkFBNEI7SUFDNUIsd0NBQWdDO1lBQWhDLGdDQUFnQztFQUNsQzs7QUFHQTtJQUNFLHFCQUFxQjtJQUNyQixrQkFBa0I7SUFDbEIsV0FBVztJQUNYLFlBQVk7RUFDZDs7QUFDQTtJQUNFLHNCQUFzQjtJQUN0QixjQUFjO0lBQ2Qsa0JBQWtCO0lBQ2xCLFdBQVc7SUFDWCxZQUFZO0lBQ1osV0FBVztJQUNYLHlCQUF5QjtJQUN6QixrQkFBa0I7SUFDbEIsc0VBQThEO1lBQTlELDhEQUE4RDtJQUM5RCx5REFBeUQ7RUFDM0Q7O0FBQ0E7SUFDRSwrQkFBdUI7WUFBdkIsdUJBQXVCO0VBQ3pCOztBQUNBO0lBQ0UsOEJBQXNCO1lBQXRCLHNCQUFzQjtFQUN4Qjs7QUFDQTtJQUNFLCtCQUF1QjtZQUF2Qix1QkFBdUI7RUFDekI7O0FBQ0E7SUFDRTtNQUNFLCtCQUF1QjtjQUF2Qix1QkFBdUI7SUFDekI7SUFDQTtNQUNFLGlDQUF5QjtjQUF6Qix5QkFBeUI7SUFDM0I7RUFDRjs7QUFQQTtJQUNFO01BQ0UsK0JBQXVCO2NBQXZCLHVCQUF1QjtJQUN6QjtJQUNBO01BQ0UsaUNBQXlCO2NBQXpCLHlCQUF5QjtJQUMzQjtFQUNGOztBQUVBO0lBQ0UsY0FBYztJQUNkLFNBQVM7SUFDVCxRQUFRO0lBQ1IsWUFBWTtJQUNaLFFBQVE7O0lBRVIsbUNBQTJCOztZQUEzQiwyQkFBMkI7OztJQUczQixXQUFXO0lBQ1gsWUFBWTtJQUNaLGdCQUFnQjs7RUFFbEI7O0FBR0E7SUFDRSxXQUFXO0lBQ1gsWUFBWTtFQUNkOztBQUNBO0lBQ0Usa0JBQWtCO0lBQ2xCLGVBQWU7SUFDZixnQkFBZ0I7SUFDaEIsaUNBQWlDO0lBSWpDLGFBQWE7SUFJYix1QkFBdUI7SUFJdkIsbUJBQW1CO0VBQ3JCOztBQUVBO0lBQ0UsbUJBQW1CO0lBQ25CLDZCQUE2QjtFQUMvQjs7QUFHRjtFQUNFLGNBQWM7QUFDaEIiLCJmaWxlIjoiX3BhZ2VzL21haW4vbWFpbi5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJhclNsaWRlSW57XG4gIGJhY2tncm91bmQ6IHdoaXRlO1xuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoNTAlKTtcbn1cblxuLmJsb2NrX2NsaWNrc3tcbiAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG4gIHRvdWNoLWFjdGlvbjogbm9uZTtcbn1cblxuLm91dHtcbiAgLXdlYmtpdC10cmFuc2Zvcm06IHRyYW5zbGF0ZVgoMCUpO1xuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoMCUpO1xuICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMTUwbXMgbGluZWFyO1xuICB3aWxsLWNoYW5nZTogdHJhbnNmb3JtO1xufVxuLmlue1xuICAtd2Via2l0LXRyYW5zZm9ybTogdHJhbnNsYXRlWCgtODAlKTtcbiAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC04MCUpO1xuICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMTUwbXMgbGluZWFyO1xufVxuXG4ucGFnZUNsaWNre1xuICBwb3NpdGlvbjphYnNvbHV0ZTtcbiAgdG9wOjA7XG4gIGxlZnQ6MDtcbiAgd2lkdGg6IDE1JTtcbiAgaGVpZ2h0OjEwMCU7XG4gIHotaW5kZXg6MTUwMDA7XG59XG5cbi51c2VyX3NsaWRlX2hpZGRlbntcbiAgZGlzcGxheTogbm9uZTtcbn1cbiAgXG4gIFxuICAuY2VudGVyZWQge1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDQwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgLyogYnJpbmcgeW91ciBvd24gcHJlZml4ZXMgKi9cbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgfVxuICBcbiAgLnNsaWRlQ2VudGVyZWQge1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiAxNTAlO1xuICAgIC8qIGJyaW5nIHlvdXIgb3duIHByZWZpeGVzICovXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gIH1cbiAgXG4gIC5zbGlkZUNlbnRlcmVkLWhpZGRlbiB7XG4gICAgZGlzcGxheTpub25lO1xuICAgIHBvc2l0aW9uOiBmaXhlZDtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiAxNTAlO1xuICAgIC8qIGJyaW5nIHlvdXIgb3duIHByZWZpeGVzICovXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gIH1cbiAgXG4gIFxuICAuY2VudGVyZWQtaGlkZGVuIHtcbiAgICBkaXNwbGF5Om5vbmU7XG4gICAgcG9zaXRpb246IGZpeGVkO1xuICAgIHRvcDogNTAlO1xuICAgIGxlZnQ6IDUwJTtcbiAgICAvKiBicmluZyB5b3VyIG93biBwcmVmaXhlcyAqL1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICB9XG4gIFxuICBcbiAgLmxkcy1yaW5nIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgIHdpZHRoOiA2NHB4O1xuICAgIGhlaWdodDogNjRweDtcbiAgfVxuICAubGRzLXJpbmcgZGl2IHtcbiAgICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICAgIGRpc3BsYXk6IGJsb2NrO1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICB3aWR0aDogNTFweDtcbiAgICBoZWlnaHQ6IDUxcHg7XG4gICAgbWFyZ2luOiA2cHg7XG4gICAgYm9yZGVyOiA2cHggc29saWQgI2VlYzUzNjtcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XG4gICAgYW5pbWF0aW9uOiBsZHMtcmluZyAxLjJzIGN1YmljLWJlemllcigwLjUsIDAsIDAuNSwgMSkgaW5maW5pdGU7XG4gICAgYm9yZGVyLWNvbG9yOiAjZWVjNTM2IHRyYW5zcGFyZW50IHRyYW5zcGFyZW50IHRyYW5zcGFyZW50O1xuICB9XG4gIC5sZHMtcmluZyBkaXY6bnRoLWNoaWxkKDEpIHtcbiAgICBhbmltYXRpb24tZGVsYXk6IC0wLjQ1cztcbiAgfVxuICAubGRzLXJpbmcgZGl2Om50aC1jaGlsZCgyKSB7XG4gICAgYW5pbWF0aW9uLWRlbGF5OiAtMC4zcztcbiAgfVxuICAubGRzLXJpbmcgZGl2Om50aC1jaGlsZCgzKSB7XG4gICAgYW5pbWF0aW9uLWRlbGF5OiAtMC4xNXM7XG4gIH1cbiAgQGtleWZyYW1lcyBsZHMtcmluZyB7XG4gICAgMCUge1xuICAgICAgdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7XG4gICAgfVxuICAgIDEwMCUge1xuICAgICAgdHJhbnNmb3JtOiByb3RhdGUoMzYwZGVnKTtcbiAgICB9XG4gIH1cbiAgXG4gIC5zbGlkZUluUGFnZXtcbiAgICBwb3NpdGlvbjpmaXhlZDtcbiAgICBwYWRkaW5nOjA7XG4gICAgbWFyZ2luOjA7XG4gICAgei1pbmRleDogMTAwO1xuICAgIHRvcDo1MHB4O1xuXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKDEwMCUpO1xuXG4gIFxuICAgIHdpZHRoOiAxMDAlO1xuICAgIGhlaWdodDogMTAwJTtcbiAgICBiYWNrZ3JvdW5kOndoaXRlO1xuICBcbiAgfVxuICBcbiAgXG4gIC5waWN0dXJlLXN3aXBlLWNvbnRhaW5lciB7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICB9XG4gIC5waWN0dXJlLXN3aXBlLXNsaWRlIHtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgZm9udC1zaXplOiAxOHB4O1xuICAgIGJhY2tncm91bmQ6ICNmZmY7XG4gICAgLyogQ2VudGVyIHNsaWRlIHRleHQgdmVydGljYWxseSAqL1xuICAgIGRpc3BsYXk6IC13ZWJraXQtYm94O1xuICAgIGRpc3BsYXk6IC1tcy1mbGV4Ym94O1xuICAgIGRpc3BsYXk6IC13ZWJraXQtZmxleDtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIC13ZWJraXQtYm94LXBhY2s6IGNlbnRlcjtcbiAgICAtbXMtZmxleC1wYWNrOiBjZW50ZXI7XG4gICAgLXdlYmtpdC1qdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAtd2Via2l0LWJveC1hbGlnbjogY2VudGVyO1xuICAgIC1tcy1mbGV4LWFsaWduOiBjZW50ZXI7XG4gICAgLXdlYmtpdC1hbGlnbi1pdGVtczogY2VudGVyO1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIH1cbiAgXG4gIC5iYXJEZWFsc1NlY3Rpb24ge1xuICAgIHBhZGRpbmc6IDEwcHggMCAwIDA7XG4gICAgYm9yZGVyLWJvdHRvbToxcHggYmxhY2sgc29saWQ7XG4gIH1cblxuXG4ucHJldmVudFNjcm9sbHtcbiAgb3ZlcmZsb3c6IGF1dG87XG59Il19 */"
 
 /***/ }),
 
@@ -980,7 +1115,7 @@ module.exports = ".barSlideIn{\r\n  background: white;\r\n  -webkit-transform: t
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n\r\n<div class=\"views\">\r\n\r\n  <div class=\"view view-main\">\r\n    <div class=\"pages\">\r\n      <div data-page=\"shop\" class=\"page\">\r\n        <div class=\"page-content\" id=\"mainPage\">\r\n\r\n\r\n          <div class=\"user_slide\" style=\"-webkit-overflow-scrolling:touch;\">\r\n            <app-user-slide></app-user-slide>\r\n          </div>\r\n\r\n\r\n          <div class=\"main_content\">\r\n              <div *ngIf=\"userSlide\" class=\"pageClick\" (click)=\"pageClick()\"></div>\r\n              <div id=\"headerAndRouter\">\r\n                <app-header></app-header>\r\n                <div id=\"routerHolder\" >\r\n                  <router-outlet></router-outlet>\r\n                </div>\r\n              </div>\r\n              <app-navbar></app-navbar>\r\n          </div>\r\n\r\n\r\n\r\n\r\n\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "\n\n<div class=\"views\">\n\n  <div class=\"view view-main\">\n    <div class=\"pages\">\n      <div data-page=\"shop\" class=\"page\">\n        <div class=\"page-content\" id=\"mainPage\">\n\n\n          <div class=\"user_slide\" style=\"-webkit-overflow-scrolling:touch;\">\n            <app-user-slide></app-user-slide>\n          </div>\n\n\n          <div class=\"main_content\">\n              <div *ngIf=\"userSlide\" class=\"pageClick\" (click)=\"pageClick()\"></div>\n              <div id=\"headerAndRouter\">\n                <app-header></app-header>\n                <div id=\"routerHolder\" >\n                  <router-outlet></router-outlet>\n                </div>\n              </div>\n              <app-navbar></app-navbar>\n          </div>\n\n\n\n\n\n\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1160,7 +1295,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n\r\n<button (click)=\"testBtn()\"></button>\r\n\r\n<p>\r\n  {{test}}\r\n</p>\r\n\r\n"
+module.exports = "<br />\n<br />\n<br />\n<br />\n<br />\n<br />\n\n<button (click)=\"testBtn()\"></button>\n\n<p>\n  {{test}}\n</p>\n\n"
 
 /***/ }),
 
@@ -1449,7 +1584,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<router-outlet></router-outlet>\r\n"
+module.exports = "\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -1619,6 +1754,27 @@ var CustomReuseStrategy = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/models.ts":
+/*!***************************!*\
+  !*** ./src/app/models.ts ***!
+  \***************************/
+/*! exports provided: BarCard, UpcomingDeal */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _models_BarCard_Model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_models/BarCard.Model */ "./src/app/_models/BarCard.Model.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BarCard", function() { return _models_BarCard_Model__WEBPACK_IMPORTED_MODULE_0__["BarCard"]; });
+
+/* harmony import */ var _models_UpcomingDeal_Model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_models/UpcomingDeal.Model */ "./src/app/_models/UpcomingDeal.Model.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UpcomingDeal", function() { return _models_UpcomingDeal_Model__WEBPACK_IMPORTED_MODULE_1__["UpcomingDeal"]; });
+
+
+
+
+
+/***/ }),
+
 /***/ "./src/environments/environment.ts":
 /*!*****************************************!*\
   !*** ./src/environments/environment.ts ***!
@@ -1692,7 +1848,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Jmalafronte\Documents\Personal\BarCrawlV3\BarCrawlV3\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Joseph\Documents\Repos\BarCrawlV3Repoo\BarCrawlV3\src\main.ts */"./src/main.ts");
 
 
 /***/ })

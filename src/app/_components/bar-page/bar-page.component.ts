@@ -1,18 +1,16 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { BrowserModule } from '@angular/platform-browser';
 import {
   animate, state, style, transition, trigger
 } from '@angular/animations';
-import { forkJoin, Observable, BehaviorSubject } from 'rxjs';  // RxJS 6 syntax
-import { take } from 'rxjs/operators'
+
 
 import * as $ from 'jquery'; 
 
 import { DateDirective} from '../../_directives/date.directive';
 import { AuthService } from '../../_services/auth.service';
 
-import {BarPage} from '../../models';
+import {BarPage, UpcomingDeal} from '../../models';
 
 @Component({
   selector: 'app-bar-page',
@@ -46,15 +44,19 @@ export class BarPageComponent implements OnInit {
   activeInfoPage = 0;
   noDailyDeals = false;
   dailyDealsExpanded = false;
-  expandDealsButtonText = "VIEW MORE DEALS & EVENTS FOR TODAY";
+  expandDealsButtonText = "VIEW MORE";
 
   headDailyDeals = [];
   tailDailyDeals = [];
   allDailyDeals = [];
-  dayOfTheWeek: String;
+  dayOfTheWeek: string;
 
   db: AngularFireDatabase;
   authService: AuthService;
+  dateDirective: DateDirective;
+
+  upcomingDeals: UpcomingDeal[];
+
   
 
   constructor(
@@ -64,6 +66,7 @@ export class BarPageComponent implements OnInit {
   ) { 
     this.db = _dbA;
     this.authService = _authService;
+    this.dateDirective = _dateDirective;
     //this.dayOfTheWeek = _dateDirective.getDayOfWeek();
     this.dayOfTheWeek = "Wednesday";
   }
@@ -105,9 +108,30 @@ export class BarPageComponent implements OnInit {
 
 
   getDailyDeals(){
-    this.db.list('dailyDeals/' + this.dayOfTheWeek+'/'+this.barName).valueChanges().subscribe(result => {
-      this.allDailyDeals = [];
-      this.allDailyDeals = result;
+
+    this.db.object('dailyDeals/'+ this.barName).valueChanges().subscribe((result: any) => {
+
+      var handleObject: UpcomingDeal = new UpcomingDeal();
+      this.upcomingDeals = handleObject.insertAll(result);
+
+      var index = -1;
+      for(var i=0; i<this.upcomingDeals.length; i++){
+        var deal = this.upcomingDeals[i];
+        if(deal.dayOfTheWeek == this.dayOfTheWeek){
+          index = i;
+        }
+      }
+      if(i>-1){
+        this.allDailyDeals = this.upcomingDeals[1].deals;
+        this.upcomingDeals.splice(index,1);
+      }
+
+      //sort by weekday
+      var order = this.dateDirective.weekOrderSwitch(this.dayOfTheWeek);
+      this.upcomingDeals.sort(function (a, b) {
+        return order[a.dayOfTheWeek] - order[b.dayOfTheWeek];
+      });
+
 
       if(this.allDailyDeals.length == 0){
         this.noDailyDeals = true;
@@ -124,32 +148,45 @@ export class BarPageComponent implements OnInit {
       for(var i = 2; i<this.allDailyDeals.length; i++){
         this.tailDailyDeals.push(this.allDailyDeals[i]);
       }
-
+      
+      console.log(this.upcomingDeals);
 
     });
+
+
+    // this.db.list('dailyDeals/' + this.barName+'/'+ this.dayOfTheWeek).valueChanges().subscribe(result => {
+    //   this.allDailyDeals = [];
+    //   this.allDailyDeals = result;
+
+    //   if(this.allDailyDeals.length == 0){
+    //     this.noDailyDeals = true;
+    //   }
+    //   else this.noDailyDeals = false;
+
+    //   //Set display deals
+    //   this.headDailyDeals = [];
+    //   for(var i = 0; i<this.allDailyDeals.length && i<2; i++){
+    //     this.headDailyDeals.push(this.allDailyDeals[i]);
+    //   }
+
+    //   this.tailDailyDeals = [];
+    //   for(var i = 2; i<this.allDailyDeals.length; i++){
+    //     this.tailDailyDeals.push(this.allDailyDeals[i]);
+    //   }
+
+
+    // });
   }
-
-  // show2DailyDeals() {
-  //   this.displayDailyDeals = [];
-  //   for(var i = 0; i<this.allDailyDeals.length && i<2; i++){
-  //     this.displayDailyDeals.push(this.allDailyDeals[i]);
-  //   }
-  // }
-
-  // showAllDailyDeals() {
-  //   this.displayDailyDeals = this.allDailyDeals;
-  // }
-
 
   handleExpandButtonClick() {
     //$('.collapse').collapse();
     if(this.dailyDealsExpanded == false){
       this.dailyDealsExpanded = true;
-      this.expandDealsButtonText = "VIEW LESS DEALS & EVENTS FOR TODAY";
+      this.expandDealsButtonText = "VIEW LESS";
     }
     else {
       this.dailyDealsExpanded = false;
-      this.expandDealsButtonText = "VIEW MORE DEALS & EVENTS FOR TODAY";
+      this.expandDealsButtonText = "VIEW MORE";
     }
   }
 
