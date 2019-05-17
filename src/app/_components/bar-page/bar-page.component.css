@@ -99,3 +99,19 @@
 .right-pointing-triangle::after {
   content: "\25B6 \FE0E";
 }
+
+.currentBarCover {
+    text-align: center; 
+    margin-top: 12px;
+    padding: 0 0 3px 0;
+    line-height:80%;
+    font-size:28px;
+}
+
+.currentBarCover span{
+    font-size: 16px;
+}
+
+.reportCoverButton {
+    margin: 10px 0px 10px 0; width:300px; font-size:14px;
+}

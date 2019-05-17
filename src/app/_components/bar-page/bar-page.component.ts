@@ -10,7 +10,7 @@ import * as $ from 'jquery';
 import { DateDirective} from '../../_directives/date.directive';
 import { AuthService } from '../../_services/auth.service';
 
-import {BarPage, UpcomingDeal} from '../../models';
+import {BarPage, UpcomingDeal, HourlyEstimate} from '../../models';
 
 @Component({
   selector: 'app-bar-page',
@@ -53,6 +53,10 @@ export class BarPageComponent implements OnInit {
   tailDailyDeals = [];
   allDailyDeals = [];
   dayOfTheWeek: string;
+  
+  upcomingDeals: UpcomingDeal[] = [];
+  upcomingDealsHead: UpcomingDeal[] = [];
+  upcomingDealsTail: UpcomingDeal[] = [];
 
   //Cover Variables
   coverResult: any;
@@ -61,6 +65,8 @@ export class BarPageComponent implements OnInit {
   currentHour: number;
   currentHourString: string;
   currentEstCover: number = 0;
+  hourlyEstimates: HourlyEstimate[] = [];
+  showHourlyEstimates: boolean = false;
 
   //Cover Timing
   numberSinceRefresh = 0;
@@ -69,9 +75,6 @@ export class BarPageComponent implements OnInit {
   authService: AuthService;
   dateDirective: DateDirective;
 
-  upcomingDeals: UpcomingDeal[] = [];
-  upcomingDealsHead: UpcomingDeal[] = [];
-  upcomingDealsTail: UpcomingDeal[] = [];
 
   
 
@@ -85,6 +88,10 @@ export class BarPageComponent implements OnInit {
     this.dateDirective = _dateDirective;
     //this.dayOfTheWeek = _dateDirective.getDayOfWeek();
     this.dayOfTheWeek = "Wednesday";
+
+    setInterval(function () {this.numberSinceRefresh = 0;}, 30000);
+
+
   }
 
   ngOnInit() {
@@ -120,14 +127,8 @@ export class BarPageComponent implements OnInit {
 
       this.getDailyDeals();
 
-      function startRefreshTimer(repeat) {
-        setTimeout(function () {
-          this.numberSinceRefresh = 0;
-          repeat();
-        }, 30000);
-      }
+      
 
-      startRefreshTimer(startRefreshTimer);
     });
    
   }
@@ -290,8 +291,8 @@ export class BarPageComponent implements OnInit {
         this.coverResult = result;
 
         this.cleanCoverDatabase();
-
         this.estimateCurrentCover();
+        this.loadHourlyEstimates();
       }
     );
   }
@@ -302,7 +303,7 @@ export class BarPageComponent implements OnInit {
 
     var date = this.currentDate;
     this.currentHour = date.getHours();
-    this.currentHourString = this.currentHour.toString();
+    this.currentHourString = this.currentHour.toString() + 'time';
     
 
     if(this.currentHour < 5) {
@@ -358,7 +359,7 @@ export class BarPageComponent implements OnInit {
 
     //if this is empty use historical values
     if(valuesNight.length == 0){
-      var historicalValues: number[] = JSON.parse(this.coverResult.hourlyEstimates[this.currentHourString]);
+      var historicalValues: number[] = JSON.parse(this.coverResult.hourlyEstimates[this.currentHourString].cover);
       this.currentEstCover = this.getMode(historicalValues);
       return
     }
@@ -378,6 +379,61 @@ export class BarPageComponent implements OnInit {
     
     this.currentEstCover = Math.max(modeHour, modeNight);
 
+  }
+
+
+  loadHourlyEstimates() {
+
+    // var hourPullArray = ["8","9","10","11","12","1","2","3"];
+    // hourPullArray.forEach(item => {
+    //   var insert =
+    // });
+
+    this.hourlyEstimates = [];
+    
+    var estimateArray = Object.keys(this.coverResult.hourlyEstimates).map(key => this.coverResult.hourlyEstimates[key]);
+    estimateArray.forEach((result:any) => {
+
+
+      var insert: HourlyEstimate = new HourlyEstimate();
+
+      var coverMode = this.getMode(JSON.parse(result.cover));
+      insert.cover = coverMode;
+
+      var waitMode = this.getMode(JSON.parse(result.waitTimes));
+      insert.wait = waitMode;
+      if(insert.wait == 0) insert.waitString = "No Line";
+      else insert.waitString = insert.wait.toString() + ' Minutes';
+      
+      insert.hour = result.hour;
+
+      if(insert.hour == 0) insert.hourString ="12am";
+      else if(insert.hour < 5){
+        insert.hourString = insert.hour.toString() + 'am';
+      }
+      else if(insert.hour > 12){
+        var num = insert.hour -12;
+        insert.hourString = num.toString() + 'pm';
+      }
+      else insert.hourString = insert.hour.toString() + 'pm';
+
+
+      if(insert.hour < 4 || insert.hour>19) {
+        this.hourlyEstimates.push(insert);
+      }
+
+      this.hourlyEstimates.sort(function (a, b) {
+        if(a.hour<5 && b.hour<5) return a.hour-b.hour;
+        else if(a.hour<5) return 1;
+        else if(b.hour<5) return -1;
+        return a.hour-b.hour;
+      });
+
+    });
+
+    console.log(this.hourlyEstimates);
+    
+    this.showHourlyEstimates = true;
   }
 
   getMode(array): number {
@@ -413,7 +469,7 @@ export class BarPageComponent implements OnInit {
 
     //TODO add logic to make sure dates arent messed up if user waits too long to report
     this.coverDateSetup();
-    var estimateArray: number[] = JSON.parse(this.coverResult.hourlyEstimates[this.currentHourString]);
+    var estimateArray: number[] = JSON.parse(this.coverResult.hourlyEstimates[this.currentHourString].cover);
 
     //If length is greater than 30 wipe it and add 5 reps for weighting
     if(estimateArray.length>30){
@@ -423,13 +479,13 @@ export class BarPageComponent implements OnInit {
       }
     }
     else estimateArray.push(num);
-    this.coverResult.hourlyEstimates[this.currentHourString] = this.convertArrayJson(estimateArray);
+    this.coverResult.hourlyEstimates[this.currentHourString].cover = this.convertArrayJson(estimateArray);
 
 
     var valuesArray: number [] = JSON.parse(this.coverResult.values);
     valuesArray.push(num);
     this.coverResult.values = this.convertArrayJson(valuesArray);
-    this.coverResult.lastHour = this.currentHourString;
+    this.coverResult.lastHour = this.currentHour.toString;
     var hoursArray: number [] = JSON.parse(this.coverResult.hourValues);
     hoursArray.push(num);
     this.coverResult.hourValues = this.convertArrayJson(hoursArray);

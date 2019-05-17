@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".barPageLike {\r\n    position: absolute;\r\n    top:9px;\r\n    right:20px;\r\n    z-index:5;\r\n    width:33px;\r\n}\r\n\r\n.barPageLike img {\r\n    width: 100%;\r\n}\r\n\r\n/* Add a black background color to the top navigation */\r\n\r\n.topnav {\r\n    position: absolute;\r\n    width: 100%;\r\n    right: 0%;\r\n    background-color: #333;\r\n    overflow: hidden;\r\n  }\r\n\r\n.adjust {\r\n    padding-left: 0px;\r\n    padding-right: 0px;\r\n}\r\n\r\n/* Style the links inside the navigation bar */\r\n\r\n.holder  {\r\n    float: left;\r\n    color: #f2f2f2;\r\n    text-align: center;\r\n    padding: 12px 0px;\r\n    width: 25%;\r\n    text-decoration: none;\r\n    font-size: 17px;\r\n}\r\n\r\n/* Add a color to the active/current link */\r\n\r\n.active {\r\n    background-color: #F2C843;\r\n    color: black;\r\n}\r\n\r\n.collapse {\r\n    display: none;\r\n  }\r\n\r\n.collapsing {\r\n    position: relative;\r\n    height: 0;\r\n    overflow: hidden;\r\n    padding: 0 0 0 0;\r\n    transition-property: height, visibility;\r\n    transition-duration: 0.35s;\r\n    transition-timing-function: ease;\r\n  }\r\n\r\n.show {\r\n    display: block !important;\r\n  }\r\n\r\n.barDealsSectionBelow {\r\n    margin-top: -20px;\r\n    padding: 0 0 0 0;\r\n    border-bottom:1px black solid;\r\n  }\r\n\r\n.upcomingTitle {\r\n    margin-top: 10px;\r\n    border-radius: 10px 10px 10px 10px;\r\n    position: relative;\r\n    width: 100%;\r\n    right: 0%;\r\n    background-color: #333;\r\n    overflow: hidden;\r\n  }\r\n\r\n.upcomingTitleAst  {\r\n    float: left;\r\n    color: #f2f2f2;\r\n    text-align: left;\r\n    padding: 12px 0px;\r\n    width: 100%;\r\n    text-decoration: none;\r\n    font-size: 17px;\r\n}\r\n\r\n.right-pointing-triangle::after {\r\n  content: \"\\25B6 \\FE0E\";\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9jb21wb25lbnRzL2Jhci1wYWdlL2Jhci1wYWdlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxrQkFBa0I7SUFDbEIsT0FBTztJQUNQLFVBQVU7SUFDVixTQUFTO0lBQ1QsVUFBVTtBQUNkOztBQUVBO0lBQ0ksV0FBVztBQUNmOztBQUVBLHVEQUF1RDs7QUFDdkQ7SUFDSSxrQkFBa0I7SUFDbEIsV0FBVztJQUNYLFNBQVM7SUFDVCxzQkFBc0I7SUFDdEIsZ0JBQWdCO0VBQ2xCOztBQUVGO0lBQ0ksaUJBQWlCO0lBQ2pCLGtCQUFrQjtBQUN0Qjs7QUFFQSw4Q0FBOEM7O0FBQzlDO0lBQ0ksV0FBVztJQUNYLGNBQWM7SUFDZCxrQkFBa0I7SUFDbEIsaUJBQWlCO0lBQ2pCLFVBQVU7SUFDVixxQkFBcUI7SUFDckIsZUFBZTtBQUNuQjs7QUFHQSwyQ0FBMkM7O0FBQzNDO0lBQ0kseUJBQXlCO0lBQ3pCLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxhQUFhO0VBQ2Y7O0FBR0E7SUFDRSxrQkFBa0I7SUFDbEIsU0FBUztJQUNULGdCQUFnQjtJQUNoQixnQkFBZ0I7SUFHaEIsdUNBQXVDO0lBR3ZDLDBCQUEwQjtJQUcxQixnQ0FBZ0M7RUFDbEM7O0FBRUE7SUFDRSx5QkFBeUI7RUFDM0I7O0FBRUE7SUFDRSxpQkFBaUI7SUFDakIsZ0JBQWdCO0lBQ2hCLDZCQUE2QjtFQUMvQjs7QUFHQTtJQUNFLGdCQUFnQjtJQUNoQixrQ0FBa0M7SUFDbEMsa0JBQWtCO0lBQ2xCLFdBQVc7SUFDWCxTQUFTO0lBQ1Qsc0JBQXNCO0lBQ3RCLGdCQUFnQjtFQUNsQjs7QUFFQTtJQUNFLFdBQVc7SUFDWCxjQUFjO0lBQ2QsZ0JBQWdCO0lBQ2hCLGlCQUFpQjtJQUNqQixXQUFXO0lBQ1gscUJBQXFCO0lBQ3JCLGVBQWU7QUFDbkI7O0FBSUE7RUFDRSxzQkFBc0I7QUFDeEIiLCJmaWxlIjoiX2NvbXBvbmVudHMvYmFyLXBhZ2UvYmFyLXBhZ2UuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5iYXJQYWdlTGlrZSB7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICB0b3A6OXB4O1xyXG4gICAgcmlnaHQ6MjBweDtcclxuICAgIHotaW5kZXg6NTtcclxuICAgIHdpZHRoOjMzcHg7XHJcbn1cclxuXHJcbi5iYXJQYWdlTGlrZSBpbWcge1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbn1cclxuXHJcbi8qIEFkZCBhIGJsYWNrIGJhY2tncm91bmQgY29sb3IgdG8gdGhlIHRvcCBuYXZpZ2F0aW9uICovXHJcbi50b3BuYXYge1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICByaWdodDogMCU7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMzMzO1xyXG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcclxuICB9XHJcblxyXG4uYWRqdXN0IHtcclxuICAgIHBhZGRpbmctbGVmdDogMHB4O1xyXG4gICAgcGFkZGluZy1yaWdodDogMHB4O1xyXG59XHJcbiAgXHJcbi8qIFN0eWxlIHRoZSBsaW5rcyBpbnNpZGUgdGhlIG5hdmlnYXRpb24gYmFyICovXHJcbi5ob2xkZXIgIHtcclxuICAgIGZsb2F0OiBsZWZ0O1xyXG4gICAgY29sb3I6ICNmMmYyZjI7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBwYWRkaW5nOiAxMnB4IDBweDtcclxuICAgIHdpZHRoOiAyNSU7XHJcbiAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XHJcbiAgICBmb250LXNpemU6IDE3cHg7XHJcbn1cclxuXHJcblxyXG4vKiBBZGQgYSBjb2xvciB0byB0aGUgYWN0aXZlL2N1cnJlbnQgbGluayAqL1xyXG4uYWN0aXZlIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNGMkM4NDM7XHJcbiAgICBjb2xvcjogYmxhY2s7XHJcbn1cclxuXHJcbi5jb2xsYXBzZSB7XHJcbiAgICBkaXNwbGF5OiBub25lO1xyXG4gIH1cclxuXHJcblxyXG4gIC5jb2xsYXBzaW5nIHtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIGhlaWdodDogMDtcclxuICAgIG92ZXJmbG93OiBoaWRkZW47XHJcbiAgICBwYWRkaW5nOiAwIDAgMCAwO1xyXG4gICAgLXdlYmtpdC10cmFuc2l0aW9uLXByb3BlcnR5OiBoZWlnaHQsIHZpc2liaWxpdHk7XHJcbiAgICAtby10cmFuc2l0aW9uLXByb3BlcnR5OiBoZWlnaHQsIHZpc2liaWxpdHk7XHJcbiAgICB0cmFuc2l0aW9uLXByb3BlcnR5OiBoZWlnaHQsIHZpc2liaWxpdHk7XHJcbiAgICAtd2Via2l0LXRyYW5zaXRpb24tZHVyYXRpb246IDAuMzVzO1xyXG4gICAgLW8tdHJhbnNpdGlvbi1kdXJhdGlvbjogMC4zNXM7XHJcbiAgICB0cmFuc2l0aW9uLWR1cmF0aW9uOiAwLjM1cztcclxuICAgIC13ZWJraXQtdHJhbnNpdGlvbi10aW1pbmctZnVuY3Rpb246IGVhc2U7XHJcbiAgICAtby10cmFuc2l0aW9uLXRpbWluZy1mdW5jdGlvbjogZWFzZTtcclxuICAgIHRyYW5zaXRpb24tdGltaW5nLWZ1bmN0aW9uOiBlYXNlO1xyXG4gIH1cclxuXHJcbiAgLnNob3cge1xyXG4gICAgZGlzcGxheTogYmxvY2sgIWltcG9ydGFudDtcclxuICB9XHJcblxyXG4gIC5iYXJEZWFsc1NlY3Rpb25CZWxvdyB7XHJcbiAgICBtYXJnaW4tdG9wOiAtMjBweDtcclxuICAgIHBhZGRpbmc6IDAgMCAwIDA7XHJcbiAgICBib3JkZXItYm90dG9tOjFweCBibGFjayBzb2xpZDtcclxuICB9XHJcblxyXG5cclxuICAudXBjb21pbmdUaXRsZSB7XHJcbiAgICBtYXJnaW4tdG9wOiAxMHB4O1xyXG4gICAgYm9yZGVyLXJhZGl1czogMTBweCAxMHB4IDEwcHggMTBweDtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgcmlnaHQ6IDAlO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzMzMztcclxuICAgIG92ZXJmbG93OiBoaWRkZW47XHJcbiAgfVxyXG5cclxuICAudXBjb21pbmdUaXRsZUFzdCAge1xyXG4gICAgZmxvYXQ6IGxlZnQ7XHJcbiAgICBjb2xvcjogI2YyZjJmMjtcclxuICAgIHRleHQtYWxpZ246IGxlZnQ7XHJcbiAgICBwYWRkaW5nOiAxMnB4IDBweDtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG4gICAgZm9udC1zaXplOiAxN3B4O1xyXG59XHJcblxyXG5cclxuXHJcbi5yaWdodC1wb2ludGluZy10cmlhbmdsZTo6YWZ0ZXIge1xyXG4gIGNvbnRlbnQ6IFwiXFwyNUI2IFxcRkUwRVwiO1xyXG59Il19 */"
+module.exports = ".barPageLike {\r\n    position: absolute;\r\n    top:9px;\r\n    right:20px;\r\n    z-index:5;\r\n    width:33px;\r\n}\r\n\r\n.barPageLike img {\r\n    width: 100%;\r\n}\r\n\r\n/* Add a black background color to the top navigation */\r\n\r\n.topnav {\r\n    position: absolute;\r\n    width: 100%;\r\n    right: 0%;\r\n    background-color: #333;\r\n    overflow: hidden;\r\n  }\r\n\r\n.adjust {\r\n    padding-left: 0px;\r\n    padding-right: 0px;\r\n}\r\n\r\n/* Style the links inside the navigation bar */\r\n\r\n.holder  {\r\n    float: left;\r\n    color: #f2f2f2;\r\n    text-align: center;\r\n    padding: 12px 0px;\r\n    width: 25%;\r\n    text-decoration: none;\r\n    font-size: 17px;\r\n}\r\n\r\n/* Add a color to the active/current link */\r\n\r\n.active {\r\n    background-color: #F2C843;\r\n    color: black;\r\n}\r\n\r\n.collapse {\r\n    display: none;\r\n  }\r\n\r\n.collapsing {\r\n    position: relative;\r\n    height: 0;\r\n    overflow: hidden;\r\n    padding: 0 0 0 0;\r\n    transition-property: height, visibility;\r\n    transition-duration: 0.35s;\r\n    transition-timing-function: ease;\r\n  }\r\n\r\n.show {\r\n    display: block !important;\r\n  }\r\n\r\n.barDealsSectionBelow {\r\n    margin-top: -20px;\r\n    padding: 0 0 0 0;\r\n    border-bottom:1px black solid;\r\n  }\r\n\r\n.upcomingTitle {\r\n    margin-top: 10px;\r\n    border-radius: 10px 10px 10px 10px;\r\n    position: relative;\r\n    width: 100%;\r\n    right: 0%;\r\n    background-color: #333;\r\n    overflow: hidden;\r\n  }\r\n\r\n.upcomingTitleAst  {\r\n    float: left;\r\n    color: #f2f2f2;\r\n    text-align: left;\r\n    padding: 12px 0px;\r\n    width: 100%;\r\n    text-decoration: none;\r\n    font-size: 17px;\r\n}\r\n\r\n.right-pointing-triangle::after {\r\n  content: \"\\25B6 \\FE0E\";\r\n}\r\n\r\n.currentBarCover {\r\n    text-align: center; \r\n    margin-top: 12px;\r\n    padding: 0 0 3px 0;\r\n    line-height:80%;\r\n    font-size:28px;\r\n}\r\n\r\n.currentBarCover span{\r\n    font-size: 16px;\r\n}\r\n\r\n.reportCoverButton {\r\n    margin: 10px 0px 10px 0; width:300px; font-size:14px;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9jb21wb25lbnRzL2Jhci1wYWdlL2Jhci1wYWdlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxrQkFBa0I7SUFDbEIsT0FBTztJQUNQLFVBQVU7SUFDVixTQUFTO0lBQ1QsVUFBVTtBQUNkOztBQUVBO0lBQ0ksV0FBVztBQUNmOztBQUVBLHVEQUF1RDs7QUFDdkQ7SUFDSSxrQkFBa0I7SUFDbEIsV0FBVztJQUNYLFNBQVM7SUFDVCxzQkFBc0I7SUFDdEIsZ0JBQWdCO0VBQ2xCOztBQUVGO0lBQ0ksaUJBQWlCO0lBQ2pCLGtCQUFrQjtBQUN0Qjs7QUFFQSw4Q0FBOEM7O0FBQzlDO0lBQ0ksV0FBVztJQUNYLGNBQWM7SUFDZCxrQkFBa0I7SUFDbEIsaUJBQWlCO0lBQ2pCLFVBQVU7SUFDVixxQkFBcUI7SUFDckIsZUFBZTtBQUNuQjs7QUFHQSwyQ0FBMkM7O0FBQzNDO0lBQ0kseUJBQXlCO0lBQ3pCLFlBQVk7QUFDaEI7O0FBRUE7SUFDSSxhQUFhO0VBQ2Y7O0FBR0E7SUFDRSxrQkFBa0I7SUFDbEIsU0FBUztJQUNULGdCQUFnQjtJQUNoQixnQkFBZ0I7SUFHaEIsdUNBQXVDO0lBR3ZDLDBCQUEwQjtJQUcxQixnQ0FBZ0M7RUFDbEM7O0FBRUE7SUFDRSx5QkFBeUI7RUFDM0I7O0FBRUE7SUFDRSxpQkFBaUI7SUFDakIsZ0JBQWdCO0lBQ2hCLDZCQUE2QjtFQUMvQjs7QUFHQTtJQUNFLGdCQUFnQjtJQUNoQixrQ0FBa0M7SUFDbEMsa0JBQWtCO0lBQ2xCLFdBQVc7SUFDWCxTQUFTO0lBQ1Qsc0JBQXNCO0lBQ3RCLGdCQUFnQjtFQUNsQjs7QUFFQTtJQUNFLFdBQVc7SUFDWCxjQUFjO0lBQ2QsZ0JBQWdCO0lBQ2hCLGlCQUFpQjtJQUNqQixXQUFXO0lBQ1gscUJBQXFCO0lBQ3JCLGVBQWU7QUFDbkI7O0FBSUE7RUFDRSxzQkFBc0I7QUFDeEI7O0FBRUE7SUFDSSxrQkFBa0I7SUFDbEIsZ0JBQWdCO0lBQ2hCLGtCQUFrQjtJQUNsQixlQUFlO0lBQ2YsY0FBYztBQUNsQjs7QUFFQTtJQUNJLGVBQWU7QUFDbkI7O0FBRUE7SUFDSSx1QkFBdUIsRUFBRSxXQUFXLEVBQUUsY0FBYztBQUN4RCIsImZpbGUiOiJfY29tcG9uZW50cy9iYXItcGFnZS9iYXItcGFnZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJhclBhZ2VMaWtlIHtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRvcDo5cHg7XHJcbiAgICByaWdodDoyMHB4O1xyXG4gICAgei1pbmRleDo1O1xyXG4gICAgd2lkdGg6MzNweDtcclxufVxyXG5cclxuLmJhclBhZ2VMaWtlIGltZyB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufVxyXG5cclxuLyogQWRkIGEgYmxhY2sgYmFja2dyb3VuZCBjb2xvciB0byB0aGUgdG9wIG5hdmlnYXRpb24gKi9cclxuLnRvcG5hdiB7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIHJpZ2h0OiAwJTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICMzMzM7XHJcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xyXG4gIH1cclxuXHJcbi5hZGp1c3Qge1xyXG4gICAgcGFkZGluZy1sZWZ0OiAwcHg7XHJcbiAgICBwYWRkaW5nLXJpZ2h0OiAwcHg7XHJcbn1cclxuICBcclxuLyogU3R5bGUgdGhlIGxpbmtzIGluc2lkZSB0aGUgbmF2aWdhdGlvbiBiYXIgKi9cclxuLmhvbGRlciAge1xyXG4gICAgZmxvYXQ6IGxlZnQ7XHJcbiAgICBjb2xvcjogI2YyZjJmMjtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIHBhZGRpbmc6IDEycHggMHB4O1xyXG4gICAgd2lkdGg6IDI1JTtcclxuICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcclxuICAgIGZvbnQtc2l6ZTogMTdweDtcclxufVxyXG5cclxuXHJcbi8qIEFkZCBhIGNvbG9yIHRvIHRoZSBhY3RpdmUvY3VycmVudCBsaW5rICovXHJcbi5hY3RpdmUge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI0YyQzg0MztcclxuICAgIGNvbG9yOiBibGFjaztcclxufVxyXG5cclxuLmNvbGxhcHNlIHtcclxuICAgIGRpc3BsYXk6IG5vbmU7XHJcbiAgfVxyXG5cclxuXHJcbiAgLmNvbGxhcHNpbmcge1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgaGVpZ2h0OiAwO1xyXG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcclxuICAgIHBhZGRpbmc6IDAgMCAwIDA7XHJcbiAgICAtd2Via2l0LXRyYW5zaXRpb24tcHJvcGVydHk6IGhlaWdodCwgdmlzaWJpbGl0eTtcclxuICAgIC1vLXRyYW5zaXRpb24tcHJvcGVydHk6IGhlaWdodCwgdmlzaWJpbGl0eTtcclxuICAgIHRyYW5zaXRpb24tcHJvcGVydHk6IGhlaWdodCwgdmlzaWJpbGl0eTtcclxuICAgIC13ZWJraXQtdHJhbnNpdGlvbi1kdXJhdGlvbjogMC4zNXM7XHJcbiAgICAtby10cmFuc2l0aW9uLWR1cmF0aW9uOiAwLjM1cztcclxuICAgIHRyYW5zaXRpb24tZHVyYXRpb246IDAuMzVzO1xyXG4gICAgLXdlYmtpdC10cmFuc2l0aW9uLXRpbWluZy1mdW5jdGlvbjogZWFzZTtcclxuICAgIC1vLXRyYW5zaXRpb24tdGltaW5nLWZ1bmN0aW9uOiBlYXNlO1xyXG4gICAgdHJhbnNpdGlvbi10aW1pbmctZnVuY3Rpb246IGVhc2U7XHJcbiAgfVxyXG5cclxuICAuc2hvdyB7XHJcbiAgICBkaXNwbGF5OiBibG9jayAhaW1wb3J0YW50O1xyXG4gIH1cclxuXHJcbiAgLmJhckRlYWxzU2VjdGlvbkJlbG93IHtcclxuICAgIG1hcmdpbi10b3A6IC0yMHB4O1xyXG4gICAgcGFkZGluZzogMCAwIDAgMDtcclxuICAgIGJvcmRlci1ib3R0b206MXB4IGJsYWNrIHNvbGlkO1xyXG4gIH1cclxuXHJcblxyXG4gIC51cGNvbWluZ1RpdGxlIHtcclxuICAgIG1hcmdpbi10b3A6IDEwcHg7XHJcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4IDEwcHggMTBweCAxMHB4O1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICByaWdodDogMCU7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMzMzO1xyXG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcclxuICB9XHJcblxyXG4gIC51cGNvbWluZ1RpdGxlQXN0ICB7XHJcbiAgICBmbG9hdDogbGVmdDtcclxuICAgIGNvbG9yOiAjZjJmMmYyO1xyXG4gICAgdGV4dC1hbGlnbjogbGVmdDtcclxuICAgIHBhZGRpbmc6IDEycHggMHB4O1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XHJcbiAgICBmb250LXNpemU6IDE3cHg7XHJcbn1cclxuXHJcblxyXG5cclxuLnJpZ2h0LXBvaW50aW5nLXRyaWFuZ2xlOjphZnRlciB7XHJcbiAgY29udGVudDogXCJcXDI1QjYgXFxGRTBFXCI7XHJcbn1cclxuXHJcbi5jdXJyZW50QmFyQ292ZXIge1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyOyBcclxuICAgIG1hcmdpbi10b3A6IDEycHg7XHJcbiAgICBwYWRkaW5nOiAwIDAgM3B4IDA7XHJcbiAgICBsaW5lLWhlaWdodDo4MCU7XHJcbiAgICBmb250LXNpemU6MjhweDtcclxufVxyXG5cclxuLmN1cnJlbnRCYXJDb3ZlciBzcGFue1xyXG4gICAgZm9udC1zaXplOiAxNnB4O1xyXG59XHJcblxyXG4ucmVwb3J0Q292ZXJCdXR0b24ge1xyXG4gICAgbWFyZ2luOiAxMHB4IDBweCAxMHB4IDA7IHdpZHRoOjMwMHB4OyBmb250LXNpemU6MTRweDtcclxufSJdfQ== */"
 
 /***/ }),
 
@@ -41,7 +41,7 @@ module.exports = ".barPageLike {\r\n    position: absolute;\r\n    top:9px;\r\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"slideInPage\" [@slideInBarTrigger]=\"slideInBar\">\r\n  <app-full-loading *ngIf=\"isLoading\"></app-full-loading>\r\n\r\n  <div id=\"slider_maincontent\">\r\n\r\n    <h2 class=\"page_title_slide\">{{barName}}</h2>\r\n    <span class=\"barPageLike\" (click)=\"likeBar()\">\r\n      <img id=\"like\"\r\n        [src]=\"checkLikedStatus()? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'\"\r\n        alt=\"\" title=\"\" />\r\n    </span>\r\n\r\n    <ul id=\"imageGallery\" style=\"margin-bottom: -12px;\">\r\n      <li data-thumb=\"img/thumb/cS-1.jpg\" data-src=\"img/largeImage.jpg\">\r\n        <img [src]=\"barPictureUrl\" (load)=\"imageLoaded()\" width=\"100%\" id=\"barPageImage1\" />\r\n      </li>\r\n    </ul>\r\n\r\n    <div class=\"page_single layout_fullwidth_padding\" style=\"margin-bottom: 40px;\">\r\n\r\n\r\n      <div class=\"topnav\">\r\n        <div class=\"adjust\">\r\n          <div (click)=\"setActiveInfoPage(0)\" [className]=\"activeNavIcon(0)? 'holder active'  : 'holder'\">\r\n            <span>Deals</span>\r\n          </div>\r\n          <div (click)=\"setActiveInfoPage(1)\" [className]=\"activeNavIcon(1)? 'holder active'  : 'holder'\">\r\n            <span>Cover</span>\r\n          </div>\r\n          <div (click)=\"setActiveInfoPage(2)\" [className]=\"activeNavIcon(2)? 'holder active'  : 'holder'\">\r\n            <span>Friends</span>\r\n          </div>\r\n          <div (click)=\"setActiveInfoPage(3)\" [className]=\"activeNavIcon(3)? 'holder active'  : 'holder'\">\r\n            <span>Map</span>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <!-- <blockquote style=\"display:none\">\r\n        This mobile template that can be used to create a mobile website, a mobile web app, or even a native mobile app. The design\r\n        is using a full width layout that works perfectly on tablets and desktop also.\r\n        <span>SINDEVO.COM</span>\r\n      </blockquote> -->\r\n\r\n\r\n      <!-- BAR DEALS -->\r\n      <div *ngIf=\"activeInfoPage==0\" style=\"padding-top: 50px;\">\r\n        <div class=\"barDealsSection\">\r\n          <h3 style=\"padding: 0 0 0 0;\">\r\n            <span>Deals & Events - {{dayOfTheWeek}}</span>\r\n          </h3>\r\n        </div>\r\n\r\n\r\n\r\n        <div *ngIf=\"!noDailyDeals\">\r\n\r\n\r\n\r\n          <!-- Head Daily Deals -->\r\n          <div id=\"headDeals\" style=\"\">\r\n            <ul class=\"features_list\" *ngFor=\"let dailyDeal of headDailyDeals\"\r\n              style=\"padding: 0px 0 0 0; position:relative\">\r\n              <li>\r\n                <div style=\"padding-bottom: 10px;\">\r\n                  <span class=\"features_list_span\">\r\n                    <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\r\n                    <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\r\n                  </span>\r\n                </div>\r\n              </li>\r\n            </ul>\r\n          </div>\r\n\r\n\r\n          <!-- Tail Daily Deals -->\r\n          <div id=\"demo\" class=\"collapse\">\r\n            <ul class=\"features_list\" *ngFor=\"let dailyDeal of tailDailyDeals\"\r\n              style=\"padding: 0 0 0px 0; position: relative;\">\r\n              <li>\r\n                <div style=\"padding-bottom: 10px;\">\r\n                  <span class=\"features_list_span\">\r\n                    <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\r\n                    <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\r\n                  </span>\r\n                </div>\r\n              </li>\r\n            </ul>\r\n          </div>\r\n\r\n\r\n\r\n\r\n        </div>\r\n\r\n\r\n        <span style=\"margin-top: 10px;\" data-toggle=\"collapse\" data-target=\"#demo\" *ngIf=\"!noDailyDeals && tailDailyDeals.length!=0\"\r\n          (click)=\"handleExpandButtonClick()\" class=\"btn btn--full\">{{expandDealsButtonText}}</span>\r\n\r\n        <h5 *ngIf=\"noDailyDeals\">There are no deals or events for today.</h5>\r\n\r\n\r\n        <div class=\"barDealsSectionBelow\">\r\n          <h3 style=\"padding: 0 0 0 0;\">\r\n            <span>Upcoming Deals & Events</span>\r\n          </h3>\r\n        </div>\r\n\r\n\r\n\r\n\r\n\r\n        <div *ngFor=\"let upcomingDeal of upcomingDealsHead\">\r\n          <div class=\"upcomingTitle\" (click) = \"upcomingDeal.expand()\" data-toggle=\"collapse\" [attr.data-target]=\"'#' + upcomingDeal.dayOfTheWeek\">\r\n            <div class=\"upcomingTitleAst\">\r\n              <span>  <span [innerHtml]=\"upcomingDeal.arrowText\" style=\"padding: 0 8px 0 13px;\"> </span> {{upcomingDeal.dayOfTheWeek}} </span>\r\n            </div>\r\n          </div>\r\n\r\n          <div [attr.id]=\"upcomingDeal.dayOfTheWeek\" class=\"collapse\">\r\n            <div id=\"upcomingDeals\" style=\"margin: 0 20px 0 20px;\">\r\n              <ul class=\"features_list\" *ngFor=\"let dailyDeal of upcomingDeal.deals\"\r\n                style=\"padding: 0px 0 0 0; position:relative\">\r\n                <li>\r\n                  <div style=\"padding-bottom: 10px;\">\r\n                    <span class=\"features_list_span\">\r\n                      <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\r\n                      <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\r\n                    </span>\r\n                  </div>\r\n                </li>\r\n              </ul>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"upcomingCollapse\" class=\"collapse\">\r\n          <div *ngFor=\"let upcomingDeal of upcomingDealsTail\">\r\n            <div class=\"upcomingTitle\" (click)=\"upcomingDeal.expand()\" data-toggle=\"collapse\"\r\n              [attr.data-target]=\"'#' + upcomingDeal.dayOfTheWeek\">\r\n              <div class=\"upcomingTitleAst\">\r\n                <span> <span [innerHtml]=\"upcomingDeal.arrowText\" style=\"padding: 0 8px 0 13px;\"> </span>\r\n                  {{upcomingDeal.dayOfTheWeek}} </span>\r\n              </div>\r\n            </div>\r\n        \r\n            <div [attr.id]=\"upcomingDeal.dayOfTheWeek\" class=\"collapse\">\r\n              <div id=\"upcomingDeals\" style=\"margin: 0 20px 0 20px;\">\r\n                <ul class=\"features_list\" *ngFor=\"let dailyDeal of upcomingDeal.deals\"\r\n                  style=\"padding: 0px 0 0 0; position:relative\">\r\n                  <li>\r\n                    <div style=\"padding-bottom: 10px;\">\r\n                      <span class=\"features_list_span\">\r\n                        <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\r\n                        <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\r\n                      </span>\r\n                    </div>\r\n                  </li>\r\n                </ul>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n\r\n        <span style=\"margin-top: 10px;\" data-toggle=\"collapse\" data-target=\"#upcomingCollapse\" *ngIf=\"upcomingDealsTail.length!=0\"\r\n          (click)=\"handleUpcomingExpandButtonClick()\" class=\"btn btn--full\">{{expandUpcomingText}}</span>\r\n        \r\n\r\n\r\n\r\n      </div>\r\n\r\n\r\n      <!-- BAR COVER -->\r\n      <div *ngIf=\"activeInfoPage==1\" style=\"padding-top:50px;\">\r\n        <p>Estimated Cover is {{currentEstCover}}</p>\r\n      </div>\r\n\r\n      <button (click)=\"reportCover(5)\">Report Cover</button>\r\n\r\n      <h5>Projected Cover by Hour</h5>\r\n\r\n\r\n\r\n    </div>\r\n\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"slideInPage\" [@slideInBarTrigger]=\"slideInBar\">\r\n  <app-full-loading *ngIf=\"isLoading\"></app-full-loading>\r\n\r\n  <div id=\"slider_maincontent\">\r\n\r\n    <h2 class=\"page_title_slide\">{{barName}}</h2>\r\n    <span class=\"barPageLike\" (click)=\"likeBar()\">\r\n      <img id=\"like\"\r\n        [src]=\"checkLikedStatus()? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'\"\r\n        alt=\"\" title=\"\" />\r\n    </span>\r\n\r\n    <ul id=\"imageGallery\" style=\"margin-bottom: -12px;\">\r\n      <li data-thumb=\"img/thumb/cS-1.jpg\" data-src=\"img/largeImage.jpg\">\r\n        <img [src]=\"barPictureUrl\" (load)=\"imageLoaded()\" width=\"100%\" id=\"barPageImage1\" />\r\n      </li>\r\n    </ul>\r\n\r\n    <div class=\"page_single layout_fullwidth_padding\" style=\"margin-bottom: 40px;\">\r\n\r\n\r\n      <div class=\"topnav\">\r\n        <div class=\"adjust\">\r\n          <div (click)=\"setActiveInfoPage(0)\" [className]=\"activeNavIcon(0)? 'holder active'  : 'holder'\">\r\n            <span>Deals</span>\r\n          </div>\r\n          <div (click)=\"setActiveInfoPage(1)\" [className]=\"activeNavIcon(1)? 'holder active'  : 'holder'\">\r\n            <span>Cover</span>\r\n          </div>\r\n          <div (click)=\"setActiveInfoPage(2)\" [className]=\"activeNavIcon(2)? 'holder active'  : 'holder'\">\r\n            <span>Friends</span>\r\n          </div>\r\n          <div (click)=\"setActiveInfoPage(3)\" [className]=\"activeNavIcon(3)? 'holder active'  : 'holder'\">\r\n            <span>Map</span>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <!-- <blockquote style=\"display:none\">\r\n        This mobile template that can be used to create a mobile website, a mobile web app, or even a native mobile app. The design\r\n        is using a full width layout that works perfectly on tablets and desktop also.\r\n        <span>SINDEVO.COM</span>\r\n      </blockquote> -->\r\n\r\n\r\n      <!-- BAR DEALS -->\r\n      <div *ngIf=\"activeInfoPage==0\" style=\"padding-top: 50px;\">\r\n        <div class=\"barDealsSection\">\r\n          <h3 style=\"padding: 0 0 0 0;\">\r\n            <span>Deals & Events - {{dayOfTheWeek}}</span>\r\n          </h3>\r\n        </div>\r\n\r\n\r\n\r\n        <div *ngIf=\"!noDailyDeals\">\r\n\r\n\r\n\r\n          <!-- Head Daily Deals -->\r\n          <div id=\"headDeals\" style=\"\">\r\n            <ul class=\"features_list\" *ngFor=\"let dailyDeal of headDailyDeals\"\r\n              style=\"padding: 0px 0 0 0; position:relative\">\r\n              <li>\r\n                <div style=\"padding-bottom: 10px;\">\r\n                  <span class=\"features_list_span\">\r\n                    <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\r\n                    <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\r\n                  </span>\r\n                </div>\r\n              </li>\r\n            </ul>\r\n          </div>\r\n\r\n\r\n          <!-- Tail Daily Deals -->\r\n          <div id=\"demo\" class=\"collapse\">\r\n            <ul class=\"features_list\" *ngFor=\"let dailyDeal of tailDailyDeals\"\r\n              style=\"padding: 0 0 0px 0; position: relative;\">\r\n              <li>\r\n                <div style=\"padding-bottom: 10px;\">\r\n                  <span class=\"features_list_span\">\r\n                    <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\r\n                    <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\r\n                  </span>\r\n                </div>\r\n              </li>\r\n            </ul>\r\n          </div>\r\n\r\n\r\n\r\n\r\n        </div>\r\n\r\n\r\n        <span style=\"margin-top: 10px;\" data-toggle=\"collapse\" data-target=\"#demo\" *ngIf=\"!noDailyDeals && tailDailyDeals.length!=0\"\r\n          (click)=\"handleExpandButtonClick()\" class=\"btn btn--full\">{{expandDealsButtonText}}</span>\r\n\r\n        <h5 *ngIf=\"noDailyDeals\">There are no deals or events for today.</h5>\r\n\r\n\r\n        <div class=\"barDealsSectionBelow\">\r\n          <h3 style=\"padding: 0 0 0 0;\">\r\n            <span>Upcoming Deals & Events</span>\r\n          </h3>\r\n        </div>\r\n\r\n\r\n\r\n\r\n\r\n        <div *ngFor=\"let upcomingDeal of upcomingDealsHead\">\r\n          <div class=\"upcomingTitle\" (click) = \"upcomingDeal.expand()\" data-toggle=\"collapse\" [attr.data-target]=\"'#' + upcomingDeal.dayOfTheWeek\">\r\n            <div class=\"upcomingTitleAst\">\r\n              <span>  <span [innerHtml]=\"upcomingDeal.arrowText\" style=\"padding: 0 8px 0 13px;\"> </span> {{upcomingDeal.dayOfTheWeek}} </span>\r\n            </div>\r\n          </div>\r\n\r\n          <div [attr.id]=\"upcomingDeal.dayOfTheWeek\" class=\"collapse\">\r\n            <div id=\"upcomingDeals\" style=\"margin: 0 20px 0 20px;\">\r\n              <ul class=\"features_list\" *ngFor=\"let dailyDeal of upcomingDeal.deals\"\r\n                style=\"padding: 0px 0 0 0; position:relative\">\r\n                <li>\r\n                  <div style=\"padding-bottom: 10px;\">\r\n                    <span class=\"features_list_span\">\r\n                      <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\r\n                      <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\r\n                    </span>\r\n                  </div>\r\n                </li>\r\n              </ul>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n        <div id=\"upcomingCollapse\" class=\"collapse\">\r\n          <div *ngFor=\"let upcomingDeal of upcomingDealsTail\">\r\n            <div class=\"upcomingTitle\" (click)=\"upcomingDeal.expand()\" data-toggle=\"collapse\"\r\n              [attr.data-target]=\"'#' + upcomingDeal.dayOfTheWeek\">\r\n              <div class=\"upcomingTitleAst\">\r\n                <span> <span [innerHtml]=\"upcomingDeal.arrowText\" style=\"padding: 0 8px 0 13px;\"> </span>\r\n                  {{upcomingDeal.dayOfTheWeek}} </span>\r\n              </div>\r\n            </div>\r\n        \r\n            <div [attr.id]=\"upcomingDeal.dayOfTheWeek\" class=\"collapse\">\r\n              <div id=\"upcomingDeals\" style=\"margin: 0 20px 0 20px;\">\r\n                <ul class=\"features_list\" *ngFor=\"let dailyDeal of upcomingDeal.deals\"\r\n                  style=\"padding: 0px 0 0 0; position:relative\">\r\n                  <li>\r\n                    <div style=\"padding-bottom: 10px;\">\r\n                      <span class=\"features_list_span\">\r\n                        <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\r\n                        <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\r\n                      </span>\r\n                    </div>\r\n                  </li>\r\n                </ul>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n\r\n\r\n        <span style=\"margin-top: 10px;\" data-toggle=\"collapse\" data-target=\"#upcomingCollapse\" *ngIf=\"upcomingDealsTail.length!=0\"\r\n          (click)=\"handleUpcomingExpandButtonClick()\" class=\"btn btn--full\">{{expandUpcomingText}}</span>\r\n        \r\n\r\n\r\n\r\n      </div>\r\n\r\n\r\n      <!-- BAR COVER -->\r\n      <div *ngIf=\"activeInfoPage==1\" style=\"padding-top:50px;\">\r\n        <h3 class=\"currentBarCover\">${{currentEstCover}}<br /><span>Current Reported Cover</span></h3>\r\n        \r\n        <div style=\"text-align: center\">\r\n            <span style=\"margin: 10px 0px 10px 0; width:300px; font-size:14px;\" (click)=\"reportCover(5)\" class=\"btn btn--full\">Report Cover</span>\r\n        </div>\r\n\r\n        <h5 style=\"padding: 0 0 0px 0; border-bottom: 1px black solid;\">Projected Cover by Hour</h5>\r\n        <div style=\"margin: 7px 10px 0 10px;\">\r\n            <ul class=\"responsive_table\" style=\"width:100%; text-align: center;\">\r\n                <li class=\"table_row\" style=\"background-color: #636158;  color: white;\">\r\n                  <div class=\"table_section_small\">Hour</div>\r\n                  <div class=\"table_section\">Price</div>\r\n                  <div class=\"table_section\">Time In Line</div>\r\n                </li>\r\n                <div *ngIf=\"showHourlyEstimates\">\r\n                    <li class=\"table_row\" *ngFor=\"let est of hourlyEstimates\" style=\"background-color:#f5f5f4;\">\r\n                        <div class=\"table_section_small\">{{est.hourString}}</div>\r\n                        <div class=\"table_section\">${{est.cover}}</div>\r\n                        <div class=\"table_section\">{{est.waitString}}</div>\r\n                      </li>\r\n                </div>\r\n                \r\n                \r\n              </ul>\r\n        </div>\r\n        \r\n      </div>\r\n\r\n      \r\n\r\n\r\n\r\n    </div>\r\n\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -88,17 +88,20 @@ var BarPageComponent = /** @class */ (function () {
         this.headDailyDeals = [];
         this.tailDailyDeals = [];
         this.allDailyDeals = [];
-        this.currentEstCover = 0;
-        //Cover Timing
-        this.numberSinceRefresh = 0;
         this.upcomingDeals = [];
         this.upcomingDealsHead = [];
         this.upcomingDealsTail = [];
+        this.currentEstCover = 0;
+        this.hourlyEstimates = [];
+        this.showHourlyEstimates = false;
+        //Cover Timing
+        this.numberSinceRefresh = 0;
         this.db = _dbA;
         this.authService = _authService;
         this.dateDirective = _dateDirective;
         //this.dayOfTheWeek = _dateDirective.getDayOfWeek();
         this.dayOfTheWeek = "Wednesday";
+        setInterval(function () { this.numberSinceRefresh = 0; }, 30000);
     }
     Object.defineProperty(BarPageComponent.prototype, "barPageIdChange", {
         set: function (barId) {
@@ -132,13 +135,6 @@ var BarPageComponent = /** @class */ (function () {
             _this.barPictureUrl = _this.barPage.barPicture1Url;
             _this.barName = _this.barPage.barName;
             _this.getDailyDeals();
-            function startRefreshTimer(repeat) {
-                setTimeout(function () {
-                    this.numberSinceRefresh = 0;
-                    repeat();
-                }, 30000);
-            }
-            startRefreshTimer(startRefreshTimer);
         });
     };
     BarPageComponent.prototype.imageLoaded = function () {
@@ -263,13 +259,14 @@ var BarPageComponent = /** @class */ (function () {
             _this.coverResult = result;
             _this.cleanCoverDatabase();
             _this.estimateCurrentCover();
+            _this.loadHourlyEstimates();
         });
     };
     BarPageComponent.prototype.coverDateSetup = function () {
         this.currentDate = new Date;
         var date = this.currentDate;
         this.currentHour = date.getHours();
-        this.currentHourString = this.currentHour.toString();
+        this.currentHourString = this.currentHour.toString() + 'time';
         if (this.currentHour < 5) {
             this.coverDayOfTheWeek = this.dateDirective.backOneDay(this.dayOfTheWeek);
         }
@@ -311,7 +308,7 @@ var BarPageComponent = /** @class */ (function () {
         var valuesNight = JSON.parse(this.coverResult.values);
         //if this is empty use historical values
         if (valuesNight.length == 0) {
-            var historicalValues = JSON.parse(this.coverResult.hourlyEstimates[this.currentHourString]);
+            var historicalValues = JSON.parse(this.coverResult.hourlyEstimates[this.currentHourString].cover);
             this.currentEstCover = this.getMode(historicalValues);
             return;
         }
@@ -329,6 +326,52 @@ var BarPageComponent = /** @class */ (function () {
                 modeHour = this.getMode(valuesHour);
         }
         this.currentEstCover = Math.max(modeHour, modeNight);
+    };
+    BarPageComponent.prototype.loadHourlyEstimates = function () {
+        // var hourPullArray = ["8","9","10","11","12","1","2","3"];
+        // hourPullArray.forEach(item => {
+        //   var insert =
+        // });
+        var _this = this;
+        this.hourlyEstimates = [];
+        var estimateArray = Object.keys(this.coverResult.hourlyEstimates).map(function (key) { return _this.coverResult.hourlyEstimates[key]; });
+        estimateArray.forEach(function (result) {
+            var insert = new _models__WEBPACK_IMPORTED_MODULE_7__["HourlyEstimate"]();
+            var coverMode = _this.getMode(JSON.parse(result.cover));
+            insert.cover = coverMode;
+            var waitMode = _this.getMode(JSON.parse(result.waitTimes));
+            insert.wait = waitMode;
+            if (insert.wait == 0)
+                insert.waitString = "No Line";
+            else
+                insert.waitString = insert.wait.toString() + ' Minutes';
+            insert.hour = result.hour;
+            if (insert.hour == 0)
+                insert.hourString = "12am";
+            else if (insert.hour < 5) {
+                insert.hourString = insert.hour.toString() + 'am';
+            }
+            else if (insert.hour > 12) {
+                var num = insert.hour - 12;
+                insert.hourString = num.toString() + 'pm';
+            }
+            else
+                insert.hourString = insert.hour.toString() + 'pm';
+            if (insert.hour < 4 || insert.hour > 19) {
+                _this.hourlyEstimates.push(insert);
+            }
+            _this.hourlyEstimates.sort(function (a, b) {
+                if (a.hour < 5 && b.hour < 5)
+                    return a.hour - b.hour;
+                else if (a.hour < 5)
+                    return 1;
+                else if (b.hour < 5)
+                    return -1;
+                return a.hour - b.hour;
+            });
+        });
+        console.log(this.hourlyEstimates);
+        this.showHourlyEstimates = true;
     };
     BarPageComponent.prototype.getMode = function (array) {
         var frequency = {}; // array of frequency.
@@ -355,7 +398,7 @@ var BarPageComponent = /** @class */ (function () {
         }
         //TODO add logic to make sure dates arent messed up if user waits too long to report
         this.coverDateSetup();
-        var estimateArray = JSON.parse(this.coverResult.hourlyEstimates[this.currentHourString]);
+        var estimateArray = JSON.parse(this.coverResult.hourlyEstimates[this.currentHourString].cover);
         //If length is greater than 30 wipe it and add 5 reps for weighting
         if (estimateArray.length > 30) {
             estimateArray = [];
@@ -365,11 +408,11 @@ var BarPageComponent = /** @class */ (function () {
         }
         else
             estimateArray.push(num);
-        this.coverResult.hourlyEstimates[this.currentHourString] = this.convertArrayJson(estimateArray);
+        this.coverResult.hourlyEstimates[this.currentHourString].cover = this.convertArrayJson(estimateArray);
         var valuesArray = JSON.parse(this.coverResult.values);
         valuesArray.push(num);
         this.coverResult.values = this.convertArrayJson(valuesArray);
-        this.coverResult.lastHour = this.currentHourString;
+        this.coverResult.lastHour = this.currentHour.toString;
         var hoursArray = JSON.parse(this.coverResult.hourValues);
         hoursArray.push(num);
         this.coverResult.hourValues = this.convertArrayJson(hoursArray);
@@ -874,6 +917,28 @@ var BarCard = /** @class */ (function () {
     function BarCard() {
     }
     return BarCard;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/_models/HourlyEstimate.ts":
+/*!*******************************************!*\
+  !*** ./src/app/_models/HourlyEstimate.ts ***!
+  \*******************************************/
+/*! exports provided: HourlyEstimate */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HourlyEstimate", function() { return HourlyEstimate; });
+var HourlyEstimate = /** @class */ (function () {
+    function HourlyEstimate() {
+        this.cover = null;
+        this.cover = null;
+    }
+    return HourlyEstimate;
 }());
 
 
@@ -1947,7 +2012,7 @@ var CustomReuseStrategy = /** @class */ (function () {
 /*!***************************!*\
   !*** ./src/app/models.ts ***!
   \***************************/
-/*! exports provided: BarCard, UpcomingDeal */
+/*! exports provided: BarCard, UpcomingDeal, HourlyEstimate */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1957,6 +2022,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _models_UpcomingDeal_Model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_models/UpcomingDeal.Model */ "./src/app/_models/UpcomingDeal.Model.ts");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UpcomingDeal", function() { return _models_UpcomingDeal_Model__WEBPACK_IMPORTED_MODULE_1__["UpcomingDeal"]; });
+
+/* harmony import */ var _models_HourlyEstimate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_models/HourlyEstimate */ "./src/app/_models/HourlyEstimate.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "HourlyEstimate", function() { return _models_HourlyEstimate__WEBPACK_IMPORTED_MODULE_2__["HourlyEstimate"]; });
+
 
 
 
