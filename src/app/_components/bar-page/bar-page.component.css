@@ -115,3 +115,80 @@
 .reportCoverButton {
     margin: 10px 0px 10px 0; width:300px; font-size:14px;
 }
+
+.modal-window {
+    position: fixed;
+    background-color: rgba(200, 200, 200, 0.75);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    opacity: 1;
+    pointer-events: auto;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+  
+  .modal-window:target {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .modal-window>div {
+    width: 70%;
+    border-radius: 10px 10px 10px 10px;
+    position: relative;
+    margin: 50% 0 0 7%;
+    padding: 2rem;
+    background: #fff;
+    color: #444;
+  }
+  
+  .modal-window header {
+    font-weight: bold;
+  }
+  
+  .modal-close {
+    color: #aaa;
+    line-height: 50px;
+    font-size: 30px;
+    margin-left: 10px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 70px;
+    text-decoration: none;
+  }
+  
+  .modal-close:hover {
+    color: #000;
+  }
+  
+  .modal-window h2 {
+    font-size: 150%;
+    margin: 0 0 15px;
+    padding: 0 0 0 0;
+  }
+  .modal-window h1 {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0 0 15px;
+    padding: 0 0 0 0;
+  }
+
+  .minus{
+      position: absolute;
+      left: 26%;
+      top: 38%;
+      width: 10%;
+  }
+
+  .plus{
+    position: absolute;
+    right: 26%;
+    top: 38%;
+    width: 10%;
+  }

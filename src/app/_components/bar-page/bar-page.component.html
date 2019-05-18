@@ -5,8 +5,7 @@
 
     <h2 class="page_title_slide">{{barName}}</h2>
     <span class="barPageLike" (click)="likeBar()">
-      <img id="like"
-        [src]="checkLikedStatus()? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'"
+      <img id="like" [src]="checkLikedStatus()? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'"
         alt="" title="" />
     </span>
 
@@ -59,8 +58,7 @@
 
           <!-- Head Daily Deals -->
           <div id="headDeals" style="">
-            <ul class="features_list" *ngFor="let dailyDeal of headDailyDeals"
-              style="padding: 0px 0 0 0; position:relative">
+            <ul class="features_list" *ngFor="let dailyDeal of headDailyDeals" style="padding: 0px 0 0 0; position:relative">
               <li>
                 <div style="padding-bottom: 10px;">
                   <span class="features_list_span">
@@ -75,8 +73,7 @@
 
           <!-- Tail Daily Deals -->
           <div id="demo" class="collapse">
-            <ul class="features_list" *ngFor="let dailyDeal of tailDailyDeals"
-              style="padding: 0 0 0px 0; position: relative;">
+            <ul class="features_list" *ngFor="let dailyDeal of tailDailyDeals" style="padding: 0 0 0px 0; position: relative;">
               <li>
                 <div style="padding-bottom: 10px;">
                   <span class="features_list_span">
@@ -111,16 +108,16 @@
 
 
         <div *ngFor="let upcomingDeal of upcomingDealsHead">
-          <div class="upcomingTitle" (click) = "upcomingDeal.expand()" data-toggle="collapse" [attr.data-target]="'#' + upcomingDeal.dayOfTheWeek">
+          <div class="upcomingTitle" (click)="upcomingDeal.expand()" data-toggle="collapse" [attr.data-target]="'#' + upcomingDeal.dayOfTheWeek">
             <div class="upcomingTitleAst">
-              <span>  <span [innerHtml]="upcomingDeal.arrowText" style="padding: 0 8px 0 13px;"> </span> {{upcomingDeal.dayOfTheWeek}} </span>
+              <span>
+                <span [innerHtml]="upcomingDeal.arrowText" style="padding: 0 8px 0 13px;"> </span> {{upcomingDeal.dayOfTheWeek}} </span>
             </div>
           </div>
 
           <div [attr.id]="upcomingDeal.dayOfTheWeek" class="collapse">
             <div id="upcomingDeals" style="margin: 0 20px 0 20px;">
-              <ul class="features_list" *ngFor="let dailyDeal of upcomingDeal.deals"
-                style="padding: 0px 0 0 0; position:relative">
+              <ul class="features_list" *ngFor="let dailyDeal of upcomingDeal.deals" style="padding: 0px 0 0 0; position:relative">
                 <li>
                   <div style="padding-bottom: 10px;">
                     <span class="features_list_span">
@@ -136,18 +133,17 @@
 
         <div id="upcomingCollapse" class="collapse">
           <div *ngFor="let upcomingDeal of upcomingDealsTail">
-            <div class="upcomingTitle" (click)="upcomingDeal.expand()" data-toggle="collapse"
-              [attr.data-target]="'#' + upcomingDeal.dayOfTheWeek">
+            <div class="upcomingTitle" (click)="upcomingDeal.expand()" data-toggle="collapse" [attr.data-target]="'#' + upcomingDeal.dayOfTheWeek">
               <div class="upcomingTitleAst">
-                <span> <span [innerHtml]="upcomingDeal.arrowText" style="padding: 0 8px 0 13px;"> </span>
+                <span>
+                  <span [innerHtml]="upcomingDeal.arrowText" style="padding: 0 8px 0 13px;"> </span>
                   {{upcomingDeal.dayOfTheWeek}} </span>
               </div>
             </div>
-        
+
             <div [attr.id]="upcomingDeal.dayOfTheWeek" class="collapse">
               <div id="upcomingDeals" style="margin: 0 20px 0 20px;">
-                <ul class="features_list" *ngFor="let dailyDeal of upcomingDeal.deals"
-                  style="padding: 0px 0 0 0; position:relative">
+                <ul class="features_list" *ngFor="let dailyDeal of upcomingDeal.deals" style="padding: 0px 0 0 0; position:relative">
                   <li>
                     <div style="padding-bottom: 10px;">
                       <span class="features_list_span">
@@ -165,7 +161,7 @@
 
         <span style="margin-top: 10px;" data-toggle="collapse" data-target="#upcomingCollapse" *ngIf="upcomingDealsTail.length!=0"
           (click)="handleUpcomingExpandButtonClick()" class="btn btn--full">{{expandUpcomingText}}</span>
-        
+
 
 
 
@@ -174,35 +170,63 @@
 
       <!-- BAR COVER -->
       <div *ngIf="activeInfoPage==1" style="padding-top:50px;">
-        <h3 class="currentBarCover">${{currentEstCover}}<br /><span>Current Reported Cover</span></h3>
-        
-        <div style="text-align: center">
-            <span style="margin: 10px 0px 10px 0; width:300px; font-size:14px;" (click)="reportCover(5)" class="btn btn--full">Report Cover</span>
+        <h3 class="currentBarCover">${{currentEstCover}}
+          <br />
+          <span>Current Reported Cover</span>
+        </h3>
+
+        <div (click)="showCoverPopUp = true" style="text-align: center">
+          <span style="margin: 10px 0px 10px 0; width:300px; font-size:14px;" class="btn btn--full">Report Cover</span>
         </div>
+
+        <div *ngIf="showCoverPopUp" style="text-align: center;">
+          <div  id="open-modal" class="modal-window">
+              <div>
+                <a (click)="showCoverPopUp = false" title="Close" class="modal-close">&times;</a>
+                <h2>Report Cover</h2>
+                <div> 
+                  <img *ngIf="showMinus" (click)="decrementReportCover()" class="minus" src="./assets/images/minus.png">  
+                  <h1>${{reportCoverValue}}</h1>
+                  <img *ngIf="showPlus" (click)="incrementReportCover()" class="plus" src="./assets/images/plus.png">  
+                </div>
+
+                <div (click)="reportCover()"  style="text-align: center">
+                    <span style="margin: 7px 0px 0px 0; width:200px; font-size:14px;" class="btn btn--full">Submit</span>
+                </div>
+
+              </div>
+            </div>
+        </div>
+        
 
         <h5 style="padding: 0 0 0px 0; border-bottom: 1px black solid;">Projected Cover by Hour</h5>
         <div style="margin: 7px 10px 0 10px;">
-            <ul class="responsive_table" style="width:100%; text-align: center;">
-                <li class="table_row" style="background-color: #636158;  color: white;">
-                  <div class="table_section_small">Hour</div>
-                  <div class="table_section">Price</div>
-                  <div class="table_section">Time In Line</div>
-                </li>
-                <div *ngIf="showHourlyEstimates">
-                    <li class="table_row" *ngFor="let est of hourlyEstimates" style="background-color:#f5f5f4;">
-                        <div class="table_section_small">{{est.hourString}}</div>
-                        <div class="table_section">${{est.cover}}</div>
-                        <div class="table_section">{{est.waitString}}</div>
-                      </li>
-                </div>
-                
-                
-              </ul>
+          <ul class="responsive_table" style="width:100%; text-align: center; padding-bottom: 30px;">
+            <li class="table_row" style="background-color: #636158;  color: white;">
+              <div class="table_section_small">Hour</div>
+              <div class="table_section">Price</div>
+              <div class="table_section">How Packed?</div>
+            </li>
+            <div *ngIf="showHourlyEstimates">
+              <li class="table_row" *ngFor="let est of hourlyEstimates" style="background-color:#f5f5f4;">
+                <div class="table_section_small">{{est.hourString}}</div>
+                <div class="table_section">${{est.cover}}</div>
+                <div class="table_section">{{est.waitString}}</div>
+              </li>
+            </div>
+
+
+          </ul>
         </div>
+
         
+
+
       </div>
 
-      
+
+
+
 
 
 

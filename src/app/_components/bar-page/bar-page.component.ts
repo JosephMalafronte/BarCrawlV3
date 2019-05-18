@@ -67,9 +67,13 @@ export class BarPageComponent implements OnInit {
   currentEstCover: number = 0;
   hourlyEstimates: HourlyEstimate[] = [];
   showHourlyEstimates: boolean = false;
+  showCoverPopUp: boolean = false;
+  reportCoverValue: number = 0;
+  showPlus: boolean = true;
+  showMinus: boolean = false;
 
   //Cover Timing
-  numberSinceRefresh = 0;
+  numberSinceRefresh:number = 0;
 
   db: AngularFireDatabase;
   authService: AuthService;
@@ -89,7 +93,11 @@ export class BarPageComponent implements OnInit {
     //this.dayOfTheWeek = _dateDirective.getDayOfWeek();
     this.dayOfTheWeek = "Wednesday";
 
-    setInterval(function () {this.numberSinceRefresh = 0;}, 30000);
+    var self = this;
+
+    setInterval(function () {
+      self.numberSinceRefresh = 0;
+    }, 30000);
 
 
   }
@@ -120,7 +128,6 @@ export class BarPageComponent implements OnInit {
     this.clearBarPageData();
 
     this.db.object('barPages/'+this.barPageId.toString()).valueChanges().subscribe(result => {
-      console.log(result);
       this.barPage = result as BarPage;
       this.barPictureUrl = this.barPage.barPicture1Url;
       this.barName = this.barPage.barName;
@@ -225,7 +232,6 @@ export class BarPageComponent implements OnInit {
         this.tailDailyDeals.push(this.allDailyDeals[i]);
       }
       
-      console.log(this.upcomingDeals);
 
     });
 
@@ -286,6 +292,8 @@ export class BarPageComponent implements OnInit {
 
 
     this.db.object('/coverReports/' + this.barPageId.toString() + '/' + this.coverDayOfTheWeek).valueChanges().pipe(take(1)).subscribe(
+    //this.db.object('/coverReports/' + this.barPageId.toString() + '/' + 'Wednesday').valueChanges().pipe(take(1)).subscribe(
+    
       (result: any) => {
 
         this.coverResult = result;
@@ -306,11 +314,14 @@ export class BarPageComponent implements OnInit {
     this.currentHourString = this.currentHour.toString() + 'time';
     
 
-    if(this.currentHour < 5) {
-      this.coverDayOfTheWeek = this.dateDirective.backOneDay(this.dayOfTheWeek);
-    }
-    else this.coverDayOfTheWeek = this.dayOfTheWeek;
 
+    //USE THIS WHEN NOT TESTIng
+    // if(this.currentHour < 5) {
+    //   this.coverDayOfTheWeek = this.dateDirective.backOneDay(this.dayOfTheWeek);
+    // }
+    // else this.coverDayOfTheWeek = this.dayOfTheWeek;
+
+    this.coverDayOfTheWeek = "Wednesday";
 
 
   }
@@ -431,7 +442,6 @@ export class BarPageComponent implements OnInit {
 
     });
 
-    console.log(this.hourlyEstimates);
     
     this.showHourlyEstimates = true;
   }
@@ -458,11 +468,12 @@ export class BarPageComponent implements OnInit {
     return Math.max.apply(Math, modes);
   }
 
-  reportCover(num: number){
+  reportCover(){
+
+    var num = this.reportCoverValue;
 
     this.numberSinceRefresh++;
     if(this.numberSinceRefresh>2){
-      console.log("Please wait 30 seconds");
       return;
     }
 
@@ -485,7 +496,7 @@ export class BarPageComponent implements OnInit {
     var valuesArray: number [] = JSON.parse(this.coverResult.values);
     valuesArray.push(num);
     this.coverResult.values = this.convertArrayJson(valuesArray);
-    this.coverResult.lastHour = this.currentHour.toString;
+    this.coverResult.lastHour = this.currentHour.toString();
     var hoursArray: number [] = JSON.parse(this.coverResult.hourValues);
     hoursArray.push(num);
     this.coverResult.hourValues = this.convertArrayJson(hoursArray);
@@ -493,6 +504,7 @@ export class BarPageComponent implements OnInit {
 
     this.db.object('/coverReports/' + this.barPageId.toString() + '/' + this.coverDayOfTheWeek).set(this.coverResult);
     
+    this.showCoverPopUp = false;
   }
 
 
@@ -514,5 +526,22 @@ export class BarPageComponent implements OnInit {
       returnArray[j] = array[i];
     }
   }
+
+
+  decrementReportCover () {
+    if(this.reportCoverValue == 0) return;
+    if(this.reportCoverValue == 100) this.showPlus = true;
+    this.reportCoverValue = this.reportCoverValue - 5;
+    if(this.reportCoverValue == 0) this.showMinus = false;
+  }
+
+  incrementReportCover () {
+    if(this.reportCoverValue >= 100) return;
+    if(this.reportCoverValue == 0) this.showMinus = true;
+    this.reportCoverValue = this.reportCoverValue + 5;
+    if(this.reportCoverValue == 100) this.showPlus = false;
+  }
+
+
 
 }
