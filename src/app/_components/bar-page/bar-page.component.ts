@@ -71,6 +71,7 @@ export class BarPageComponent implements OnInit {
   reportCoverValue: number = 0;
   showPlus: boolean = true;
   showMinus: boolean = false;
+  coverSubmissionLoader: boolean = false;
 
   //Cover Timing
   numberSinceRefresh:number = 0;
@@ -168,6 +169,10 @@ export class BarPageComponent implements OnInit {
   }
 
   setActiveInfoPage(index: number){
+    if(index == 0){
+      this.expandDealsButtonText = "VIEW MORE";
+      this.expandUpcomingText = "VIEW MORE";
+    }
     if(index == 1){
       this.getCoverInfo();
     }
@@ -504,7 +509,28 @@ export class BarPageComponent implements OnInit {
 
     this.db.object('/coverReports/' + this.barPageId.toString() + '/' + this.coverDayOfTheWeek).set(this.coverResult);
     
-    this.showCoverPopUp = false;
+
+    this.coverSubmissionLoader = true;
+
+    var self = this;
+
+    setTimeout(function() {
+      document.getElementById('check').classList.add('check-complete');
+      document.getElementById('fill').classList.add('fill-complete');
+      
+      setTimeout(function () {
+        self.showCoverPopUp = false;
+        self.coverSubmissionLoader = false;
+      }, 1500);
+    }, 750);
+
+    // setTimeout(function() {
+    //   document.getElementById('check').classList.add('success');
+    //   document.getElementById('fill').classList.add('success');
+    //   document.getElementById('path').classList.add('path-complete');
+    // }, 1250);
+
+    //this.showCoverPopUp = false;
   }
 
 

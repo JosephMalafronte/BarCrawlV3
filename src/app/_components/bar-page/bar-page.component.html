@@ -179,25 +179,43 @@
           <span style="margin: 10px 0px 10px 0; width:300px; font-size:14px;" class="btn btn--full">Report Cover</span>
         </div>
 
+
+
         <div *ngIf="showCoverPopUp" style="text-align: center;">
-          <div  id="open-modal" class="modal-window">
+          <div id="open-modal" class="modal-window">
+            <div *ngIf="!coverSubmissionLoader">
+              <a (click)="showCoverPopUp = false" title="Close" class="modal-close">&times;</a>
+              <h2>Report Cover</h2>
               <div>
-                <a (click)="showCoverPopUp = false" title="Close" class="modal-close">&times;</a>
-                <h2>Report Cover</h2>
-                <div> 
-                  <img *ngIf="showMinus" (click)="decrementReportCover()" class="minus" src="./assets/images/minus.png">  
-                  <h1>${{reportCoverValue}}</h1>
-                  <img *ngIf="showPlus" (click)="incrementReportCover()" class="plus" src="./assets/images/plus.png">  
-                </div>
+                <img *ngIf="showMinus" (click)="decrementReportCover()" class="minus" src="./assets/images/minus.png">
+                <h1>${{reportCoverValue}}</h1>
+                <img *ngIf="showPlus" (click)="incrementReportCover()" class="plus" src="./assets/images/plus.png">
+              </div>
 
-                <div (click)="reportCover()"  style="text-align: center">
-                    <span style="margin: 7px 0px 0px 0; width:200px; font-size:14px;" class="btn btn--full">Submit</span>
-                </div>
+              <div (click)="reportCover()" style="text-align: center">
+                <span style="margin: 7px 0px 0px 0; width:200px; font-size:14px;" class="btn btn--full">Submit</span>
+              </div>
 
+            </div>
+            <div *ngIf="coverSubmissionLoader">
+              <div style="width:100%;">
+                  <div class="checkmark">
+                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" x="0px"
+                        y="0px" viewBox="0, 0, 100, 100" id="checkmark">
+                        <g transform="">
+                          <circle id="path" class="path" fill="none" stroke="#F2C843" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="44" />
+                          <circle id="fill" class="fill" fill="none" stroke="#F2C843" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="44" />
+                          <polyline id="check" class="check" fill="none" stroke="#F2C843" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10" points="70,35 45,65 30,52  "
+                          />
+                        </g>
+                      </svg>
+      
+                    </div>
               </div>
             </div>
+          </div>
         </div>
-        
+
 
         <h5 style="padding: 0 0 0px 0; border-bottom: 1px black solid;">Projected Cover by Hour</h5>
         <div style="margin: 7px 10px 0 10px;">
@@ -219,12 +237,36 @@
           </ul>
         </div>
 
-        
+
 
 
       </div>
 
 
+
+      <!-- BAR FRIENDS -->
+      <div *ngIf="activeInfoPage==2" style="padding-top:50px;">
+        <div class="barDealsSection">
+          <h3 style="padding: 0 0 0 0;">
+            <span>Friends Going Here Tonight</span>
+          </h3>
+        </div>
+
+        <div>
+          <ul class="features_list" *ngFor="let dailyDeal of headDailyDeals" style="padding: 0px 0 0 0; position:relative">
+            <li>
+              <div style="padding-bottom: 10px;">
+                <span class="features_list_span">
+                  <img src={{dailyDeal.dealIcon}} alt="" title="" />
+                  <span class="features_list_span_text">{{dailyDeal.dealDetail}}</span>
+                </span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      
 
 
 
