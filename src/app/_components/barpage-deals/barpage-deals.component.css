@@ -1,0 +1,107 @@
+.barPageLike {
+    position: absolute;
+    top:9px;
+    right:20px;
+    z-index:5;
+    width:33px;
+}
+
+.barPageLike img {
+    width: 100%;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+    position: absolute;
+    width: 100%;
+    right: 0%;
+    background-color: #333;
+    overflow: hidden;
+  }
+
+.adjust {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+  
+/* Style the links inside the navigation bar */
+.holder  {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 12px 0px;
+    width: 25%;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+
+/* Add a color to the active/current link */
+.active {
+    background-color: #F2C843;
+    color: black;
+}
+
+.collapse {
+    display: none;
+  }
+
+
+  .collapsing {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    padding: 0 0 0 0;
+    -webkit-transition-property: height, visibility;
+    -o-transition-property: height, visibility;
+    transition-property: height, visibility;
+    -webkit-transition-duration: 0.35s;
+    -o-transition-duration: 0.35s;
+    transition-duration: 0.35s;
+    -webkit-transition-timing-function: ease;
+    -o-transition-timing-function: ease;
+    transition-timing-function: ease;
+  }
+
+  .show {
+    display: block !important;
+  }
+
+  .barDealsSectionBelow {
+    margin-top: -20px;
+    padding: 40px 0 0 0;
+    border-bottom:1px black solid;
+  }
+
+
+  .upcomingTitle {
+    margin-top: 10px;
+    border-radius: 10px 10px 10px 10px;
+    position: relative;
+    width: 100%;
+    right: 0%;
+    background-color: #333;
+    overflow: hidden;
+  }
+
+  .upcomingTitleAst  {
+    float: left;
+    color: #f2f2f2;
+    text-align: left;
+    padding: 12px 0px;
+    width: 100%;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+
+
+.right-pointing-triangle::after {
+  content: "\25B6 \FE0E";
+}
+
+
+.expandButton{
+  margin: 10px 0 0 0;
+}
+

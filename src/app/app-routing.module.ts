@@ -5,13 +5,21 @@ import { LoginComponent } from './_pages/login/login.component';
 import { InitComponent } from './_pages/init/init.component';
 import { BarlistComponent } from './_pages/barlist/barlist.component';
 import { SearchComponent } from './_pages/search/search.component';
+import {BarpageDealsComponent} from './_components/barpage-deals/barpage-deals.component';
+import {BarpageCoverComponent} from './_components/barpage-cover/barpage-cover.component';
+
 
 const routes: Routes = [
   { path: 'main', component: MainComponent , 
     children: [
       {
         path:'barlist', 
-        component: BarlistComponent
+        component: BarlistComponent,
+        children: [
+          { path: '', redirectTo: 'deals', pathMatch: 'full' },
+          { path: 'deals', component: BarpageDealsComponent },
+          { path: 'cover', component: BarpageCoverComponent }
+        ]
       },
       {
         path:'search',

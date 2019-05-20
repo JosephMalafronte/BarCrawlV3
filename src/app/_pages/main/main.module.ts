@@ -13,6 +13,8 @@ import { AppRoutingModule } from '../../app-routing.module';
 import { BarlistComponent} from '../../_pages/barlist/barlist.component';
 import { SearchComponent } from '../../_pages/search/search.component';
 import { UserSlideComponent } from '../../_components/user-slide/user-slide.component';
+import { BarpageDealsComponent } from '../../_components/barpage-deals/barpage-deals.component';
+import { BarpageCoverComponent } from '../../_components/barpage-cover/barpage-cover.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { UserSlideComponent } from '../../_components/user-slide/user-slide.comp
     FullLoadingComponent,
     BarlistComponent,
     SearchComponent,
-    UserSlideComponent
+    UserSlideComponent,
+    BarpageDealsComponent,
+    BarpageCoverComponent,
   ],
   imports: [
     BrowserModule,

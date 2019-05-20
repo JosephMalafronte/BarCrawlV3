@@ -1,0 +1,123 @@
+<div [hidden]="hidePage" style="padding-top: 50px;">
+    <div class="barDealsSection">
+      <h3 style="padding: 0 0 0 0;">
+        <span>Deals & Events - {{dayOfTheWeek}}</span>
+      </h3>
+    </div>
+
+
+
+    <div *ngIf="!noDailyDeals">
+
+
+
+      <!-- Head Daily Deals -->
+      <div id="headDeals" style="">
+        <ul class="features_list" *ngFor="let dailyDeal of headDailyDeals" style="padding: 0px 0 0 0; position:relative">
+          <li>
+            <div style="padding-bottom: 10px;">
+              <span class="features_list_span">
+                <img src={{dailyDeal.dealIcon}} alt="" title="" />
+                <span class="features_list_span_text">{{dailyDeal.dealDetail}}</span>
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+
+      <!-- Tail Daily Deals -->
+      <div id="demo" class="collapse">
+        <ul class="features_list" *ngFor="let dailyDeal of tailDailyDeals" style="padding: 0 0 0px 0; position: relative;">
+          <li>
+            <div style="padding-bottom: 10px;">
+              <span class="features_list_span">
+                <img src={{dailyDeal.dealIcon}} alt="" title="" />
+                <span class="features_list_span_text">{{dailyDeal.dealDetail}}</span>
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+
+
+
+    </div>
+
+
+    <span  data-toggle="collapse" data-target="#demo" *ngIf="!noDailyDeals && tailDailyDeals.length!=0"
+      (click)="handleExpandButtonClick()" class="btn btn--full expandButton">{{expandDealsButtonText}}</span>
+
+    <h5 *ngIf="noDailyDeals">There are no deals or events for today.</h5>
+
+
+    <div class="barDealsSectionBelow">
+      <h3 style="padding: 0 0 0 0;">
+        <span>Upcoming Deals & Events</span>
+      </h3>
+    </div>
+
+
+
+
+
+    <div *ngFor="let upcomingDeal of upcomingDealsHead">
+      <div class="upcomingTitle" (click)="upcomingDeal.expand()" data-toggle="collapse" [attr.data-target]="'#' + upcomingDeal.dayOfTheWeek">
+        <div class="upcomingTitleAst">
+          <span>
+            <span [innerHtml]="upcomingDeal.arrowText" style="padding: 0 8px 0 13px;"> </span> {{upcomingDeal.dayOfTheWeek}} </span>
+        </div>
+      </div>
+
+      <div [attr.id]="upcomingDeal.dayOfTheWeek" class="collapse">
+        <div id="upcomingDeals" style="margin: 0 20px 0 20px;">
+          <ul class="features_list" *ngFor="let dailyDeal of upcomingDeal.deals" style="padding: 0px 0 0 0; position:relative">
+            <li>
+              <div style="padding-bottom: 10px;">
+                <span class="features_list_span">
+                  <img src={{dailyDeal.dealIcon}} alt="" title="" />
+                  <span class="features_list_span_text">{{dailyDeal.dealDetail}}</span>
+                </span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="upcomingCollapse" class="collapse">
+      <div *ngFor="let upcomingDeal of upcomingDealsTail">
+        <div class="upcomingTitle" (click)="upcomingDeal.expand()" data-toggle="collapse" [attr.data-target]="'#' + upcomingDeal.dayOfTheWeek">
+          <div class="upcomingTitleAst">
+            <span>
+              <span [innerHtml]="upcomingDeal.arrowText" style="padding: 0 8px 0 13px;"> </span>
+              {{upcomingDeal.dayOfTheWeek}} </span>
+          </div>
+        </div>
+
+        <div [attr.id]="upcomingDeal.dayOfTheWeek" class="collapse">
+          <div id="upcomingDeals" style="margin: 0 20px 0 20px;">
+            <ul class="features_list" *ngFor="let dailyDeal of upcomingDeal.deals" style="padding: 0px 0 0 0; position:relative">
+              <li>
+                <div style="padding-bottom: 10px;">
+                  <span class="features_list_span">
+                    <img src={{dailyDeal.dealIcon}} alt="" title="" />
+                    <span class="features_list_span_text">{{dailyDeal.dealDetail}}</span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <span data-toggle="collapse" data-target="#upcomingCollapse" *ngIf="upcomingDealsTail.length!=0"
+      (click)="handleUpcomingExpandButtonClick()" class="btn btn--full expandButton">{{expandUpcomingText}}</span>
+
+
+
+
+  </div>

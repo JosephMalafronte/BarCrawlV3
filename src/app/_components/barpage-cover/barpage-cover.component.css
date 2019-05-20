@@ -1,0 +1,352 @@
+.barPageLike {
+    position: absolute;
+    top:9px;
+    right:20px;
+    z-index:5;
+    width:33px;
+}
+
+.barPageLike img {
+    width: 100%;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+    position: absolute;
+    width: 100%;
+    right: 0%;
+    background-color: #333;
+    overflow: hidden;
+  }
+
+.adjust {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+  
+/* Style the links inside the navigation bar */
+.holder  {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 12px 0px;
+    width: 25%;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+
+/* Add a color to the active/current link */
+.active {
+    background-color: #F2C843;
+    color: black;
+}
+
+.collapse {
+    display: none;
+  }
+
+
+  .collapsing {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    padding: 0 0 0 0;
+    -webkit-transition-property: height, visibility;
+    -o-transition-property: height, visibility;
+    transition-property: height, visibility;
+    -webkit-transition-duration: 0.35s;
+    -o-transition-duration: 0.35s;
+    transition-duration: 0.35s;
+    -webkit-transition-timing-function: ease;
+    -o-transition-timing-function: ease;
+    transition-timing-function: ease;
+  }
+
+  .show {
+    display: block !important;
+  }
+
+  .barDealsSectionBelow {
+    margin-top: -20px;
+    padding: 0 0 0 0;
+    border-bottom:1px black solid;
+  }
+
+
+  .upcomingTitle {
+    margin-top: 10px;
+    border-radius: 10px 10px 10px 10px;
+    position: relative;
+    width: 100%;
+    right: 0%;
+    background-color: #333;
+    overflow: hidden;
+  }
+
+  .upcomingTitleAst  {
+    float: left;
+    color: #f2f2f2;
+    text-align: left;
+    padding: 12px 0px;
+    width: 100%;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+
+
+.right-pointing-triangle::after {
+  content: "\25B6 \FE0E";
+}
+
+.currentBarCover {
+    text-align: center; 
+    margin-top: 12px;
+    padding: 0 0 3px 0;
+    line-height:80%;
+    font-size:28px;
+}
+
+.currentBarCover span{
+    font-size: 16px;
+}
+
+.reportCoverButton {
+    margin: 10px 0px 10px 0; width:300px; font-size:14px;
+}
+
+.modal-window {
+    position: fixed;
+    background-color: rgba(200, 200, 200, 0.75);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    opacity: 1;
+    pointer-events: auto;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+  
+  .modal-window:target {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .modal-window>div {
+    width: 70%;
+    border-radius: 10px 10px 10px 10px;
+    position: relative;
+    margin: 50% 0 0 7%;
+    padding: 2rem;
+    background: #fff;
+    color: #444;
+  }
+  
+  .modal-window header {
+    font-weight: bold;
+  }
+  
+  .modal-close {
+    color: #aaa;
+    line-height: 50px;
+    font-size: 30px;
+    margin-left: 10px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 70px;
+    text-decoration: none;
+  }
+  
+  .modal-close:hover {
+    color: #000;
+  }
+  
+  .modal-window h2 {
+    font-size: 150%;
+    margin: 0 0 15px;
+    padding: 0 0 0 0;
+  }
+  .modal-window h1 {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0 0 15px;
+    padding: 0 0 0 0;
+  }
+
+  .minus{
+      position: absolute;
+      left: 26%;
+      top: 38%;
+      width: 10%;
+  }
+
+  .plus{
+    position: absolute;
+    right: 26%;
+    top: 38%;
+    width: 10%;
+  }
+
+  .checkmark {
+    width: 100px;
+    margin: 0 auto;
+    padding-top: 0px;
+  }
+  
+  .path {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 0;
+    -webkit-animation-name: load, spin;
+    -webkit-animation-duration: 3s, 3s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-name: load, spin;
+    animation-duration: 3s, 3s;
+    animation-timing-function: linear;  
+    animation-iteration-count: infinite;
+    -webkit-transform-origin: 50% 50%;
+    -moz-transform-origin: 50px 50px;
+  }
+  
+  .path-complete {
+      -webkit-animation-play-state: paused;
+      animation-play-state: paused;
+  }
+  
+  .check 
+  {
+      stroke-dasharray: 110;
+      stroke-dashoffset: -110;
+      stroke-width: 0;
+  }
+  
+  .check-complete 
+  {   
+      -webkit-animation: check 1s ease-in forwards;
+      animation: check 1s ease-in forwards;
+      stroke-width: 8;
+      stroke-dashoffset: 0;
+  }
+  
+  .fill 
+  {
+      stroke-dasharray: 285;
+      stroke-dashoffset: -257;
+      -webkit-animation: spin-fill 3s cubic-bezier(0.700, 0.435, 0.120, 0.600) infinite forwards;
+      animation: spin-fill 3s cubic-bezier(0.700, 0.465, 0.120, 0.600) infinite forwards;
+      -webkit-transform-origin: 50% 50%;
+    -moz-transform-origin: 50px 50px;
+  }
+  
+  .fill-complete 
+  {
+      -webkit-animation: fill 1s ease-out forwards;
+      animation: fill 1s ease-out forwards;
+  }
+  
+  @-webkit-keyframes load {
+   0% {
+     stroke-dashoffset: 300;
+     -webkit-animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+   }
+   50% {
+       stroke-dashoffset: 0;
+       -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+   }
+   100% {
+     stroke-dashoffset: -300;
+   }
+  }
+  @keyframes load {
+   0% {
+     stroke-dashoffset: 285;
+     animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+   }
+   50% {
+       stroke-dashoffset: 0;
+       animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+   }
+   100% {
+     stroke-dashoffset: -285;
+   }
+  }
+  
+  @-webkit-keyframes check {
+   0% {
+     stroke-dashoffset: -110;
+  }
+   100% {
+     stroke-dashoffset: 0;
+   }
+  }
+  @keyframes check {
+   0% {
+     stroke-dashoffset: -110;
+  }
+   100% {
+     stroke-dashoffset: 0;
+   }
+  }
+  
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @-webkit-keyframes spin-fill {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(720deg);
+    }
+  }
+  @keyframes spin-fill {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(720deg);
+    }
+  }
+  
+  @-webkit-keyframes fill {
+    0% {
+      stroke-dashoffset: 285;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes fill {
+    0% {
+      stroke-dashoffset: 285;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  .success 
+  {
+      stroke: #009900;
+      transition: stroke .6s;
+  }
