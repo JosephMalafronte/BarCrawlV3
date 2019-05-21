@@ -15,9 +15,9 @@
         <div *ngIf="!coverSubmissionLoader">
           <a (click)="showCoverPopUp = false" title="Close" class="modal-close">&times;</a>
           <h2>Report Cover</h2>
-          <div>
-            <img *ngIf="showMinus" (click)="decrementReportCover()" class="minus" src="./assets/images/minus.png">
-            <h1>${{reportCoverValue}}</h1>
+          <div style="white-space: nowrap;">
+            
+            <span class="coverHeading">${{reportCoverValue}} <img *ngIf="showMinus" (click)="decrementReportCover()" class="minus" src="./assets/images/minus.png"></span>
             <img *ngIf="showPlus" (click)="incrementReportCover()" class="plus" src="./assets/images/plus.png">
           </div>
 

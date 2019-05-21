@@ -172,7 +172,7 @@
     margin: 0 0 15px;
     padding: 0 0 0 0;
   }
-  .modal-window h1 {
+  .coverHeading {
     font-size: 40px;
     font-weight: bold;
     margin: 0 0 15px;
@@ -180,16 +180,13 @@
   }
 
   .minus{
-      position: absolute;
-      left: 26%;
-      top: 38%;
+      position: relative;
+      
       width: 10%;
   }
 
   .plus{
-    position: absolute;
-    right: 26%;
-    top: 38%;
+    position: relative;
     width: 10%;
   }
 

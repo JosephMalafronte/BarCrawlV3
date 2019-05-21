@@ -19,7 +19,7 @@ export class BarpageCoverComponent implements OnInit {
   barPageId: number;
   barName: string;
 
-  hidePage: boolean = false;
+  hidePage: boolean = true;
 
 
   db: AngularFireDatabase;

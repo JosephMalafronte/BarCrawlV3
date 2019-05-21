@@ -138,6 +138,8 @@ export class BarPageComponent implements OnInit {
   }
 
   setActiveInfoPage(index: number){
+    if(index == this.activeInfoPage) return;
+    document.body.scrollTop = 0;
     if(index == 0){
       this.router.navigateByUrl('/main/barlist/deals');
     }
