@@ -674,7 +674,7 @@ float:left;
 display:block;
 float:left;
 text-align:left;
-padding:0 0 0 20px;
+padding:3px 0 0 20px;
 }
 .user-nav ul li strong{
 display:block;
@@ -688,8 +688,8 @@ text-align:center;
 -webkit-border-radius: 50%;
 -moz-border-radius: 50%;
 border-radius: 50%;
-background-color:#455dfe;
-color:#fff;
+background-color:#F2C843;
+color:black;
 font-size:11px;
 }
 .user-nav ul li a{

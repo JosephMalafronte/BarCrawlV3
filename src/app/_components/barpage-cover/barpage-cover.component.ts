@@ -307,8 +307,14 @@ export class BarpageCoverComponent implements OnInit {
       var self = this;
   
       setTimeout(function() {
-        document.getElementById('check').classList.add('check-complete');
-        document.getElementById('fill').classList.add('fill-complete');
+        // document.getElementById('check').classList.add('check-complete');
+        // document.getElementById('fill').classList.add('fill-complete');
+
+        console.log('done');
+
+        document.getElementById('circleLoader').classList.add('load-complete');
+        document.getElementById('checkLoader').classList.remove('checkmarkHidden');
+         document.getElementById('checkLoader').classList.add('checkmark');
         
         setTimeout(function () {
           self.showCoverPopUp = false;
@@ -316,13 +322,7 @@ export class BarpageCoverComponent implements OnInit {
         }, 1500);
       }, 750);
   
-      // setTimeout(function() {
-      //   document.getElementById('check').classList.add('success');
-      //   document.getElementById('fill').classList.add('success');
-      //   document.getElementById('path').classList.add('path-complete');
-      // }, 1250);
-  
-      //this.showCoverPopUp = false;
+
     }
   
   
