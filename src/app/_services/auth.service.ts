@@ -79,6 +79,10 @@ export class AuthService {
     return this.afAuth.auth.signInWithEmailAndPassword(email,password);
   }
 
+  logOut(){
+    this.afAuth.auth.signOut();
+  }
+
   createUser() {
     return this.afAuth.auth.createUserWithEmailAndPassword("testmail@test.com", "password");
   }

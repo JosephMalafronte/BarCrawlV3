@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   logInUsername: string = 'testmail@test.com';
   logInPassword: string = 'password';
+  isLoading: boolean = false;
 
 
 
@@ -31,10 +32,21 @@ export class LoginComponent implements OnInit {
 
 
   logIn() {
+    this.isLoading = true;
+
     this.authService.logIn(this.logInUsername,this.logInPassword).then(
       (success) => {
-        console.log('Logged In');
-        //this.afterLogIn();
+
+        document.getElementById('circleLoader').classList.add('load-complete');
+        document.getElementById('checkLoader').classList.remove('checkmarkHidden');
+        document.getElementById('checkLoader').classList.add('checkmark');
+
+        var self = this;
+        setTimeout(function () {
+          self.afterLogIn();
+          console.log('Logged In');
+        }, 800);
+
       }).catch(
       (err) => {
         console.log(err);

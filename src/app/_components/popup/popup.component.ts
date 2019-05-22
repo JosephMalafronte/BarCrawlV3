@@ -51,7 +51,6 @@ export class PopupComponent implements OnInit {
       // document.getElementById('check').classList.add('check-complete');
       // document.getElementById('fill').classList.add('fill-complete');
 
-      console.log('done');
 
       document.getElementById('circleLoader').classList.add('load-complete');
       document.getElementById('checkLoader').classList.remove('checkmarkHidden');

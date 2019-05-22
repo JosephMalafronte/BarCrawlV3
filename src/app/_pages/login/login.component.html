@@ -1,16 +1,24 @@
 <body id="mobile_wrap">
+    <div class="navbar navbar--fixed navbar--fixed-top navbar--bg" style="background-color:black; z-index: 1001;">
+      <div class="navbar__col navbar__col--title">
+        <a href="index.html">
+          <img src="./assets/images/TextLogo.png" width="150px" style="padding-top:16px;">
+        </a>
+      </div>
+    
+    </div>
 
 
   <!-- Login Popup -->
-  <div class="popup popup-login">
+  <div *ngIf="!isLoading" class="popup popup-login" style="z-index: 1000;">
     <div class="content-block">
       <div class="close_popup_button">
-        <a href="#" class="close-popup" data-popup=".popup-login">
+        <!-- <a href="#" class="close-popup" data-popup=".popup-login">
           <img src="./assets/images/icons/black/menu_close.png" alt="" title="" />
-        </a>
+        </a> -->
       </div>
       <div class="loginblock">
-        <h4>LOGIN</h4>
+        <h4 style="font-weight: bold; font-size: 30px;">LOGIN</h4>
         <div class="loginform">
           <input type="text" [(ngModel)]="logInUsername" name="Username" class="form_input required" placeholder="username" />
           <input type="password" [(ngModel)]="logInPassword" name="Password" class="form_input required" placeholder="password" />
@@ -28,6 +36,14 @@
 
     </div>
   </div>
+
+  <!--Loading-->
+  <div *ngIf="isLoading" class="center-screen">
+      <div id="circleLoader" class="circle-loader">
+          <div id="checkLoader" class="checkmarkHidden draw"></div>
+        </div>
+  </div>
+  
 
 
 </body>
