@@ -1,49 +1,82 @@
 <body id="mobile_wrap">
-    <div class="navbar navbar--fixed navbar--fixed-top navbar--bg" style="background-color:black; z-index: 1001;">
-      <div class="navbar__col navbar__col--title">
-        <a href="index.html">
-          <img src="./assets/images/TextLogo.png" width="150px" style="padding-top:16px;">
-        </a>
-      </div>
-    
+
+  <div class="navbar navbar--fixed navbar--fixed-top navbar--bg" style="background-color:black; z-index: 1001;">
+    <div class="navbar__col navbar__col--title">
+      <a href="index.html">
+        <img src="./assets/images/TextLogo.png" width="150px" style="padding-top:16px; padding-left: 35px;">
+      </a>
     </div>
 
+  </div>
 
-  <!-- Login Popup -->
-  <div *ngIf="!isLoading" class="popup popup-login" style="z-index: 1000;">
-    <div class="content-block">
-      <div class="close_popup_button">
-        <!-- <a href="#" class="close-popup" data-popup=".popup-login">
+  <div *ngIf="!isLoading">
+    <!-- Login Popup -->
+    <div class="popup popup-login" style="z-index: 1000;">
+      <div class="content-block">
+        <div class="close_popup_button">
+          <!-- <a href="#" class="close-popup" data-popup=".popup-login">
           <img src="./assets/images/icons/black/menu_close.png" alt="" title="" />
         </a> -->
-      </div>
-      <div class="loginblock">
-        <h4 style="font-weight: bold; font-size: 30px;">LOGIN</h4>
-        <div class="loginform">
-          <input type="text" [(ngModel)]="logInUsername" name="Username" class="form_input required" placeholder="username" />
-          <input type="password" [(ngModel)]="logInPassword" name="Password" class="form_input required" placeholder="password" />
-          <div class="forgot_pass">
-            <a href="#" data-popup=".popup-forgot" class="open-popup">Forgot Password?</a>
+        </div>
+        <div class="loginblock" style="top: 23%;">
+
+          <div class="collapse show" id="login">
+            <h4 style="font-weight: bold; font-size: 30px;">LOGIN</h4>
+            <div class="loginform">
+              <input type="text" [(ngModel)]="logInUsername" name="Username" class="form_input required"
+                placeholder="username" />
+              <input type="password" [(ngModel)]="logInPassword" name="Password" class="form_input required"
+                placeholder="password" />
+              <div class="forgot_pass">
+                <a href="#" data-popup=".popup-forgot" class="open-popup" style="color: #012e77;">Forgot Password?</a>
+              </div>
+              <input (click)="logIn()" readonly="readonly" class="form_submit"  value="SIGN IN" />
+
+              <div class="signup_bottom">
+                <p>Don't have an account?</p>
+              </div>
+
+            </div>
           </div>
-          <input (click)="logIn()" readonly="readonly" class="form_submit" id="submit" value="SIGN IN" />
-          <div class="signup_bottom">
-            <p>Don't have an account?</p>
-            <a href="#" data-popup=".popup-signup" class="open-popup">SIGN UP</a>
+
+          <div class="collapse" id="signup">
+            <h4 style="font-weight: bold; font-size: 30px;">SIGN UP</h4>
+            <div class="loginform">
+              <input type="text" [(ngModel)]="logInUsername" name="Username" class="form_input required"
+                placeholder="username" />
+              <input type="password" [(ngModel)]="logInPassword" name="Password" class="form_input required"
+                placeholder="password" />
+              
+              <input (click)="logIn()" readonly="readonly" class="form_submit"  value="REGISTER" />
+              <div class="signup_bottom">
+                  <p>Have an account?</p>
+                </div>
+
+            </div>
+          </div>
+
+
+
+          <div class="signup_bottom" style="padding:0px; margin-top: -15px;">
+            <a data-popup=".popup-signup" class="open-popup"
+              (click)="goToSignUp()" style="background-color: transparent; color:black; border: 1px black solid;">{{switchPageText}}</a>
           </div>
         </div>
+
+
       </div>
-
-
     </div>
   </div>
+
+
 
   <!--Loading-->
   <div *ngIf="isLoading" class="center-screen">
-      <div id="circleLoader" class="circle-loader">
-          <div id="checkLoader" class="checkmarkHidden draw"></div>
-        </div>
+    <div id="circleLoader" class="circle-loader">
+      <div id="checkLoader" class="checkmarkHidden draw"></div>
+    </div>
   </div>
-  
+
 
 
 </body>

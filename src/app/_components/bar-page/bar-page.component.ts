@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 
 
 import { take } from 'rxjs/operators'
-import * as $ from 'jquery'; 
 
 import { DateDirective} from '../../_directives/date.directive';
 import { AuthService } from '../../_services/auth.service';
