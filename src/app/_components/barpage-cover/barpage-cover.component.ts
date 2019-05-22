@@ -3,6 +3,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import {UpcomingDeal} from '../../models';
 import { DateDirective} from '../../_directives/date.directive';
 import {BarPageService} from '../../_services/barpage.service';
+import {MainService} from '../../_services/main.service';
 import { BarPage, HourlyEstimate } from '../../models';
 import { take } from 'rxjs/operators';
 
@@ -50,7 +51,8 @@ export class BarpageCoverComponent implements OnInit {
   constructor(
     _dbA: AngularFireDatabase,
     _dateDirective: DateDirective,
-    _barpageService: BarPageService
+    _barpageService: BarPageService,
+    private mainService: MainService,
   ) { 
     this.db = _dbA;
     this.dateDirective = _dateDirective;
@@ -68,6 +70,7 @@ export class BarpageCoverComponent implements OnInit {
 
   ngOnInit() {
 
+
     this.barpageService.currentBarPage.subscribe(value => {
       if(value != null){
         this.barPage = value;
@@ -76,6 +79,13 @@ export class BarpageCoverComponent implements OnInit {
 
         this.getCoverInfo();
       }
+    });
+
+    this.mainService.reportCoverValue.subscribe(result => {
+      if(result == -5) return;
+      console.log(result);
+      this.reportCoverValue = result;
+      this.reportCover();
     });
 
 
@@ -264,6 +274,10 @@ export class BarpageCoverComponent implements OnInit {
     
       return Math.max.apply(Math, modes);
     }
+
+    toggleCoverPopUp(){
+      this.mainService.activateCoverPopUp();
+    }
   
     reportCover(){
   
@@ -303,24 +317,10 @@ export class BarpageCoverComponent implements OnInit {
       
   
       this.coverSubmissionLoader = true;
-  
-      var self = this;
-  
-      setTimeout(function() {
-        // document.getElementById('check').classList.add('check-complete');
-        // document.getElementById('fill').classList.add('fill-complete');
+      
+      this.mainService.hideCoverPopUp();
 
-        console.log('done');
-
-        document.getElementById('circleLoader').classList.add('load-complete');
-        document.getElementById('checkLoader').classList.remove('checkmarkHidden');
-         document.getElementById('checkLoader').classList.add('checkmark');
-        
-        setTimeout(function () {
-          self.showCoverPopUp = false;
-          self.coverSubmissionLoader = false;
-        }, 1500);
-      }, 750);
+      this.coverSubmissionLoader = false;
   
 
     }
@@ -346,18 +346,6 @@ export class BarpageCoverComponent implements OnInit {
     }
   
   
-    decrementReportCover () {
-      if(this.reportCoverValue == 0) return;
-      if(this.reportCoverValue == 100) this.showPlus = true;
-      this.reportCoverValue = this.reportCoverValue - 5;
-      if(this.reportCoverValue == 0) this.showMinus = false;
-    }
-  
-    incrementReportCover () {
-      if(this.reportCoverValue >= 100) return;
-      if(this.reportCoverValue == 0) this.showMinus = true;
-      this.reportCoverValue = this.reportCoverValue + 5;
-      if(this.reportCoverValue == 100) this.showPlus = false;
-    }
+
 
 }

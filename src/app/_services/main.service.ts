@@ -14,10 +14,19 @@ export class MainService {
   userSlide: BehaviorSubject<boolean>
   userSlideEvent: Event;
 
+
+  //Popups
+  showCoverPopUpValue: boolean = false;
+  showCoverPopUp: BehaviorSubject<boolean>;
+  reportCoverValue: BehaviorSubject<number>;
+
+
   constructor() {
     this.barSlide = new BehaviorSubject<boolean>(false);
     this.currentPage = new BehaviorSubject<number>(-1);
     this.userSlide = new BehaviorSubject<boolean>(false);
+    this.showCoverPopUp = new BehaviorSubject<boolean>(false);
+    this.reportCoverValue = new BehaviorSubject<number>(-5);
    }
 
   reverseBarSlide() {
@@ -38,7 +47,18 @@ export class MainService {
   }
 
 
+  activateCoverPopUp(){
+    this.showCoverPopUpValue = true;
+    this.showCoverPopUp.next(true);
+  }
 
+  setReportCoverValue(num: number){
+    this.reportCoverValue.next(num);
+  }
 
+  hideCoverPopUp(){
+    this.showCoverPopUpValue = false;
+    this.showCoverPopUp.next(false);
+  }
 
 }

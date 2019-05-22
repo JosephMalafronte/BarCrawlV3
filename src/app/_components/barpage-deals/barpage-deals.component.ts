@@ -152,12 +152,12 @@ export class BarpageDealsComponent implements OnInit {
   }
 
   handleUpcomingExpandButtonClick(){
-    if(this.dailyDealsExpanded == false){
-      this.dailyDealsExpanded = true;
+    if(this.upcomingExpanded == false){
+      this.upcomingExpanded = true;
       this.expandUpcomingText = "VIEW LESS";
     }
     else {
-      this.dailyDealsExpanded = false;
+      this.upcomingExpanded = false;
       this.expandUpcomingText = "VIEW MORE";
     }
   }

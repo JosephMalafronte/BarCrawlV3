@@ -17,13 +17,14 @@ export class MainComponent implements OnInit {
 
   @Input() slideInLogin: boolean = false;
   userSlide: boolean = false;
+  showCoverPopUp: boolean = false;
 
   constructor(private mainService: MainService, private router: Router) { }
 
   ngOnInit() {
     this.pageChangeInit();
-    this.userSlideInit();
-    
+    this.noScrollInit();
+    this.popUpInit();
 
   }
 
@@ -39,14 +40,12 @@ export class MainComponent implements OnInit {
     });
   }
 
-  userSlideInit(){
+  noScrollInit(){
     var self = this;
-
-
 
     var fixed = document.getElementById('mainPage');
     function blockScrolling(e) {
-      if(self.userSlide == false) return; 
+      if(self.userSlide == false || self.showCoverPopUp == false) return; 
       e.preventDefault();
     }
 
@@ -62,6 +61,12 @@ export class MainComponent implements OnInit {
         elm.classList.remove("block_clicks");
 
       }
+    });
+  }
+
+  popUpInit(){
+    this.mainService.showCoverPopUp.subscribe(result => {
+        this.showCoverPopUp = result;
     });
   }
 

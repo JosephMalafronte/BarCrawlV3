@@ -15,6 +15,7 @@ import { SearchComponent } from '../../_pages/search/search.component';
 import { UserSlideComponent } from '../../_components/user-slide/user-slide.component';
 import { BarpageDealsComponent } from '../../_components/barpage-deals/barpage-deals.component';
 import { BarpageCoverComponent } from '../../_components/barpage-cover/barpage-cover.component';
+import { PopupComponent } from '../../_components/popup/popup.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { BarpageCoverComponent } from '../../_components/barpage-cover/barpage-c
     UserSlideComponent,
     BarpageDealsComponent,
     BarpageCoverComponent,
+    PopupComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,3 @@
-
-
 <div class="views">
 
   <div class="view view-main">
@@ -8,20 +6,25 @@
         <div class="page-content" id="mainPage">
 
 
+          <div style="-webkit-overflow-scrolling:touch;">
+              <app-popup></app-popup>
+          </div>
+
+
           <div class="user_slide" style="-webkit-overflow-scrolling:touch;">
             <app-user-slide></app-user-slide>
           </div>
 
 
           <div class="main_content">
-              <div *ngIf="userSlide" class="pageClick" (click)="pageClick()"></div>
-              <div id="headerAndRouter">
-                <app-header></app-header>
-                <div id="routerHolder" >
-                  <router-outlet></router-outlet>
-                </div>
+            <div *ngIf="userSlide" class="pageClick" (click)="pageClick()"></div>
+            <div id="headerAndRouter">
+              <app-header></app-header>
+              <div id="routerHolder">
+                <router-outlet></router-outlet>
               </div>
-              <app-navbar></app-navbar>
+            </div>
+            <app-navbar></app-navbar>
           </div>
 
 
