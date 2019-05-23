@@ -5,7 +5,7 @@ export class User {
     displayName: string;
     firstName: string;
     lastName: string;
-    likedBars: number[];
+    likedBars: number[] = [];
     barCardCount: number;
 
     constructor(auth: any){

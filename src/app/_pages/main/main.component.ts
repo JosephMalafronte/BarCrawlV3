@@ -3,6 +3,7 @@ import {BarPageComponent} from '../../_components/bar-page/bar-page.component';
 import {User} from '../../_models/User.Model';
 import {BarlistComponent} from '../../_pages/barlist/barlist.component';
 import {MainService} from '../../_services/main.service';
+import {AuthService} from '../../_services/auth.service';
 import { Router } from '@angular/router';
 
 
@@ -19,9 +20,11 @@ export class MainComponent implements OnInit {
   userSlide: boolean = false;
   showCoverPopUp: boolean = false;
 
-  constructor(private mainService: MainService, private router: Router) { }
+  constructor(private mainService: MainService, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
+    if(this.authService.afAuth.auth==null) this.router.navigate(['/login']);
+
     this.pageChangeInit();
     this.noScrollInit();
     this.popUpInit();

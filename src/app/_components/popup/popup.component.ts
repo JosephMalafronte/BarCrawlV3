@@ -36,7 +36,7 @@ export class PopupComponent implements OnInit {
 
 
   reportCover() {
-    this.mainService.setReportCoverValue(this.reportCoverValue);
+    this.mainService.reportCover(this.reportCoverValue);
 
   }
 

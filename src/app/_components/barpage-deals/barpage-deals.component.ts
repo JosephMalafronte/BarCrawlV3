@@ -54,6 +54,7 @@ export class BarpageDealsComponent implements OnInit {
 
   ngOnInit() {
 
+
     this.barpageService.currentBarPage.subscribe(value => {
       if(value != null){
         this.barPage = value;
@@ -77,6 +78,7 @@ export class BarpageDealsComponent implements OnInit {
   }
 
   getDailyDeals(){
+
 
     this.db.object('dailyDeals/'+ this.barName).valueChanges().subscribe((result: any) => {
 

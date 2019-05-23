@@ -53,7 +53,7 @@ export class UserSlideComponent implements OnInit {
   logout(){
     this.authService.logOut();
     this.mainService.changeUserSlide();
-    this.router.navigateByUrl('/init');
+    this.router.navigateByUrl('/login');
   }
 
 }

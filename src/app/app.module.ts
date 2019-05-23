@@ -23,12 +23,14 @@ import { AppComponent } from './app.component';
 import {DateDirective} from './_directives/date.directive';
 import { RouteReuseStrategy } from '@angular/router';
 import { CustomReuseStrategy } from './custom-reuse-strategy';
+import { RefreshComponent } from './_components/refresh/refresh.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    RefreshComponent,
   ],
   imports: [
     BrowserModule,

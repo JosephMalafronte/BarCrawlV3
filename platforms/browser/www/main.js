@@ -267,12 +267,13 @@ var BarpageCoverComponent = /** @class */ (function () {
                 _this.getCoverInfo();
             }
         });
-        this.mainService.reportCoverValue.subscribe(function (result) {
-            if (result == -5)
-                return;
-            console.log(result);
-            _this.reportCoverValue = result;
-            _this.reportCover();
+        this.mainService.reportCoverSwitch.subscribe(function (result) {
+            if (result == true) {
+                _this.reportCoverValue = _this.mainService.reportCoverValue;
+                console.log(_this.reportCoverValue);
+                _this.reportCover();
+                _this.mainService.reportCoverSwitch.next(false);
+            }
         });
     };
     //Cover Functions
@@ -421,6 +422,7 @@ var BarpageCoverComponent = /** @class */ (function () {
         this.mainService.activateCoverPopUp();
     };
     BarpageCoverComponent.prototype.reportCover = function () {
+        console.log('Report Cover');
         var num = this.reportCoverValue;
         this.numberSinceRefresh++;
         if (this.numberSinceRefresh > 2) {
@@ -727,7 +729,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"navbar navbar--fixed navbar--fixed-top navbar--bg\" style=\"background-color:black;\">\r\n  <div class=\"navbar__col navbar__col--icon navbar__col--icon-right\">\r\n    <a href=\"#\" data-panel=\"left\" class=\"open-panel\">\r\n      <img src=\"./assets/images/icons/white/menu.png\" alt=\"\" title=\"\" />\r\n    </a>\r\n  </div>\r\n  <div class=\"navbar__col navbar__col--title\">\r\n    <a href=\"index.html\">\r\n      <img src=\"./assets/images/TextLogo.png\" width=\"150px\" style=\"padding-top:16px;\">\r\n    </a>\r\n  </div>\r\n  <div class=\"navbar__col navbar__col--icon navbar__col--icon-right\" (click)=\"userClick()\" style=\"padding-right:7px;\">\r\n    <a data-panel=\"right\" class=\"open-panel\">\r\n      <img src=\"./assets/images/icons/white/user.png\" alt=\"\" title=\"\" />\r\n    </a>\r\n  </div>\r\n\r\n</div>"
+module.exports = "<div class=\"navbar navbar--fixed navbar--fixed-top navbar--bg\" style=\"background-color:black;\">\r\n  <div class=\"navbar__col navbar__col--icon navbar__col--icon-right\" (click)=\"refresh()\">\r\n    <a  data-panel=\"left\" class=\"open-panel\">\r\n      <img src=\"./assets/images/icons/white/menu.png\" alt=\"\" title=\"\" />\r\n    </a>\r\n  </div>\r\n  <div class=\"navbar__col navbar__col--title\">\r\n    <a href=\"index.html\">\r\n      <img src=\"./assets/images/TextLogo.png\" width=\"150px\" style=\"padding-top:16px;\">\r\n    </a>\r\n  </div>\r\n  <div class=\"navbar__col navbar__col--icon navbar__col--icon-right\" (click)=\"userClick()\" style=\"padding-right:7px;\">\r\n    <a data-panel=\"right\" class=\"open-panel\">\r\n      <img src=\"./assets/images/icons/white/user.png\" alt=\"\" title=\"\" />\r\n    </a>\r\n  </div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -755,6 +757,9 @@ var HeaderComponent = /** @class */ (function () {
     };
     HeaderComponent.prototype.userClick = function () {
         this.mainService.changeUserSlide();
+    };
+    HeaderComponent.prototype.refresh = function () {
+        this.mainService.refresh();
     };
     HeaderComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -994,7 +999,7 @@ var PopupComponent = /** @class */ (function () {
         });
     };
     PopupComponent.prototype.reportCover = function () {
-        this.mainService.setReportCoverValue(this.reportCoverValue);
+        this.mainService.reportCover(this.reportCoverValue);
     };
     PopupComponent.prototype.hideCoverPopUp = function () {
         this.coverSubmissionLoader = true;
@@ -1031,6 +1036,62 @@ var PopupComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_main_service__WEBPACK_IMPORTED_MODULE_2__["MainService"]])
     ], PopupComponent);
     return PopupComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/_components/refresh/refresh.component.css":
+/*!***********************************************************!*\
+  !*** ./src/app/_components/refresh/refresh.component.css ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJfY29tcG9uZW50cy9yZWZyZXNoL3JlZnJlc2guY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/_components/refresh/refresh.component.html":
+/*!************************************************************!*\
+  !*** ./src/app/_components/refresh/refresh.component.html ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  refresh works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/_components/refresh/refresh.component.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/_components/refresh/refresh.component.ts ***!
+  \**********************************************************/
+/*! exports provided: RefreshComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RefreshComponent", function() { return RefreshComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var RefreshComponent = /** @class */ (function () {
+    function RefreshComponent() {
+    }
+    RefreshComponent.prototype.ngOnInit = function () {
+    };
+    RefreshComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-refresh',
+            template: __webpack_require__(/*! ./refresh.component.html */ "./src/app/_components/refresh/refresh.component.html"),
+            styles: [__webpack_require__(/*! ./refresh.component.css */ "./src/app/_components/refresh/refresh.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], RefreshComponent);
+    return RefreshComponent;
 }());
 
 
@@ -1118,7 +1179,7 @@ var UserSlideComponent = /** @class */ (function () {
     UserSlideComponent.prototype.logout = function () {
         this.authService.logOut();
         this.mainService.changeUserSlide();
-        this.router.navigateByUrl('/init');
+        this.router.navigateByUrl('/login');
     };
     UserSlideComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1319,6 +1380,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User", function() { return User; });
 var User = /** @class */ (function () {
     function User(auth) {
+        this.likedBars = [];
         this.uid = auth.uid;
         this.email = auth.email;
         this.displayName = auth.displayName;
@@ -1443,6 +1505,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../_services/auth.service */ "./src/app/_services/auth.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _models_User_Model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../_models/User.Model */ "./src/app/_models/User.Model.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+
 
 
 
@@ -1455,20 +1519,21 @@ var InitComponent = /** @class */ (function () {
     }
     InitComponent.prototype.ngOnInit = function () {
         var _this = this;
-        //When user is set run this
-        this.authService.authStateSet.subscribe(function (value) {
-            if (value == true) {
-                console.log(_this.authService.currentUser.uid);
-                _this.router.navigate(['/main/barlist']);
-            }
-        });
-        this.authService.af.authState.subscribe(function (auth) {
-            console.log(auth);
-            if (auth == null) {
+        this.authService.af.authState.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["take"])(1)).subscribe(function (result) {
+            console.log(result);
+            console.log('Init Running');
+            if (result == null) {
                 _this.router.navigate(['/login']);
             }
             else {
-                _this.authService.setUser(new _models_User_Model__WEBPACK_IMPORTED_MODULE_4__["User"](auth));
+                _this.authService.setUser(new _models_User_Model__WEBPACK_IMPORTED_MODULE_4__["User"](result));
+                //When user is set run this
+                _this.authService.authStateSet.subscribe(function (value) {
+                    if (value == true) {
+                        console.log(result);
+                        _this.router.navigate(['/main/barlist']);
+                    }
+                });
             }
         });
     };
@@ -1545,7 +1610,7 @@ module.exports = "\r\n.center-screen {\r\n    display: flex;\r\n    flex-directi
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<body id=\"mobile_wrap\">\r\n\r\n  <div class=\"navbar navbar--fixed navbar--fixed-top navbar--bg\" style=\"background-color:black; z-index: 1001;\">\r\n    <div class=\"navbar__col navbar__col--title\">\r\n      <a href=\"index.html\">\r\n        <img src=\"./assets/images/TextLogo.png\" width=\"150px\" style=\"padding-top:16px; padding-left: 35px;\">\r\n      </a>\r\n    </div>\r\n\r\n  </div>\r\n\r\n  <div *ngIf=\"!isLoading\">\r\n    <!-- Login Popup -->\r\n    <div class=\"popup popup-login\" style=\"z-index: 1000;\">\r\n      <div class=\"content-block\">\r\n        <div class=\"close_popup_button\">\r\n          <!-- <a href=\"#\" class=\"close-popup\" data-popup=\".popup-login\">\r\n          <img src=\"./assets/images/icons/black/menu_close.png\" alt=\"\" title=\"\" />\r\n        </a> -->\r\n        </div>\r\n        <div class=\"loginblock\" style=\"top: 23%;\">\r\n\r\n          <div class=\"collapse show\" id=\"login\">\r\n            <h4 style=\"font-weight: bold; font-size: 30px;\">LOGIN</h4>\r\n            <div class=\"loginform\">\r\n              <input type=\"text\" [(ngModel)]=\"logInUsername\" name=\"Username\" class=\"form_input required\"\r\n                placeholder=\"username\" />\r\n              <input type=\"password\" [(ngModel)]=\"logInPassword\" name=\"Password\" class=\"form_input required\"\r\n                placeholder=\"password\" />\r\n              <div class=\"forgot_pass\">\r\n                <a href=\"#\" data-popup=\".popup-forgot\" class=\"open-popup\" style=\"color: #012e77;\">Forgot Password?</a>\r\n              </div>\r\n              <input (click)=\"logIn()\" readonly=\"readonly\" class=\"form_submit\"  value=\"SIGN IN\" />\r\n\r\n              <div class=\"signup_bottom\">\r\n                <p>Don't have an account?</p>\r\n              </div>\r\n\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"collapse\" id=\"signup\">\r\n            <h4 style=\"font-weight: bold; font-size: 30px;\">SIGN UP</h4>\r\n            <div class=\"loginform\">\r\n              <input type=\"text\" [(ngModel)]=\"logInUsername\" name=\"Username\" class=\"form_input required\"\r\n                placeholder=\"username\" />\r\n              <input type=\"password\" [(ngModel)]=\"logInPassword\" name=\"Password\" class=\"form_input required\"\r\n                placeholder=\"password\" />\r\n              \r\n              <input (click)=\"logIn()\" readonly=\"readonly\" class=\"form_submit\"  value=\"REGISTER\" />\r\n              <div class=\"signup_bottom\">\r\n                  <p>Have an account?</p>\r\n                </div>\r\n\r\n            </div>\r\n          </div>\r\n\r\n\r\n\r\n          <div class=\"signup_bottom\" style=\"padding:0px; margin-top: -15px;\">\r\n            <a data-popup=\".popup-signup\" class=\"open-popup\"\r\n              (click)=\"goToSignUp()\" style=\"background-color: transparent; color:black; border: 1px black solid;\">{{switchPageText}}</a>\r\n          </div>\r\n        </div>\r\n\r\n\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n\r\n\r\n  <!--Loading-->\r\n  <div *ngIf=\"isLoading\" class=\"center-screen\">\r\n    <div id=\"circleLoader\" class=\"circle-loader\">\r\n      <div id=\"checkLoader\" class=\"checkmarkHidden draw\"></div>\r\n    </div>\r\n  </div>\r\n\r\n\r\n\r\n</body>"
+module.exports = "<body id=\"mobile_wrap\">\r\n\r\n  <div class=\"navbar navbar--fixed navbar--fixed-top navbar--bg\" style=\"background-color:black; z-index: 1001;\">\r\n    <div class=\"navbar__col navbar__col--title\">\r\n      <a href=\"index.html\">\r\n        <img src=\"./assets/images/TextLogo.png\" width=\"150px\" style=\"padding-top:16px; padding-left: 35px;\">\r\n      </a>\r\n    </div>\r\n\r\n  </div>\r\n\r\n  <div *ngIf=\"!isLoading\">\r\n    <!-- Login Popup -->\r\n    <div class=\"popup popup-login\" style=\"z-index: 1000;\">\r\n      <div class=\"content-block\">\r\n        <div class=\"close_popup_button\">\r\n          <!-- <a href=\"#\" class=\"close-popup\" data-popup=\".popup-login\">\r\n          <img src=\"./assets/images/icons/black/menu_close.png\" alt=\"\" title=\"\" />\r\n        </a> -->\r\n        </div>\r\n        <div class=\"loginblock\" style=\"top: 23%;\">\r\n\r\n          <div class=\"collapse show\" id=\"login\">\r\n            <h4 style=\"font-weight: bold; font-size: 30px;\">LOGIN</h4>\r\n            <div class=\"loginform\">\r\n              <input type=\"text\" [(ngModel)]=\"logInUsername\" name=\"Username\" class=\"form_input required\"\r\n                placeholder=\"Email\" />\r\n              <input type=\"password\" [(ngModel)]=\"logInPassword\" name=\"Password\" class=\"form_input required\"\r\n                placeholder=\"Password\" />\r\n              <div class=\"forgot_pass\">\r\n                <a href=\"#\" data-popup=\".popup-forgot\" class=\"open-popup\" style=\"color: #012e77;\">Forgot Password?</a>\r\n              </div>\r\n              <input (click)=\"logIn()\" readonly=\"readonly\" class=\"form_submit\"  value=\"SIGN IN\" />\r\n\r\n              <div class=\"signup_bottom\">\r\n                <p>Don't have an account?</p>\r\n              </div>\r\n\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"collapse\" id=\"signup\">\r\n            <h4 style=\"font-weight: bold; font-size: 30px;\">SIGN UP</h4>\r\n            <div class=\"loginform\">\r\n              <input type=\"text\" [(ngModel)]=\"createFirstName\" class=\"form_input required\"\r\n                placeholder=\"First Name\" />\r\n              <input type=\"text\" [(ngModel)]=\"createLastName\" class=\"form_input required\"\r\n              placeholder=\"Last Name (Optional)\" />\r\n              <input type=\"text\" [(ngModel)]=\"createEmail\" name=\"Username\" class=\"form_input required\"\r\n                placeholder=\"Email\" />\r\n              <input type=\"password\" [(ngModel)]=\"createPassword\"  class=\"form_input required\"\r\n                placeholder=\"Password\" />\r\n              <input type=\"password\" [(ngModel)]=\"createPassword2\"  class=\"form_input required\"\r\n              placeholder=\"Repeat Password\" (focusout)=\"comparePasswords()\"/>\r\n\r\n              <p style=\"text-align: left; color:red;\" *ngIf=\"passwordsDoNotMatch\">Passwords do not match.</p>\r\n              \r\n              <input (click)=\"register()\" readonly=\"readonly\" class=\"form_submit\"  value=\"REGISTER\" />\r\n              <div class=\"signup_bottom\">\r\n                  <p>Have an account?</p>\r\n                </div>\r\n\r\n            </div>\r\n          </div>\r\n\r\n\r\n\r\n          <div class=\"signup_bottom\" style=\"padding:0px; margin-top: -15px;\">\r\n            <a data-popup=\".popup-signup\" class=\"open-popup\"\r\n              (click)=\"goToSignUp()\" style=\"background-color: transparent; color:black; border: 1px black solid;\">{{switchPageText}}</a>\r\n          </div>\r\n        </div>\r\n\r\n\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n\r\n\r\n  <!--Loading-->\r\n  <div *ngIf=\"isLoading\" class=\"center-screen\">\r\n    <div id=\"circleLoader\" class=\"circle-loader\">\r\n      <div id=\"checkLoader\" class=\"checkmarkHidden draw\"></div>\r\n    </div>\r\n  </div>\r\n\r\n\r\n\r\n</body>"
 
 /***/ }),
 
@@ -1561,8 +1626,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../_services/auth.service */ "./src/app/_services/auth.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _models_User_Model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../_models/User.Model */ "./src/app/_models/User.Model.ts");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../_services/auth.service */ "./src/app/_services/auth.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
 
 
 
@@ -1573,6 +1640,12 @@ var LoginComponent = /** @class */ (function () {
         this.router = router;
         this.logInUsername = 'testmail@test.com';
         this.logInPassword = 'password';
+        this.createFirstName = "";
+        this.createLastName = "";
+        this.createEmail = "";
+        this.createPassword = "";
+        this.createPassword2 = "";
+        this.passwordsDoNotMatch = false;
         this.isLoading = false;
         this.currentPage = "login";
         this.switchPageText = "SIGN UP";
@@ -1590,28 +1663,81 @@ var LoginComponent = /** @class */ (function () {
         var _this = this;
         this.isLoading = true;
         this.authService.logIn(this.logInUsername, this.logInPassword).then(function (success) {
-            document.getElementById('circleLoader').classList.add('load-complete');
-            document.getElementById('checkLoader').classList.remove('checkmarkHidden');
-            document.getElementById('checkLoader').classList.add('checkmark');
-            var self = _this;
-            setTimeout(function () {
-                self.afterLogIn();
-                console.log('Logged In');
-            }, 800);
+            var user = new _models_User_Model__WEBPACK_IMPORTED_MODULE_2__["User"](_this.authService.af.auth.currentUser);
+            _this.authService.setUser(user);
+            //Once User Is Set
+            _this.authService.authStateSet.subscribe(function (value) {
+                if (value == true) {
+                    console.log(_this.authService.currentUser.uid);
+                    var self = _this;
+                    _this.stopLoadingAnimation();
+                    setTimeout(function () {
+                        self.router.navigate(['/main/barlist']);
+                    }, 1000);
+                }
+            });
         }).catch(function (err) {
             console.log(err);
             //this.error = err;
         });
     };
+    LoginComponent.prototype.stopLoadingAnimation = function () {
+        document.getElementById('circleLoader').classList.add('load-complete');
+        document.getElementById('checkLoader').classList.remove('checkmarkHidden');
+        document.getElementById('checkLoader').classList.add('checkmark');
+    };
     LoginComponent.prototype.afterLogIn = function () {
         //Redirect
         this.router.navigate(['/main']);
+    };
+    LoginComponent.prototype.comparePasswords = function () {
+        if (this.createPassword != this.createPassword2) {
+            this.passwordsDoNotMatch = true;
+            return true;
+        }
+        else {
+            this.passwordsDoNotMatch = false;
+            return false;
+        }
+    };
+    LoginComponent.prototype.register = function () {
+        var _this = this;
+        if (this.createFirstName == "")
+            return;
+        if (this.createEmail == "")
+            return;
+        if (this.createPassword == "")
+            return;
+        if (this.comparePasswords() == true)
+            return;
+        console.log('Register');
+        this.isLoading = true;
+        this.authService.createUser(this.createEmail, this.createPassword).then(function (success) {
+            //Need to upload user info
+            console.log(_this.authService.af.auth);
+            var user = new _models_User_Model__WEBPACK_IMPORTED_MODULE_2__["User"](_this.authService.af.auth.currentUser);
+            user.firstName = _this.createFirstName;
+            user.lastName = _this.createLastName;
+            _this.authService.createUserInfo(user).then(function (_) {
+                _this.authService.setUser(user);
+                //Once User Is Set
+                _this.authService.authStateSet.subscribe(function (value) {
+                    if (value == true) {
+                        console.log(_this.authService.currentUser.uid);
+                        var self = _this;
+                        _this.stopLoadingAnimation();
+                        setTimeout(function () {
+                            self.router.navigate(['/main/barlist']);
+                        }, 1000);
+                    }
+                });
+            });
+        });
     };
     LoginComponent.prototype.goToSignUp = function () {
         $("#login").off();
         $("#signup").off();
         if (this.currentPage == "login") {
-            console.log('weird');
             $("#login").collapse("hide");
             this.currentPage = "signup";
             var self = this;
@@ -1622,7 +1748,6 @@ var LoginComponent = /** @class */ (function () {
             });
         }
         else if (this.currentPage == "signup") {
-            console.log('test');
             $("#signup").collapse("hide");
             this.currentPage = "login";
             var self = this;
@@ -1639,7 +1764,7 @@ var LoginComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./login.component.html */ "./src/app/_pages/login/login.component.html"),
             styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/_pages/login/login.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -1730,20 +1855,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_main_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../_services/main.service */ "./src/app/_services/main.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../_services/auth.service */ "./src/app/_services/auth.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
 
 
 
 
 var MainComponent = /** @class */ (function () {
-    function MainComponent(mainService, router) {
+    function MainComponent(mainService, router, authService) {
         this.mainService = mainService;
         this.router = router;
+        this.authService = authService;
         this.slideInLogin = false;
         this.userSlide = false;
         this.showCoverPopUp = false;
     }
     MainComponent.prototype.ngOnInit = function () {
+        if (this.authService.afAuth.auth == null)
+            this.router.navigate(['/login']);
         this.pageChangeInit();
         this.noScrollInit();
         this.popUpInit();
@@ -1803,7 +1933,7 @@ var MainComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./main.component.html */ "./src/app/_pages/main/main.component.html"),
             styles: [__webpack_require__(/*! ./main.component.css */ "./src/app/_pages/main/main.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_main_service__WEBPACK_IMPORTED_MODULE_2__["MainService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_main_service__WEBPACK_IMPORTED_MODULE_2__["MainService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]])
     ], MainComponent);
     return MainComponent;
 }());
@@ -1992,11 +2122,15 @@ var AuthService = /** @class */ (function () {
         this.getUserInfo().subscribe(function (responseList) {
             var barCardCount = responseList[0];
             var userInfo = responseList[1];
+            if (userInfo == null)
+                _this.afAuth.auth.signOut();
             //Set User Info
             //Set Bar Card Count
             _this.currentUser.barCardCount = +barCardCount;
             //Get Liked Cards
-            _this.getLikedCards(userInfo.likedBars);
+            if (userInfo.hasOwnProperty('likedBars')) {
+                _this.getLikedCards(userInfo.likedBars);
+            }
             //Get About Info
             _this.currentUser.firstName = userInfo.about.firstName;
             console.log(_this.currentUser);
@@ -2021,14 +2155,24 @@ var AuthService = /** @class */ (function () {
             }
         }
     };
+    AuthService.prototype.createUserInfo = function (user) {
+        return this.db.object('userInfo/' + user.uid).set({
+            about: {
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                profilePicUrl: "null"
+            }
+        });
+    };
     AuthService.prototype.logIn = function (email, password) {
         return this.afAuth.auth.signInWithEmailAndPassword(email, password);
     };
     AuthService.prototype.logOut = function () {
         this.afAuth.auth.signOut();
     };
-    AuthService.prototype.createUser = function () {
-        return this.afAuth.auth.createUserWithEmailAndPassword("testmail@test.com", "password");
+    AuthService.prototype.createUser = function (email, password) {
+        return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
     };
     AuthService.prototype.likeBar = function (barId) {
         console.log("Like");
@@ -2112,21 +2256,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
 
 
 
 var MainService = /** @class */ (function () {
-    function MainService() {
+    function MainService(router) {
+        this.router = router;
         this.currentPageValue = 0;
         this.barSlideValue = false;
         this.userSlideValue = false;
         //Popups
         this.showCoverPopUpValue = false;
+        this.reportCoverValue = 0;
         this.barSlide = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](false);
         this.currentPage = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](-1);
         this.userSlide = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](false);
         this.showCoverPopUp = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](false);
-        this.reportCoverValue = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](-5);
+        this.reportCoverSwitch = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](false);
     }
     MainService.prototype.reverseBarSlide = function () {
         this.barSlideValue = !this.barSlideValue;
@@ -2148,18 +2296,21 @@ var MainService = /** @class */ (function () {
         this.showCoverPopUpValue = true;
         this.showCoverPopUp.next(true);
     };
-    MainService.prototype.setReportCoverValue = function (num) {
-        this.reportCoverValue.next(num);
+    MainService.prototype.reportCover = function (num) {
+        this.reportCoverValue = num;
+        this.reportCoverSwitch.next(true);
     };
     MainService.prototype.hideCoverPopUp = function () {
         this.showCoverPopUpValue = false;
         this.showCoverPopUp.next(false);
     };
+    MainService.prototype.refresh = function () {
+    };
     MainService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], MainService);
     return MainService;
 }());
@@ -2188,6 +2339,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_search_search_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./_pages/search/search.component */ "./src/app/_pages/search/search.component.ts");
 /* harmony import */ var _components_barpage_deals_barpage_deals_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./_components/barpage-deals/barpage-deals.component */ "./src/app/_components/barpage-deals/barpage-deals.component.ts");
 /* harmony import */ var _components_barpage_cover_barpage_cover_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./_components/barpage-cover/barpage-cover.component */ "./src/app/_components/barpage-cover/barpage-cover.component.ts");
+/* harmony import */ var _components_refresh_refresh_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./_components/refresh/refresh.component */ "./src/app/_components/refresh/refresh.component.ts");
+
 
 
 
@@ -2224,6 +2377,7 @@ var routes = [
             }
         ]
     },
+    { path: 'refresh', component: _components_refresh_refresh_component__WEBPACK_IMPORTED_MODULE_10__["RefreshComponent"] },
     { path: 'login', component: _pages_login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"] },
     { path: '**', component: _pages_init_init_component__WEBPACK_IMPORTED_MODULE_5__["InitComponent"] },
     { path: '404', component: _pages_init_init_component__WEBPACK_IMPORTED_MODULE_5__["InitComponent"] },
@@ -2331,6 +2485,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _custom_reuse_strategy__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./custom-reuse-strategy */ "./src/app/custom-reuse-strategy.ts");
+/* harmony import */ var _components_refresh_refresh_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./_components/refresh/refresh.component */ "./src/app/_components/refresh/refresh.component.ts");
+
 
 
 
@@ -2356,6 +2512,7 @@ var AppModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_15__["AppComponent"],
+                _components_refresh_refresh_component__WEBPACK_IMPORTED_MODULE_18__["RefreshComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],

@@ -18,6 +18,12 @@ export class LoginComponent implements OnInit {
 
   logInUsername: string = 'testmail@test.com';
   logInPassword: string = 'password';
+  createFirstName: string = "";
+  createLastName: string = "";
+  createEmail: string = "";
+  createPassword: string = "";
+  createPassword2: string = "";
+  passwordsDoNotMatch: boolean = false;
   isLoading: boolean = false;
   currentPage: string = "login";
   switchPageText: string = "SIGN UP";
@@ -54,15 +60,21 @@ export class LoginComponent implements OnInit {
     this.authService.logIn(this.logInUsername,this.logInPassword).then(
       (success) => {
 
-        document.getElementById('circleLoader').classList.add('load-complete');
-        document.getElementById('checkLoader').classList.remove('checkmarkHidden');
-        document.getElementById('checkLoader').classList.add('checkmark');
+        var user = new User(this.authService.af.auth.currentUser);
+        this.authService.setUser(user);
+        //Once User Is Set
+        this.authService.authStateSet.subscribe(value => {
+          if(value == true){
+            console.log(this.authService.currentUser.uid);
+            var self = this;
+            this.stopLoadingAnimation();
+            setTimeout(function () {
+              self.router.navigate(['/main/barlist']);
+            },1000);
+          }
+        });
+        
 
-        var self = this;
-        setTimeout(function () {
-          self.afterLogIn();
-          console.log('Logged In');
-        }, 800);
 
       }).catch(
       (err) => {
@@ -71,11 +83,71 @@ export class LoginComponent implements OnInit {
       });
   }
 
+  stopLoadingAnimation(){
+    document.getElementById('circleLoader').classList.add('load-complete');
+    document.getElementById('checkLoader').classList.remove('checkmarkHidden');
+    document.getElementById('checkLoader').classList.add('checkmark');
+
+  }
+
 
   afterLogIn(){
     //Redirect
     this.router.navigate(['/main']);
   }
+
+
+  comparePasswords(){
+    if(this.createPassword != this.createPassword2){
+      this.passwordsDoNotMatch = true;
+      return true;
+    }
+    else {
+      this.passwordsDoNotMatch = false;
+      return false;
+    }
+  }
+
+
+  register(){
+    if(this.createFirstName == "") return;
+    if(this.createEmail == "") return;
+    if(this.createPassword == "") return;
+    if(this.comparePasswords() == true) return;
+
+    console.log('Register');
+    this.isLoading = true;
+    this.authService.createUser(this.createEmail, this.createPassword).then( (success) => {
+
+      //Need to upload user info
+
+      console.log(this.authService.af.auth);
+      var user = new User(this.authService.af.auth.currentUser);
+      user.firstName = this.createFirstName;
+      user.lastName = this.createLastName;
+
+      this.authService.createUserInfo(user).then(_ => {
+        this.authService.setUser(user);
+
+        //Once User Is Set
+        this.authService.authStateSet.subscribe(value => {
+          if(value == true){
+            console.log(this.authService.currentUser.uid);
+            var self = this;
+            this.stopLoadingAnimation();
+            setTimeout(function () {
+              self.router.navigate(['/main/barlist']);
+            },1000);
+          }
+        });
+      });
+
+    });
+
+  }
+
+
+
 
   goToSignUp(){
 
@@ -83,7 +155,6 @@ export class LoginComponent implements OnInit {
     $("#signup").off();
 
     if(this.currentPage == "login"){
-      console.log('weird');
       $("#login").collapse("hide");
       this.currentPage = "signup";
 
@@ -97,7 +168,6 @@ export class LoginComponent implements OnInit {
 
     }
     else if(this.currentPage == "signup"){
-      console.log('test');
       $("#signup").collapse("hide");
       this.currentPage = "login";
 

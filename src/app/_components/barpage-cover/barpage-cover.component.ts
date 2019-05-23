@@ -81,11 +81,13 @@ export class BarpageCoverComponent implements OnInit {
       }
     });
 
-    this.mainService.reportCoverValue.subscribe(result => {
-      if(result == -5) return;
-      console.log(result);
-      this.reportCoverValue = result;
-      this.reportCover();
+    this.mainService.reportCoverSwitch.subscribe(result => {
+      if(result == true){
+        this.reportCoverValue = this.mainService.reportCoverValue;
+        console.log(this.reportCoverValue);
+        this.reportCover();
+        this.mainService.reportCoverSwitch.next(false);
+      }
     });
 
 
@@ -280,6 +282,8 @@ export class BarpageCoverComponent implements OnInit {
     }
   
     reportCover(){
+
+      console.log('Report Cover');
   
       var num = this.reportCoverValue;
   

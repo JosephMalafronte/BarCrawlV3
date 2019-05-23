@@ -21,4 +21,8 @@ export class HeaderComponent implements OnInit {
     this.mainService.changeUserSlide();
   }
 
+  refresh(){
+    this.mainService.refresh();
+  }
+
 }

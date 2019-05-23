@@ -16,6 +16,7 @@ export class AuthService {
   currentUser: User = null;
   authStateValue:boolean = false;
   authStateSet: BehaviorSubject<boolean>;
+  goTo
   af: AngularFireAuth;
   db: AngularFireDatabase;
 
@@ -34,13 +35,17 @@ export class AuthService {
       let barCardCount = responseList[0];
       let userInfo = responseList[1];
 
+      if(userInfo == null) this.afAuth.auth.signOut();
+
       //Set User Info
 
       //Set Bar Card Count
       this.currentUser.barCardCount = +barCardCount;
 
       //Get Liked Cards
-      this.getLikedCards(userInfo.likedBars);
+      if(userInfo.hasOwnProperty('likedBars')){
+        this.getLikedCards(userInfo.likedBars);
+      }
 
       //Get About Info
       this.currentUser.firstName = userInfo.about.firstName;
@@ -74,6 +79,18 @@ export class AuthService {
   }
 
 
+  createUserInfo(user: User){
+    return this.db.object('userInfo/' + user.uid).set({
+      about: {
+        firstName: user.firstName, 
+        lastName: user.lastName, 
+        email: user.email,
+        profilePicUrl: "null"
+      }
+    });
+  }
+
+
 
   logIn(email:string, password: string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email,password);
@@ -83,8 +100,8 @@ export class AuthService {
     this.afAuth.auth.signOut();
   }
 
-  createUser() {
-    return this.afAuth.auth.createUserWithEmailAndPassword("testmail@test.com", "password");
+  createUser(email: string, password: string) {
+    return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
   }
 
 

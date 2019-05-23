@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
+import {Router} from '@angular/router';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Injectable({
   providedIn: 'root'
@@ -18,15 +20,16 @@ export class MainService {
   //Popups
   showCoverPopUpValue: boolean = false;
   showCoverPopUp: BehaviorSubject<boolean>;
-  reportCoverValue: BehaviorSubject<number>;
+  reportCoverSwitch: BehaviorSubject<boolean>;
+  reportCoverValue: number = 0;
 
 
-  constructor() {
+  constructor(private router: Router) {
     this.barSlide = new BehaviorSubject<boolean>(false);
     this.currentPage = new BehaviorSubject<number>(-1);
     this.userSlide = new BehaviorSubject<boolean>(false);
     this.showCoverPopUp = new BehaviorSubject<boolean>(false);
-    this.reportCoverValue = new BehaviorSubject<number>(-5);
+    this.reportCoverSwitch = new BehaviorSubject<boolean>(false);
    }
 
   reverseBarSlide() {
@@ -52,13 +55,19 @@ export class MainService {
     this.showCoverPopUp.next(true);
   }
 
-  setReportCoverValue(num: number){
-    this.reportCoverValue.next(num);
+  reportCover(num: number){
+    this.reportCoverValue = num;
+    this.reportCoverSwitch.next(true);
   }
 
   hideCoverPopUp(){
     this.showCoverPopUpValue = false;
     this.showCoverPopUp.next(false);
+  }
+
+  refresh(){
+
+
   }
 
 }
