@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
 
 //Import Components
 import { MainComponent } from './main.component';
@@ -35,7 +35,8 @@ import { PopupComponent } from '../../_components/popup/popup.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   exports: [
     MainComponent

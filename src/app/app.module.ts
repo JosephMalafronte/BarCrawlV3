@@ -24,6 +24,7 @@ import {DateDirective} from './_directives/date.directive';
 import { RouteReuseStrategy } from '@angular/router';
 import { CustomReuseStrategy } from './custom-reuse-strategy';
 import { RefreshComponent } from './_components/refresh/refresh.component';
+import { FriendPageComponent } from './_pages/friend-page/friend-page.component';
 
 
 
@@ -31,6 +32,7 @@ import { RefreshComponent } from './_components/refresh/refresh.component';
   declarations: [
     AppComponent,
     RefreshComponent,
+    FriendPageComponent,
   ],
   imports: [
     BrowserModule,

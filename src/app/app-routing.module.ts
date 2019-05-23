@@ -8,6 +8,7 @@ import { SearchComponent } from './_pages/search/search.component';
 import {BarpageDealsComponent} from './_components/barpage-deals/barpage-deals.component';
 import {BarpageCoverComponent} from './_components/barpage-cover/barpage-cover.component';
 import { RefreshComponent } from './_components/refresh/refresh.component';
+import { FriendPageComponent } from './_pages/friend-page/friend-page.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,10 @@ const routes: Routes = [
       {
         path:'search',
         component: SearchComponent
+      },
+      {
+        path:'friend-page',
+        component: FriendPageComponent
       },
       {
         path:'404',

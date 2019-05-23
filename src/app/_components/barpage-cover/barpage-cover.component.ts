@@ -283,8 +283,6 @@ export class BarpageCoverComponent implements OnInit {
   
     reportCover(){
 
-      console.log('Report Cover');
-  
       var num = this.reportCoverValue;
   
       this.numberSinceRefresh++;
@@ -318,8 +316,9 @@ export class BarpageCoverComponent implements OnInit {
   
   
       this.db.object('/coverReports/' + this.barPageId.toString() + '/' + this.coverDayOfTheWeek).set(this.coverResult);
-      
+      console.log('Cover Reported');
   
+
       this.coverSubmissionLoader = true;
       
       this.mainService.hideCoverPopUp();

@@ -1,13 +1,18 @@
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
+<div class="topnav">
+    <div class="adjust">
+      <div (click)="setActiveSearchPage(0)" [className]="activeNavIcon(0)? 'holder active'  : 'holder'">
+        <span>Bars</span>
+      </div>
+      <div (click)="setActiveSearchPage(1)" [className]="activeNavIcon(1)? 'holder active'  : 'holder'">
+        <span>Users</span>
+      </div>
+    </div>
+  </div>
 
-<button (click)="testBtn()"></button>
+<div class="searchWrap" >
+    
+    <input (click)="focus()" (focusout)="search()" [(ngModel)]="searchString" type="text" id="subject" class="instaSearch" value=""  placeholder="Search">
+    
+</div>
 
-<p>
-  {{test}}
-</p>
 

@@ -203,7 +203,7 @@ module.exports = ".barPageLike {\r\n    position: absolute;\r\n    top:9px;\r\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div [hidden]=\"hidePage\" style=\"padding-top:50px;\">\r\n    <h3 class=\"currentBarCover\">${{currentEstCover}}\r\n      <br />\r\n      <span>Current Reported Cover</span>\r\n    </h3>\r\n\r\n    <div (click)=\"toggleCoverPopUp()\" style=\"text-align: center\">\r\n      <span style=\"margin: 10px 0px 10px 0; width:300px; font-size:14px;\" class=\"btn btn--full\">Report Cover</span>\r\n    </div>\r\n\r\n\r\n\r\n\r\n    <h5 style=\"padding: 0 0 0px 0; border-bottom: 1px black solid;\">Projected Cover by Hour</h5>\r\n    <div style=\"margin: 7px 10px 0 10px;\">\r\n      <ul class=\"responsive_table\" style=\"width:100%; text-align: center; padding-bottom: 30px;\">\r\n        <li class=\"table_row\" style=\"background-color: #636158;  color: white;\">\r\n          <div class=\"table_section_small\">Hour</div>\r\n          <div class=\"table_section\">Price</div>\r\n          <div class=\"table_section\">How Packed?</div>\r\n        </li>\r\n        <div *ngIf=\"showHourlyEstimates\">\r\n          <li class=\"table_row\" *ngFor=\"let est of hourlyEstimates\" style=\"background-color:#f5f5f4;\">\r\n            <div class=\"table_section_small\">{{est.hourString}}</div>\r\n            <div class=\"table_section\">${{est.cover}}</div>\r\n            <div class=\"table_section\">{{est.waitString}}</div>\r\n          </li>\r\n        </div>\r\n\r\n\r\n      </ul>\r\n    </div>\r\n\r\n\r\n\r\n\r\n  </div>"
+module.exports = "<div [hidden]=\"!hidePage\" class=\"loadingHolder\">\r\n    <div class=\"lds-ring\"><div></div><div></div><div></div><div></div></div>\r\n</div>\r\n\r\n\r\n<div [hidden]=\"hidePage\" style=\"padding-top:50px;\">\r\n    <h3 class=\"currentBarCover\">${{currentEstCover}}\r\n      <br />\r\n      <span>Current Reported Cover</span>\r\n    </h3>\r\n\r\n    <div (click)=\"toggleCoverPopUp()\" style=\"text-align: center\">\r\n      <span style=\"margin: 10px 0px 10px 0; width:300px; font-size:14px;\" class=\"btn btn--full\">Report Cover</span>\r\n    </div>\r\n\r\n\r\n\r\n\r\n    <h5 style=\"padding: 0 0 0px 0; border-bottom: 1px black solid;\">Projected Cover by Hour</h5>\r\n    <div style=\"margin: 7px 10px 0 10px;\">\r\n      <ul class=\"responsive_table\" style=\"width:100%; text-align: center; padding-bottom: 30px;\">\r\n        <li class=\"table_row\" style=\"background-color: #636158;  color: white;\">\r\n          <div class=\"table_section_small\">Hour</div>\r\n          <div class=\"table_section\">Price</div>\r\n          <div class=\"table_section\">How Packed?</div>\r\n        </li>\r\n        <div *ngIf=\"showHourlyEstimates\">\r\n          <li class=\"table_row\" *ngFor=\"let est of hourlyEstimates\" style=\"background-color:#f5f5f4;\">\r\n            <div class=\"table_section_small\">{{est.hourString}}</div>\r\n            <div class=\"table_section\">${{est.cover}}</div>\r\n            <div class=\"table_section\">{{est.waitString}}</div>\r\n          </li>\r\n        </div>\r\n\r\n\r\n      </ul>\r\n    </div>\r\n\r\n\r\n\r\n\r\n  </div>"
 
 /***/ }),
 
@@ -422,7 +422,6 @@ var BarpageCoverComponent = /** @class */ (function () {
         this.mainService.activateCoverPopUp();
     };
     BarpageCoverComponent.prototype.reportCover = function () {
-        console.log('Report Cover');
         var num = this.reportCoverValue;
         this.numberSinceRefresh++;
         if (this.numberSinceRefresh > 2) {
@@ -449,6 +448,7 @@ var BarpageCoverComponent = /** @class */ (function () {
         hoursArray.push(num);
         this.coverResult.hourValues = this.convertArrayJson(hoursArray);
         this.db.object('/coverReports/' + this.barPageId.toString() + '/' + this.coverDayOfTheWeek).set(this.coverResult);
+        console.log('Cover Reported');
         this.coverSubmissionLoader = true;
         this.mainService.hideCoverPopUp();
         this.coverSubmissionLoader = false;
@@ -502,7 +502,7 @@ module.exports = ".barPageLike {\r\n    position: absolute;\r\n    top:9px;\r\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div [hidden]=\"hidePage\" style=\"padding-top: 50px;\">\n    <div class=\"barDealsSection\">\n      <h3 style=\"padding: 0 0 0 0;\">\n        <span>Deals & Events - {{dayOfTheWeek}}</span>\n      </h3>\n    </div>\n\n\n\n    <div *ngIf=\"!noDailyDeals\">\n\n\n\n      <!-- Head Daily Deals -->\n      <div id=\"headDeals\" style=\"\">\n        <ul class=\"features_list\" *ngFor=\"let dailyDeal of headDailyDeals\" style=\"padding: 0px 0 0 0; position:relative\">\n          <li>\n            <div style=\"padding-bottom: 10px;\">\n              <span class=\"features_list_span\">\n                <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\n                <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\n              </span>\n            </div>\n          </li>\n        </ul>\n      </div>\n\n\n      <!-- Tail Daily Deals -->\n      <div id=\"demo\" class=\"collapse\">\n        <ul class=\"features_list\" *ngFor=\"let dailyDeal of tailDailyDeals\" style=\"padding: 0 0 0px 0; position: relative;\">\n          <li>\n            <div style=\"padding-bottom: 10px;\">\n              <span class=\"features_list_span\">\n                <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\n                <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\n              </span>\n            </div>\n          </li>\n        </ul>\n      </div>\n\n\n\n\n    </div>\n\n\n    <span  data-toggle=\"collapse\" data-target=\"#demo\" *ngIf=\"!noDailyDeals && tailDailyDeals.length!=0\"\n      (click)=\"handleExpandButtonClick()\" class=\"btn btn--full expandButton\">{{expandDealsButtonText}}</span>\n\n    <h5 *ngIf=\"noDailyDeals\">There are no deals or events for today.</h5>\n\n\n    <div class=\"barDealsSectionBelow\">\n      <h3 style=\"padding: 0 0 0 0;\">\n        <span>Upcoming Deals & Events</span>\n      </h3>\n    </div>\n\n\n\n\n\n    <div *ngFor=\"let upcomingDeal of upcomingDealsHead\">\n      <div class=\"upcomingTitle\" (click)=\"upcomingDeal.expand()\" data-toggle=\"collapse\" [attr.data-target]=\"'#' + upcomingDeal.dayOfTheWeek\">\n        <div class=\"upcomingTitleAst\">\n          <span>\n            <span [innerHtml]=\"upcomingDeal.arrowText\" style=\"padding: 0 8px 0 13px;\"> </span> {{upcomingDeal.dayOfTheWeek}} </span>\n        </div>\n      </div>\n\n      <div [attr.id]=\"upcomingDeal.dayOfTheWeek\" class=\"collapse\">\n        <div id=\"upcomingDeals\" style=\"margin: 0 20px 0 20px;\">\n          <ul class=\"features_list\" *ngFor=\"let dailyDeal of upcomingDeal.deals\" style=\"padding: 0px 0 0 0; position:relative\">\n            <li>\n              <div style=\"padding-bottom: 10px;\">\n                <span class=\"features_list_span\">\n                  <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\n                  <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\n                </span>\n              </div>\n            </li>\n          </ul>\n        </div>\n      </div>\n    </div>\n\n    <div id=\"upcomingCollapse\" class=\"collapse\">\n      <div *ngFor=\"let upcomingDeal of upcomingDealsTail\">\n        <div class=\"upcomingTitle\" (click)=\"upcomingDeal.expand()\" data-toggle=\"collapse\" [attr.data-target]=\"'#' + upcomingDeal.dayOfTheWeek\">\n          <div class=\"upcomingTitleAst\">\n            <span>\n              <span [innerHtml]=\"upcomingDeal.arrowText\" style=\"padding: 0 8px 0 13px;\"> </span>\n              {{upcomingDeal.dayOfTheWeek}} </span>\n          </div>\n        </div>\n\n        <div [attr.id]=\"upcomingDeal.dayOfTheWeek\" class=\"collapse\">\n          <div id=\"upcomingDeals\" style=\"margin: 0 20px 0 20px;\">\n            <ul class=\"features_list\" *ngFor=\"let dailyDeal of upcomingDeal.deals\" style=\"padding: 0px 0 0 0; position:relative\">\n              <li>\n                <div style=\"padding-bottom: 10px;\">\n                  <span class=\"features_list_span\">\n                    <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\n                    <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\n                  </span>\n                </div>\n              </li>\n            </ul>\n          </div>\n        </div>\n      </div>\n    </div>\n\n\n    <span data-toggle=\"collapse\" data-target=\"#upcomingCollapse\" *ngIf=\"upcomingDealsTail.length!=0\"\n      (click)=\"handleUpcomingExpandButtonClick()\" class=\"btn btn--full expandButton\">{{expandUpcomingText}}</span>\n\n\n\n\n  </div>"
+module.exports = "\n<div [hidden]=\"!hidePage\" class=\"loadingHolder\">\n    <div class=\"lds-ring\"><div></div><div></div><div></div><div></div></div>\n</div>\n\n<div [hidden]=\"hidePage\" style=\"padding-top: 50px;\">\n    <div class=\"barDealsSection\">\n      <h3 style=\"padding: 0 0 0 0;\">\n        <span>Deals & Events - {{dayOfTheWeek}}</span>\n      </h3>\n    </div>\n\n\n\n    <div *ngIf=\"!noDailyDeals\">\n\n\n\n      <!-- Head Daily Deals -->\n      <div id=\"headDeals\" style=\"\">\n        <ul class=\"features_list\" *ngFor=\"let dailyDeal of headDailyDeals\" style=\"padding: 0px 0 0 0; position:relative\">\n          <li>\n            <div style=\"padding-bottom: 10px;\">\n              <span class=\"features_list_span\">\n                <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\n                <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\n              </span>\n            </div>\n          </li>\n        </ul>\n      </div>\n\n\n      <!-- Tail Daily Deals -->\n      <div id=\"demo\" class=\"collapse\">\n        <ul class=\"features_list\" *ngFor=\"let dailyDeal of tailDailyDeals\" style=\"padding: 0 0 0px 0; position: relative;\">\n          <li>\n            <div style=\"padding-bottom: 10px;\">\n              <span class=\"features_list_span\">\n                <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\n                <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\n              </span>\n            </div>\n          </li>\n        </ul>\n      </div>\n\n\n\n\n    </div>\n\n\n    <span  data-toggle=\"collapse\" data-target=\"#demo\" *ngIf=\"!noDailyDeals && tailDailyDeals.length!=0\"\n      (click)=\"handleExpandButtonClick()\" class=\"btn btn--full expandButton\">{{expandDealsButtonText}}</span>\n\n    <h5 *ngIf=\"noDailyDeals\">There are no deals or events for today.</h5>\n\n\n    <div class=\"barDealsSectionBelow\">\n      <h3 style=\"padding: 0 0 0 0;\">\n        <span>Upcoming Deals & Events</span>\n      </h3>\n    </div>\n\n\n\n\n\n    <div *ngFor=\"let upcomingDeal of upcomingDealsHead\">\n      <div class=\"upcomingTitle\" (click)=\"upcomingDeal.expand()\" data-toggle=\"collapse\" [attr.data-target]=\"'#' + upcomingDeal.dayOfTheWeek\">\n        <div class=\"upcomingTitleAst\">\n          <span>\n            <span [innerHtml]=\"upcomingDeal.arrowText\" style=\"padding: 0 8px 0 13px;\"> </span> {{upcomingDeal.dayOfTheWeek}} </span>\n        </div>\n      </div>\n\n      <div [attr.id]=\"upcomingDeal.dayOfTheWeek\" class=\"collapse\">\n        <div id=\"upcomingDeals\" style=\"margin: 0 20px 0 20px;\">\n          <ul class=\"features_list\" *ngFor=\"let dailyDeal of upcomingDeal.deals\" style=\"padding: 0px 0 0 0; position:relative\">\n            <li>\n              <div style=\"padding-bottom: 10px;\">\n                <span class=\"features_list_span\">\n                  <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\n                  <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\n                </span>\n              </div>\n            </li>\n          </ul>\n        </div>\n      </div>\n    </div>\n\n    <div id=\"upcomingCollapse\" class=\"collapse\">\n      <div *ngFor=\"let upcomingDeal of upcomingDealsTail\">\n        <div class=\"upcomingTitle\" (click)=\"upcomingDeal.expand()\" data-toggle=\"collapse\" [attr.data-target]=\"'#' + upcomingDeal.dayOfTheWeek\">\n          <div class=\"upcomingTitleAst\">\n            <span>\n              <span [innerHtml]=\"upcomingDeal.arrowText\" style=\"padding: 0 8px 0 13px;\"> </span>\n              {{upcomingDeal.dayOfTheWeek}} </span>\n          </div>\n        </div>\n\n        <div [attr.id]=\"upcomingDeal.dayOfTheWeek\" class=\"collapse\">\n          <div id=\"upcomingDeals\" style=\"margin: 0 20px 0 20px;\">\n            <ul class=\"features_list\" *ngFor=\"let dailyDeal of upcomingDeal.deals\" style=\"padding: 0px 0 0 0; position:relative\">\n              <li>\n                <div style=\"padding-bottom: 10px;\">\n                  <span class=\"features_list_span\">\n                    <img src={{dailyDeal.dealIcon}} alt=\"\" title=\"\" />\n                    <span class=\"features_list_span_text\">{{dailyDeal.dealDetail}}</span>\n                  </span>\n                </div>\n              </li>\n            </ul>\n          </div>\n        </div>\n      </div>\n    </div>\n\n\n    <span data-toggle=\"collapse\" data-target=\"#upcomingCollapse\" *ngIf=\"upcomingDealsTail.length!=0\"\n      (click)=\"handleUpcomingExpandButtonClick()\" class=\"btn btn--full expandButton\">{{expandUpcomingText}}</span>\n\n\n\n\n  </div>"
 
 /***/ }),
 
@@ -729,7 +729,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"navbar navbar--fixed navbar--fixed-top navbar--bg\" style=\"background-color:black;\">\r\n  <div class=\"navbar__col navbar__col--icon navbar__col--icon-right\" (click)=\"refresh()\">\r\n    <a  data-panel=\"left\" class=\"open-panel\">\r\n      <img src=\"./assets/images/icons/white/menu.png\" alt=\"\" title=\"\" />\r\n    </a>\r\n  </div>\r\n  <div class=\"navbar__col navbar__col--title\">\r\n    <a href=\"index.html\">\r\n      <img src=\"./assets/images/TextLogo.png\" width=\"150px\" style=\"padding-top:16px;\">\r\n    </a>\r\n  </div>\r\n  <div class=\"navbar__col navbar__col--icon navbar__col--icon-right\" (click)=\"userClick()\" style=\"padding-right:7px;\">\r\n    <a data-panel=\"right\" class=\"open-panel\">\r\n      <img src=\"./assets/images/icons/white/user.png\" alt=\"\" title=\"\" />\r\n    </a>\r\n  </div>\r\n\r\n</div>"
+module.exports = "<div class=\"navbar navbar--fixed navbar--fixed-top navbar--bg\" style=\"background-color:black;\">\r\n  <div class=\"navbar__col navbar__col--icon navbar__col--icon-right\" (click)=\"refresh()\">\r\n    <a  data-panel=\"left\" class=\"open-panel\">\r\n      <img src=\"./assets/images/icons/white/menu.png\" alt=\"\" title=\"\" />\r\n    </a>\r\n  </div>\r\n  <div class=\"navbar__col navbar__col--title\">\r\n    <a>\r\n      <img src=\"./assets/images/TextLogo.png\" width=\"150px\" style=\"padding-top:16px;\">\r\n    </a>\r\n  </div>\r\n  <div class=\"navbar__col navbar__col--icon navbar__col--icon-right\" (click)=\"userClick()\" style=\"padding-right:7px;\">\r\n    <a data-panel=\"right\" class=\"open-panel\">\r\n      <img src=\"./assets/images/icons/white/user.png\" alt=\"\" title=\"\" />\r\n    </a>\r\n  </div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -1468,6 +1468,62 @@ var BarlistComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/_pages/friend-page/friend-page.component.css":
+/*!**************************************************************!*\
+  !*** ./src/app/_pages/friend-page/friend-page.component.css ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJfcGFnZXMvZnJpZW5kLXBhZ2UvZnJpZW5kLXBhZ2UuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/_pages/friend-page/friend-page.component.html":
+/*!***************************************************************!*\
+  !*** ./src/app/_pages/friend-page/friend-page.component.html ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/_pages/friend-page/friend-page.component.ts":
+/*!*************************************************************!*\
+  !*** ./src/app/_pages/friend-page/friend-page.component.ts ***!
+  \*************************************************************/
+/*! exports provided: FriendPageComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FriendPageComponent", function() { return FriendPageComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var FriendPageComponent = /** @class */ (function () {
+    function FriendPageComponent() {
+    }
+    FriendPageComponent.prototype.ngOnInit = function () {
+    };
+    FriendPageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-friend-page',
+            template: __webpack_require__(/*! ./friend-page.component.html */ "./src/app/_pages/friend-page/friend-page.component.html"),
+            styles: [__webpack_require__(/*! ./friend-page.component.css */ "./src/app/_pages/friend-page/friend-page.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], FriendPageComponent);
+    return FriendPageComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/_pages/init/init.component.css":
 /*!************************************************!*\
   !*** ./src/app/_pages/init/init.component.css ***!
@@ -1955,19 +2011,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
-/* harmony import */ var _main_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./main.component */ "./src/app/_pages/main/main.component.ts");
-/* harmony import */ var _components_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../_components/navbar/navbar.component */ "./src/app/_components/navbar/navbar.component.ts");
-/* harmony import */ var _components_header_header_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../_components/header/header.component */ "./src/app/_components/header/header.component.ts");
-/* harmony import */ var _components_main_scroll_main_scroll_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../_components/main-scroll/main-scroll.component */ "./src/app/_components/main-scroll/main-scroll.component.ts");
-/* harmony import */ var _components_bar_page_bar_page_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../_components/bar-page/bar-page.component */ "./src/app/_components/bar-page/bar-page.component.ts");
-/* harmony import */ var _components_full_loading_full_loading_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../_components/full-loading/full-loading.component */ "./src/app/_components/full-loading/full-loading.component.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _pages_barlist_barlist_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../_pages/barlist/barlist.component */ "./src/app/_pages/barlist/barlist.component.ts");
-/* harmony import */ var _pages_search_search_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../_pages/search/search.component */ "./src/app/_pages/search/search.component.ts");
-/* harmony import */ var _components_user_slide_user_slide_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../_components/user-slide/user-slide.component */ "./src/app/_components/user-slide/user-slide.component.ts");
-/* harmony import */ var _components_barpage_deals_barpage_deals_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../_components/barpage-deals/barpage-deals.component */ "./src/app/_components/barpage-deals/barpage-deals.component.ts");
-/* harmony import */ var _components_barpage_cover_barpage_cover_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../_components/barpage-cover/barpage-cover.component */ "./src/app/_components/barpage-cover/barpage-cover.component.ts");
-/* harmony import */ var _components_popup_popup_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../_components/popup/popup.component */ "./src/app/_components/popup/popup.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _main_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./main.component */ "./src/app/_pages/main/main.component.ts");
+/* harmony import */ var _components_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../_components/navbar/navbar.component */ "./src/app/_components/navbar/navbar.component.ts");
+/* harmony import */ var _components_header_header_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../_components/header/header.component */ "./src/app/_components/header/header.component.ts");
+/* harmony import */ var _components_main_scroll_main_scroll_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../_components/main-scroll/main-scroll.component */ "./src/app/_components/main-scroll/main-scroll.component.ts");
+/* harmony import */ var _components_bar_page_bar_page_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../_components/bar-page/bar-page.component */ "./src/app/_components/bar-page/bar-page.component.ts");
+/* harmony import */ var _components_full_loading_full_loading_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../_components/full-loading/full-loading.component */ "./src/app/_components/full-loading/full-loading.component.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _pages_barlist_barlist_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../_pages/barlist/barlist.component */ "./src/app/_pages/barlist/barlist.component.ts");
+/* harmony import */ var _pages_search_search_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../_pages/search/search.component */ "./src/app/_pages/search/search.component.ts");
+/* harmony import */ var _components_user_slide_user_slide_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../_components/user-slide/user-slide.component */ "./src/app/_components/user-slide/user-slide.component.ts");
+/* harmony import */ var _components_barpage_deals_barpage_deals_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../_components/barpage-deals/barpage-deals.component */ "./src/app/_components/barpage-deals/barpage-deals.component.ts");
+/* harmony import */ var _components_barpage_cover_barpage_cover_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../_components/barpage-cover/barpage-cover.component */ "./src/app/_components/barpage-cover/barpage-cover.component.ts");
+/* harmony import */ var _components_popup_popup_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../_components/popup/popup.component */ "./src/app/_components/popup/popup.component.ts");
+
 
 
 
@@ -1991,25 +2049,26 @@ var MainModule = /** @class */ (function () {
     MainModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _main_component__WEBPACK_IMPORTED_MODULE_3__["MainComponent"],
-                _components_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_4__["NavbarComponent"],
-                _components_header_header_component__WEBPACK_IMPORTED_MODULE_5__["HeaderComponent"],
-                _components_main_scroll_main_scroll_component__WEBPACK_IMPORTED_MODULE_6__["MainScrollComponent"],
-                _components_bar_page_bar_page_component__WEBPACK_IMPORTED_MODULE_7__["BarPageComponent"],
-                _components_full_loading_full_loading_component__WEBPACK_IMPORTED_MODULE_8__["FullLoadingComponent"],
-                _pages_barlist_barlist_component__WEBPACK_IMPORTED_MODULE_10__["BarlistComponent"],
-                _pages_search_search_component__WEBPACK_IMPORTED_MODULE_11__["SearchComponent"],
-                _components_user_slide_user_slide_component__WEBPACK_IMPORTED_MODULE_12__["UserSlideComponent"],
-                _components_barpage_deals_barpage_deals_component__WEBPACK_IMPORTED_MODULE_13__["BarpageDealsComponent"],
-                _components_barpage_cover_barpage_cover_component__WEBPACK_IMPORTED_MODULE_14__["BarpageCoverComponent"],
-                _components_popup_popup_component__WEBPACK_IMPORTED_MODULE_15__["PopupComponent"]
+                _main_component__WEBPACK_IMPORTED_MODULE_4__["MainComponent"],
+                _components_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_5__["NavbarComponent"],
+                _components_header_header_component__WEBPACK_IMPORTED_MODULE_6__["HeaderComponent"],
+                _components_main_scroll_main_scroll_component__WEBPACK_IMPORTED_MODULE_7__["MainScrollComponent"],
+                _components_bar_page_bar_page_component__WEBPACK_IMPORTED_MODULE_8__["BarPageComponent"],
+                _components_full_loading_full_loading_component__WEBPACK_IMPORTED_MODULE_9__["FullLoadingComponent"],
+                _pages_barlist_barlist_component__WEBPACK_IMPORTED_MODULE_11__["BarlistComponent"],
+                _pages_search_search_component__WEBPACK_IMPORTED_MODULE_12__["SearchComponent"],
+                _components_user_slide_user_slide_component__WEBPACK_IMPORTED_MODULE_13__["UserSlideComponent"],
+                _components_barpage_deals_barpage_deals_component__WEBPACK_IMPORTED_MODULE_14__["BarpageDealsComponent"],
+                _components_barpage_cover_barpage_cover_component__WEBPACK_IMPORTED_MODULE_15__["BarpageCoverComponent"],
+                _components_popup_popup_component__WEBPACK_IMPORTED_MODULE_16__["PopupComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_10__["AppRoutingModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"]
             ],
             exports: [
-                _main_component__WEBPACK_IMPORTED_MODULE_3__["MainComponent"]
+                _main_component__WEBPACK_IMPORTED_MODULE_4__["MainComponent"]
             ],
             providers: [],
             bootstrap: []
@@ -2029,7 +2088,7 @@ var MainModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJfcGFnZXMvc2VhcmNoL3NlYXJjaC5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "input[type=text].instaSearch {\r\n    font-family: proxima-nove, 'Helvetica Neue', Arial, Helvetica, sans-serif;\r\n    font-size: 15px;\r\n    font-weight: 300;\r\n    letter-spacing: .5px;\r\n    height: 30px;\r\n    border-radius: 15px;\r\n    text-align: left;\r\n    padding-left: 40%;\r\n    border: 1px solid #edeeee;\r\n    background: #fafafa;\r\n    background-image: url('glass.png');\r\n    background-repeat: no-repeat;\r\n    background-size: 13px 13px;\r\n    background-position: 27% 47%;\r\n    outline: none;\r\n    width: 95%;\r\n    margin-top: 10px;\r\n    margin-bottom: 15px;\r\n    color: #c9cbcc;\r\n}\r\ninput[type=text]:focus.instaSearch {\r\n    text-align: left;\r\n    padding-left: 30px;\r\n    width:88%;\r\n    background: #ffffff;\r\n    background-image: url('glass.png');\r\n    background-repeat: no-repeat;\r\n    background-size: 13px 13px;\r\n    background-position: 15px 7px;\r\n    color: #000;\r\n}\r\ninput:focus::-webkit-input-placeholder {\r\n     color: #c9cbcc;\r\n}\r\ninput:focus::-moz-placeholder {\r\n     color: #c9cbcc;\r\n}\r\ninput:focus::-moz-placeholder {   /* Older versions of Firefox */\r\n     color: #c9cbcc;\r\n}\r\ninput:focus::-ms-input-placeholder { \r\n     color: #c9cbcc;\r\n}\r\n.searchWrap{\r\n    padding-top: 20%;\r\n    padding-left: 4%;\r\n}\r\n/* Add a black background color to the top navigation */\r\n.topnav {\r\n    margin-top: 50px;\r\n    position: absolute;\r\n    width: 100%;\r\n    right: 0%;\r\n    background-color: transparent;\r\n    overflow: hidden;\r\n  }\r\n.adjust {\r\n    padding-left: 0px;\r\n    padding-right: 0px;\r\n}\r\n/* Style the links inside the navigation bar */\r\n.holder  {\r\n    float: left;\r\n    color: black;\r\n    text-align: center;\r\n    padding: 3px 0px;\r\n    width: 50%;\r\n    text-decoration: none;\r\n    font-size: 17px;\r\n}\r\n/* Add a color to the active/current link */\r\n.active {\r\n    background-color: transparent;\r\n    color: black;\r\n    border-bottom: 2px black solid;\r\n}\r\n\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9wYWdlcy9zZWFyY2gvc2VhcmNoLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSx5RUFBeUU7SUFDekUsZUFBZTtJQUNmLGdCQUFnQjtJQUNoQixvQkFBb0I7SUFDcEIsWUFBWTtJQUNaLG1CQUFtQjtJQUNuQixnQkFBZ0I7SUFDaEIsaUJBQWlCO0lBQ2pCLHlCQUF5QjtJQUN6QixtQkFBbUI7SUFDbkIsa0NBQXlEO0lBQ3pELDRCQUE0QjtJQUM1QiwwQkFBMEI7SUFDMUIsNEJBQTRCO0lBQzVCLGFBQWE7SUFDYixVQUFVO0lBQ1YsZ0JBQWdCO0lBQ2hCLG1CQUFtQjtJQUNuQixjQUFjO0FBQ2xCO0FBQ0E7SUFDSSxnQkFBZ0I7SUFDaEIsa0JBQWtCO0lBQ2xCLFNBQVM7SUFDVCxtQkFBbUI7SUFDbkIsa0NBQXlEO0lBQ3pELDRCQUE0QjtJQUM1QiwwQkFBMEI7SUFDMUIsNkJBQTZCO0lBQzdCLFdBQVc7QUFDZjtBQUVBO0tBQ0ssY0FBYztBQUNuQjtBQUNBO0tBQ0ssY0FBYztBQUNuQjtBQUNBLGtDQUFrQyw4QkFBOEI7S0FDM0QsY0FBYztBQUNuQjtBQUNBO0tBQ0ssY0FBYztBQUNuQjtBQUVBO0lBQ0ksZ0JBQWdCO0lBQ2hCLGdCQUFnQjtBQUNwQjtBQUVBLHVEQUF1RDtBQUN2RDtJQUNJLGdCQUFnQjtJQUNoQixrQkFBa0I7SUFDbEIsV0FBVztJQUNYLFNBQVM7SUFDVCw2QkFBNkI7SUFDN0IsZ0JBQWdCO0VBQ2xCO0FBRUY7SUFDSSxpQkFBaUI7SUFDakIsa0JBQWtCO0FBQ3RCO0FBRUEsOENBQThDO0FBQzlDO0lBQ0ksV0FBVztJQUNYLFlBQVk7SUFDWixrQkFBa0I7SUFDbEIsZ0JBQWdCO0lBQ2hCLFVBQVU7SUFDVixxQkFBcUI7SUFDckIsZUFBZTtBQUNuQjtBQUdBLDJDQUEyQztBQUMzQztJQUNJLDZCQUE2QjtJQUM3QixZQUFZO0lBQ1osOEJBQThCO0FBQ2xDIiwiZmlsZSI6Il9wYWdlcy9zZWFyY2gvc2VhcmNoLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpbnB1dFt0eXBlPXRleHRdLmluc3RhU2VhcmNoIHtcclxuICAgIGZvbnQtZmFtaWx5OiBwcm94aW1hLW5vdmUsICdIZWx2ZXRpY2EgTmV1ZScsIEFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWY7XHJcbiAgICBmb250LXNpemU6IDE1cHg7XHJcbiAgICBmb250LXdlaWdodDogMzAwO1xyXG4gICAgbGV0dGVyLXNwYWNpbmc6IC41cHg7XHJcbiAgICBoZWlnaHQ6IDMwcHg7XHJcbiAgICBib3JkZXItcmFkaXVzOiAxNXB4O1xyXG4gICAgdGV4dC1hbGlnbjogbGVmdDtcclxuICAgIHBhZGRpbmctbGVmdDogNDAlO1xyXG4gICAgYm9yZGVyOiAxcHggc29saWQgI2VkZWVlZTtcclxuICAgIGJhY2tncm91bmQ6ICNmYWZhZmE7XHJcbiAgICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoJy4uLy4uLy4uL2Fzc2V0cy9pbWFnZXMvZ2xhc3MucG5nJyk7XHJcbiAgICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xyXG4gICAgYmFja2dyb3VuZC1zaXplOiAxM3B4IDEzcHg7XHJcbiAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiAyNyUgNDclO1xyXG4gICAgb3V0bGluZTogbm9uZTtcclxuICAgIHdpZHRoOiA5NSU7XHJcbiAgICBtYXJnaW4tdG9wOiAxMHB4O1xyXG4gICAgbWFyZ2luLWJvdHRvbTogMTVweDtcclxuICAgIGNvbG9yOiAjYzljYmNjO1xyXG59XHJcbmlucHV0W3R5cGU9dGV4dF06Zm9jdXMuaW5zdGFTZWFyY2gge1xyXG4gICAgdGV4dC1hbGlnbjogbGVmdDtcclxuICAgIHBhZGRpbmctbGVmdDogMzBweDtcclxuICAgIHdpZHRoOjg4JTtcclxuICAgIGJhY2tncm91bmQ6ICNmZmZmZmY7XHJcbiAgICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIuLi8uLi8uLi9hc3NldHMvaW1hZ2VzL2dsYXNzLnBuZ1wiKTtcclxuICAgIGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7XHJcbiAgICBiYWNrZ3JvdW5kLXNpemU6IDEzcHggMTNweDtcclxuICAgIGJhY2tncm91bmQtcG9zaXRpb246IDE1cHggN3B4O1xyXG4gICAgY29sb3I6ICMwMDA7XHJcbn1cclxuIFxyXG5pbnB1dDpmb2N1czo6LXdlYmtpdC1pbnB1dC1wbGFjZWhvbGRlciB7XHJcbiAgICAgY29sb3I6ICNjOWNiY2M7XHJcbn1cclxuaW5wdXQ6Zm9jdXM6Oi1tb3otcGxhY2Vob2xkZXIge1xyXG4gICAgIGNvbG9yOiAjYzljYmNjO1xyXG59XHJcbmlucHV0OmZvY3VzOjotbW96LXBsYWNlaG9sZGVyIHsgICAvKiBPbGRlciB2ZXJzaW9ucyBvZiBGaXJlZm94ICovXHJcbiAgICAgY29sb3I6ICNjOWNiY2M7XHJcbn1cclxuaW5wdXQ6Zm9jdXM6Oi1tcy1pbnB1dC1wbGFjZWhvbGRlciB7IFxyXG4gICAgIGNvbG9yOiAjYzljYmNjO1xyXG59XHJcblxyXG4uc2VhcmNoV3JhcHtcclxuICAgIHBhZGRpbmctdG9wOiAyMCU7XHJcbiAgICBwYWRkaW5nLWxlZnQ6IDQlO1xyXG59XHJcblxyXG4vKiBBZGQgYSBibGFjayBiYWNrZ3JvdW5kIGNvbG9yIHRvIHRoZSB0b3AgbmF2aWdhdGlvbiAqL1xyXG4udG9wbmF2IHtcclxuICAgIG1hcmdpbi10b3A6IDUwcHg7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIHJpZ2h0OiAwJTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHRyYW5zcGFyZW50O1xyXG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcclxuICB9XHJcblxyXG4uYWRqdXN0IHtcclxuICAgIHBhZGRpbmctbGVmdDogMHB4O1xyXG4gICAgcGFkZGluZy1yaWdodDogMHB4O1xyXG59XHJcbiAgXHJcbi8qIFN0eWxlIHRoZSBsaW5rcyBpbnNpZGUgdGhlIG5hdmlnYXRpb24gYmFyICovXHJcbi5ob2xkZXIgIHtcclxuICAgIGZsb2F0OiBsZWZ0O1xyXG4gICAgY29sb3I6IGJsYWNrO1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgcGFkZGluZzogM3B4IDBweDtcclxuICAgIHdpZHRoOiA1MCU7XHJcbiAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XHJcbiAgICBmb250LXNpemU6IDE3cHg7XHJcbn1cclxuXHJcblxyXG4vKiBBZGQgYSBjb2xvciB0byB0aGUgYWN0aXZlL2N1cnJlbnQgbGluayAqL1xyXG4uYWN0aXZlIHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHRyYW5zcGFyZW50O1xyXG4gICAgY29sb3I6IGJsYWNrO1xyXG4gICAgYm9yZGVyLWJvdHRvbTogMnB4IGJsYWNrIHNvbGlkO1xyXG59XHJcbiJdfQ== */"
 
 /***/ }),
 
@@ -2040,7 +2099,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n\r\n<button (click)=\"testBtn()\"></button>\r\n\r\n<p>\r\n  {{test}}\r\n</p>\r\n\r\n"
+module.exports = "<div class=\"topnav\">\r\n    <div class=\"adjust\">\r\n      <div (click)=\"setActiveSearchPage(0)\" [className]=\"activeNavIcon(0)? 'holder active'  : 'holder'\">\r\n        <span>Bars</span>\r\n      </div>\r\n      <div (click)=\"setActiveSearchPage(1)\" [className]=\"activeNavIcon(1)? 'holder active'  : 'holder'\">\r\n        <span>Users</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n<div class=\"searchWrap\" >\r\n    \r\n    <input (click)=\"focus()\" (focusout)=\"search()\" [(ngModel)]=\"searchString\" type=\"text\" id=\"subject\" class=\"instaSearch\" value=\"\"  placeholder=\"Search\">\r\n    \r\n</div>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -2056,16 +2115,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SearchComponent", function() { return SearchComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_fire_database__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/database */ "./node_modules/@angular/fire/database/index.js");
+
 
 
 var SearchComponent = /** @class */ (function () {
-    function SearchComponent() {
-        this.test = "Test";
+    function SearchComponent(db) {
+        this.db = db;
+        this.searchString = "";
+        this.activeSearchPage = 0;
     }
     SearchComponent.prototype.ngOnInit = function () {
     };
-    SearchComponent.prototype.testBtn = function () {
-        this.test = "Taco";
+    SearchComponent.prototype.activeNavIcon = function (index) {
+        if (this.activeSearchPage == index)
+            return true;
+        return false;
+    };
+    SearchComponent.prototype.setActiveSearchPage = function (index) {
+        if (index == this.activeSearchPage)
+            return;
+        this.activeSearchPage = index;
+    };
+    SearchComponent.prototype.focus = function () {
+        document.getElementById('subject').focus();
+        document.getElementById('subject').addEventListener('keyup', function (e) {
+            if (e.which == 13)
+                this.blur();
+        });
+    };
+    SearchComponent.prototype.search = function () {
+        var term = this.searchString;
+        //https://angularfirebase.com/lessons/autocomplete-search-with-angular4-and-firebase/
+        //https://stackoverflow.com/questions/40471284/firebase-search-by-child-value
+        this.db.list('barPages', function (ref) { return ref.orderByChild('barName').equalTo(term); }).valueChanges().subscribe(function (result) {
+            console.log(result);
+        });
     };
     SearchComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2073,7 +2158,7 @@ var SearchComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./search.component.html */ "./src/app/_pages/search/search.component.html"),
             styles: [__webpack_require__(/*! ./search.component.css */ "./src/app/_pages/search/search.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_database__WEBPACK_IMPORTED_MODULE_2__["AngularFireDatabase"]])
     ], SearchComponent);
     return SearchComponent;
 }());
@@ -2340,6 +2425,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_barpage_deals_barpage_deals_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./_components/barpage-deals/barpage-deals.component */ "./src/app/_components/barpage-deals/barpage-deals.component.ts");
 /* harmony import */ var _components_barpage_cover_barpage_cover_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./_components/barpage-cover/barpage-cover.component */ "./src/app/_components/barpage-cover/barpage-cover.component.ts");
 /* harmony import */ var _components_refresh_refresh_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./_components/refresh/refresh.component */ "./src/app/_components/refresh/refresh.component.ts");
+/* harmony import */ var _pages_friend_page_friend_page_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./_pages/friend-page/friend-page.component */ "./src/app/_pages/friend-page/friend-page.component.ts");
+
 
 
 
@@ -2366,6 +2453,10 @@ var routes = [
             {
                 path: 'search',
                 component: _pages_search_search_component__WEBPACK_IMPORTED_MODULE_7__["SearchComponent"]
+            },
+            {
+                path: 'friend-page',
+                component: _pages_friend_page_friend_page_component__WEBPACK_IMPORTED_MODULE_11__["FriendPageComponent"]
             },
             {
                 path: '404',
@@ -2486,6 +2577,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _custom_reuse_strategy__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./custom-reuse-strategy */ "./src/app/custom-reuse-strategy.ts");
 /* harmony import */ var _components_refresh_refresh_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./_components/refresh/refresh.component */ "./src/app/_components/refresh/refresh.component.ts");
+/* harmony import */ var _pages_friend_page_friend_page_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./_pages/friend-page/friend-page.component */ "./src/app/_pages/friend-page/friend-page.component.ts");
+
 
 
 
@@ -2513,6 +2606,7 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_15__["AppComponent"],
                 _components_refresh_refresh_component__WEBPACK_IMPORTED_MODULE_18__["RefreshComponent"],
+                _pages_friend_page_friend_page_component__WEBPACK_IMPORTED_MODULE_19__["FriendPageComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],

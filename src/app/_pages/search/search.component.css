@@ -1,0 +1,84 @@
+input[type=text].instaSearch {
+    font-family: proxima-nove, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    letter-spacing: .5px;
+    height: 30px;
+    border-radius: 15px;
+    text-align: left;
+    padding-left: 40%;
+    border: 1px solid #edeeee;
+    background: #fafafa;
+    background-image: url('../../../assets/images/glass.png');
+    background-repeat: no-repeat;
+    background-size: 13px 13px;
+    background-position: 27% 47%;
+    outline: none;
+    width: 95%;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    color: #c9cbcc;
+}
+input[type=text]:focus.instaSearch {
+    text-align: left;
+    padding-left: 30px;
+    width:88%;
+    background: #ffffff;
+    background-image: url("../../../assets/images/glass.png");
+    background-repeat: no-repeat;
+    background-size: 13px 13px;
+    background-position: 15px 7px;
+    color: #000;
+}
+ 
+input:focus::-webkit-input-placeholder {
+     color: #c9cbcc;
+}
+input:focus::-moz-placeholder {
+     color: #c9cbcc;
+}
+input:focus::-moz-placeholder {   /* Older versions of Firefox */
+     color: #c9cbcc;
+}
+input:focus::-ms-input-placeholder { 
+     color: #c9cbcc;
+}
+
+.searchWrap{
+    padding-top: 20%;
+    padding-left: 4%;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+    margin-top: 50px;
+    position: absolute;
+    width: 100%;
+    right: 0%;
+    background-color: transparent;
+    overflow: hidden;
+  }
+
+.adjust {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+  
+/* Style the links inside the navigation bar */
+.holder  {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 3px 0px;
+    width: 50%;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+
+/* Add a color to the active/current link */
+.active {
+    background-color: transparent;
+    color: black;
+    border-bottom: 2px black solid;
+}

@@ -15,6 +15,7 @@ export class MainService {
   userSlideValue: boolean = false;
   userSlide: BehaviorSubject<boolean>
   userSlideEvent: Event;
+  friendId: number;
 
 
   //Popups
