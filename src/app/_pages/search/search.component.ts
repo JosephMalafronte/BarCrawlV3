@@ -27,6 +27,7 @@ export class SearchComponent implements OnInit {
   setActiveSearchPage(index: number){
     if(index == this.activeSearchPage) return;
     this.activeSearchPage = index;
+    this.search();
   }
 
 
@@ -40,11 +41,27 @@ export class SearchComponent implements OnInit {
   search(){
     var term = this.searchString;
 
-    //https://angularfirebase.com/lessons/autocomplete-search-with-angular4-and-firebase/
-    //https://stackoverflow.com/questions/40471284/firebase-search-by-child-value
-    this.db.list('barPages', ref => ref.orderByChild('barName').equalTo(term)).valueChanges().subscribe(result => {
-      console.log(result);
-    });
+    if(term == "") return;
+    
+
+    //Convert string
+    term = term.toLowerCase();
+    term =  term.charAt(0).toUpperCase() + term.slice(1);
+
+
+    if(this.activeSearchPage == 0){
+      //https://angularfirebase.com/lessons/autocomplete-search-with-angular4-and-firebase/
+      //https://stackoverflow.com/questions/40471284/firebase-search-by-child-value
+      this.db.list('barPages', ref => ref.orderByChild('barName').limitToFirst(10).startAt(term).endAt(term + "\uf8ff")).valueChanges().subscribe(result => {
+        console.log(result);
+      });
+    }
+    else if(this.activeSearchPage == 1){
+      this.db.list('userInfo', ref => ref.orderByChild('about/firstName').limitToFirst(10).startAt(term).endAt(term + "\uf8ff")).valueChanges().subscribe(result => {
+        console.log(result);
+      });
+    }
+    
 
   }
 

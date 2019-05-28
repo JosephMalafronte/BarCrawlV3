@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { User } from '../../_models/User.Model';
 import {AuthService} from '../../_services/auth.service';
 import { Router } from '@angular/router';
+import { last } from 'rxjs/operators';
 declare var $ : any;
 
 
@@ -123,8 +124,16 @@ export class LoginComponent implements OnInit {
 
       console.log(this.authService.af.auth);
       var user = new User(this.authService.af.auth.currentUser);
-      user.firstName = this.createFirstName;
-      user.lastName = this.createLastName;
+      var firstName = this.createFirstName;
+      firstName = firstName.toLowerCase();
+      firstName =  firstName.charAt(0).toUpperCase() + firstName.slice(1);
+
+      var lastName = this.createLastName;
+      lastName = lastName.toLowerCase();
+      lastName =  lastName.charAt(0).toUpperCase() + lastName.slice(1);
+
+      user.firstName = firstName;
+      user.lastName = lastName;
 
       this.authService.createUserInfo(user).then(_ => {
         this.authService.setUser(user);
