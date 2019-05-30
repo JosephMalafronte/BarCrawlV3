@@ -5,6 +5,7 @@ export class User {
     displayName: string;
     firstName: string;
     lastName: string;
+    userName: string;
     likedBars: number[] = [];
     barCardCount: number;
 
@@ -12,6 +13,5 @@ export class User {
         this.uid = auth.uid;
         this.email = auth.email;
         this.displayName = auth.displayName;
-
     }
 }

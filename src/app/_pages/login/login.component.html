@@ -9,7 +9,7 @@
 
   </div>
 
-  <div *ngIf="!isLoading">
+  <div [hidden]="isLoading">
     <!-- Login Popup -->
     <div class="popup popup-login" style="z-index: 1000;">
       <div class="content-block">
@@ -46,6 +46,8 @@
                 placeholder="First Name" />
               <input type="text" [(ngModel)]="createLastName" class="form_input required"
               placeholder="Last Name (Optional)" />
+              <input type="text" [(ngModel)]="createUsername"  class="form_input required"
+                placeholder="Username" />
               <input type="text" [(ngModel)]="createEmail" name="Username" class="form_input required"
                 placeholder="Email" />
               <input type="password" [(ngModel)]="createPassword"  class="form_input required"
@@ -79,7 +81,7 @@
 
 
   <!--Loading-->
-  <div *ngIf="isLoading" class="center-screen">
+  <div [hidden]="!isLoading" class="center-screen">
     <div id="circleLoader" class="circle-loader">
       <div id="checkLoader" class="checkmarkHidden draw"></div>
     </div>

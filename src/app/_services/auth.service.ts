@@ -16,9 +16,9 @@ export class AuthService {
   currentUser: User = null;
   authStateValue:boolean = false;
   authStateSet: BehaviorSubject<boolean>;
-  goTo
   af: AngularFireAuth;
   db: AngularFireDatabase;
+  subUser: boolean = false;
 
 
   constructor(dbA: AngularFireDatabase, public afAuth: AngularFireAuth) {
@@ -84,6 +84,7 @@ export class AuthService {
       about: {
         firstName: user.firstName, 
         lastName: user.lastName, 
+        userName: user.userName,
         email: user.email,
         profilePicUrl: "null"
       }
@@ -98,6 +99,7 @@ export class AuthService {
 
   logOut(){
     this.afAuth.auth.signOut();
+    console.log(this.afAuth.auth);
   }
 
   createUser(email: string, password: string) {
@@ -130,6 +132,10 @@ export class AuthService {
       });
     }
 
+  }
+
+  checkUniqueUser(username){
+    return this.db.list('userInfo', ref => ref.orderByChild('about/userName').limitToFirst(10).equalTo(username)).valueChanges();
   }
 
 

@@ -1,18 +1,76 @@
 <div class="topnav">
-    <div class="adjust">
-      <div (click)="setActiveSearchPage(0)" [className]="activeNavIcon(0)? 'holder active'  : 'holder'">
-        <span>Bars</span>
-      </div>
-      <div (click)="setActiveSearchPage(1)" [className]="activeNavIcon(1)? 'holder active'  : 'holder'">
-        <span>Users</span>
-      </div>
+  <div class="adjust">
+    <div (click)="setActiveSearchPage(0)" [className]="activeNavIcon(0)? 'holder active'  : 'holder'">
+      <span>Bars</span>
+    </div>
+    <div (click)="setActiveSearchPage(1)" [className]="activeNavIcon(1)? 'holder active'  : 'holder'">
+      <span>Users</span>
     </div>
   </div>
+</div>
 
-<div class="searchWrap" >
-    
-    <input (click)="focus()" (focusout)="search()" [(ngModel)]="searchString" type="text" id="subject" class="instaSearch" value=""  placeholder="Search">
-    
+<div class="searchWrap">
+
+  <input (click)="focus()" (focusout)="search()" [(ngModel)]="searchString" type="text" id="subject" class="instaSearch"
+    value="" placeholder="Search">
+
 </div>
 
 
+
+<div class="barHolder" id="barHolder">
+  <!-- For each here -->
+  <div style="width:92%; margin: 0 4%;">
+    <ul class="shop_items">
+
+      <!-- BAR CARD -->
+      <li id="barCard" *ngFor="let barCard of barResults" (click)="onBarCardClick($event,barCard.barId)">
+        <div class="shop_thumb">
+          <img src={{barCard.barPictureUrl}} alt="" title="" class="barCardPic" />
+        </div>
+        <div class="shop_item_details">
+          <h4>{{barCard.barName}}</h4>
+          <ul class="features_list" style="padding: 0% 0 0 0;">
+            <li>
+              <span class="features_list_span">
+                <img src={{barCard.highlight1Icon}} alt="" title="" />
+                <span class="features_list_span_text">{{barCard.highlight1}}</span>
+              </span>
+            </li>
+            <li>
+              <span class="features_list_span">
+                <img src={{barCard.highlight2Icon}} alt="" title="" />
+                <span class="features_list_span_text">{{barCard.highlight2}}</span>
+              </span>
+            </li>
+          </ul>
+          <span class="open-popup shopfav" (click)="likeBar(barCard)">
+            <!-- <app-like></app-like> -->
+            <img id="like"
+              [src]="checkLikedStatus(barCard)? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'"
+              alt="" title="" />
+          </span>
+        </div>
+      </li>
+
+
+    </ul>
+  </div>
+</div>
+
+
+
+<div class="userHolder" id="userHolder">
+  <div id="headDeals">
+    <ul class="features_list" *ngFor="let userRes of userResults" style="padding: 0px 0 0 0; position:relative">
+      <li>
+        <div style="padding-bottom: 10px;">
+          <span class="features_list_span">
+            <!-- <img src={{userRes.barPicture1Url}} alt="" title="" /> -->
+            <span class="features_list_span_text">{{userRes.about.firstName}}</span>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

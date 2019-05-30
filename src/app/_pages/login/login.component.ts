@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { User } from '../../_models/User.Model';
 import {AuthService} from '../../_services/auth.service';
 import { Router } from '@angular/router';
-import { last } from 'rxjs/operators';
+import { take } from 'rxjs/operators'
+
 declare var $ : any;
 
 
@@ -17,10 +18,12 @@ declare var $ : any;
 })
 export class LoginComponent implements OnInit {
 
-  logInUsername: string = 'testmail@test.com';
-  logInPassword: string = 'password';
+  logInUsername: string = 'test@test.com';
+  logInPassword: string = '124577';
   createFirstName: string = "";
   createLastName: string = "";
+  createUsername: string = "";
+  takenUsername: boolean = false;
   createEmail: string = "";
   createPassword: string = "";
   createPassword2: string = "";
@@ -43,14 +46,6 @@ export class LoginComponent implements OnInit {
   ngAfterInit(){
 
 
-    // console.log('test');
-
-    $("#login").on('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',   
-    function(e) {
-
-    // code to execute after transition ends
-      console.log('done');
-    });
   }
 
 
@@ -66,7 +61,6 @@ export class LoginComponent implements OnInit {
         //Once User Is Set
         this.authService.authStateSet.subscribe(value => {
           if(value == true){
-            console.log(this.authService.currentUser.uid);
             var self = this;
             this.stopLoadingAnimation();
             setTimeout(function () {
@@ -111,18 +105,42 @@ export class LoginComponent implements OnInit {
 
 
   register(){
+
+
     if(this.createFirstName == "") return;
+    if(this.createUsername == "") return;
     if(this.createEmail == "") return;
     if(this.createPassword == "") return;
     if(this.comparePasswords() == true) return;
 
+    this.authService.subUser = true;
+
     console.log('Register');
     this.isLoading = true;
+
+    //Check unique username
+    if(this.createUsername.charAt(0) != '@') this.createUsername = '@' + this.createUsername;
+    this.authService.checkUniqueUser(this.createUsername).pipe(take(1)).subscribe(result => {
+      if(result.length > 0) {
+        this.takenUsername = true;
+        this.isLoading = false;
+        return;
+      }
+      else{
+        this.createUser();
+      }
+    });
+    
+
+  }
+
+
+
+  createUser(){
     this.authService.createUser(this.createEmail, this.createPassword).then( (success) => {
 
       //Need to upload user info
 
-      console.log(this.authService.af.auth);
       var user = new User(this.authService.af.auth.currentUser);
       var firstName = this.createFirstName;
       firstName = firstName.toLowerCase();
@@ -134,6 +152,7 @@ export class LoginComponent implements OnInit {
 
       user.firstName = firstName;
       user.lastName = lastName;
+      user.userName = this.createUsername;
 
       this.authService.createUserInfo(user).then(_ => {
         this.authService.setUser(user);
@@ -141,7 +160,6 @@ export class LoginComponent implements OnInit {
         //Once User Is Set
         this.authService.authStateSet.subscribe(value => {
           if(value == true){
-            console.log(this.authService.currentUser.uid);
             var self = this;
             this.stopLoadingAnimation();
             setTimeout(function () {
@@ -152,7 +170,6 @@ export class LoginComponent implements OnInit {
       });
 
     });
-
   }
 
 

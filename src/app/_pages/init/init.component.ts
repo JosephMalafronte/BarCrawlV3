@@ -12,6 +12,8 @@ import { take } from 'rxjs/operators'
 export class InitComponent implements OnInit {
 
 
+
+
   constructor(private authService: AuthService , private router: Router) {
 
   }
@@ -20,16 +22,16 @@ export class InitComponent implements OnInit {
  
      this.authService.af.authState.pipe(take(1)).subscribe(result =>{
        console.log(result);
-       console.log('Init Running');
        if(result == null){
+        console.log("INIT RUNNING");
         this.router.navigate(['/login']);
        }
        else{
         this.authService.setUser(new User(result));
         //When user is set run this
         this.authService.authStateSet.subscribe(value => {
-          if(value == true){
-            console.log(result);
+          if(value == true && this.authService.subUser == false){
+            console.log("INIT RUNNING");
             this.router.navigate(['/main/barlist']);
           }
         });

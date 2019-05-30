@@ -12,9 +12,9 @@ input[type=text].instaSearch {
     background-image: url('../../../assets/images/glass.png');
     background-repeat: no-repeat;
     background-size: 13px 13px;
-    background-position: 27% 47%;
+    background-position: 38% 47%;
     outline: none;
-    width: 95%;
+    width: 55%;
     margin-top: 10px;
     margin-bottom: 15px;
     color: #c9cbcc;
@@ -81,4 +81,38 @@ input:focus::-ms-input-placeholder {
     background-color: transparent;
     color: black;
     border-bottom: 2px black solid;
+}
+
+
+.barHolder{
+    position: absolute;
+    width:100%;
+    -webkit-transform: translateX(0%);
+			transform: translateX(0%);
+	transition: transform 300ms linear;
+	will-change: transform;
+
+}
+
+.bHHidden{
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    transition: transform 300ms linear;
+    will-change: transform;
+}
+
+.userHolder{
+    position: absolute;
+    width:100%;
+    -webkit-transform: translateX(100%);
+			transform: translateX(100%);
+	transition: transform 300ms linear;
+	will-change: transform;
+}
+
+.uHOpen{
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    transition: transform 300ms linear;
+    will-change: transform;
 }
