@@ -17,6 +17,8 @@ export class MainService {
   userSlideEvent: Event;
   friendId: number;
 
+  barlistUrl: string = "main/barlist/deals";
+
 
   //Popups
   showCoverPopUpValue: boolean = false;
@@ -41,6 +43,12 @@ export class MainService {
   changePage(num: number){
     if(this.userSlideValue == true) this.changeUserSlide();
     if(this.currentPageValue == num) return;
+
+    console.log(this.router.url);
+    if(this.router.url == "/main/barlist/cover") this.barlistUrl = this.router.url;
+    if(this.router.url == "/main/barlist/deals") this.barlistUrl = this.router.url;
+
+
     this.currentPageValue = num;
     this.currentPage.next(num);
   }

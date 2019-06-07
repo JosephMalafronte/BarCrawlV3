@@ -38,6 +38,7 @@ export class AuthService {
       if(userInfo == null) this.afAuth.auth.signOut();
 
       //Set User Info
+      this.currentUser.userName = userInfo.about.userName;
 
       //Set Bar Card Count
       this.currentUser.barCardCount = +barCardCount;
@@ -100,6 +101,11 @@ export class AuthService {
   logOut(){
     this.afAuth.auth.signOut();
     console.log(this.afAuth.auth);
+    // Refresh page to wipe all info, might need to rework later
+    var pathArray = window.location.pathname.split( '/' );
+
+    window.location.href=pathArray[0];
+
   }
 
   createUser(email: string, password: string) {

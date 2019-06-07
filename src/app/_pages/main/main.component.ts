@@ -35,7 +35,9 @@ export class MainComponent implements OnInit {
     this.mainService.currentPage.subscribe(result => {
       if(this.mainService.currentPageValue == -1) return;
       if(result == 0){
-        this.router.navigate(['/main/barlist']);
+        console.log(this.mainService.barlistUrl);
+
+        this.router.navigate([this.mainService.barlistUrl]);
       }
       else if(result == 1){
         this.router.navigate(['/main/search']);

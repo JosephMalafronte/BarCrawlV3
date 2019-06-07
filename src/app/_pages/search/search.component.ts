@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { FormsModule } from '@angular/forms';
+import { AuthService} from '../../_services/auth.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class SearchComponent implements OnInit {
   dayOfTheWeek = "Wednesday"; //Needs to be calculated
 
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase, private auth: AuthService) { }
 
   ngOnInit() {
 
@@ -83,8 +84,14 @@ export class SearchComponent implements OnInit {
     else if(this.activeSearchPage == 1){
       if(this.lastSearchedUsers==term) return;
 
-      this.db.list('userInfo', ref => ref.orderByChild('about/firstName').limitToFirst(10).startAt(term).endAt(term + "\uf8ff")).valueChanges().subscribe(result => {
+      this.db.list('userInfo', ref => ref.orderByChild('about/firstName').limitToFirst(10).startAt(term).endAt(term + "\uf8ff")).valueChanges().subscribe((result:any[]) => {
         console.log(result);
+        for(var i=0; i<result.length;i++){
+          if(result[i].about.userName == this.auth.currentUser.userName){
+            result.splice(i,1);
+            break;
+          }
+        }
         this.userResults = result;
         this.lastSearchedUsers = term;
       });
@@ -95,7 +102,7 @@ export class SearchComponent implements OnInit {
 
 
   onBarCardClick(event,barId){
-
+    console.log(barId);
   }
 
   likeBar(barCard){
