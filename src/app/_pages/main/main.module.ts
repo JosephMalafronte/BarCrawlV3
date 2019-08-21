@@ -15,12 +15,11 @@ import { UserSlideComponent } from '../../_components/user-slide/user-slide.comp
 import { BarpageDealsComponent } from '../../_components/barpage-deals/barpage-deals.component';
 import { BarpageCoverComponent } from '../../_components/barpage-cover/barpage-cover.component';
 import { BarpageFriendsComponent } from '../../_components/barpage-friends/barpage-friends.component';
+import { BarpageMapComponent } from '../../_components/barpage-map/barpage-map.component';
 import { PopupComponent } from '../../_components/popup/popup.component';
-
 
 //Import Modules
 import {FullLoadingModule} from '../../_components/full-loading/full-loading.module';
-
 
 
 @NgModule({
@@ -36,6 +35,7 @@ import {FullLoadingModule} from '../../_components/full-loading/full-loading.mod
     BarpageDealsComponent,
     BarpageCoverComponent,
     BarpageFriendsComponent,
+    BarpageMapComponent,
     PopupComponent
   ],
   imports: [

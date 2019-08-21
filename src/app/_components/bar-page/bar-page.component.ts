@@ -145,6 +145,9 @@ export class BarPageComponent implements OnInit {
     else if(index == 2){
       this.router.navigateByUrl('/main/' + this.location + '/friends');
     }
+    else if(index == 3){
+      this.router.navigateByUrl('/main/' + this.location + '/map');
+    }
     this.activeInfoPage = index;
   }
 
