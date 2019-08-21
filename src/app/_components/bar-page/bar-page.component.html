@@ -1,5 +1,5 @@
 <div class="slideInPage" [@slideInBarTrigger]="slideInBar">
-  <app-full-loading *ngIf="isLoading"></app-full-loading>
+  <app-full-loading *ngIf="isLoading" [loadingType]="0"></app-full-loading>
 
   <div id="slider_maincontent">
 
@@ -55,7 +55,7 @@
 
 
       <!-- BAR FRIENDS -->
-      <div *ngIf="activeInfoPage==2" style="padding-top:50px;">
+      <!-- <div *ngIf="activeInfoPage==2" style="padding-top:50px;">
         <div class="barDealsSection">
           <h3 style="padding: 0 0 0 0;">
             <span>Friends Going Here Tonight</span>
@@ -74,7 +74,7 @@
             </li>
           </ul>
         </div>
-      </div>
+      </div> -->
 
       
 

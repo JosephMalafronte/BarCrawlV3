@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../_services/auth.service';
 import { Router } from '@angular/router';
 import {User} from '../../_models/User.Model';
-import { take } from 'rxjs/operators'
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-init',

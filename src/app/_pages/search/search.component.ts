@@ -1,7 +1,9 @@
+
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { FormsModule } from '@angular/forms';
 import { AuthService} from '../../_services/auth.service';
+import {MainService} from '../../_services/main.service';
 
 
 @Component({
@@ -11,6 +13,12 @@ import { AuthService} from '../../_services/auth.service';
 })
 export class SearchComponent implements OnInit {
 
+  //Bar Page Slide Variables
+  barSlide: boolean = false;
+  showBarPage: boolean = false;
+  barPageId: number = 0;
+
+
   searchString:string = "";
   activeSearchPage: number = 0;
   lastSearchedBars: string = "";
@@ -18,11 +26,12 @@ export class SearchComponent implements OnInit {
 
   barResults = [];
   userResults = [];
+  saveUserResults = []; //Idk why barResults dont need this but whatever
 
   dayOfTheWeek = "Wednesday"; //Needs to be calculated
 
 
-  constructor(private db: AngularFireDatabase, private auth: AuthService) { }
+  constructor(private db: AngularFireDatabase, private auth: AuthService, private mainService: MainService) { }
 
   ngOnInit() {
 
@@ -39,8 +48,18 @@ export class SearchComponent implements OnInit {
     if(index == 0){
       document.getElementById('barHolder').classList.remove('bHHidden');
       document.getElementById('userHolder').classList.remove('uHOpen');
+
+      //After animation clear array so no scrolling happens 
+      var self = this;
+      setTimeout(function () {
+        self.saveUserResults = self.userResults;
+        self.userResults = [];
+      }, 400);
+
     }
     if(index == 1){
+      if(this.searchString != this.lastSearchedUsers) this.userResults = [];
+      else this.userResults = this.saveUserResults;
       document.getElementById('barHolder').classList.add('bHHidden');
       document.getElementById('userHolder').classList.add('uHOpen');
     }
@@ -102,7 +121,12 @@ export class SearchComponent implements OnInit {
 
 
   onBarCardClick(event,barId){
+    if(event.target.id != undefined && event.target.id == "like") return;
     console.log(barId);
+    this.barSlide = true;
+    this.showBarPage = true;
+    this.barPageId = barId;
+    this.mainService.toggleBarSlideSearch();
   }
 
   likeBar(barCard){

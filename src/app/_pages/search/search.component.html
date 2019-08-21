@@ -1,3 +1,8 @@
+<app-bar-page *ngIf="showBarPage" [barPageIdChange]="barPageId" [slideInBar]="barSlide" [location]="'search'">
+</app-bar-page>
+
+
+
 <div class="topnav">
   <div class="adjust">
     <div (click)="setActiveSearchPage(0)" [className]="activeNavIcon(0)? 'holder active'  : 'holder'">

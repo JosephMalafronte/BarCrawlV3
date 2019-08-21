@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-full-loading',
@@ -9,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class FullLoadingComponent implements OnInit {
+
+  @Input() loadingType: number;
 
   constructor() { }
 

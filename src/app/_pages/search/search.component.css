@@ -107,7 +107,7 @@ input:focus::-ms-input-placeholder {
     -webkit-transform: translateX(100%);
 			transform: translateX(100%);
 	transition: transform 300ms linear;
-	will-change: transform;
+    will-change: transform;
 }
 
 .uHOpen{
@@ -115,4 +115,12 @@ input:focus::-ms-input-placeholder {
     transform: translateX(0%);
     transition: transform 300ms linear;
     will-change: transform;
+}
+
+.displayNone{
+    display: none;
+}
+
+.displayInherit{
+    display:inherit;
 }

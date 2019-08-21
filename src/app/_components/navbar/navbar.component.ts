@@ -25,6 +25,10 @@ export class NavbarComponent implements OnInit {
   }
 
   icon1Click(){
+    if(this.mainService.currentPageValue == 1){
+      this.mainService.toggleBarSlideSearch();
+      return;
+    }
     this.mainService.changePage(1);
   }
 }

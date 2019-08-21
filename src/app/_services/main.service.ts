@@ -12,12 +12,14 @@ export class MainService {
   currentPage: BehaviorSubject<number>;
   barSlideValue: boolean = false;
   barSlide: BehaviorSubject<boolean>;
+  barSlideSearch: BehaviorSubject<boolean>;
   userSlideValue: boolean = false;
   userSlide: BehaviorSubject<boolean>
   userSlideEvent: Event;
   friendId: number;
 
   barlistUrl: string = "main/barlist/deals";
+  searchUrl: string = "main/search/deals";
 
 
   //Popups
@@ -29,6 +31,7 @@ export class MainService {
 
   constructor(private router: Router) {
     this.barSlide = new BehaviorSubject<boolean>(false);
+    this.barSlideSearch = new BehaviorSubject<boolean>(false);
     this.currentPage = new BehaviorSubject<number>(-1);
     this.userSlide = new BehaviorSubject<boolean>(false);
     this.showCoverPopUp = new BehaviorSubject<boolean>(false);
@@ -40,17 +43,22 @@ export class MainService {
     this.barSlide.next(this.barSlideValue);
   }
 
+  toggleBarSlideSearch() {
+    console.log(!this.barSlideSearch.getValue());
+    this.barSlideSearch.next(!this.barSlideSearch.getValue());
+  }
+
   changePage(num: number){
     if(this.userSlideValue == true) this.changeUserSlide();
     if(this.currentPageValue == num) return;
 
     console.log(this.router.url);
-    if(this.router.url == "/main/barlist/cover") this.barlistUrl = this.router.url;
-    if(this.router.url == "/main/barlist/deals") this.barlistUrl = this.router.url;
-
+    if(this.router.url.includes("/main/barlist")) this.barlistUrl = this.router.url;
+    else if(this.router.url.includes("/main/search")) this.searchUrl = this.router.url;
 
     this.currentPageValue = num;
     this.currentPage.next(num);
+    // Subscription in main.component.ts handles behaviour
   }
 
   changeUserSlide(){

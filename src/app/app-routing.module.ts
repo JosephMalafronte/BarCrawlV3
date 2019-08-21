@@ -7,8 +7,10 @@ import { BarlistComponent } from './_pages/barlist/barlist.component';
 import { SearchComponent } from './_pages/search/search.component';
 import {BarpageDealsComponent} from './_components/barpage-deals/barpage-deals.component';
 import {BarpageCoverComponent} from './_components/barpage-cover/barpage-cover.component';
+import {BarpageFriendsComponent} from './_components/barpage-friends/barpage-friends.component';
 import { RefreshComponent } from './_components/refresh/refresh.component';
 import { FriendPageComponent } from './_pages/friend-page/friend-page.component';
+
 
 
 const routes: Routes = [
@@ -20,12 +22,18 @@ const routes: Routes = [
         children: [
           { path: '', redirectTo: 'deals', pathMatch: 'full' },
           { path: 'deals', component: BarpageDealsComponent },
-          { path: 'cover', component: BarpageCoverComponent }
+          { path: 'cover', component: BarpageCoverComponent },
+          { path: 'friends', component: BarpageFriendsComponent }
         ]
       },
       {
         path:'search',
-        component: SearchComponent
+        component: SearchComponent,
+        children: [
+          { path: '', redirectTo: 'deals', pathMatch: 'full' },
+          { path: 'deals', component: BarpageDealsComponent },
+          { path: 'cover', component: BarpageCoverComponent }
+        ]
       },
       {
         path:'friend-page',

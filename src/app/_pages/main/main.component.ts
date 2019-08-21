@@ -40,7 +40,7 @@ export class MainComponent implements OnInit {
         this.router.navigate([this.mainService.barlistUrl]);
       }
       else if(result == 1){
-        this.router.navigate(['/main/search']);
+        this.router.navigate([this.mainService.searchUrl]);
       }
     });
   }

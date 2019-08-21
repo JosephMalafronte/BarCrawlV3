@@ -10,6 +10,7 @@ import { take } from 'rxjs/operators'
 
 import { DateDirective} from '../../_directives/date.directive';
 import { AuthService } from '../../_services/auth.service';
+import { MainService} from '../../_services/main.service';
 import {BarPageService} from '../../_services/barpage.service';
 import {BarPage, UpcomingDeal, HourlyEstimate} from '../../models';
 
@@ -35,7 +36,8 @@ export class BarPageComponent implements OnInit {
       this.getBarPage(barId);
     }
   }
-  @Input() slideInBar:boolean = false;
+  @Input() slideInBar:boolean = false; // maps to slideInBarTrigger
+  @Input() location:String = "barlist";
   isLoading: boolean = true;
   
   //BarPage Variables
@@ -46,25 +48,18 @@ export class BarPageComponent implements OnInit {
   activeInfoPage = 0;
 
   dayOfTheWeek: string;
-
-
-
-
-
-
   db: AngularFireDatabase;
   authService: AuthService;
   dateDirective: DateDirective;
   barpageService: BarPageService;
-
-  
 
   constructor(
     _dbA: AngularFireDatabase,
     _dateDirective: DateDirective,
     _authService: AuthService,
     _barpageService: BarPageService,
-    private router: Router
+    private router: Router,
+    private mainService: MainService
   ) { 
     this.db = _dbA;
     this.authService = _authService;
@@ -78,15 +73,20 @@ export class BarPageComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    
+    this.barPageHideInit();
   }
 
 
   //COVERS: Get Mode of day.values and mode of day.hourValues. If hourvalues mode> values mode display hourvalues
   //If current Hour > Last Hour wipe hour Values and update last hour
 
-
+  barPageHideInit() {
+    if(this.location === "search"){
+      this.mainService.barSlideSearch.subscribe(value => {
+        this.slideInBar = value;
+      });
+    }
+  }
 
   clearBarPageData(){
     this.isLoading = true;
@@ -115,9 +115,6 @@ export class BarPageComponent implements OnInit {
     this.isLoading = false;
   }
 
-
-
-
   checkLikedStatus(){
     if(this.authService.currentUser.likedBars == undefined) return;
     if(this.authService.currentUser.likedBars.indexOf(this.barPageId) == -1){
@@ -140,10 +137,13 @@ export class BarPageComponent implements OnInit {
     if(index == this.activeInfoPage) return;
     document.body.scrollTop = 0;
     if(index == 0){
-      this.router.navigateByUrl('/main/barlist/deals');
+      this.router.navigateByUrl('/main/' + this.location + '/deals');
     }
-    if(index == 1){
-      this.router.navigateByUrl('/main/barlist/cover');
+    else if(index == 1){
+      this.router.navigateByUrl('/main/' + this.location + '/cover');
+    }
+    else if(index == 2){
+      this.router.navigateByUrl('/main/' + this.location + '/friends');
     }
     this.activeInfoPage = index;
   }

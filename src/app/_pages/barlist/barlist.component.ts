@@ -16,7 +16,7 @@ export class BarlistComponent implements OnInit {
 
   ngOnInit() {
     this.reverseBarSlideInit();
-  }
+}
 
   activateBarSlide(barId: number){
     this.barSlide = true;

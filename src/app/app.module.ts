@@ -20,6 +20,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 
+
 import {DateDirective} from './_directives/date.directive';
 import { RouteReuseStrategy } from '@angular/router';
 import { CustomReuseStrategy } from './custom-reuse-strategy';
@@ -32,7 +33,7 @@ import { FriendPageComponent } from './_pages/friend-page/friend-page.component'
   declarations: [
     AppComponent,
     RefreshComponent,
-    FriendPageComponent,
+    FriendPageComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +48,7 @@ import { FriendPageComponent } from './_pages/friend-page/friend-page.component'
     MainModule,
     LoginModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     {provide: RouteReuseStrategy,useClass:CustomReuseStrategy}
