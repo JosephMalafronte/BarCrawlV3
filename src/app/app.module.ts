@@ -26,6 +26,9 @@ import { RouteReuseStrategy } from '@angular/router';
 import { CustomReuseStrategy } from './custom-reuse-strategy';
 import { RefreshComponent } from './_components/refresh/refresh.component';
 import { FriendPageComponent } from './_pages/friend-page/friend-page.component';
+import { AllFriendsComponent } from './_pages/all-friends/all-friends.component';
+import { LikedBarsComponent } from './_pages/liked-bars/liked-bars.component';
+import { SettingsComponent } from './_pages/settings/settings.component';
 
 
 
@@ -33,7 +36,10 @@ import { FriendPageComponent } from './_pages/friend-page/friend-page.component'
   declarations: [
     AppComponent,
     RefreshComponent,
-    FriendPageComponent
+    FriendPageComponent,
+    AllFriendsComponent,
+    LikedBarsComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

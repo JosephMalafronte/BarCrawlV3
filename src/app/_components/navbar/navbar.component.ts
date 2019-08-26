@@ -31,4 +31,29 @@ export class NavbarComponent implements OnInit {
     }
     this.mainService.changePage(1);
   }
+
+  icon2Click(){
+    if(this.mainService.currentPageValue == 2){
+      //Same click functionality here
+      return;
+    }
+    this.mainService.changePage(2);
+  }
+
+  icon3Click(){
+    if(this.mainService.currentPageValue == 3){
+      //Same click functionality here
+      return;
+    }
+    this.mainService.changePage(3);
+  }
+
+  icon4Click(){
+    console.log("click");
+    if(this.mainService.currentPageValue == 4){
+      //Same click functionality here
+      return;
+    }
+    this.mainService.changePage(4);
+  }
 }

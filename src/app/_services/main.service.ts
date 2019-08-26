@@ -52,7 +52,7 @@ export class MainService {
     if(this.userSlideValue == true) this.changeUserSlide();
     if(this.currentPageValue == num) return;
 
-    console.log(this.router.url);
+    //Saved state pages mneed to log their url
     if(this.router.url.includes("/main/barlist")) this.barlistUrl = this.router.url;
     else if(this.router.url.includes("/main/search")) this.searchUrl = this.router.url;
 

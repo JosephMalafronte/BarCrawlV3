@@ -11,7 +11,9 @@ import {BarpageFriendsComponent} from './_components/barpage-friends/barpage-fri
 import {BarpageMapComponent} from './_components/barpage-map/barpage-map.component';
 import { RefreshComponent } from './_components/refresh/refresh.component';
 import { FriendPageComponent } from './_pages/friend-page/friend-page.component';
-
+import {AllFriendsComponent} from './_pages/all-friends/all-friends.component';
+import {LikedBarsComponent} from './_pages/liked-bars/liked-bars.component';
+import {SettingsComponent} from './_pages/settings/settings.component';
 
 
 const routes: Routes = [
@@ -36,6 +38,18 @@ const routes: Routes = [
           { path: 'deals', component: BarpageDealsComponent },
           { path: 'cover', component: BarpageCoverComponent }
         ]
+      },
+      {
+        path:'all-friends',
+        component: AllFriendsComponent
+      },
+      {
+        path:'liked-bars',
+        component: LikedBarsComponent
+      },
+      {
+        path:'settings',
+        component: SettingsComponent
       },
       {
         path:'friend-page',

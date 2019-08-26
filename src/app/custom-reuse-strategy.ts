@@ -6,7 +6,7 @@ export class CustomReuseStrategy implements RouteReuseStrategy {
 
     handlers: {[key: string]: DetachedRouteHandle} = {};
 
-    //List of routes to store and retrieve from
+    //List of routes to store and retrieve from (these will save state)
     saveRoutes: string[] = ['barlist', 'search'];
 
     //If true then store

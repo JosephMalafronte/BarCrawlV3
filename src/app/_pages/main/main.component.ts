@@ -34,13 +34,21 @@ export class MainComponent implements OnInit {
   pageChangeInit(){
     this.mainService.currentPage.subscribe(result => {
       if(this.mainService.currentPageValue == -1) return;
+      console.log(this.mainService.barlistUrl);
       if(result == 0){
-        console.log(this.mainService.barlistUrl);
-
         this.router.navigate([this.mainService.barlistUrl]);
       }
       else if(result == 1){
         this.router.navigate([this.mainService.searchUrl]);
+      }
+      else if(result == 2){
+        this.router.navigate(["/main/all-friends"]);
+      }
+      else if(result == 3){
+        this.router.navigate(["/main/liked-bars"])
+      }
+      else if(result == 4){
+        this.router.navigate(["/main/settings"])
       }
     });
   }

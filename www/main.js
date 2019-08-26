@@ -1069,7 +1069,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--       NAVBAR       -->\r\n<div class=\"swiper-container-toolbar swiper-toolbar\" style=\"background-color:black;\">\r\n  <div class=\"swiper-pagination-toolbar\"></div>\r\n  <div class=\"swiper-wrapper\">\r\n    <div class=\"swiper-slide toolbar-icon\">\r\n      <span class=\"toolbar-icon-span\" id=\"toolbarHome\"  (click)=\"icon0Click()\">\r\n        <img src=\"./assets/images/icons/white/categories.png\"alt=\"\" title=\"\" />\r\n      </span>\r\n      <span class=\"toolbar-icon-span\" id=\"toolbarSearch\" (click)=\"icon1Click()\">\r\n        <img src=\"./assets/images/icons/white/search.png\"  alt=\"\" title=\"\" />\r\n      </span>\r\n      <span class=\"toolbar-icon-span\">\r\n        <img src=\"./assets/images/icons/white/love.png\" alt=\"\" title=\"\" />\r\n      </span>\r\n      <span class=\"toolbar-icon-span\">\r\n        <img src=\"./assets/images/icons/white/photos.png\" alt=\"\" title=\"\" />\r\n      </span>\r\n      <span class=\"toolbar-icon-span\">\r\n        <img src=\"./assets/images/icons/white/contact.png\" alt=\"\" title=\"\" />\r\n      </span>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<!--       NAVBAR       -->\r\n<div class=\"swiper-container-toolbar swiper-toolbar\" style=\"background-color:black;\">\r\n  <div class=\"swiper-pagination-toolbar\"></div>\r\n  <div class=\"swiper-wrapper\">\r\n    <div class=\"swiper-slide toolbar-icon\">\r\n      <span class=\"toolbar-icon-span\" id=\"toolbarHome\"  (click)=\"icon0Click()\">\r\n        <img src=\"./assets/images/icons/white/categories.png\"alt=\"\" title=\"\" />\r\n      </span>\r\n      <span class=\"toolbar-icon-span\" id=\"toolbarSearch\" (click)=\"icon1Click()\">\r\n        <img src=\"./assets/images/icons/white/search.png\"  alt=\"\" title=\"\" />\r\n      </span>\r\n      <span class=\"toolbar-icon-span\" (click)=\"icon2Click()\">\r\n        <img style=\"width: 125%;\" src=\"./assets/images/icons/white/users.png\" alt=\"\" title=\"\" />\r\n      </span>\r\n      <span class=\"toolbar-icon-span\" (click)=\"icon3Click()\">\r\n        <img src=\"./assets/images/icons/white/love.png\" alt=\"\" title=\"\" />\r\n      </span>\r\n      <span class=\"toolbar-icon-span\" (click)=\"icon4Click()\">\r\n        <img src=\"./assets/images/icons/white/settings.png\" alt=\"\" title=\"\" />\r\n      </span>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -1107,6 +1107,28 @@ var NavbarComponent = /** @class */ (function () {
             return;
         }
         this.mainService.changePage(1);
+    };
+    NavbarComponent.prototype.icon2Click = function () {
+        if (this.mainService.currentPageValue == 2) {
+            //Same click functionality here
+            return;
+        }
+        this.mainService.changePage(2);
+    };
+    NavbarComponent.prototype.icon3Click = function () {
+        if (this.mainService.currentPageValue == 3) {
+            //Same click functionality here
+            return;
+        }
+        this.mainService.changePage(3);
+    };
+    NavbarComponent.prototype.icon4Click = function () {
+        console.log("click");
+        if (this.mainService.currentPageValue == 4) {
+            //Same click functionality here
+            return;
+        }
+        this.mainService.changePage(4);
     };
     NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1576,6 +1598,62 @@ var User = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/_pages/all-friends/all-friends.component.css":
+/*!**************************************************************!*\
+  !*** ./src/app/_pages/all-friends/all-friends.component.css ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHAvX3BhZ2VzL2FsbC1mcmllbmRzL2FsbC1mcmllbmRzLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/_pages/all-friends/all-friends.component.html":
+/*!***************************************************************!*\
+  !*** ./src/app/_pages/all-friends/all-friends.component.html ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p style=\"margin-top: 20%\">\n  all-friends works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/_pages/all-friends/all-friends.component.ts":
+/*!*************************************************************!*\
+  !*** ./src/app/_pages/all-friends/all-friends.component.ts ***!
+  \*************************************************************/
+/*! exports provided: AllFriendsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AllFriendsComponent", function() { return AllFriendsComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var AllFriendsComponent = /** @class */ (function () {
+    function AllFriendsComponent() {
+    }
+    AllFriendsComponent.prototype.ngOnInit = function () {
+    };
+    AllFriendsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-all-friends',
+            template: __webpack_require__(/*! ./all-friends.component.html */ "./src/app/_pages/all-friends/all-friends.component.html"),
+            styles: [__webpack_require__(/*! ./all-friends.component.css */ "./src/app/_pages/all-friends/all-friends.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], AllFriendsComponent);
+    return AllFriendsComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/_pages/barlist/barlist.component.css":
 /*!******************************************************!*\
   !*** ./src/app/_pages/barlist/barlist.component.css ***!
@@ -1836,6 +1914,62 @@ var InitModule = /** @class */ (function () {
         })
     ], InitModule);
     return InitModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/_pages/liked-bars/liked-bars.component.css":
+/*!************************************************************!*\
+  !*** ./src/app/_pages/liked-bars/liked-bars.component.css ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHAvX3BhZ2VzL2xpa2VkLWJhcnMvbGlrZWQtYmFycy5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/_pages/liked-bars/liked-bars.component.html":
+/*!*************************************************************!*\
+  !*** ./src/app/_pages/liked-bars/liked-bars.component.html ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p style=\"margin-top: 20%\">\n  liked-bars works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/_pages/liked-bars/liked-bars.component.ts":
+/*!***********************************************************!*\
+  !*** ./src/app/_pages/liked-bars/liked-bars.component.ts ***!
+  \***********************************************************/
+/*! exports provided: LikedBarsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LikedBarsComponent", function() { return LikedBarsComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var LikedBarsComponent = /** @class */ (function () {
+    function LikedBarsComponent() {
+    }
+    LikedBarsComponent.prototype.ngOnInit = function () {
+    };
+    LikedBarsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-liked-bars',
+            template: __webpack_require__(/*! ./liked-bars.component.html */ "./src/app/_pages/liked-bars/liked-bars.component.html"),
+            styles: [__webpack_require__(/*! ./liked-bars.component.css */ "./src/app/_pages/liked-bars/liked-bars.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], LikedBarsComponent);
+    return LikedBarsComponent;
 }());
 
 
@@ -2155,12 +2289,21 @@ var MainComponent = /** @class */ (function () {
         this.mainService.currentPage.subscribe(function (result) {
             if (_this.mainService.currentPageValue == -1)
                 return;
+            console.log(_this.mainService.barlistUrl);
             if (result == 0) {
-                console.log(_this.mainService.barlistUrl);
                 _this.router.navigate([_this.mainService.barlistUrl]);
             }
             else if (result == 1) {
                 _this.router.navigate([_this.mainService.searchUrl]);
+            }
+            else if (result == 2) {
+                _this.router.navigate(["/main/all-friends"]);
+            }
+            else if (result == 3) {
+                _this.router.navigate(["/main/liked-bars"]);
+            }
+            else if (result == 4) {
+                _this.router.navigate(["/main/settings"]);
             }
         });
     };
@@ -2466,6 +2609,62 @@ var SearchComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/_pages/settings/settings.component.css":
+/*!********************************************************!*\
+  !*** ./src/app/_pages/settings/settings.component.css ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHAvX3BhZ2VzL3NldHRpbmdzL3NldHRpbmdzLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/_pages/settings/settings.component.html":
+/*!*********************************************************!*\
+  !*** ./src/app/_pages/settings/settings.component.html ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p style=\"margin-top: 20%\">\n  settings works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/_pages/settings/settings.component.ts":
+/*!*******************************************************!*\
+  !*** ./src/app/_pages/settings/settings.component.ts ***!
+  \*******************************************************/
+/*! exports provided: SettingsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SettingsComponent", function() { return SettingsComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var SettingsComponent = /** @class */ (function () {
+    function SettingsComponent() {
+    }
+    SettingsComponent.prototype.ngOnInit = function () {
+    };
+    SettingsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-settings',
+            template: __webpack_require__(/*! ./settings.component.html */ "./src/app/_pages/settings/settings.component.html"),
+            styles: [__webpack_require__(/*! ./settings.component.css */ "./src/app/_pages/settings/settings.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], SettingsComponent);
+    return SettingsComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/_services/auth.service.ts":
 /*!*******************************************!*\
   !*** ./src/app/_services/auth.service.ts ***!
@@ -2686,7 +2885,7 @@ var MainService = /** @class */ (function () {
             this.changeUserSlide();
         if (this.currentPageValue == num)
             return;
-        console.log(this.router.url);
+        //Saved state pages mneed to log their url
         if (this.router.url.includes("/main/barlist"))
             this.barlistUrl = this.router.url;
         else if (this.router.url.includes("/main/search"))
@@ -2750,6 +2949,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_barpage_map_barpage_map_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./_components/barpage-map/barpage-map.component */ "./src/app/_components/barpage-map/barpage-map.component.ts");
 /* harmony import */ var _components_refresh_refresh_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./_components/refresh/refresh.component */ "./src/app/_components/refresh/refresh.component.ts");
 /* harmony import */ var _pages_friend_page_friend_page_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./_pages/friend-page/friend-page.component */ "./src/app/_pages/friend-page/friend-page.component.ts");
+/* harmony import */ var _pages_all_friends_all_friends_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./_pages/all-friends/all-friends.component */ "./src/app/_pages/all-friends/all-friends.component.ts");
+/* harmony import */ var _pages_liked_bars_liked_bars_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./_pages/liked-bars/liked-bars.component */ "./src/app/_pages/liked-bars/liked-bars.component.ts");
+/* harmony import */ var _pages_settings_settings_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./_pages/settings/settings.component */ "./src/app/_pages/settings/settings.component.ts");
+
+
+
 
 
 
@@ -2786,6 +2991,18 @@ var routes = [
                     { path: 'deals', component: _components_barpage_deals_barpage_deals_component__WEBPACK_IMPORTED_MODULE_8__["BarpageDealsComponent"] },
                     { path: 'cover', component: _components_barpage_cover_barpage_cover_component__WEBPACK_IMPORTED_MODULE_9__["BarpageCoverComponent"] }
                 ]
+            },
+            {
+                path: 'all-friends',
+                component: _pages_all_friends_all_friends_component__WEBPACK_IMPORTED_MODULE_14__["AllFriendsComponent"]
+            },
+            {
+                path: 'liked-bars',
+                component: _pages_liked_bars_liked_bars_component__WEBPACK_IMPORTED_MODULE_15__["LikedBarsComponent"]
+            },
+            {
+                path: 'settings',
+                component: _pages_settings_settings_component__WEBPACK_IMPORTED_MODULE_16__["SettingsComponent"]
             },
             {
                 path: 'friend-page',
@@ -2911,6 +3128,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _custom_reuse_strategy__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./custom-reuse-strategy */ "./src/app/custom-reuse-strategy.ts");
 /* harmony import */ var _components_refresh_refresh_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./_components/refresh/refresh.component */ "./src/app/_components/refresh/refresh.component.ts");
 /* harmony import */ var _pages_friend_page_friend_page_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./_pages/friend-page/friend-page.component */ "./src/app/_pages/friend-page/friend-page.component.ts");
+/* harmony import */ var _pages_all_friends_all_friends_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./_pages/all-friends/all-friends.component */ "./src/app/_pages/all-friends/all-friends.component.ts");
+/* harmony import */ var _pages_liked_bars_liked_bars_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./_pages/liked-bars/liked-bars.component */ "./src/app/_pages/liked-bars/liked-bars.component.ts");
+/* harmony import */ var _pages_settings_settings_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./_pages/settings/settings.component */ "./src/app/_pages/settings/settings.component.ts");
+
+
+
 
 
 
@@ -2939,7 +3162,10 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_15__["AppComponent"],
                 _components_refresh_refresh_component__WEBPACK_IMPORTED_MODULE_18__["RefreshComponent"],
-                _pages_friend_page_friend_page_component__WEBPACK_IMPORTED_MODULE_19__["FriendPageComponent"]
+                _pages_friend_page_friend_page_component__WEBPACK_IMPORTED_MODULE_19__["FriendPageComponent"],
+                _pages_all_friends_all_friends_component__WEBPACK_IMPORTED_MODULE_20__["AllFriendsComponent"],
+                _pages_liked_bars_liked_bars_component__WEBPACK_IMPORTED_MODULE_21__["LikedBarsComponent"],
+                _pages_settings_settings_component__WEBPACK_IMPORTED_MODULE_22__["SettingsComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -2983,7 +3209,7 @@ __webpack_require__.r(__webpack_exports__);
 var CustomReuseStrategy = /** @class */ (function () {
     function CustomReuseStrategy() {
         this.handlers = {};
-        //List of routes to store and retrieve from
+        //List of routes to store and retrieve from (these will save state)
         this.saveRoutes = ['barlist', 'search'];
     }
     //If true then store
