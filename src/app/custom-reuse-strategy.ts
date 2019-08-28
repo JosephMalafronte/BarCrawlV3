@@ -7,7 +7,7 @@ export class CustomReuseStrategy implements RouteReuseStrategy {
     handlers: {[key: string]: DetachedRouteHandle} = {};
 
     //List of routes to store and retrieve from (these will save state)
-    saveRoutes: string[] = ['barlist', 'search'];
+    saveRoutes: string[] = ['barlist', 'search', 'all-friends'];
 
     //If true then store
     shouldDetach(route: ActivatedRouteSnapshot): boolean {

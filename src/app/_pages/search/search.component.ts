@@ -4,6 +4,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { FormsModule } from '@angular/forms';
 import { AuthService} from '../../_services/auth.service';
 import {MainService} from '../../_services/main.service';
+import { User } from '../../_models/User.Model';
 
 
 @Component({
@@ -135,6 +136,12 @@ export class SearchComponent implements OnInit {
 
   checkLikedStatus(barCard){
 
+  }
+
+  openFriendPopUp(userRawData) {
+    var newUser: User = new User();
+    newUser.setFriendData(userRawData);
+    this.mainService.activateFriendPopUp(newUser);
   }
 
 }

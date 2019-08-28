@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {Router} from '@angular/router';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
+import { User } from '../_models/User.Model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,8 @@ export class MainService {
   showCoverPopUp: BehaviorSubject<boolean>;
   reportCoverSwitch: BehaviorSubject<boolean>;
   reportCoverValue: number = 0;
+  showFriendPopUp: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  friendPopUpUser: User = null;
 
 
   constructor(private router: Router) {
@@ -85,6 +88,16 @@ export class MainService {
   refresh(){
 
 
+  }
+
+  activateFriendPopUp(user: User){
+    this.friendPopUpUser = user;
+    this.showFriendPopUp.next(true);
+  }
+
+  hideFriendPopUp(){
+    this.friendPopUpUser = null;
+    this.showFriendPopUp.next(false);
   }
 
 }

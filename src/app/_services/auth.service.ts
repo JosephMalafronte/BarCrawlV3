@@ -50,15 +50,12 @@ export class AuthService {
       }
 
       //Get Friend Ids
-      this.currentUser.friendIds = Object.keys(userInfo.friends).map(key => userInfo.friends[key]);
-      this.loadAllUserFriendData();
-      
+      if(userInfo.friends){
+        this.currentUser.friendIds = Object.keys(userInfo.friends).map(key => userInfo.friends[key]);
+        this.loadAllUserFriendData();
+      }
 
-      //friendsArray.forEach()
-      // https://stackoverflow.com/questions/35931526/speed-up-fetching-posts-for-my-social-network-app-by-using-query-instead-of-obse/35932786#35932786
-      // DO it like this
-
-
+      this.listenForFriendRequest();
 
       //Get About Info
       this.currentUser.firstName = userInfo.about.firstName;
@@ -99,7 +96,8 @@ export class AuthService {
         lastName: user.lastName, 
         userName: user.userName,
         email: user.email,
-        profilePicUrl: "null"
+        profilePicUrl: "null",
+        uid: user.uid
       }
     });
   }
@@ -207,6 +205,33 @@ export class AuthService {
       if(uid === user.uid) this.currentUser.friends.splice(i,1);
       break;
     }    
+
+  }
+
+  listenForFriendRequest(){
+    this.db.object('/userInfo/' + this.currentUser.uid + '/friendRequestIn').valueChanges().subscribe(object => {
+      if(!object){
+        this.currentUser.friendRequestIn = [];
+        return;
+      } 
+
+      this.currentUser.friendRequestIn = Object.keys(object).map(key => object[key]);
+      console.log(this.currentUser.friendRequestIn);
+    });
+
+  }
+
+  submitFriendRequest(uid: string){
+    this.db.object('/userInfo/' + this.currentUser.uid + '/friendRequestOut/' + uid).set(uid);
+    this.db.object('/userInfo/' + uid + '/friendRequestIn/' + this.currentUser.uid).set(this.currentUser.uid);
+  }
+
+  acceptFriendRequest(uid: string){
+    this.db.object('/userInfo/' + this.currentUser.uid + '/friendRequestIn/' + uid).remove();
+    this.db.object('/userInfo/' + uid + '/friendRequestOut/' + this.currentUser.uid).remove();
+    
+    this.db.object('userInfo/' + this.currentUser.uid + '/friends/' + uid).set(uid);
+    this.db.object('userInfo/' + uid + '/friends/' + this.currentUser.uid).set(this.currentUser.uid);
 
   }
 
