@@ -8,10 +8,30 @@ export class User {
     userName: string;
     likedBars: number[] = [];
     barCardCount: number;
+    profilePicUrl: string;
 
-    constructor(auth: any){
+    //Friends
+    friendIds: string[] = [];
+    friends: User[] = [];
+
+    constructor(auth?: any){
+        // If constructing without auth just create blank user
+        if(!auth){
+            return;
+        }
+
         this.uid = auth.uid;
         this.email = auth.email;
         this.displayName = auth.displayName;
     }
+
+    setFriendData(friendObject){
+        if(friendObject.uid) this.uid = friendObject.uid;
+        if(friendObject.email) this.email = friendObject.email;
+        if(friendObject.firstName) this.firstName = friendObject.firstName;
+        if(friendObject.lastName) this.lastName = friendObject.lastName;
+        if(friendObject.profilePicUrl) this.profilePicUrl = friendObject.profilePicUrl;     
+        if(friendObject.userName) this.userName = friendObject.userName;           
+    }
+    
 }

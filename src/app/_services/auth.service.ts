@@ -16,6 +16,7 @@ export class AuthService {
   currentUser: User = null;
   authStateValue:boolean = false;
   authStateSet: BehaviorSubject<boolean>;
+  loadingFriendData: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);  
   af: AngularFireAuth;
   db: AngularFireDatabase;
   subUser: boolean = false;
@@ -47,6 +48,17 @@ export class AuthService {
       if(userInfo.hasOwnProperty('likedBars')){
         this.getLikedCards(userInfo.likedBars);
       }
+
+      //Get Friend Ids
+      this.currentUser.friendIds = Object.keys(userInfo.friends).map(key => userInfo.friends[key]);
+      this.loadAllUserFriendData();
+      
+
+      //friendsArray.forEach()
+      // https://stackoverflow.com/questions/35931526/speed-up-fetching-posts-for-my-social-network-app-by-using-query-instead-of-obse/35932786#35932786
+      // DO it like this
+
+
 
       //Get About Info
       this.currentUser.firstName = userInfo.about.firstName;
@@ -142,6 +154,60 @@ export class AuthService {
 
   checkUniqueUser(username){
     return this.db.list('userInfo', ref => ref.orderByChild('about/userName').limitToFirst(10).equalTo(username)).valueChanges();
+  }
+
+
+  // Loads all friend data from friend ids
+  loadAllUserFriendData() {
+    this.loadingFriendData.next(true);
+    let requestArray = [];
+
+    this.currentUser.friends = [];
+
+    for(var i =0; i<this.currentUser.friendIds.length; i++){
+      let id: string = this.currentUser.friendIds[i];
+      var request = this.db.object('userInfo/' + id + '/about').valueChanges().pipe(take(1));
+      requestArray.push(request);
+    }
+
+    forkJoin(requestArray).subscribe(responseList => {
+      console.log("Loaded Friends!");
+      responseList.forEach(userObject => {
+        var friendUser: User = new User();
+        friendUser.setFriendData(userObject);    
+        this.currentUser.friends.push(friendUser);    
+      });
+      console.log("Set Friends!");
+      console.log(this.currentUser.friends);
+      this.loadingFriendData.next(false);
+    });
+    
+  }
+
+  //Load data for a new friend and append to the user array
+  addFriendData(id){
+    this.db.object('userInfo/' + id + '/about').valueChanges().pipe(take(1)).subscribe(userObject => {
+      var friendUser: User = new User();
+      friendUser.setFriendData(userObject);    
+      this.currentUser.friends.push(friendUser);
+    });
+  }
+
+  removeFriend(uid){
+    //Remove from id array
+    for(var i=0;i<this.currentUser.friendIds.length;i++){
+      var userName: string = this.currentUser.friendIds[i];
+      if(uid === userName) this.currentUser.friendIds.splice(i,1);
+      break;
+    }
+
+    //Remove from data array
+    for(var i=0;i<this.currentUser.friends.length;i++){
+      var user: User = this.currentUser.friends[i];
+      if(uid === user.uid) this.currentUser.friends.splice(i,1);
+      break;
+    }    
+
   }
 
 

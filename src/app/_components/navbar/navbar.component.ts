@@ -26,6 +26,10 @@ export class NavbarComponent implements OnInit {
 
   icon1Click(){
     if(this.mainService.currentPageValue == 1){
+      // If slide is closed dont do anything
+      if(this.mainService.barSlideSearch.getValue() == false) return;
+
+      //If slide is open close it
       this.mainService.toggleBarSlideSearch();
       return;
     }
