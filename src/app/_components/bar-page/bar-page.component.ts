@@ -152,10 +152,17 @@ export class BarPageComponent implements OnInit {
   }
 
 
- 
+  markAttending(){
+    this.authService.markAttending(this.barPageId);
+  }
 
-
-
+  checkAttendingStatus(){
+    if(this.authService.currentUser.barsAttending == undefined) return;
+    if(this.authService.currentUser.barsAttending.indexOf(this.barPageId) == -1){
+      return false;
+    }
+    else return true;
+  }
 
 
 

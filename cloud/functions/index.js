@@ -23,18 +23,22 @@ exports.clearAttendingBars = functions.https.onRequest((req, res) => {
     //Modifying and pushing whole object, could be more efficient later
     dbRef.ref('/userInfo').once('value').then(function (snapshot) {
 
+        console.log(snapshot.val());
+
+        var data = snapshot.val();
+
         //Go through all users
-        Object.keys(snapshot).forEach(function(key,index) {
+        Object.keys(data).forEach(function(key,index) {
             // key: the name of the object key
             // index: the ordinal position of the key within the object 
 
             console.debug(key);
 
-            delete snapshot[key]["about"]["barsAttending"];
+            delete data[key]["about"]["barsAttending"];
         });
 
         //Send back new object
-        dbRef.ref('/userInfo').set(snapshot).then(_ => {
+        dbRef.ref('/userInfo').set(data).then(_ => {
             //send back response 
             res.redirect(200);
         });

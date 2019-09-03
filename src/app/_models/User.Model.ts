@@ -16,6 +16,9 @@ export class User {
     friendRequestOut: string[] = [];
     friendRequestIn: string[] = [];
 
+    //Attending
+    barsAttending: number[] = [];
+
 
     constructor(auth?: any){
         // If constructing without auth just create blank user

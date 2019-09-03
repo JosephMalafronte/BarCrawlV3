@@ -16,7 +16,7 @@ export class AuthService {
   currentUser: User = null;
   authStateValue:boolean = false;
   authStateSet: BehaviorSubject<boolean>;
-  loadingFriendData: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);  
+  loadingFriendData: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);  
   af: AngularFireAuth;
   db: AngularFireDatabase;
   subUser: boolean = false;
@@ -25,7 +25,7 @@ export class AuthService {
   constructor(dbA: AngularFireDatabase, public afAuth: AngularFireAuth) {
     this.af = afAuth;
     this.db = dbA;
-    this.authStateSet = new BehaviorSubject<boolean>(false);
+    this.authStateSet = new BehaviorSubject<boolean>(true);
   }
 
   setUser(user: User){
@@ -43,6 +43,11 @@ export class AuthService {
 
       //Set Bar Card Count
       this.currentUser.barCardCount = +barCardCount;
+
+      //Get Attending Bars
+      if(userInfo.about.hasOwnProperty("barsAttending")){
+        this.currentUser.barsAttending = Object.keys(userInfo.about.barsAttending).map(key => userInfo.about.barsAttending[key]);
+      }
 
       //Get Liked Cards
       if(userInfo.hasOwnProperty('likedBars')){
@@ -150,17 +155,50 @@ export class AuthService {
 
   }
 
+  markAttending(barId: number){
+    let barIdString: string = barId.toString();
+    let uid: string = this.currentUser.uid;
+    let index = this.currentUser.barsAttending.indexOf(barId);
+
+    //If bar was not attended before
+    if(index == -1){
+      this.currentUser.barsAttending.push(barId);
+      const itemRef = this.db.object('userInfo/' + uid + '/about/barsAttending');
+      itemRef.set(this.currentUser.barsAttending).then(_ => {
+
+      });
+    }
+    //If bar was attended before
+    else{
+      this.currentUser.barsAttending.splice(index,1);
+      
+      const itemRef = this.db.object('userInfo/' + uid + '/about/barsAttending');
+      itemRef.set(this.currentUser.barsAttending).then(_ => {
+
+      });
+    }
+
+  }
+
   checkUniqueUser(username){
     return this.db.list('userInfo', ref => ref.orderByChild('about/userName').limitToFirst(10).equalTo(username)).valueChanges();
   }
 
+
+  // Should be called whenever loading a component that shows friend data
+  reloadFriendData() {
+    this.db.list('userInfo/' + this.currentUser.uid + '/friends').valueChanges().pipe(take(1)).subscribe((data:any) => {
+      this.currentUser.friendIds = data;
+      console.log(this.currentUser.friendIds);
+      this.loadAllUserFriendData();
+    })
+  }
 
   // Loads all friend data from friend ids
   loadAllUserFriendData() {
     this.loadingFriendData.next(true);
     let requestArray = [];
 
-    this.currentUser.friends = [];
 
     for(var i =0; i<this.currentUser.friendIds.length; i++){
       let id: string = this.currentUser.friendIds[i];
@@ -169,6 +207,8 @@ export class AuthService {
     }
 
     forkJoin(requestArray).subscribe(responseList => {
+
+      this.currentUser.friends = [];
       console.log("Loaded Friends!");
       responseList.forEach(userObject => {
         var friendUser: User = new User();

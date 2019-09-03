@@ -350,3 +350,26 @@
       stroke: #009900;
       transition: stroke .6s;
   }
+
+.attendingButtonNotClicked {
+  position: absolute; 
+  width:150px; 
+  font-weight: 100;
+  height:8px; 
+  top: 8px; 
+  right: 70px; 
+  font-size:14px;
+  border: 1px solid black;
+  border-color: black;
+  background: transparent;
+}
+
+.attendingButtonClicked {
+  position: absolute; 
+  width:150px; 
+  font-weight: 100;
+  height:8px; 
+  top: 8px; 
+  right: 70px; 
+  font-size:14px;
+}

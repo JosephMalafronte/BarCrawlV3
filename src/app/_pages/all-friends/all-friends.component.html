@@ -1,5 +1,5 @@
 
-<div style="margin: 12% 5% 0% 5%;">
+<div style="margin: 12% 5% 0% 5%;" >
   <!-- HEADER -->
   <div style="padding: 10px 0 0 0; border-bottom:1px black solid;">
     <h3 style="padding: 0 0 0 0;">
@@ -7,8 +7,12 @@
     </h3>
   </div>
 
+  <div *ngIf="!displayFriends" class="loadingHolder">
+      <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+  </div>
+
   <!-- FRIEND LIST -->
-  <div id="friendHolder">
+  <div id="friendHolder" *ngIf="displayFriends">
     <ul class="features_list" *ngFor="let friend of friends" style="padding: 0px 0 0 0; position:relative">
       <li (click)="openFriendPopUp(friend)">
         <div style="padding-bottom: 10px;">

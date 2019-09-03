@@ -4,6 +4,15 @@
   <div id="slider_maincontent">
 
     <h2 class="page_title_slide">{{barName}}</h2>
+    <div (click)="markAttending()">
+        <div *ngIf="!checkAttendingStatus()" class="btn btn--full attendingButtonNotClicked">
+            <span style="vertical-align: top; line-height: 10px;" >Attending Tonight?</span>
+        </div>
+        <div *ngIf="checkAttendingStatus()" class="btn btn--full attendingButtonNotClicked">
+            <span style="vertical-align: top; line-height: 10px;" >Attending Tonight &#10004;</span>
+        </div>
+    </div>
+    
     <span class="barPageLike" (click)="likeBar()">
       <img id="like" [src]="checkLikedStatus()? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'"
         alt="" title="" />
