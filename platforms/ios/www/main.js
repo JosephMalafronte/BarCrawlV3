@@ -2164,7 +2164,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p style=\"margin-top: 20%\">\n  liked-bars works!\n</p>\n"
+module.exports = "<div style=\"margin: 12% 5% 0% 5%;\">\n\n  <!-- HEADER -->\n  <div style=\"padding: 10px 0 0 0; border-bottom:1px black solid;\">\n    <h3 style=\"padding: 0 0 0 0;\">\n      <span>Liked Bars</span>\n    </h3>\n  </div>\n\n  <!-- For each here -->\n  <ul class=\"shop_items\" style=\"padding-top: 13px;\">\n\n    <!-- BAR CARD -->\n    <li id=\"barCard\" *ngFor=\"let barCard of barCards\" (click)=\"onBarCardClick($event,barCard.barId)\">\n      <div class=\"shop_thumb\">\n        <img src={{barCard.barPictureUrl}} alt=\"\" title=\"\" class=\"barCardPic\" />\n      </div>\n      <div class=\"shop_item_details\">\n        <h4>{{barCard.barName}}</h4>\n        <ul class=\"features_list\" style=\"padding: 0% 0 0 0;\">\n          <li>\n            <span class=\"features_list_span\">\n              <img src={{barCard.highlight1Icon}} alt=\"\" title=\"\" />\n              <span class=\"features_list_span_text\">{{barCard.highlight1}}</span>\n            </span>\n          </li>\n          <li>\n            <span class=\"features_list_span\">\n              <img src={{barCard.highlight2Icon}} alt=\"\" title=\"\" />\n              <span class=\"features_list_span_text\">{{barCard.highlight2}}</span>\n            </span>\n          </li>\n        </ul>\n        <span class=\"open-popup shopfav\" (click)=\"likeBar(barCard)\">\n          <!-- <app-like></app-like> -->\n          <img id=\"like\" [src]=\"checkLikedStatus(barCard)? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'\"\n            alt=\"\" title=\"\" />\n        </span>\n      </div>\n    </li>\n\n  </ul>\n\n</div>"
 
 /***/ }),
 
@@ -2180,12 +2180,67 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LikedBarsComponent", function() { return LikedBarsComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_fire_database__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/database */ "./node_modules/@angular/fire/database/index.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../_services/auth.service */ "./src/app/_services/auth.service.ts");
+/* harmony import */ var _services_main_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../_services/main.service */ "./src/app/_services/main.service.ts");
+
+
+
 
 
 var LikedBarsComponent = /** @class */ (function () {
-    function LikedBarsComponent() {
+    function LikedBarsComponent(db, authService, mainService) {
+        this.db = db;
+        this.authService = authService;
+        this.mainService = mainService;
+        this.barCards = [];
+        //Bar Page Slide Variables
+        this.barSlide = false;
+        this.showBarPage = false;
+        this.barPageId = 0;
+        this.dayOfTheWeek = "Wednesday"; // Needs to be calculated
     }
     LikedBarsComponent.prototype.ngOnInit = function () {
+        this.getBarCards();
+    };
+    LikedBarsComponent.prototype.getBarCards = function () {
+        var _this = this;
+        this.db.list('barCards/' + this.dayOfTheWeek).valueChanges().subscribe(function (result) {
+            result.forEach(function (item) {
+                if (_this.authService.currentUser.likedBars.indexOf(item.barId) > -1)
+                    _this.barCards.push(item);
+            });
+        });
+    };
+    LikedBarsComponent.prototype.onBarCardClick = function (event, barId) {
+        if (event.target.id != undefined && event.target.id == "like")
+            return;
+        console.log(barId);
+        this.barSlide = true;
+        this.showBarPage = true;
+        this.barPageId = barId;
+        this.mainService.toggleBarSlideSearch();
+    };
+    LikedBarsComponent.prototype.likeBar = function (barCard) {
+        this.authService.likeBar(barCard.barId);
+        if (this.authService.currentUser.likedBars.indexOf(barCard.barId) < 0) {
+            for (var i = 0; i < this.barCards.length; i++) {
+                var car = this.barCards[i];
+                if (car.barId == barCard.barId) {
+                    this.barCards.splice(i, 1);
+                    return;
+                }
+            }
+        }
+    };
+    LikedBarsComponent.prototype.checkLikedStatus = function (barCard) {
+        if (this.authService.currentUser.likedBars == undefined)
+            return;
+        if (this.authService.currentUser.likedBars.indexOf(barCard.barId) == -1) {
+            return false;
+        }
+        else
+            return true;
     };
     LikedBarsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2193,7 +2248,9 @@ var LikedBarsComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./liked-bars.component.html */ "./src/app/_pages/liked-bars/liked-bars.component.html"),
             styles: [__webpack_require__(/*! ./liked-bars.component.css */ "./src/app/_pages/liked-bars/liked-bars.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_database__WEBPACK_IMPORTED_MODULE_2__["AngularFireDatabase"],
+            _services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"],
+            _services_main_service__WEBPACK_IMPORTED_MODULE_4__["MainService"]])
     ], LikedBarsComponent);
     return LikedBarsComponent;
 }());
