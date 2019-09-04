@@ -42,7 +42,7 @@
       <div>
         <a (click)="showFriendPopUp = false" title="Close" class="modal-close">&times;</a>
         <h2>{{friendUser.firstName}} {{friendUser.lastName}}</h2>
-        <div *ngIf="!isFriend">
+        <div *ngIf="!isFriend && showRequestButton">
             <span *ngIf="!isRequestOut && !isRequestIn" (click)="sendFriendRequest()" style="margin: 10px 0px 10px 0; width:300px; font-size:14px;" class="btn btn--full">Add Friend</span>  
             <span *ngIf="isRequestOut" style="margin: 10px 0px 10px 0; width:300px; font-size:14px;" class="btn btn--full">Friend Request Sent!</span>  
             <span *ngIf="isRequestIn" (click)="acceptFriendRequest()" style="margin: 10px 0px 10px 0; width:300px; font-size:14px;" class="btn btn--full">Accept Friend Request</span>  

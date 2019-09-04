@@ -210,4 +210,12 @@ export class LoginComponent implements OnInit {
     
   }
 
+  focus(id: string){
+    console.log("focus");
+    document.getElementById(id).focus();
+    document.getElementById(id).addEventListener('keyup',function(e){
+      if (e.which == 13) this.blur();
+    });
+  }
+
 }

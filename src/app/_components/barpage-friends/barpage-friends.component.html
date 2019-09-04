@@ -1,7 +1,29 @@
+<div *ngIf="!displayFriends" class="loadingHolder">
+    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+</div>
 
-<div style="padding-top:50px;">
-  <p>
-    barpage-friends works!
-  </p>
+
+<div style="padding-top:50px;" *ngIf="displayFriends">
+
+  <!-- HEADER -->
+  <div style="padding: 10px 0 0 0; border-bottom:1px black solid;">
+    <h3 style="padding: 0 0 0 0;">
+      <span>Friends Going Tonight</span>
+    </h3>
+  </div>
+
+  <!-- FRIEND LIST -->
+  <div id="friendHolder">
+    <ul class="features_list" *ngFor="let friend of friends" style="padding: 0px 0 0 0; position:relative">
+      <li (click)="openFriendPopUp(friend)">
+        <div style="padding-bottom: 10px;">
+          <span class="features_list_span">
+              <img src="{{friend.profilePicUrl}}">
+              <span class="features_list_span_text" style="font-size: 110%;">{{friend.firstName}} {{friend.lastName}} </span> 
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
 

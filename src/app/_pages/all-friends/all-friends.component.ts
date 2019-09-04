@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
 import { AuthService} from '../../_services/auth.service';
 import { User } from '../../_models/User.Model';
 import { MainService } from '../../_services/main.service';
@@ -13,34 +12,79 @@ export class AllFriendsComponent implements OnInit {
 
   displayFriends: boolean = false;
   friends: User[] = [];
+  pendingFriends: User[] = [];
 
-  subscription: any;
+  subscriptions: any[] = [];
 
-  constructor(private authService: AuthService, private mainService: MainService) { }
+
+  constructor(
+    private authService: AuthService, 
+    private mainService: MainService
+  ) { }
 
   ngOnInit() {
 
+    this.loadFriendData();
+
+    this.loadPendingFriendData();
+
+    this.listenForAcceptFriendRequest();
+  }
+
+  loadFriendData() {
     this.authService.reloadFriendData();
 
-    this.subscription = this.authService.loadingFriendData.subscribe(value => {
+    //Load Friend Data
+    var subscription = this.authService.loadingFriendData.subscribe(value => {
       // once done loading
-      if(value == false) {
+      if (value == "Done") {
         this.friends = this.authService.currentUser.friends;
-        var self = this;
-        setTimeout(function() {self.displayFriends = true;}, 150);
+
+        this.displayFriends = true;
+
+        this.authService.loadingFriendData.next("None");
+
+        subscription.unsubscribe();
       }
     });
 
+    this.subscriptions.push(subscription);
+  }
+
+  loadPendingFriendData() {
+    if(this.authService.currentUser.friendRequestIn.length > 0){
+      this.authService.loadGenericUserData(this.authService.currentUser.friendRequestIn).subscribe(responseList => {
+        responseList.forEach(userObject => {
+          var user: User = new User();
+          user.setFriendData(userObject);
+          this.pendingFriends.push(user);
+        });
+      });
+    }
+  }
+
+  listenForAcceptFriendRequest(){
+    var sub = this.mainService.acceptFriendRequestId.subscribe(value => {
+      if(value != ""){
+        for(var i =0; i<this.pendingFriends.length;i++){
+          var user = this.pendingFriends[i];
+          this.pendingFriends.splice(i,1);
+          break;
+        }
+      }
+    });
+
+    this.subscriptions.push(sub);
   }
 
   ngOnDestroy(){
-    console.log("rip");
-    this.subscription.unsubscribe();
+    this.subscriptions.forEach(sub => {
+      sub.unsubscribe();
+    })
   }
 
   openFriendPopUp(user: User) {
     this.mainService.activateFriendPopUp(user);
   }
-
 
 }

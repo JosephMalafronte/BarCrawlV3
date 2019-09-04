@@ -1,4 +1,4 @@
-<body id="mobile_wrap">
+<body id="mobile_wrap" class="accelerateMe">
 
   <div class="navbar navbar--fixed navbar--fixed-top navbar--bg" style="background-color:black; z-index: 1001;">
     <div class="navbar__col navbar__col--title">
@@ -23,9 +23,9 @@
           <div class="collapse show" id="login">
             <h4 style="font-weight: bold; font-size: 30px;">LOGIN</h4>
             <div class="loginform">
-              <input type="text" [(ngModel)]="logInUsername" name="Username" class="form_input required"
+              <input id="logInEmail" (click)="focus('logInEmail')" type="text" [(ngModel)]="logInUsername" name="Username" class="form_input required"
                 placeholder="Email" />
-              <input type="password" [(ngModel)]="logInPassword" name="Password" class="form_input required"
+              <input id="logInPassword" (click)="focus('logInPassword')" type="password" [(ngModel)]="logInPassword" name="Password" class="form_input required"
                 placeholder="Password" />
               <div class="forgot_pass">
                 <a href="#" data-popup=".popup-forgot" class="open-popup" style="color: #012e77;">Forgot Password?</a>
@@ -42,17 +42,17 @@
           <div class="collapse" id="signup">
             <h4 style="font-weight: bold; font-size: 30px;">SIGN UP</h4>
             <div class="loginform">
-              <input type="text" [(ngModel)]="createFirstName" class="form_input required"
+              <input id="signupFirstName" (click)="focus('signupFirstName')" type="text" [(ngModel)]="createFirstName" class="form_input required"
                 placeholder="First Name" />
-              <input type="text" [(ngModel)]="createLastName" class="form_input required"
+              <input id="signupLastName" (click)="focus('signupLastName')" type="text" [(ngModel)]="createLastName" class="form_input required"
               placeholder="Last Name (Optional)" />
-              <input type="text" [(ngModel)]="createUsername"  class="form_input required"
+              <input id="signupUsername" (click)="focus('signupUsername')" type="text" [(ngModel)]="createUsername"  class="form_input required"
                 placeholder="Username" />
-              <input type="text" [(ngModel)]="createEmail" name="Username" class="form_input required"
+              <input id="signupEmail" (click)="focus('signupEmail')" type="text" [(ngModel)]="createEmail" name="Username" class="form_input required"
                 placeholder="Email" />
-              <input type="password" [(ngModel)]="createPassword"  class="form_input required"
+              <input id="signupPassword" (click)="focus('signupPassword')" type="password" [(ngModel)]="createPassword"  class="form_input required"
                 placeholder="Password" />
-              <input type="password" [(ngModel)]="createPassword2"  class="form_input required"
+              <input id="signupPasswordRepeat" (click)="focus('signupPasswordRepeat')" type="password" [(ngModel)]="createPassword2"  class="form_input required"
               placeholder="Repeat Password" (focusout)="comparePasswords()"/>
 
               <p style="text-align: left; color:red;" *ngIf="passwordsDoNotMatch">Passwords do not match.</p>

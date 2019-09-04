@@ -11,6 +11,7 @@ export class MainService {
 
   currentPageValue: number = 0;
   currentPage: BehaviorSubject<number>;
+  currentBarPageId: number = 0;
   barSlideValue: boolean = false;
   barSlide: BehaviorSubject<boolean>;
   barSlideSearch: BehaviorSubject<boolean>;
@@ -18,6 +19,7 @@ export class MainService {
   userSlide: BehaviorSubject<boolean>
   userSlideEvent: Event;
   friendId: number;
+  acceptFriendRequestId: BehaviorSubject<string> = new BehaviorSubject<string>("");
 
   barlistUrl: string = "main/barlist/deals";
   searchUrl: string = "main/search/deals";

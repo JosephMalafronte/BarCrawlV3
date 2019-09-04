@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import {MainService} from '../../_services/main.service';
 import {AuthService} from '../../_services/auth.service';
 import { User } from '../../_models/User.Model';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { take } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-popup',
@@ -19,12 +22,17 @@ export class PopupComponent implements OnInit {
 
   //Friend Variables
   showFriendPopUp: boolean = false;
+  showRequestButton: boolean = false;
   friendUser: User = null;
   isFriend: boolean = false;
   isRequestOut: boolean = false;
   isRequestIn: boolean = false;
 
-  constructor(private mainService: MainService, private authService: AuthService) { }
+  constructor(
+    private mainService: MainService, 
+    private authService: AuthService,
+    private db: AngularFireDatabase
+  ) { }
 
   ngOnInit() {
 
@@ -44,32 +52,60 @@ export class PopupComponent implements OnInit {
       if(value == true){
         this.friendUser = this.mainService.friendPopUpUser;
 
-        this.isFriend = false;
-        this.isRequestOut = false;
-        this.isRequestIn = false;
-
-        console.log(this.authService.currentUser.friendRequestIn);
-        console.log(this.friendUser.uid);
-
-        //If user is friend activate friend mode
-        if(this.authService.currentUser.friendIds.indexOf(this.friendUser.uid) > -1){
-          this.isFriend = true;
-        }
-        else {
-          // if user is request activate request mode
-          if(this.authService.currentUser.friendRequestOut.indexOf(this.friendUser.uid) > -1){
-            this.isRequestOut = true;
-          } else { // if user is request in activate
-            if(this.authService.currentUser.friendRequestIn.indexOf(this.friendUser.uid) > -1) this.isRequestIn = true;
-          }
-        } 
-
-
+        //Load data 
+        this.loadUserFriendStatus();
         this.showFriendPopUp = true;
+
+        // //If user is friend activate friend mode
+        // if(this.authService.currentUser.friendIds.indexOf(this.friendUser.uid) > -1){
+        //   this.isFriend = true;
+        // }
+        // else {
+        //   // if user is request activate request mode
+        //   if(this.authService.currentUser.friendRequestOut.indexOf(this.friendUser.uid) > -1){
+        //     this.isRequestOut = true;
+        //   } else { // if user is request in activate
+        //     if(this.authService.currentUser.friendRequestIn.indexOf(this.friendUser.uid) > -1) this.isRequestIn = true;
+        //   }
+        // } 
       }
     })
 
+  }
 
+  loadUserFriendStatus() {
+
+    //Check all three sources
+
+    this.showRequestButton = false;            
+    this.isFriend = false;
+    this.isRequestOut = false;
+    this.isRequestIn = false;
+
+    this.db.object('/userInfo/'+this.authService.currentUser.uid + '/friends/' + this.friendUser.uid).valueChanges().pipe(take(1)).subscribe(object => {
+      if(object) {
+        this.isFriend = this.showRequestButton = false;
+        return;
+      }
+      else {
+        this.showRequestButton = true;
+        return;
+      }
+    });
+
+    this.db.object('/userInfo/'+this.authService.currentUser.uid + '/friendRequestOut/' + this.friendUser.uid).valueChanges().pipe(take(1)).subscribe(object => {
+      if(object) {
+        this.isRequestOut = this.showRequestButton = true;
+        return;
+      }
+    });
+
+    this.db.object('/userInfo/'+this.authService.currentUser.uid + '/friendRequestIn/' + this.friendUser.uid).valueChanges().pipe(take(1)).subscribe(object => {
+      if(object) {
+        this.isRequestIn = this.showRequestButton = true;
+        return;
+      }
+    });
   }
 
 

@@ -97,6 +97,7 @@ export class BarPageComponent implements OnInit {
 
   getBarPage(barId: number){
     this.barPageId = barId;
+    this.mainService.currentBarPageId = barId;
     this.clearBarPageData();
 
     this.db.object('barPages/'+this.barPageId.toString()).valueChanges().subscribe(result => {

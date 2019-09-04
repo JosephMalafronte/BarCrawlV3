@@ -75,7 +75,7 @@ export class SearchComponent implements OnInit {
     document.getElementById('subject').focus();
     document.getElementById('subject').addEventListener('keyup',function(e){
       if (e.which == 13) this.blur();
-  });
+    });
   }
 
   search(){

@@ -37,7 +37,8 @@ export class User {
         if(friendObject.firstName) this.firstName = friendObject.firstName;
         if(friendObject.lastName) this.lastName = friendObject.lastName;
         if(friendObject.profilePicUrl) this.profilePicUrl = friendObject.profilePicUrl;     
-        if(friendObject.userName) this.userName = friendObject.userName;           
+        if(friendObject.userName) this.userName = friendObject.userName;
+        if(friendObject.barsAttending) this.barsAttending = Object.keys(friendObject.barsAttending).map(key => friendObject.barsAttending[key]);        
     }
     
 }

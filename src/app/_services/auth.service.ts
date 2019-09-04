@@ -4,7 +4,8 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { User } from '../_models/User.Model';
 import { BarCard } from '../models';
 import { forkJoin, Observable, BehaviorSubject } from 'rxjs';  // RxJS 6 syntax
-import { take } from 'rxjs/operators'
+import { take } from 'rxjs/operators';
+import { MainService } from './main.service';
 
 
 
@@ -16,16 +17,16 @@ export class AuthService {
   currentUser: User = null;
   authStateValue:boolean = false;
   authStateSet: BehaviorSubject<boolean>;
-  loadingFriendData: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);  
+  loadingFriendData: BehaviorSubject<string> = new BehaviorSubject<string>("None");  
   af: AngularFireAuth;
   db: AngularFireDatabase;
   subUser: boolean = false;
 
 
-  constructor(dbA: AngularFireDatabase, public afAuth: AngularFireAuth) {
+  constructor(private mainService: MainService, dbA: AngularFireDatabase, public afAuth: AngularFireAuth) {
     this.af = afAuth;
     this.db = dbA;
-    this.authStateSet = new BehaviorSubject<boolean>(true);
+    this.authStateSet = new BehaviorSubject<boolean>(false);
   }
 
   setUser(user: User){
@@ -60,11 +61,11 @@ export class AuthService {
         this.loadAllUserFriendData();
       }
 
+      // Listen for Friend Request
       this.listenForFriendRequest();
 
       //Get About Info
       this.currentUser.firstName = userInfo.about.firstName;
-      console.log(this.currentUser);
 
       //Mark As Finished
       this.authStateValue = true;
@@ -114,12 +115,11 @@ export class AuthService {
   }
 
   logOut(){
-    this.afAuth.auth.signOut();
-    console.log(this.afAuth.auth);
-    // Refresh page to wipe all info, might need to rework later
-    var pathArray = window.location.pathname.split( '/' );
 
-    window.location.href=pathArray[0];
+    this.afAuth.auth.signOut();
+    // Refresh page to wipe all info, might need to rework later
+
+    window.location.href="index.html";
 
   }
 
@@ -189,14 +189,19 @@ export class AuthService {
   reloadFriendData() {
     this.db.list('userInfo/' + this.currentUser.uid + '/friends').valueChanges().pipe(take(1)).subscribe((data:any) => {
       this.currentUser.friendIds = data;
-      console.log(this.currentUser.friendIds);
+
+      if(this.currentUser.friendIds.length == 0){
+        this.loadingFriendData.next("Done");
+        return;
+      }
+
       this.loadAllUserFriendData();
     })
   }
 
   // Loads all friend data from friend ids
   loadAllUserFriendData() {
-    this.loadingFriendData.next(true);
+    this.loadingFriendData.next("Loading");
     let requestArray = [];
 
 
@@ -209,17 +214,30 @@ export class AuthService {
     forkJoin(requestArray).subscribe(responseList => {
 
       this.currentUser.friends = [];
-      console.log("Loaded Friends!");
       responseList.forEach(userObject => {
         var friendUser: User = new User();
         friendUser.setFriendData(userObject);    
         this.currentUser.friends.push(friendUser);    
       });
-      console.log("Set Friends!");
-      console.log(this.currentUser.friends);
-      this.loadingFriendData.next(false);
+      this.loadingFriendData.next("Done");
+      this.loadingFriendData.next("None");
     });
     
+  }
+
+  //Function that takes array of uids and returns a fork join of user data
+  loadGenericUserData(uidArray: string[]): Observable<any>{
+    let requestArray = [];
+
+    console.log(uidArray);
+
+    for(var i =0; i<uidArray.length; i++){
+      let id: string = uidArray[i];
+      var request = this.db.object('userInfo/' + id + '/about').valueChanges().pipe(take(1));
+      requestArray.push(request);
+    }
+
+    return forkJoin(requestArray);
   }
 
   //Load data for a new friend and append to the user array
@@ -256,7 +274,6 @@ export class AuthService {
       } 
 
       this.currentUser.friendRequestIn = Object.keys(object).map(key => object[key]);
-      console.log(this.currentUser.friendRequestIn);
     });
 
   }
@@ -272,6 +289,11 @@ export class AuthService {
     
     this.db.object('userInfo/' + this.currentUser.uid + '/friends/' + uid).set(uid);
     this.db.object('userInfo/' + uid + '/friends/' + this.currentUser.uid).set(this.currentUser.uid);
+
+    //If we are on the all friends page reset page
+    if(this.mainService.currentPageValue == 2){
+      this.mainService.acceptFriendRequestId.next(uid);
+    }
 
   }
 
