@@ -38,15 +38,20 @@ export class NavbarComponent implements OnInit {
 
   icon2Click(){
     if(this.mainService.currentPageValue == 2){
-      //Same click functionality here
-      return;
+        //Same click functionality here
+        return;
     }
     this.mainService.changePage(2);
   }
 
   icon3Click(){
     if(this.mainService.currentPageValue == 3){
-      //Same click functionality here
+      // If slide is closed dont do anything
+      console.log('test');
+      if(this.mainService.barSlideLikedBars.getValue() == false) return;
+
+      //If slide is open close it
+      this.mainService.toggleBarSlideLikedBars();
       return;
     }
     this.mainService.changePage(3);

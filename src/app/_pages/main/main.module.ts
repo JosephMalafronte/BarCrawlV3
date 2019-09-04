@@ -17,6 +17,8 @@ import { BarpageCoverComponent } from '../../_components/barpage-cover/barpage-c
 import { BarpageFriendsComponent } from '../../_components/barpage-friends/barpage-friends.component';
 import { BarpageMapComponent } from '../../_components/barpage-map/barpage-map.component';
 import { PopupComponent } from '../../_components/popup/popup.component';
+import { LikedBarsComponent } from '../../_pages/liked-bars/liked-bars.component';
+
 
 //Import Modules
 import {FullLoadingModule} from '../../_components/full-loading/full-loading.module';
@@ -31,6 +33,7 @@ import {FullLoadingModule} from '../../_components/full-loading/full-loading.mod
     BarPageComponent,
     BarlistComponent,
     SearchComponent,
+    LikedBarsComponent,
     UserSlideComponent,
     BarpageDealsComponent,
     BarpageCoverComponent,

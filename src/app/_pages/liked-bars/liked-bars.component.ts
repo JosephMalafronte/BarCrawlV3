@@ -27,6 +27,10 @@ export class LikedBarsComponent implements OnInit {
 
   ngOnInit() {
     this.getBarCards();
+
+    this.mainService.barSlideLikedBars.subscribe(value => {
+      this.barSlide = value;
+    })
   }
 
   getBarCards() {
@@ -43,7 +47,7 @@ export class LikedBarsComponent implements OnInit {
     this.barSlide = true;
     this.showBarPage = true;
     this.barPageId = barId;
-    this.mainService.toggleBarSlideSearch();
+    this.mainService.toggleBarSlideLikedBars();
   }
 
   likeBar(barCard){

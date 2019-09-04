@@ -36,7 +36,9 @@ const routes: Routes = [
         children: [
           { path: '', redirectTo: 'deals', pathMatch: 'full' },
           { path: 'deals', component: BarpageDealsComponent },
-          { path: 'cover', component: BarpageCoverComponent }
+          { path: 'cover', component: BarpageCoverComponent },
+          { path: 'friends', component: BarpageFriendsComponent },
+          { path: 'map', component: BarpageMapComponent }
         ]
       },
       {
@@ -45,7 +47,14 @@ const routes: Routes = [
       },
       {
         path:'liked-bars',
-        component: LikedBarsComponent
+        component: LikedBarsComponent,
+        children: [
+          { path: '', redirectTo: 'deals', pathMatch: 'full' },
+          { path: 'deals', component: BarpageDealsComponent },
+          { path: 'cover', component: BarpageCoverComponent },
+          { path: 'friends', component: BarpageFriendsComponent },
+          { path: 'map', component: BarpageMapComponent }
+        ]
       },
       {
         path:'settings',

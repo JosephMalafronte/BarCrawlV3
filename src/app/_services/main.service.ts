@@ -15,6 +15,7 @@ export class MainService {
   barSlideValue: boolean = false;
   barSlide: BehaviorSubject<boolean>;
   barSlideSearch: BehaviorSubject<boolean>;
+  barSlideLikedBars: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   userSlideValue: boolean = false;
   userSlide: BehaviorSubject<boolean>
   userSlideEvent: Event;
@@ -23,7 +24,7 @@ export class MainService {
 
   barlistUrl: string = "main/barlist/deals";
   searchUrl: string = "main/search/deals";
-
+  likedBarsUrl: string = "main/liked-bars/deals";
 
   //Popups
   showCoverPopUpValue: boolean = false;
@@ -53,6 +54,11 @@ export class MainService {
     this.barSlideSearch.next(!this.barSlideSearch.getValue());
   }
 
+  toggleBarSlideLikedBars() {
+    console.log(!this.barSlideLikedBars.getValue());
+    this.barSlideLikedBars.next(!this.barSlideLikedBars.getValue());
+  }
+
   changePage(num: number){
     if(this.userSlideValue == true) this.changeUserSlide();
     if(this.currentPageValue == num) return;
@@ -60,6 +66,7 @@ export class MainService {
     //Saved state pages mneed to log their url
     if(this.router.url.includes("/main/barlist")) this.barlistUrl = this.router.url;
     else if(this.router.url.includes("/main/search")) this.searchUrl = this.router.url;
+    else if(this.router.url.includes("/main/liked-bars")) this.likedBarsUrl = this.router.url;
 
     this.currentPageValue = num;
     this.currentPage.next(num);
