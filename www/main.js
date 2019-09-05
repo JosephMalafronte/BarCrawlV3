@@ -2169,7 +2169,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-bar-page *ngIf=\"showBarPage\" [barPageIdChange]=\"barPageId\" [slideInBar]=\"barSlide\" [location]=\"'liked-bars'\">\r\n  </app-bar-page>\r\n  \r\n\r\n<div style=\"margin: 12% 5% 0% 5%;\">\r\n\r\n  <!-- HEADER -->\r\n  <div style=\"padding: 10px 0 0 0; border-bottom:1px black solid;\">\r\n    <h3 style=\"padding: 0 0 0 0;\">\r\n      <span>Liked Bars</span>\r\n    </h3>\r\n  </div>\r\n\r\n  <!-- For each here -->\r\n  <ul class=\"shop_items\" style=\"padding-top: 13px;\">\r\n\r\n    <!-- BAR CARD -->\r\n    <li id=\"barCard\" *ngFor=\"let barCard of barCards\" (click)=\"onBarCardClick($event,barCard.barId)\">\r\n      <div class=\"shop_thumb\">\r\n        <img src={{barCard.barPictureUrl}} alt=\"\" title=\"\" class=\"barCardPic\" />\r\n      </div>\r\n      <div class=\"shop_item_details\">\r\n        <h4>{{barCard.barName}}</h4>\r\n        <ul class=\"features_list\" style=\"padding: 0% 0 0 0;\">\r\n          <li>\r\n            <span class=\"features_list_span\">\r\n              <img src={{barCard.highlight1Icon}} alt=\"\" title=\"\" />\r\n              <span class=\"features_list_span_text\">{{barCard.highlight1}}</span>\r\n            </span>\r\n          </li>\r\n          <li>\r\n            <span class=\"features_list_span\">\r\n              <img src={{barCard.highlight2Icon}} alt=\"\" title=\"\" />\r\n              <span class=\"features_list_span_text\">{{barCard.highlight2}}</span>\r\n            </span>\r\n          </li>\r\n        </ul>\r\n        <span class=\"open-popup shopfav\" (click)=\"likeBar(barCard)\">\r\n          <!-- <app-like></app-like> -->\r\n          <img id=\"like\" [src]=\"checkLikedStatus(barCard)? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'\"\r\n            alt=\"\" title=\"\" />\r\n        </span>\r\n      </div>\r\n    </li>\r\n\r\n  </ul>\r\n\r\n</div>"
+module.exports = "<app-bar-page *ngIf=\"showBarPage\" [barPageIdChange]=\"barPageId\" [slideInBar]=\"barSlide\" [location]=\"'liked-bars'\">\r\n  </app-bar-page>\r\n  \r\n\r\n<div style=\"margin: 12% 5% 0% 5%;\">\r\n\r\n  <!-- HEADER -->\r\n  <div *ngIf=\"attendingBarCards.length>0\" style=\"padding: 10px 0 0 0; border-bottom:1px black solid;\">\r\n    <h3 style=\"padding: 0 0 0 0;\">\r\n      <span>Bars You Are Attending Tonight</span>\r\n    </h3>\r\n  </div>\r\n\r\n  <!-- For each here -->\r\n  <ul class=\"shop_items\" style=\"padding-top: 13px;\">\r\n\r\n      <!-- BAR CARD -->\r\n      <li id=\"barCard\" *ngFor=\"let barCard of attendingBarCards\" (click)=\"onBarCardClick($event,barCard.barId)\">\r\n        <div class=\"shop_thumb\">\r\n          <img src={{barCard.barPictureUrl}} alt=\"\" title=\"\" class=\"barCardPic\" />\r\n        </div>\r\n        <div class=\"shop_item_details\">\r\n          <h4>{{barCard.barName}}</h4>\r\n          <ul class=\"features_list\" style=\"padding: 0% 0 0 0;\">\r\n            <li>\r\n              <span class=\"features_list_span\">\r\n                <img src={{barCard.highlight1Icon}} alt=\"\" title=\"\" />\r\n                <span class=\"features_list_span_text\">{{barCard.highlight1}}</span>\r\n              </span>\r\n            </li>\r\n            <li>\r\n              <span class=\"features_list_span\">\r\n                <img src={{barCard.highlight2Icon}} alt=\"\" title=\"\" />\r\n                <span class=\"features_list_span_text\">{{barCard.highlight2}}</span>\r\n              </span>\r\n            </li>\r\n          </ul>\r\n          <span class=\"open-popup shopfav\" (click)=\"likeBar(barCard)\">\r\n            <!-- <app-like></app-like> -->\r\n            <img id=\"like\" [src]=\"checkLikedStatus(barCard)? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'\"\r\n              alt=\"\" title=\"\" />\r\n          </span>\r\n        </div>\r\n      </li>\r\n  \r\n    </ul>\r\n  \r\n\r\n  <!-- HEADER -->\r\n  <div style=\"padding: 10px 0 0 0; border-bottom:1px black solid;\">\r\n    <h3 style=\"padding: 0 0 0 0;\">\r\n      <span>Liked Bars</span>\r\n    </h3>\r\n  </div>\r\n\r\n  <!-- For each here -->\r\n  <ul class=\"shop_items\" style=\"padding-top: 13px;\">\r\n\r\n    <!-- BAR CARD -->\r\n    <li id=\"barCard\" *ngFor=\"let barCard of barCards\" (click)=\"onBarCardClick($event,barCard.barId)\">\r\n      <div class=\"shop_thumb\">\r\n        <img src={{barCard.barPictureUrl}} alt=\"\" title=\"\" class=\"barCardPic\" />\r\n      </div>\r\n      <div class=\"shop_item_details\">\r\n        <h4>{{barCard.barName}}</h4>\r\n        <ul class=\"features_list\" style=\"padding: 0% 0 0 0;\">\r\n          <li>\r\n            <span class=\"features_list_span\">\r\n              <img src={{barCard.highlight1Icon}} alt=\"\" title=\"\" />\r\n              <span class=\"features_list_span_text\">{{barCard.highlight1}}</span>\r\n            </span>\r\n          </li>\r\n          <li>\r\n            <span class=\"features_list_span\">\r\n              <img src={{barCard.highlight2Icon}} alt=\"\" title=\"\" />\r\n              <span class=\"features_list_span_text\">{{barCard.highlight2}}</span>\r\n            </span>\r\n          </li>\r\n        </ul>\r\n        <span class=\"open-popup shopfav\" (click)=\"likeBar(barCard)\">\r\n          <!-- <app-like></app-like> -->\r\n          <img id=\"like\" [src]=\"checkLikedStatus(barCard)? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'\"\r\n            alt=\"\" title=\"\" />\r\n        </span>\r\n      </div>\r\n    </li>\r\n\r\n  </ul>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -2199,6 +2199,7 @@ var LikedBarsComponent = /** @class */ (function () {
         this.authService = authService;
         this.mainService = mainService;
         this.barCards = [];
+        this.attendingBarCards = [];
         //Bar Page Slide Variables
         this.barSlide = false;
         this.showBarPage = false;
@@ -2207,16 +2208,26 @@ var LikedBarsComponent = /** @class */ (function () {
     }
     LikedBarsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.getBarCards();
-        this.mainService.barSlideLikedBars.subscribe(function (value) {
+        this.barSlideSub = this.mainService.barSlideLikedBars.subscribe(function (value) {
             _this.barSlide = value;
+            if (value == false) {
+                console.log("Run");
+                _this.getBarCards();
+            }
         });
+    };
+    LikedBarsComponent.prototype.ngOnDestroy = function () {
+        this.barSlideSub.unsubscribe();
     };
     LikedBarsComponent.prototype.getBarCards = function () {
         var _this = this;
+        this.barCards = [];
+        this.attendingBarCards = [];
         this.db.list('barCards/' + this.dayOfTheWeek).valueChanges().subscribe(function (result) {
             result.forEach(function (item) {
-                if (_this.authService.currentUser.likedBars.indexOf(item.barId) > -1)
+                if (_this.authService.currentUser.barsAttending.indexOf(item.barId) > -1)
+                    _this.attendingBarCards.push(item);
+                else if (_this.authService.currentUser.likedBars.indexOf(item.barId) > -1)
                     _this.barCards.push(item);
             });
         });

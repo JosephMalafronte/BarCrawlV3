@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AuthService } from '../../_services/auth.service';
 import { MainService } from '../../_services/main.service';
@@ -11,11 +11,15 @@ import { MainService } from '../../_services/main.service';
 export class LikedBarsComponent implements OnInit {
 
   barCards = [];
+  attendingBarCards = [];
 
   //Bar Page Slide Variables
   barSlide: boolean = false;
   showBarPage: boolean = false;
   barPageId: number = 0;
+
+  //Subscriptions
+  barSlideSub: any;
 
   constructor(
     private db: AngularFireDatabase, 
@@ -26,17 +30,28 @@ export class LikedBarsComponent implements OnInit {
   dayOfTheWeek = "Wednesday" // Needs to be calculated
 
   ngOnInit() {
-    this.getBarCards();
-
-    this.mainService.barSlideLikedBars.subscribe(value => {
+    this.barSlideSub = this.mainService.barSlideLikedBars.subscribe(value => {
       this.barSlide = value;
+      if(value == false) {
+        console.log("Run");
+        this.getBarCards();
+      }
     })
   }
 
+  ngOnDestroy() {
+    this.barSlideSub.unsubscribe();
+  }
+
   getBarCards() {
+
+    this.barCards = [];
+    this.attendingBarCards = [];
+
     this.db.list('barCards/' + this.dayOfTheWeek).valueChanges().subscribe((result:any) => {
       result.forEach(item => {
-        if(this.authService.currentUser.likedBars.indexOf(item.barId) > -1) this.barCards.push(item);
+        if(this.authService.currentUser.barsAttending.indexOf(item.barId) > -1) this.attendingBarCards.push(item);
+        else if(this.authService.currentUser.likedBars.indexOf(item.barId) > -1) this.barCards.push(item);
       });
     });
   }
