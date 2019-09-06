@@ -9,9 +9,7 @@ declare var device;
 export class AppComponent {
   title = 'BarCrawlV3';
   ngOnInit() { 
-    document.addEventListener('deviceready', function() { 
-    alert(device.platform); 
-    }, false); 
+
   } 
   
 }

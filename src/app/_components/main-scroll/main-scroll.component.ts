@@ -28,7 +28,10 @@ export class MainScrollComponent implements OnInit {
   db: AngularFireDatabase;
 
 
-  constructor(dbA: AngularFireDatabase, private authService: AuthService) { 
+  constructor(
+    dbA: AngularFireDatabase, 
+    private authService: AuthService,
+  ) { 
     this.db = dbA;
   }
 
@@ -54,6 +57,7 @@ export class MainScrollComponent implements OnInit {
 
   onBarCardClick(event,id: number) {
     if(event.target.id != undefined && event.target.id == "like") return;
+
     this.barCardClick.emit(id);
   }
 

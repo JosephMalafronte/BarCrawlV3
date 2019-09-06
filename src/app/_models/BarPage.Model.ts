@@ -6,4 +6,7 @@ export interface BarPage  {
   barName: string;
   barPicture1Url: string;
 
+  lat: number;
+  long:number;
+
 }

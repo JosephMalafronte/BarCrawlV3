@@ -52,7 +52,7 @@ import { SettingsComponent } from './_pages/settings/settings.component';
     MainModule,
     LoginModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: RouteReuseStrategy,useClass:CustomReuseStrategy}

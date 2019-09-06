@@ -19,6 +19,7 @@
   ],
   "private": true,
   "dependencies": {
+    "@agm/core": "^1.0.0-beta.7",
     "@angular/animations": "^7.2.15",
     "@angular/cdk": "^7.3.7",
     "@angular/common": "~7.2.0",
@@ -35,6 +36,7 @@
     "cordova-browser": "^5.0.4",
     "cordova-ios": "^5.0.0",
     "cordova-plugin-buildinfo": "2.0.2",
+    "cordova-plugin-camera": "^4.1.0",
     "cordova-plugin-firebase-authentication": "^1.1.2",
     "cordova-plugin-whitelist": "1",
     "core-js": "^2.5.4",
@@ -70,7 +72,8 @@
   },
   "cordova": {
     "plugins": {
-      "cordova-plugin-whitelist": {}
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-camera": {}
     },
     "platforms": [
       "ios",

@@ -3,6 +3,7 @@ import {BehaviorSubject} from 'rxjs';
 import {Router} from '@angular/router';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
 import { User } from '../_models/User.Model';
+import { BarPage } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,8 @@ export class MainService {
   currentPageValue: number = 0;
   currentPage: BehaviorSubject<number>;
   currentBarPageId: number = 0;
+  barPageLat: number = 0;
+  barPageLong: number = 0;
   barSlideValue: boolean = false;
   barSlide: BehaviorSubject<boolean>;
   barSlideSearch: BehaviorSubject<boolean>;

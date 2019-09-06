@@ -1,5 +1,10 @@
-<div style="padding-top:50px;">
-  <p>
-    barpage-map works!
-  </p>
+<div style="padding-top:55px; ">
+  <!-- this creates a google map on the page with the given lat/lng from -->
+  <!-- the component as the initial center of the map: -->
+  <div (click)="mapsSelector()">
+    <agm-map [zoomControl]="false" [streetViewControl]="false" [zoom]=17 [latitude]="lat" [longitude]="lng">
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
+  </div>
+
 </div>

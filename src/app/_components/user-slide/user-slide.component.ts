@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {MainService} from '../../_services/main.service';
 import {AuthService} from '../../_services/auth.service';
 import { Router } from '@angular/router';
+import { AngularFireStorage } from '@angular/fire/storage';
 
+declare var navigator: any;
+declare var Camera: any;
 
 @Component({
   selector: 'app-user-slide',
@@ -11,11 +14,19 @@ import { Router } from '@angular/router';
 })
 export class UserSlideComponent implements OnInit {
 
+
   slideInLogin: boolean = true;
+
+  avatarImage: any = "./assets/images/avatar3.jpg";
 
 
   //AuthService used in html
-  constructor(private mainService: MainService, private authService: AuthService, private router: Router) {
+  constructor(
+    private mainService: MainService, 
+    private authService: AuthService, 
+    private router: Router,
+    private storage: AngularFireStorage
+  ) {
 
   }
 
@@ -54,6 +65,38 @@ export class UserSlideComponent implements OnInit {
     this.authService.logOut();
     // this.mainService.changeUserSlide();
     // this.router.navigateByUrl('/login');
+  }
+
+  photoSuccess(imgURL) : any{
+    document.getElementById("avatar").setAttribute('src', imgURL);
+
+      const file = imgURL;
+      const filePath = 'TestPls';
+      const task = this.storage.upload(filePath, file);
+
+      const file2 = "./assets/images/icons/gray/users.png";
+      const filePath2 = 'Test2Pls';
+      const task2 = this.storage.upload(filePath, file);
+
+  }
+
+  photoFail(msg): any{
+    console.log(msg);
+  }
+
+  takePhoto(){
+
+    let opts = {
+      quality: 80,
+      destinationType: Camera.DestinationType.NATIVE_URI,
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+      mediaType: Camera.MediaType.PICTURE,
+      encodingType: Camera.EncodingType.JPEG,
+      cameraDirection: Camera.Direction.BACK,
+      targetWidth: 400,
+      targetHeight: 300
+    };
+    navigator.camera.getPicture(this.photoSuccess, this.photoFail, opts);
   }
 
 }

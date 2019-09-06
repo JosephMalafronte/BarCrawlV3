@@ -37,7 +37,7 @@ export class BarPageComponent implements OnInit {
     }
   }
   @Input() slideInBar:boolean = false; // maps to slideInBarTrigger
-  @Input() location:String = "barlist";
+  @Input() location:string = "barlist";
   isLoading: boolean = true;
   
   //BarPage Variables
@@ -73,6 +73,7 @@ export class BarPageComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.barPageHideInit();
   }
 
@@ -106,6 +107,12 @@ export class BarPageComponent implements OnInit {
       this.barPictureUrl = this.barPage.barPicture1Url;
       this.barName = this.barPage.barName;
 
+      this.mainService.barPageLat = this.barPage.lat;
+      this.mainService.barPageLong = this.barPage.long;
+
+      var tempUrl = this.router.url;
+      this.router.navigateByUrl('/main/' + this.location + '/deals');
+      this.activeInfoPage = 0;
 
     });
    

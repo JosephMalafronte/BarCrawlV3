@@ -18,6 +18,7 @@ import { BarpageFriendsComponent } from '../../_components/barpage-friends/barpa
 import { BarpageMapComponent } from '../../_components/barpage-map/barpage-map.component';
 import { PopupComponent } from '../../_components/popup/popup.component';
 import { LikedBarsComponent } from '../../_pages/liked-bars/liked-bars.component';
+import { AgmCoreModule } from '@agm/core';
 
 
 //Import Modules
@@ -45,7 +46,10 @@ import {FullLoadingModule} from '../../_components/full-loading/full-loading.mod
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    FullLoadingModule
+    FullLoadingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDBhMcOMXGvKweHVyPpyKHC3bDnbBQwZYU'
+    })
   ],
   exports: [
     MainComponent
