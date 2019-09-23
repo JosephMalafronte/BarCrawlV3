@@ -1483,7 +1483,7 @@ module.exports = ".out{\n    -webkit-transform: translateX(0%);\n    transform: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div  id=\"userSlide\" class=\"panel panel-right panel-reveal out\" >\n  <div class=\"user_login_info\">\n\n    <div class=\"user_thumb\">\n\n      <div class=\"user_details\">\n        <p>Welcome, <span>{{authService.currentUser.firstName}}</span></p>\n      </div>\n      <div (click)=\"takePhoto()\" class=\"user_avatar\"><img style=\"height: 100px;\" id=\"avatar\" src={{avatarImage}} alt=\"\" title=\"\" /></div>\n    </div>\n\n    <nav class=\"user-nav\">\n      <ul>\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/settings.png\" alt=\"\" title=\"\" /><span>Account\n              Settings</span></a></li>\n        <!-- <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/briefcase.png\" alt=\"\" title=\"\" /><span>My\n              Account</span></a></li> -->\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/users.png\" alt=\"\"\n              title=\"\" /><span>Friends</span><strong>12</strong></a></li>\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/love.png\" alt=\"\"\n              title=\"\" /><span>Liked Bars</span><strong>5</strong></a></li>\n        <li><a (click)=\"logout()\"><img src=\"./assets/images/icons/gray/lock.png\" alt=\"\" title=\"\" /><span>Logout</span></a></li>\n      </ul>\n    </nav>\n  </div>\n</div>\n"
+module.exports = "<div  id=\"userSlide\" class=\"panel panel-right panel-reveal out\" >\n  <div class=\"user_login_info\">\n\n    <div class=\"user_thumb\">\n\n      <div class=\"user_details\">\n        <p>Welcome, <span>{{authService.currentUser.firstName}}</span></p>\n      </div>\n      <div (click)=\"takePhoto()\" class=\"user_avatar\"><img style=\"height: 100px;\" id=\"avatar\" src={{avatarImage}} alt=\"\" title=\"\" /></div>\n    </div>\n\n    <ul>\n      <li>{{con}}</li>\n    </ul>\n\n    <input type=\"file\" (change)=\"registerNewCandidate($event)\" />\n\n    <nav class=\"user-nav\">\n      <ul>\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/settings.png\" alt=\"\" title=\"\" /><span>Account\n              Settings</span></a></li>\n        <!-- <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/briefcase.png\" alt=\"\" title=\"\" /><span>My\n              Account</span></a></li> -->\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/users.png\" alt=\"\"\n              title=\"\" /><span>Friends</span><strong>12</strong></a></li>\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/love.png\" alt=\"\"\n              title=\"\" /><span>Liked Bars</span><strong>5</strong></a></li>\n        <li><a (click)=\"logout()\"><img src=\"./assets/images/icons/gray/lock.png\" alt=\"\" title=\"\" /><span>Logout</span></a></li>\n      </ul>\n    </nav>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1552,19 +1552,91 @@ var UserSlideComponent = /** @class */ (function () {
         // this.mainService.changeUserSlide();
         // this.router.navigateByUrl('/login');
     };
+    UserSlideComponent.prototype.getBase64Image = function (imgUrl, callback) {
+        var img = new Image();
+        // onload fires when the image is fully loadded, and has width and height
+        img.onload = function () {
+            var canvas = document.createElement("canvas");
+            canvas.width = img.width;
+            canvas.height = img.height;
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0);
+            var dataURL = canvas.toDataURL("image/png"), dataURL = dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+            callback(dataURL); // the base64 string
+        };
+        // set attributes and src 
+        img.setAttribute('crossOrigin', 'anonymous'); //
+        img.src = imgUrl;
+    };
+    UserSlideComponent.prototype.dataURItoBlob = function (dataURI) {
+        var byteString = window.atob(dataURI);
+        var arrayBuffer = new ArrayBuffer(byteString.length);
+        var int8Array = new Uint8Array(arrayBuffer);
+        for (var i = 0; i < byteString.length; i++) {
+            int8Array[i] = byteString.charCodeAt(i);
+        }
+        var blob = new Blob([int8Array], { type: 'image/jpeg' });
+        return blob;
+    };
     UserSlideComponent.prototype.photoSuccess = function (imgURL) {
-        document.getElementById("avatar").setAttribute('src', imgURL);
-        var file = imgURL;
-        var filePath = 'TestPls';
-        var task = this.storage.upload(filePath, file);
-        var file2 = "./assets/images/icons/gray/users.png";
-        var filePath2 = 'Test2Pls';
-        var task2 = this.storage.upload(filePath, file);
+        var self = this;
+        window.resolveLocalFileSystemURL(imgURL, function (fileEntry) {
+            fileEntry.file(function (file) {
+                alert(file.filePath);
+                var reader = new FileReader();
+                reader.onloadend = function () {
+                    // This blob object can be saved to firebase
+                    var blob = new Blob([new Uint8Array(this.result)], { type: "image/jpeg" });
+                    // Send blob
+                    var file = blob;
+                    var filePath = 'name-your-file-path-here';
+                    var ref = self.storage.ref(filePath);
+                    var task = ref.put(file);
+                    alert("Put File");
+                };
+                reader.readAsArrayBuffer(file);
+            });
+        });
+        // alert(imgURL);
+        // imgURL = imgURL.replace(/\s/g, '');
+        // var longImgURL = "data:image/jpeg;base64," + imgURL;
+        // // var canvas = document.getElementById("avatar");
+        // // canvas.setAttribute('src', longImgURL);
+        // // canvas.toBlob(blob => {
+        // // });
+        // const filePath = 'TestPls2';
+        // const fileRef = this.storage.ref(filePath);
+        // try{
+        //   const task = fileRef.putString(imgURL, 'data_url', {contentType:'image/jpg'});
+        // } catch (e){
+        //   alert(e.message);
+        // }
+        // var blob = this.base64toBlob(imgURL, 'image/jpg');
+        // const file = blob;
+        // const filePath = 'name-your-file-path-here';
+        // const task = this.storage.upload(filePath, file);
+        // const file = imgURL;
+        // const filePath = 'Taco Tuesday';
+        // const fileRef = this.storage.ref(filePath);
+        // const task = this.storage.upload(filePath, file);
+        // // observe percentage changes
+        // this.uploadPercent = task.percentageChanges();
+        // // get notified when the download URL is available
+        // task.snapshotChanges().pipe(
+        //     finalize(() => this.downloadURL = fileRef.getDownloadURL() )
+        //   )
+        // .subscribe()
     };
     UserSlideComponent.prototype.photoFail = function (msg) {
         console.log(msg);
     };
     UserSlideComponent.prototype.takePhoto = function () {
+        // var self = this;
+        // this.getBase64Image("https://media.tacdn.com/media/attractions-splice-spp-674x446/07/25/13/74.jpg", function(base64image){
+        //   console.log(base64image);
+        //   self.photoSuccess(base64image);
+        // });
+        console.log("Take Photo");
         var opts = {
             quality: 80,
             destinationType: Camera.DestinationType.NATIVE_URI,
@@ -1576,6 +1648,30 @@ var UserSlideComponent = /** @class */ (function () {
             targetHeight: 300
         };
         navigator.camera.getPicture(this.photoSuccess, this.photoFail, opts);
+    };
+    UserSlideComponent.prototype.registerNewCandidate = function (event) {
+        var file = event.target.files[0];
+        var filePath = 'Taco Tuesday';
+        var fileRef = this.storage.ref(filePath);
+        var task = this.storage.upload(filePath, file);
+    };
+    UserSlideComponent.prototype.base64toBlob = function (base64Data, contentType) {
+        contentType = contentType || '';
+        var sliceSize = 1024;
+        var byteCharacters = atob(base64Data);
+        var bytesLength = byteCharacters.length;
+        var slicesCount = Math.ceil(bytesLength / sliceSize);
+        var byteArrays = new Array(slicesCount);
+        for (var sliceIndex = 0; sliceIndex < slicesCount; ++sliceIndex) {
+            var begin = sliceIndex * sliceSize;
+            var end = Math.min(begin + sliceSize, bytesLength);
+            var bytes = new Array(end - begin);
+            for (var offset = begin, i = 0; offset < end; ++i, ++offset) {
+                bytes[i] = byteCharacters[offset].charCodeAt(0);
+            }
+            byteArrays[sliceIndex] = new Uint8Array(bytes);
+        }
+        return new Blob(byteArrays, { type: contentType });
     };
     UserSlideComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2222,7 +2318,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-bar-page *ngIf=\"showBarPage\" [barPageIdChange]=\"barPageId\" [slideInBar]=\"barSlide\" [location]=\"'liked-bars'\">\n  </app-bar-page>\n  \n\n<div style=\"margin: 12% 5% 0% 5%;\">\n\n  <!-- HEADER -->\n  <div *ngIf=\"attendingBarCards.length>0\" style=\"padding: 10px 0 0 0; border-bottom:1px black solid;\">\n    <h3 style=\"padding: 0 0 0 0;\">\n      <span>Bars You Are Attending Tonight</span>\n    </h3>\n  </div>\n\n  <!-- For each here -->\n  <ul class=\"shop_items\" style=\"padding-top: 13px;\">\n\n      <!-- BAR CARD -->\n      <li id=\"barCard\" *ngFor=\"let barCard of attendingBarCards\" (click)=\"onBarCardClick($event,barCard.barId)\">\n        <div class=\"shop_thumb\">\n          <img src={{barCard.barPictureUrl}} alt=\"\" title=\"\" class=\"barCardPic\" />\n        </div>\n        <div class=\"shop_item_details\">\n          <h4>{{barCard.barName}}</h4>\n          <ul class=\"features_list\" style=\"padding: 0% 0 0 0;\">\n            <li>\n              <span class=\"features_list_span\">\n                <img src={{barCard.highlight1Icon}} alt=\"\" title=\"\" />\n                <span class=\"features_list_span_text\">{{barCard.highlight1}}</span>\n              </span>\n            </li>\n            <li>\n              <span class=\"features_list_span\">\n                <img src={{barCard.highlight2Icon}} alt=\"\" title=\"\" />\n                <span class=\"features_list_span_text\">{{barCard.highlight2}}</span>\n              </span>\n            </li>\n          </ul>\n          <span class=\"open-popup shopfav\" (click)=\"likeBar(barCard)\">\n            <!-- <app-like></app-like> -->\n            <img id=\"like\" [src]=\"checkLikedStatus(barCard)? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'\"\n              alt=\"\" title=\"\" />\n          </span>\n        </div>\n      </li>\n  \n    </ul>\n  \n\n  <!-- HEADER -->\n  <div style=\"padding: 10px 0 0 0; border-bottom:1px black solid;\">\n    <h3 style=\"padding: 0 0 0 0;\">\n      <span>Liked Bars</span>\n    </h3>\n  </div>\n\n  <!-- For each here -->\n  <ul class=\"shop_items\" style=\"padding-top: 13px;\">\n\n    <!-- BAR CARD -->\n    <li id=\"barCard\" *ngFor=\"let barCard of barCards\" (click)=\"onBarCardClick($event,barCard.barId)\">\n      <div class=\"shop_thumb\">\n        <img src={{barCard.barPictureUrl}} alt=\"\" title=\"\" class=\"barCardPic\" />\n      </div>\n      <div class=\"shop_item_details\">\n        <h4>{{barCard.barName}}</h4>\n        <ul class=\"features_list\" style=\"padding: 0% 0 0 0;\">\n          <li>\n            <span class=\"features_list_span\">\n              <img src={{barCard.highlight1Icon}} alt=\"\" title=\"\" />\n              <span class=\"features_list_span_text\">{{barCard.highlight1}}</span>\n            </span>\n          </li>\n          <li>\n            <span class=\"features_list_span\">\n              <img src={{barCard.highlight2Icon}} alt=\"\" title=\"\" />\n              <span class=\"features_list_span_text\">{{barCard.highlight2}}</span>\n            </span>\n          </li>\n        </ul>\n        <span class=\"open-popup shopfav\" (click)=\"likeBar(barCard)\">\n          <!-- <app-like></app-like> -->\n          <img id=\"like\" [src]=\"checkLikedStatus(barCard)? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'\"\n            alt=\"\" title=\"\" />\n        </span>\n      </div>\n    </li>\n\n  </ul>\n\n</div>"
+module.exports = "<app-bar-page *ngIf=\"showBarPage\" [barPageIdChange]=\"barPageId\" [slideInBar]=\"barSlide\" [location]=\"'liked-bars'\">\n  </app-bar-page>\n  \n\n<div style=\"margin: 12% 5% 0% 5%;\" *ngIf=\"showInfo\">\n\n  <!-- HEADER -->\n  <div *ngIf=\"attendingBarCards.length>0\" style=\"padding: 10px 0 0 0; border-bottom:1px black solid;\">\n    <h3 style=\"padding: 0 0 0 0;\">\n      <span>Bars You Are Attending Tonight</span>\n    </h3>\n  </div>\n\n  <!-- For each here -->\n  <ul class=\"shop_items\" style=\"padding-top: 13px;\">\n\n      <!-- BAR CARD -->\n      <li id=\"barCard\" *ngFor=\"let barCard of attendingBarCards\" (click)=\"onBarCardClick($event,barCard.barId)\">\n        <div class=\"shop_thumb\">\n          <img src={{barCard.barPictureUrl}} alt=\"\" title=\"\" class=\"barCardPic\" />\n        </div>\n        <div class=\"shop_item_details\">\n          <h4>{{barCard.barName}}</h4>\n          <ul class=\"features_list\" style=\"padding: 0% 0 0 0;\">\n            <li>\n              <span class=\"features_list_span\">\n                <img src={{barCard.highlight1Icon}} alt=\"\" title=\"\" />\n                <span class=\"features_list_span_text\">{{barCard.highlight1}}</span>\n              </span>\n            </li>\n            <li>\n              <span class=\"features_list_span\">\n                <img src={{barCard.highlight2Icon}} alt=\"\" title=\"\" />\n                <span class=\"features_list_span_text\">{{barCard.highlight2}}</span>\n              </span>\n            </li>\n          </ul>\n          <span class=\"open-popup shopfav\" (click)=\"likeBar(barCard)\">\n            <!-- <app-like></app-like> -->\n            <img id=\"like\" [src]=\"checkLikedStatus(barCard)? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'\"\n              alt=\"\" title=\"\" />\n          </span>\n        </div>\n      </li>\n  \n    </ul>\n  \n\n  <!-- HEADER -->\n  <div style=\"padding: 10px 0 0 0; border-bottom:1px black solid;\">\n    <h3 style=\"padding: 0 0 0 0;\">\n      <span>Liked Bars</span>\n    </h3>\n  </div>\n\n  <!-- For each here -->\n  <ul class=\"shop_items\" style=\"padding-top: 13px;\">\n\n    <!-- BAR CARD -->\n    <li id=\"barCard\" *ngFor=\"let barCard of barCards\" (click)=\"onBarCardClick($event,barCard.barId)\">\n      <div class=\"shop_thumb\">\n        <img src={{barCard.barPictureUrl}} alt=\"\" title=\"\" class=\"barCardPic\" />\n      </div>\n      <div class=\"shop_item_details\">\n        <h4>{{barCard.barName}}</h4>\n        <ul class=\"features_list\" style=\"padding: 0% 0 0 0;\">\n          <li>\n            <span class=\"features_list_span\">\n              <img src={{barCard.highlight1Icon}} alt=\"\" title=\"\" />\n              <span class=\"features_list_span_text\">{{barCard.highlight1}}</span>\n            </span>\n          </li>\n          <li>\n            <span class=\"features_list_span\">\n              <img src={{barCard.highlight2Icon}} alt=\"\" title=\"\" />\n              <span class=\"features_list_span_text\">{{barCard.highlight2}}</span>\n            </span>\n          </li>\n        </ul>\n        <span class=\"open-popup shopfav\" (click)=\"likeBar(barCard)\">\n          <!-- <app-like></app-like> -->\n          <img id=\"like\" [src]=\"checkLikedStatus(barCard)? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'\"\n            alt=\"\" title=\"\" />\n        </span>\n      </div>\n    </li>\n\n  </ul>\n\n</div>\n\n<div *ngIf=\"!showInfo\" class=\"loadingHolder\">\n    <div class=\"lds-ring\"><div></div><div></div><div></div><div></div></div>\n</div>"
 
 /***/ }),
 
@@ -2253,6 +2349,7 @@ var LikedBarsComponent = /** @class */ (function () {
         this.mainService = mainService;
         this.barCards = [];
         this.attendingBarCards = [];
+        this.showInfo = false;
         //Bar Page Slide Variables
         this.barSlide = false;
         this.showBarPage = false;
@@ -2274,6 +2371,8 @@ var LikedBarsComponent = /** @class */ (function () {
     };
     LikedBarsComponent.prototype.getBarCards = function () {
         var _this = this;
+        //Start Loading
+        this.showInfo = false;
         this.barCards = [];
         this.attendingBarCards = [];
         this.db.list('barCards/' + this.dayOfTheWeek).valueChanges().subscribe(function (result) {
@@ -2283,6 +2382,8 @@ var LikedBarsComponent = /** @class */ (function () {
                 else if (_this.authService.currentUser.likedBars.indexOf(item.barId) > -1)
                     _this.barCards.push(item);
             });
+            //Done Loading
+            _this.showInfo = true;
         });
     };
     LikedBarsComponent.prototype.onBarCardClick = function (event, barId) {
@@ -2319,7 +2420,7 @@ var LikedBarsComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-liked-bars',
             template: __webpack_require__(/*! ./liked-bars.component.html */ "./src/app/_pages/liked-bars/liked-bars.component.html"),
-            styles: [__webpack_require__(/*! ./liked-bars.component.css */ "./src/app/_pages/liked-bars/liked-bars.component.css")]
+            styles: [__webpack_require__(/*! ./liked-bars.component.css */ "./src/app/_pages/liked-bars/liked-bars.component.css"), __webpack_require__(/*! ../main/main.component.css */ "./src/app/_pages/main/main.component.css")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_fire_database__WEBPACK_IMPORTED_MODULE_2__["AngularFireDatabase"],
             _services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"],

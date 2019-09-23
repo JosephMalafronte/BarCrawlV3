@@ -6,12 +6,14 @@ import { MainService } from '../../_services/main.service';
 @Component({
   selector: 'app-liked-bars',
   templateUrl: './liked-bars.component.html',
-  styleUrls: ['./liked-bars.component.css']
+  styleUrls: ['./liked-bars.component.css', '../main/main.component.css']
 })
 export class LikedBarsComponent implements OnInit {
 
   barCards = [];
   attendingBarCards = [];
+
+  showInfo = false;
 
   //Bar Page Slide Variables
   barSlide: boolean = false;
@@ -45,6 +47,9 @@ export class LikedBarsComponent implements OnInit {
 
   getBarCards() {
 
+    //Start Loading
+    this.showInfo = false;
+
     this.barCards = [];
     this.attendingBarCards = [];
 
@@ -53,6 +58,9 @@ export class LikedBarsComponent implements OnInit {
         if(this.authService.currentUser.barsAttending.indexOf(item.barId) > -1) this.attendingBarCards.push(item);
         else if(this.authService.currentUser.likedBars.indexOf(item.barId) > -1) this.barCards.push(item);
       });
+
+      //Done Loading
+      this.showInfo = true;
     });
   }
 

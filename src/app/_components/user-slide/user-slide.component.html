@@ -9,6 +9,12 @@
       <div (click)="takePhoto()" class="user_avatar"><img style="height: 100px;" id="avatar" src={{avatarImage}} alt="" title="" /></div>
     </div>
 
+    <ul>
+      <li>{{con}}</li>
+    </ul>
+
+    <input type="file" (change)="registerNewCandidate($event)" />
+
     <nav class="user-nav">
       <ul>
         <li><a href="features.html"><img src="./assets/images/icons/gray/settings.png" alt="" title="" /><span>Account
