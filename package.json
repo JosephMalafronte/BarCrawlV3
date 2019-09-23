@@ -45,6 +45,7 @@
     "fastclick": "^1.0.6",
     "firebase": "^5.9.3",
     "jquery": "^3.4.1",
+    "ngx-image-cropper": "^1.4.1",
     "npm-install-all": "^1.1.21",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",

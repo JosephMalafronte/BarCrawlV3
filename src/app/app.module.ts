@@ -7,6 +7,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
@@ -52,7 +53,8 @@ import { SettingsComponent } from './_pages/settings/settings.component';
     MainModule,
     LoginModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ImageCropperModule
   ],
   providers: [
     {provide: RouteReuseStrategy,useClass:CustomReuseStrategy}

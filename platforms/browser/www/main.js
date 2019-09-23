@@ -1483,7 +1483,7 @@ module.exports = ".out{\n    -webkit-transform: translateX(0%);\n    transform: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div  id=\"userSlide\" class=\"panel panel-right panel-reveal out\" >\n  <div class=\"user_login_info\">\n\n    <div class=\"user_thumb\">\n\n      <div class=\"user_details\">\n        <p>Welcome, <span>{{authService.currentUser.firstName}}</span></p>\n      </div>\n      <div (click)=\"takePhoto()\" class=\"user_avatar\"><img style=\"height: 100px;\" id=\"avatar\" src={{avatarImage}} alt=\"\" title=\"\" /></div>\n    </div>\n\n    <ul>\n      <li>{{con}}</li>\n    </ul>\n\n    <input type=\"file\" (change)=\"registerNewCandidate($event)\" />\n\n    <nav class=\"user-nav\">\n      <ul>\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/settings.png\" alt=\"\" title=\"\" /><span>Account\n              Settings</span></a></li>\n        <!-- <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/briefcase.png\" alt=\"\" title=\"\" /><span>My\n              Account</span></a></li> -->\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/users.png\" alt=\"\"\n              title=\"\" /><span>Friends</span><strong>12</strong></a></li>\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/love.png\" alt=\"\"\n              title=\"\" /><span>Liked Bars</span><strong>5</strong></a></li>\n        <li><a (click)=\"logout()\"><img src=\"./assets/images/icons/gray/lock.png\" alt=\"\" title=\"\" /><span>Logout</span></a></li>\n      </ul>\n    </nav>\n  </div>\n</div>\n"
+module.exports = "<div  id=\"userSlide\" class=\"panel panel-right panel-reveal out\" >\n  <div class=\"user_login_info\">\n\n    <div class=\"user_thumb\">\n\n      <div class=\"user_details\">\n        <p>Welcome, <span>{{authService.currentUser.firstName}}</span></p>\n      </div>\n      <div (click)=\"takePhoto()\" class=\"user_avatar\"><img style=\"height: 100px;\" id=\"avatar\" src={{avatarImage}} alt=\"\" title=\"\" /></div>\n    </div>\n\n    <ul>\n      <li>{{con}}</li>\n    </ul>\n\n    <input type=\"file\" (change)=\"fileChangeEvent($event)\" accept=\"image/*\" />\n    <image-cropper [imageChangedEvent]=\"imageChangedEvent\" [maintainAspectRatio]=\"true\" [aspectRatio]=\"4 / 3\" [resizeToWidth]=\"128\"\n      format=\"png\" (imageCropped)=\"imageCropped($event)\" (imageLoaded)=\"imageLoaded()\" (cropperReady)=\"cropperReady()\" (loadImageFailed)=\"loadImageFailed()\"></image-cropper>\n    <!-- <img [src]=\"croppedImage\" /> -->\n\n    <nav class=\"user-nav\">\n      <ul>\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/settings.png\" alt=\"\" title=\"\" /><span>Account\n              Settings</span></a></li>\n        <!-- <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/briefcase.png\" alt=\"\" title=\"\" /><span>My\n              Account</span></a></li> -->\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/users.png\" alt=\"\"\n              title=\"\" /><span>Friends</span><strong>12</strong></a></li>\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/love.png\" alt=\"\"\n              title=\"\" /><span>Liked Bars</span><strong>5</strong></a></li>\n        <li><a (click)=\"logout()\"><img src=\"./assets/images/icons/gray/lock.png\" alt=\"\" title=\"\" /><span>Logout</span></a></li>\n      </ul>\n    </nav>\n  </div>\n</div>\n\n\n\n"
 
 /***/ }),
 
@@ -1518,9 +1518,35 @@ var UserSlideComponent = /** @class */ (function () {
         this.storage = storage;
         this.slideInLogin = true;
         this.avatarImage = "./assets/images/avatar3.jpg";
+        /* Utility function to convert a canvas to a BLOB */
+        this.dataURLToBlob = function (dataURL) {
+            var BASE64_MARKER = ';base64,';
+            if (dataURL.indexOf(BASE64_MARKER) == -1) {
+                var parts = dataURL.split(',');
+                var contentType = parts[0].split(':')[1];
+                var raw = parts[1];
+                return new Blob([raw], { type: contentType });
+            }
+            var parts = dataURL.split(BASE64_MARKER);
+            var contentType = parts[0].split(':')[1];
+            var raw = window.atob(parts[1]);
+            var rawLength = raw.length;
+            var uInt8Array = new Uint8Array(rawLength);
+            for (var i = 0; i < rawLength; ++i) {
+                uInt8Array[i] = raw.charCodeAt(i);
+            }
+            return new Blob([uInt8Array], { type: contentType });
+        };
+        /* End Utility function to convert a canvas to a BLOB      */
+        this.imageChangedEvent = '';
+        this.croppedImage = '';
     }
     UserSlideComponent.prototype.ngOnInit = function () {
-        //this.userSlideInit();
+        //Set profile picture if not null
+        console.log(this.authService.currentUser);
+        if (!this.authService.currentUser.profilePicUrl.toLowerCase().includes("null")) {
+            this.avatarImage = this.authService.currentUser.profilePicUrl;
+        }
     };
     UserSlideComponent.prototype.ngAfterViewInit = function () {
         document.getElementById("userSlide").classList.add("hidden");
@@ -1552,126 +1578,93 @@ var UserSlideComponent = /** @class */ (function () {
         // this.mainService.changeUserSlide();
         // this.router.navigateByUrl('/login');
     };
-    UserSlideComponent.prototype.getBase64Image = function (imgUrl, callback) {
-        var img = new Image();
-        // onload fires when the image is fully loadded, and has width and height
-        img.onload = function () {
-            var canvas = document.createElement("canvas");
-            canvas.width = img.width;
-            canvas.height = img.height;
-            var ctx = canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0);
-            var dataURL = canvas.toDataURL("image/png"), dataURL = dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-            callback(dataURL); // the base64 string
-        };
-        // set attributes and src 
-        img.setAttribute('crossOrigin', 'anonymous'); //
-        img.src = imgUrl;
-    };
-    UserSlideComponent.prototype.dataURItoBlob = function (dataURI) {
-        var byteString = window.atob(dataURI);
-        var arrayBuffer = new ArrayBuffer(byteString.length);
-        var int8Array = new Uint8Array(arrayBuffer);
-        for (var i = 0; i < byteString.length; i++) {
-            int8Array[i] = byteString.charCodeAt(i);
-        }
-        var blob = new Blob([int8Array], { type: 'image/jpeg' });
-        return blob;
-    };
-    UserSlideComponent.prototype.photoSuccess = function (imgURL) {
-        var self = this;
-        window.resolveLocalFileSystemURL(imgURL, function (fileEntry) {
-            fileEntry.file(function (file) {
-                alert(file.filePath);
-                var reader = new FileReader();
-                reader.onloadend = function () {
-                    // This blob object can be saved to firebase
-                    var blob = new Blob([new Uint8Array(this.result)], { type: "image/jpeg" });
-                    // Send blob
-                    var file = blob;
-                    var filePath = 'name-your-file-path-here';
-                    var ref = self.storage.ref(filePath);
-                    var task = ref.put(file);
-                    alert("Put File");
-                };
-                reader.readAsArrayBuffer(file);
-            });
-        });
-        // alert(imgURL);
-        // imgURL = imgURL.replace(/\s/g, '');
-        // var longImgURL = "data:image/jpeg;base64," + imgURL;
-        // // var canvas = document.getElementById("avatar");
-        // // canvas.setAttribute('src', longImgURL);
-        // // canvas.toBlob(blob => {
-        // // });
-        // const filePath = 'TestPls2';
-        // const fileRef = this.storage.ref(filePath);
-        // try{
-        //   const task = fileRef.putString(imgURL, 'data_url', {contentType:'image/jpg'});
-        // } catch (e){
-        //   alert(e.message);
-        // }
-        // var blob = this.base64toBlob(imgURL, 'image/jpg');
-        // const file = blob;
-        // const filePath = 'name-your-file-path-here';
-        // const task = this.storage.upload(filePath, file);
-        // const file = imgURL;
-        // const filePath = 'Taco Tuesday';
-        // const fileRef = this.storage.ref(filePath);
-        // const task = this.storage.upload(filePath, file);
-        // // observe percentage changes
-        // this.uploadPercent = task.percentageChanges();
-        // // get notified when the download URL is available
-        // task.snapshotChanges().pipe(
-        //     finalize(() => this.downloadURL = fileRef.getDownloadURL() )
-        //   )
-        // .subscribe()
-    };
     UserSlideComponent.prototype.photoFail = function (msg) {
         console.log(msg);
     };
     UserSlideComponent.prototype.takePhoto = function () {
-        // var self = this;
-        // this.getBase64Image("https://media.tacdn.com/media/attractions-splice-spp-674x446/07/25/13/74.jpg", function(base64image){
-        //   console.log(base64image);
-        //   self.photoSuccess(base64image);
-        // });
-        console.log("Take Photo");
-        var opts = {
-            quality: 80,
-            destinationType: Camera.DestinationType.NATIVE_URI,
-            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-            mediaType: Camera.MediaType.PICTURE,
-            encodingType: Camera.EncodingType.JPEG,
-            cameraDirection: Camera.Direction.BACK,
-            targetWidth: 400,
-            targetHeight: 300
-        };
-        navigator.camera.getPicture(this.photoSuccess, this.photoFail, opts);
+        // console.log("Take Photo");
+        // let opts = {
+        //   quality: 80,
+        //   destinationType: Camera.DestinationType.NATIVE_URI,
+        //   sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+        //   mediaType: Camera.MediaType.PICTURE,
+        //   encodingType: Camera.EncodingType.JPEG,
+        //   cameraDirection: Camera.Direction.BACK,
+        //   targetWidth: 400,
+        //   targetHeight: 300
+        // };
+        // navigator.camera.getPicture(this.photoSuccess, this.photoFail, opts);
     };
     UserSlideComponent.prototype.registerNewCandidate = function (event) {
+        // const file = event.target.files[0];
+        // const filePath = 'Taco Tuesday';
+        // const fileRef = this.storage.ref(filePath);
+        // const task = this.storage.upload(filePath, file);
+        // Read in file
         var file = event.target.files[0];
-        var filePath = 'Taco Tuesday';
-        var fileRef = this.storage.ref(filePath);
-        var task = this.storage.upload(filePath, file);
-    };
-    UserSlideComponent.prototype.base64toBlob = function (base64Data, contentType) {
-        contentType = contentType || '';
-        var sliceSize = 1024;
-        var byteCharacters = atob(base64Data);
-        var bytesLength = byteCharacters.length;
-        var slicesCount = Math.ceil(bytesLength / sliceSize);
-        var byteArrays = new Array(slicesCount);
-        for (var sliceIndex = 0; sliceIndex < slicesCount; ++sliceIndex) {
-            var begin = sliceIndex * sliceSize;
-            var end = Math.min(begin + sliceSize, bytesLength);
-            var bytes = new Array(end - begin);
-            for (var offset = begin, i = 0; offset < end; ++i, ++offset) {
-                bytes[i] = byteCharacters[offset].charCodeAt(0);
-            }
-            byteArrays[sliceIndex] = new Uint8Array(bytes);
+        var self = this;
+        // Ensure it's an image
+        if (file.type.match(/image.*/)) {
+            console.log('An image has been loaded');
+            // Load the image
+            var reader = new FileReader();
+            reader.onload = function (readerEvent) {
+                var image = new Image();
+                image.onload = function (imageEvent) {
+                    // Resize the image
+                    var canvas = document.createElement('canvas'), max_size = 300, // TODO : pull max size from a site config
+                    width = image.width, height = image.height;
+                    if (width > height) {
+                        if (width > max_size) {
+                            height *= max_size / width;
+                            width = max_size;
+                        }
+                    }
+                    else {
+                        if (height > max_size) {
+                            width *= max_size / height;
+                            height = max_size;
+                        }
+                    }
+                    //Override 
+                    width = max_size;
+                    height = max_size;
+                    canvas.width = width;
+                    canvas.height = height;
+                    canvas.getContext('2d').drawImage(image, 0, 0, width, height);
+                    var dataUrl = canvas.toDataURL('image/jpeg');
+                    var resizedImage = self.dataURLToBlob(dataUrl);
+                    //File upload to firebase
+                    var uploadFile = resizedImage;
+                    var filePath = 'profilePics/' + self.authService.currentUser.uid;
+                    var fileRef = self.storage.ref(filePath);
+                    var task = self.storage.upload(filePath, uploadFile);
+                    fileRef.getDownloadURL().subscribe(function (url) {
+                        console.log('File Uploaded!');
+                        self.authService.setProfilePicture(url);
+                        self.avatarImage = url;
+                        alert('done');
+                    });
+                };
+                image.src = readerEvent.target.result;
+            };
+            reader.readAsDataURL(file);
         }
-        return new Blob(byteArrays, { type: contentType });
+    };
+    UserSlideComponent.prototype.fileChangeEvent = function (event) {
+        this.imageChangedEvent = event;
+    };
+    UserSlideComponent.prototype.imageCropped = function (event) {
+        this.croppedImage = event.base64;
+    };
+    UserSlideComponent.prototype.imageLoaded = function () {
+        // show cropper
+    };
+    UserSlideComponent.prototype.cropperReady = function () {
+        // cropper ready
+    };
+    UserSlideComponent.prototype.loadImageFailed = function () {
+        // show message
     };
     UserSlideComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2854,6 +2847,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_liked_bars_liked_bars_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../_pages/liked-bars/liked-bars.component */ "./src/app/_pages/liked-bars/liked-bars.component.ts");
 /* harmony import */ var _agm_core__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @agm/core */ "./node_modules/@agm/core/index.js");
 /* harmony import */ var _components_full_loading_full_loading_module__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../_components/full-loading/full-loading.module */ "./src/app/_components/full-loading/full-loading.module.ts");
+/* harmony import */ var ngx_image_cropper__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ngx-image-cropper */ "./node_modules/ngx-image-cropper/fesm5/ngx-image-cropper.js");
 
 
 
@@ -2876,6 +2870,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 //Import Modules
+
 
 var MainModule = /** @class */ (function () {
     function MainModule() {
@@ -2903,6 +2898,7 @@ var MainModule = /** @class */ (function () {
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
                 _components_full_loading_full_loading_module__WEBPACK_IMPORTED_MODULE_20__["FullLoadingModule"],
+                ngx_image_cropper__WEBPACK_IMPORTED_MODULE_21__["ImageCropperModule"],
                 _agm_core__WEBPACK_IMPORTED_MODULE_19__["AgmCoreModule"].forRoot({
                     apiKey: 'AIzaSyDBhMcOMXGvKweHVyPpyKHC3bDnbBQwZYU'
                 })
@@ -3215,6 +3211,7 @@ var AuthService = /** @class */ (function () {
             _this.listenForFriendRequest();
             //Get About Info
             _this.currentUser.firstName = userInfo.about.firstName;
+            _this.currentUser.profilePicUrl = userInfo.about.profilePicUrl;
             //Mark As Finished
             _this.authStateValue = true;
             _this.authStateSet.next(true);
@@ -3393,6 +3390,10 @@ var AuthService = /** @class */ (function () {
         if (this.mainService.currentPageValue == 2) {
             this.mainService.acceptFriendRequestId.next(uid);
         }
+    };
+    AuthService.prototype.setProfilePicture = function (url) {
+        this.db.object('userInfo/' + this.currentUser.uid + '/about/profilePicUrl').set(url);
+        this.currentUser.profilePicUrl = url;
     };
     AuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -3752,19 +3753,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/index.js");
 /* harmony import */ var _angular_fire_database__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/fire/database */ "./node_modules/@angular/fire/database/index.js");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var _pages_init_init_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./_pages/init/init.module */ "./src/app/_pages/init/init.module.ts");
-/* harmony import */ var _pages_main_main_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./_pages/main/main.module */ "./src/app/_pages/main/main.module.ts");
-/* harmony import */ var _pages_login_login_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./_pages/login/login.module */ "./src/app/_pages/login/login.module.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _custom_reuse_strategy__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./custom-reuse-strategy */ "./src/app/custom-reuse-strategy.ts");
-/* harmony import */ var _components_refresh_refresh_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./_components/refresh/refresh.component */ "./src/app/_components/refresh/refresh.component.ts");
-/* harmony import */ var _pages_friend_page_friend_page_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./_pages/friend-page/friend-page.component */ "./src/app/_pages/friend-page/friend-page.component.ts");
-/* harmony import */ var _pages_all_friends_all_friends_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./_pages/all-friends/all-friends.component */ "./src/app/_pages/all-friends/all-friends.component.ts");
-/* harmony import */ var _pages_settings_settings_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./_pages/settings/settings.component */ "./src/app/_pages/settings/settings.component.ts");
+/* harmony import */ var ngx_image_cropper__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ngx-image-cropper */ "./node_modules/ngx-image-cropper/fesm5/ngx-image-cropper.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _pages_init_init_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./_pages/init/init.module */ "./src/app/_pages/init/init.module.ts");
+/* harmony import */ var _pages_main_main_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./_pages/main/main.module */ "./src/app/_pages/main/main.module.ts");
+/* harmony import */ var _pages_login_login_module__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./_pages/login/login.module */ "./src/app/_pages/login/login.module.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _custom_reuse_strategy__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./custom-reuse-strategy */ "./src/app/custom-reuse-strategy.ts");
+/* harmony import */ var _components_refresh_refresh_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./_components/refresh/refresh.component */ "./src/app/_components/refresh/refresh.component.ts");
+/* harmony import */ var _pages_friend_page_friend_page_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./_pages/friend-page/friend-page.component */ "./src/app/_pages/friend-page/friend-page.component.ts");
+/* harmony import */ var _pages_all_friends_all_friends_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./_pages/all-friends/all-friends.component */ "./src/app/_pages/all-friends/all-friends.component.ts");
+/* harmony import */ var _pages_settings_settings_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./_pages/settings/settings.component */ "./src/app/_pages/settings/settings.component.ts");
+
 
 
 
@@ -3793,31 +3796,32 @@ var AppModule = /** @class */ (function () {
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_15__["AppComponent"],
-                _components_refresh_refresh_component__WEBPACK_IMPORTED_MODULE_18__["RefreshComponent"],
-                _pages_friend_page_friend_page_component__WEBPACK_IMPORTED_MODULE_19__["FriendPageComponent"],
-                _pages_all_friends_all_friends_component__WEBPACK_IMPORTED_MODULE_20__["AllFriendsComponent"],
-                _pages_settings_settings_component__WEBPACK_IMPORTED_MODULE_21__["SettingsComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_16__["AppComponent"],
+                _components_refresh_refresh_component__WEBPACK_IMPORTED_MODULE_19__["RefreshComponent"],
+                _pages_friend_page_friend_page_component__WEBPACK_IMPORTED_MODULE_20__["FriendPageComponent"],
+                _pages_all_friends_all_friends_component__WEBPACK_IMPORTED_MODULE_21__["AllFriendsComponent"],
+                _pages_settings_settings_component__WEBPACK_IMPORTED_MODULE_22__["SettingsComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-                _angular_fire__WEBPACK_IMPORTED_MODULE_3__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_10__["environment"].firebase),
+                _angular_fire__WEBPACK_IMPORTED_MODULE_3__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_11__["environment"].firebase),
                 _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_4__["AngularFirestoreModule"],
                 _angular_fire_auth__WEBPACK_IMPORTED_MODULE_6__["AngularFireAuthModule"],
                 _angular_fire_storage__WEBPACK_IMPORTED_MODULE_5__["AngularFireStorageModule"],
                 _angular_fire_database__WEBPACK_IMPORTED_MODULE_7__["AngularFireDatabaseModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_8__["BrowserAnimationsModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_14__["AppRoutingModule"],
-                _pages_init_init_module__WEBPACK_IMPORTED_MODULE_11__["InitModule"],
-                _pages_main_main_module__WEBPACK_IMPORTED_MODULE_12__["MainModule"],
-                _pages_login_login_module__WEBPACK_IMPORTED_MODULE_13__["LoginModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_9__["FormsModule"],
-                _angular_forms__WEBPACK_IMPORTED_MODULE_9__["ReactiveFormsModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_15__["AppRoutingModule"],
+                _pages_init_init_module__WEBPACK_IMPORTED_MODULE_12__["InitModule"],
+                _pages_main_main_module__WEBPACK_IMPORTED_MODULE_13__["MainModule"],
+                _pages_login_login_module__WEBPACK_IMPORTED_MODULE_14__["LoginModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_10__["FormsModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ReactiveFormsModule"],
+                ngx_image_cropper__WEBPACK_IMPORTED_MODULE_9__["ImageCropperModule"]
             ],
             providers: [
-                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_16__["RouteReuseStrategy"], useClass: _custom_reuse_strategy__WEBPACK_IMPORTED_MODULE_17__["CustomReuseStrategy"] }
+                { provide: _angular_router__WEBPACK_IMPORTED_MODULE_17__["RouteReuseStrategy"], useClass: _custom_reuse_strategy__WEBPACK_IMPORTED_MODULE_18__["CustomReuseStrategy"] }
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_15__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_16__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
 
 declare var navigator: any;
 declare var Camera: any;
@@ -20,7 +21,7 @@ export class UserSlideComponent implements OnInit {
 
   slideInLogin: boolean = true;
 
-  avatarImage: any = "./assets/images/avatar3.jpg";
+  avatarImage: string = "./assets/images/avatar3.jpg";
 
   uploadPercent: Observable<number>;
   downloadURL: Observable<string>;
@@ -39,7 +40,11 @@ export class UserSlideComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.userSlideInit();
+    //Set profile picture if not null
+    console.log(this.authService.currentUser);
+    if(!this.authService.currentUser.profilePicUrl.toLowerCase().includes("null")){
+      this.avatarImage = this.authService.currentUser.profilePicUrl;
+    }
   }
 
   ngAfterViewInit(){
@@ -75,106 +80,6 @@ export class UserSlideComponent implements OnInit {
     // this.router.navigateByUrl('/login');
   }
 
-  getBase64Image(imgUrl, callback) {
-
-    var img = new Image();
-
-    // onload fires when the image is fully loadded, and has width and height
-
-    img.onload = function(){
-
-      var canvas = document.createElement("canvas");
-      canvas.width = img.width;
-      canvas.height = img.height;
-      var ctx = canvas.getContext("2d");
-      ctx.drawImage(img, 0, 0);
-      var dataURL = canvas.toDataURL("image/png"),
-          dataURL = dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-
-      callback(dataURL); // the base64 string
-
-    };
-
-    // set attributes and src 
-    img.setAttribute('crossOrigin', 'anonymous'); //
-    img.src = imgUrl;
-
-  }
-  
-
-  dataURItoBlob(dataURI) {
-    const byteString = window.atob(dataURI);
-    const arrayBuffer = new ArrayBuffer(byteString.length);
-    const int8Array = new Uint8Array(arrayBuffer);
-    for (let i = 0; i < byteString.length; i++) {
-      int8Array[i] = byteString.charCodeAt(i);
-    }
-    const blob = new Blob([int8Array], { type: 'image/jpeg' });    
-    return blob;
- }
-
-  photoSuccess(imgURL) : any{
-
-    var self = this;
-
-    window.resolveLocalFileSystemURL(imgURL, function (fileEntry) {
-      fileEntry.file(function (file) {
-        alert(file.filePath);
-        var reader = new FileReader();
-        reader.onloadend = function () {
-          // This blob object can be saved to firebase
-          var blob = new Blob([new Uint8Array(this.result)], { type: "image/jpeg" });
-          // Send blob
-          const file = blob;
-          const filePath = 'name-your-file-path-here';
-          const ref = self.storage.ref(filePath);
-          const task = ref.put(file);
-          alert("Put File");
-        };
-        reader.readAsArrayBuffer(file);
-      });
-    });
-
-
-    // alert(imgURL);
-    // imgURL = imgURL.replace(/\s/g, '');
-
-    // var longImgURL = "data:image/jpeg;base64," + imgURL;
-
-    // // var canvas = document.getElementById("avatar");
-    // // canvas.setAttribute('src', longImgURL);
-    // // canvas.toBlob(blob => {
-
-    // // });
-    // const filePath = 'TestPls2';
-    // const fileRef = this.storage.ref(filePath);
-
-    // try{
-    //   const task = fileRef.putString(imgURL, 'data_url', {contentType:'image/jpg'});
-    // } catch (e){
-    //   alert(e.message);
-    // }
-    
-
-    // var blob = this.base64toBlob(imgURL, 'image/jpg');
-    // const file = blob;
-    // const filePath = 'name-your-file-path-here';
-    // const task = this.storage.upload(filePath, file);
-
-    // const file = imgURL;
-    // const filePath = 'Taco Tuesday';
-    // const fileRef = this.storage.ref(filePath);
-    // const task = this.storage.upload(filePath, file);
-
-    // // observe percentage changes
-    // this.uploadPercent = task.percentageChanges();
-    // // get notified when the download URL is available
-    // task.snapshotChanges().pipe(
-    //     finalize(() => this.downloadURL = fileRef.getDownloadURL() )
-    //   )
-    // .subscribe()
-
-  }
 
   photoFail(msg): any{
     console.log(msg);
@@ -182,55 +87,129 @@ export class UserSlideComponent implements OnInit {
 
   takePhoto(){
 
-    // var self = this;
-    // this.getBase64Image("https://media.tacdn.com/media/attractions-splice-spp-674x446/07/25/13/74.jpg", function(base64image){
-    //   console.log(base64image);
-    //   self.photoSuccess(base64image);
-    // });
+    // console.log("Take Photo");
 
-    console.log("Take Photo");
-
-    let opts = {
-      quality: 80,
-      destinationType: Camera.DestinationType.NATIVE_URI,
-      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-      mediaType: Camera.MediaType.PICTURE,
-      encodingType: Camera.EncodingType.JPEG,
-      cameraDirection: Camera.Direction.BACK,
-      targetWidth: 400,
-      targetHeight: 300
-    };
-    navigator.camera.getPicture(this.photoSuccess, this.photoFail, opts);
+    // let opts = {
+    //   quality: 80,
+    //   destinationType: Camera.DestinationType.NATIVE_URI,
+    //   sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+    //   mediaType: Camera.MediaType.PICTURE,
+    //   encodingType: Camera.EncodingType.JPEG,
+    //   cameraDirection: Camera.Direction.BACK,
+    //   targetWidth: 400,
+    //   targetHeight: 300
+    // };
+    // navigator.camera.getPicture(this.photoSuccess, this.photoFail, opts);
   }
 
   registerNewCandidate(event){
-    const file = event.target.files[0];
-    const filePath = 'Taco Tuesday';
-    const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(filePath, file);
+    // const file = event.target.files[0];
+    // const filePath = 'Taco Tuesday';
+    // const fileRef = this.storage.ref(filePath);
+    // const task = this.storage.upload(filePath, file);
+
+    // Read in file
+    var file = event.target.files[0];
+    var self = this;
+
+    // Ensure it's an image
+    if(file.type.match(/image.*/)) {
+        console.log('An image has been loaded');
+
+        // Load the image
+        var reader = new FileReader();
+        reader.onload = function (readerEvent) {
+            var image = new Image();
+            image.onload = function (imageEvent) {
+
+                // Resize the image
+                var canvas = document.createElement('canvas'),
+                    max_size = 300,// TODO : pull max size from a site config
+                    width = image.width,
+                    height = image.height;
+                if (width > height) {
+                    if (width > max_size) {
+                        height *= max_size / width;
+                        width = max_size;
+                    }
+                } else {
+                    if (height > max_size) {
+                        width *= max_size / height;
+                        height = max_size;
+                    }
+                }
+                //Override 
+                width = max_size;
+                height = max_size;
+                canvas.width = width;
+                canvas.height = height;
+                canvas.getContext('2d').drawImage(image, 0, 0, width, height);
+                var dataUrl = canvas.toDataURL('image/jpeg');
+                var resizedImage = self.dataURLToBlob(dataUrl);
+
+                //File upload to firebase
+                const uploadFile = resizedImage;
+                const filePath = 'profilePics/' + self.authService.currentUser.uid;
+                const fileRef = self.storage.ref(filePath);
+                const task = self.storage.upload(filePath, uploadFile);
+                fileRef.getDownloadURL().subscribe(url => {
+                  console.log('File Uploaded!');
+                  self.authService.setProfilePicture(url);
+                  self.avatarImage = url;
+                  alert('done');
+                });
+            }
+            image.src = readerEvent.target.result;
+        }
+        reader.readAsDataURL(file);
+    }
   }
 
-  base64toBlob(base64Data, contentType) {
-    contentType = contentType || '';
-    var sliceSize = 1024;
-    var byteCharacters = atob(base64Data);
-    var bytesLength = byteCharacters.length;
-    var slicesCount = Math.ceil(bytesLength / sliceSize);
-    var byteArrays = new Array(slicesCount);
 
-    for (var sliceIndex = 0; sliceIndex < slicesCount; ++sliceIndex) {
-        var begin = sliceIndex * sliceSize;
-        var end = Math.min(begin + sliceSize, bytesLength);
+  /* Utility function to convert a canvas to a BLOB */
+  dataURLToBlob = function (dataURL) {
+    var BASE64_MARKER = ';base64,';
+    if (dataURL.indexOf(BASE64_MARKER) == -1) {
+      var parts = dataURL.split(',');
+      var contentType = parts[0].split(':')[1];
+      var raw = parts[1];
 
-        var bytes = new Array(end - begin);
-        for (var offset = begin, i = 0 ; offset < end; ++i, ++offset) {
-            bytes[i] = byteCharacters[offset].charCodeAt(0);
-        }
-        byteArrays[sliceIndex] = new Uint8Array(bytes);
+      return new Blob([raw], { type: contentType });
     }
-    return new Blob(byteArrays, { type: contentType });
-}
 
+    var parts = dataURL.split(BASE64_MARKER);
+    var contentType = parts[0].split(':')[1];
+    var raw = window.atob(parts[1]);
+    var rawLength = raw.length;
+
+    var uInt8Array = new Uint8Array(rawLength);
+
+    for (var i = 0; i < rawLength; ++i) {
+      uInt8Array[i] = raw.charCodeAt(i);
+    }
+
+    return new Blob([uInt8Array], { type: contentType });
+  }
+  /* End Utility function to convert a canvas to a BLOB      */
+
+
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
   
+  fileChangeEvent(event: any): void {
+      this.imageChangedEvent = event;
+  }
+  imageCropped(event: ImageCroppedEvent) {
+      this.croppedImage = event.base64;
+  }
+  imageLoaded() {
+      // show cropper
+  }
+  cropperReady() {
+      // cropper ready
+  }
+  loadImageFailed() {
+      // show message
+  }
 
 }

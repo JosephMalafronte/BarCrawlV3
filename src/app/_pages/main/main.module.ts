@@ -23,6 +23,7 @@ import { AgmCoreModule } from '@agm/core';
 
 //Import Modules
 import {FullLoadingModule} from '../../_components/full-loading/full-loading.module';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import {FullLoadingModule} from '../../_components/full-loading/full-loading.mod
     AppRoutingModule,
     FormsModule,
     FullLoadingModule,
+    ImageCropperModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDBhMcOMXGvKweHVyPpyKHC3bDnbBQwZYU'
     })

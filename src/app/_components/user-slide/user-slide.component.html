@@ -13,7 +13,10 @@
       <li>{{con}}</li>
     </ul>
 
-    <input type="file" (change)="registerNewCandidate($event)" />
+    <input type="file" (change)="fileChangeEvent($event)" accept="image/*" />
+    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3" [resizeToWidth]="128"
+      format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()"></image-cropper>
+    <!-- <img [src]="croppedImage" /> -->
 
     <nav class="user-nav">
       <ul>
@@ -30,3 +33,6 @@
     </nav>
   </div>
 </div>
+
+
+

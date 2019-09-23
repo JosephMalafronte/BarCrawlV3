@@ -66,6 +66,7 @@ export class AuthService {
 
       //Get About Info
       this.currentUser.firstName = userInfo.about.firstName;
+      this.currentUser.profilePicUrl = userInfo.about.profilePicUrl;
 
       //Mark As Finished
       this.authStateValue = true;
@@ -295,6 +296,11 @@ export class AuthService {
       this.mainService.acceptFriendRequestId.next(uid);
     }
 
+  }
+
+  setProfilePicture(url: string) {
+    this.db.object('userInfo/' + this.currentUser.uid +'/about/profilePicUrl').set(url);
+    this.currentUser.profilePicUrl = url;
   }
 
 
