@@ -32,6 +32,8 @@ export class PopupComponent implements OnInit {
 
   //Profile Pic Editing Variables
   showProfilePicEditing: boolean = false;
+  currentAvatarUrl: string = "";
+  showCurrentAvatar: boolean = true;
 
   constructor(
     private mainService: MainService, 
@@ -66,6 +68,9 @@ export class PopupComponent implements OnInit {
 
     this.mainService.showProfilePicEditing.subscribe( value => {
       if(value == true){
+        this.showCurrentAvatar = true;
+        this.currentAvatarUrl = this.authService.currentUser.profilePicUrl;
+
         this.showProfilePicEditing = true;
       }
     })
@@ -187,23 +192,6 @@ export class PopupComponent implements OnInit {
     console.log(msg);
   }
 
-  takePhoto(){
-
-    // console.log("Take Photo");
-
-    // let opts = {
-    //   quality: 80,
-    //   destinationType: Camera.DestinationType.NATIVE_URI,
-    //   sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-    //   mediaType: Camera.MediaType.PICTURE,
-    //   encodingType: Camera.EncodingType.JPEG,
-    //   cameraDirection: Camera.Direction.BACK,
-    //   targetWidth: 400,
-    //   targetHeight: 300
-    // };
-    // navigator.camera.getPicture(this.photoSuccess, this.photoFail, opts);
-  }
-
   registerNewCandidate(event){
     // const file = event.target.files[0];
     // const filePath = 'Taco Tuesday';
@@ -300,6 +288,7 @@ export class PopupComponent implements OnInit {
   croppedImage: any = '';
   
   fileChangeEvent(event: any): void {
+      this.showCurrentAvatar = false;
       this.imageChangedEvent = event;
   }
   imageCropped(event: ImageCroppedEvent) {
@@ -314,5 +303,6 @@ export class PopupComponent implements OnInit {
   loadImageFailed() {
       // show message
   }
+
 
 }

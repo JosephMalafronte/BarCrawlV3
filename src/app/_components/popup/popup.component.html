@@ -60,12 +60,35 @@
   <div id="open-modal" class="modal-window" style="z-index: 11000;">
     <div style="bottom: 100px;">
       <a (click)="hideProfilePicEditing()" title="Close" class="modal-close">&times;</a>
-      <input type="file" (change)="fileChangeEvent($event)" accept="image/*" />
+
+
+      <div *ngIf="showCurrentAvatar" style="margin-top: 20px;">
+          <div ><img src={{currentAvatarUrl}}></div>
+
+          <div class="upload-btn-wrapper">
+              <span style="margin: 10px 0px 10px 0; width:150px; font-size:14px;" class="btn btn--full">Change Picture</span>
+              <input type="file" name="myfile" (change)="fileChangeEvent($event)" accept="image/*" />
+            </div>
+      </div>
+
+      <div *ngIf="!showCurrentAvatar" style="margin-top: 20px;">
+          <div>
+              <image-cropper style="max-height: 350px;" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
+              [resizeToWidth]="128" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+              (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()"></image-cropper>
+          </div>
+          <span style="margin: 20px 0px -20px 0; width:150px; font-size:14px;" class="btn btn--full">Done</span>
+      </div>
+      
+
+      <!-- <span (click)="changePicture()" style="margin: 10px 0px 10px 0; width:300px; font-size:14px;" class="btn btn--full">Change Picture</span>
+
+      <div style='height: 0px;width:0px; overflow:hidden;'><input id="upfile" type="file" value="upload" (change)="fileChangeEvent($event)" accept="image/*"/></div>
       <div>
           <image-cropper style="max-height: 350px;" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
           [resizeToWidth]="128" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
           (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()"></image-cropper>
-      </div>
+      </div> -->
       <!-- <img [src]="croppedImage" /> -->
     </div>
   </div>
