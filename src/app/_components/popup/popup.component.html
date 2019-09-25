@@ -38,15 +38,35 @@
 </div>
 
 <div *ngIf="showFriendPopUp" style="text-align: center;">
-    <div id="open-modal" class="modal-window">
-      <div>
-        <a (click)="showFriendPopUp = false" title="Close" class="modal-close">&times;</a>
-        <h2>{{friendUser.firstName}} {{friendUser.lastName}}</h2>
-        <div *ngIf="!isFriend && showRequestButton">
-            <span *ngIf="!isRequestOut && !isRequestIn" (click)="sendFriendRequest()" style="margin: 10px 0px 10px 0; width:300px; font-size:14px;" class="btn btn--full">Add Friend</span>  
-            <span *ngIf="isRequestOut" style="margin: 10px 0px 10px 0; width:300px; font-size:14px;" class="btn btn--full">Friend Request Sent!</span>  
-            <span *ngIf="isRequestIn" (click)="acceptFriendRequest()" style="margin: 10px 0px 10px 0; width:300px; font-size:14px;" class="btn btn--full">Accept Friend Request</span>  
-          </div>
+  <div id="open-modal" class="modal-window">
+    <div>
+      <a (click)="hideFriendPopUp()" title="Close" class="modal-close">&times;</a>
+      <h2>{{friendUser.firstName}} {{friendUser.lastName}}</h2>
+      <div *ngIf="!isFriend && showRequestButton">
+        <span *ngIf="!isRequestOut && !isRequestIn" (click)="sendFriendRequest()"
+          style="margin: 10px 0px 10px 0; width:300px; font-size:14px;" class="btn btn--full">Add Friend</span>
+        <span *ngIf="isRequestOut" style="margin: 10px 0px 10px 0; width:300px; font-size:14px;"
+          class="btn btn--full">Friend Request Sent!</span>
+        <span *ngIf="isRequestIn" (click)="acceptFriendRequest()"
+          style="margin: 10px 0px 10px 0; width:300px; font-size:14px;" class="btn btn--full">Accept Friend
+          Request</span>
       </div>
     </div>
   </div>
+</div>
+
+<!-- Profile Pic Editing -->
+<div *ngIf="showProfilePicEditing" style="text-align: center;">
+  <div id="open-modal" class="modal-window" style="z-index: 11000;">
+    <div style="bottom: 100px;">
+      <a (click)="hideProfilePicEditing()" title="Close" class="modal-close">&times;</a>
+      <input type="file" (change)="fileChangeEvent($event)" accept="image/*" />
+      <div>
+          <image-cropper style="max-height: 350px;" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
+          [resizeToWidth]="128" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+          (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()"></image-cropper>
+      </div>
+      <!-- <img [src]="croppedImage" /> -->
+    </div>
+  </div>
+</div>

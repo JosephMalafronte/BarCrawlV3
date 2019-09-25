@@ -5,6 +5,8 @@ import {AuthService} from '../../_services/auth.service';
 import { User } from '../../_models/User.Model';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { take } from 'rxjs/operators';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
 
 
 @Component({
@@ -28,10 +30,14 @@ export class PopupComponent implements OnInit {
   isRequestOut: boolean = false;
   isRequestIn: boolean = false;
 
+  //Profile Pic Editing Variables
+  showProfilePicEditing: boolean = false;
+
   constructor(
     private mainService: MainService, 
     private authService: AuthService,
-    private db: AngularFireDatabase
+    private db: AngularFireDatabase,
+    private storage: AngularFireStorage
   ) { }
 
   ngOnInit() {
@@ -55,19 +61,12 @@ export class PopupComponent implements OnInit {
         //Load data 
         this.loadUserFriendStatus();
         this.showFriendPopUp = true;
+      }
+    })
 
-        // //If user is friend activate friend mode
-        // if(this.authService.currentUser.friendIds.indexOf(this.friendUser.uid) > -1){
-        //   this.isFriend = true;
-        // }
-        // else {
-        //   // if user is request activate request mode
-        //   if(this.authService.currentUser.friendRequestOut.indexOf(this.friendUser.uid) > -1){
-        //     this.isRequestOut = true;
-        //   } else { // if user is request in activate
-        //     if(this.authService.currentUser.friendRequestIn.indexOf(this.friendUser.uid) > -1) this.isRequestIn = true;
-        //   }
-        // } 
+    this.mainService.showProfilePicEditing.subscribe( value => {
+      if(value == true){
+        this.showProfilePicEditing = true;
       }
     })
 
@@ -173,6 +172,147 @@ export class PopupComponent implements OnInit {
     this.isFriend = true;
 
     this.authService.acceptFriendRequest(this.friendUser.uid);
+  }
+
+
+  // Profile Pic Editing
+  hideProfilePicEditing(){
+    this.showProfilePicEditing = false;
+    this.mainService.showProfilePicEditing.next(false);
+  }
+
+  
+
+  photoFail(msg): any{
+    console.log(msg);
+  }
+
+  takePhoto(){
+
+    // console.log("Take Photo");
+
+    // let opts = {
+    //   quality: 80,
+    //   destinationType: Camera.DestinationType.NATIVE_URI,
+    //   sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+    //   mediaType: Camera.MediaType.PICTURE,
+    //   encodingType: Camera.EncodingType.JPEG,
+    //   cameraDirection: Camera.Direction.BACK,
+    //   targetWidth: 400,
+    //   targetHeight: 300
+    // };
+    // navigator.camera.getPicture(this.photoSuccess, this.photoFail, opts);
+  }
+
+  registerNewCandidate(event){
+    // const file = event.target.files[0];
+    // const filePath = 'Taco Tuesday';
+    // const fileRef = this.storage.ref(filePath);
+    // const task = this.storage.upload(filePath, file);
+
+    // Read in file
+    var file = event.target.files[0];
+    var self = this;
+
+    // Ensure it's an image
+    if(file.type.match(/image.*/)) {
+        console.log('An image has been loaded');
+
+        // Load the image
+        var reader = new FileReader();
+        reader.onload = function (readerEvent) {
+            var image = new Image();
+            image.onload = function (imageEvent) {
+
+                // Resize the image
+                var canvas = document.createElement('canvas'),
+                    max_size = 300,// TODO : pull max size from a site config
+                    width = image.width,
+                    height = image.height;
+                if (width > height) {
+                    if (width > max_size) {
+                        height *= max_size / width;
+                        width = max_size;
+                    }
+                } else {
+                    if (height > max_size) {
+                        width *= max_size / height;
+                        height = max_size;
+                    }
+                }
+                //Override 
+                width = max_size;
+                height = max_size;
+                canvas.width = width;
+                canvas.height = height;
+                canvas.getContext('2d').drawImage(image, 0, 0, width, height);
+                var dataUrl = canvas.toDataURL('image/jpeg');
+                var resizedImage = self.dataURLToBlob(dataUrl);
+
+                //File upload to firebase
+                const uploadFile = resizedImage;
+                const filePath = 'profilePics/' + self.authService.currentUser.uid;
+                const fileRef = self.storage.ref(filePath);
+                const task = self.storage.upload(filePath, uploadFile);
+                fileRef.getDownloadURL().subscribe(url => {
+                  console.log('File Uploaded!');
+                  self.authService.setProfilePicture(url);
+                  //self.avatarImage = url;
+                  alert('done');
+                });
+            }
+            image.src = readerEvent.target.result as string;
+        }
+        reader.readAsDataURL(file);
+    }
+  }
+
+
+  /* Utility function to convert a canvas to a BLOB */
+  dataURLToBlob = function (dataURL) {
+    var raw: any;
+    var BASE64_MARKER = ';base64,';
+    if (dataURL.indexOf(BASE64_MARKER) == -1) {
+      var parts = dataURL.split(',');
+      var contentType = parts[0].split(':')[1];
+      raw = parts[1];
+
+      return new Blob([raw], { type: contentType });
+    }
+
+    var parts = dataURL.split(BASE64_MARKER);
+    var contentType = parts[0].split(':')[1];
+    raw = window.atob(parts[1]);
+    var rawLength = raw.length;
+
+    var uInt8Array = new Uint8Array(rawLength);
+
+    for (var i = 0; i < rawLength; ++i) {
+      uInt8Array[i] = raw.charCodeAt(i);
+    }
+
+    return new Blob([uInt8Array], { type: contentType });
+  }
+  /* End Utility function to convert a canvas to a BLOB      */
+
+
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
+  
+  fileChangeEvent(event: any): void {
+      this.imageChangedEvent = event;
+  }
+  imageCropped(event: ImageCroppedEvent) {
+      this.croppedImage = event.base64;
+  }
+  imageLoaded() {
+      // show cropper
+  }
+  cropperReady() {
+      // cropper ready
+  }
+  loadImageFailed() {
+      // show message
   }
 
 }

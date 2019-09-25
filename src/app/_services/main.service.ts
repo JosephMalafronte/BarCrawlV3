@@ -36,7 +36,7 @@ export class MainService {
   reportCoverValue: number = 0;
   showFriendPopUp: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   friendPopUpUser: User = null;
-
+  showProfilePicEditing: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(private router: Router) {
     this.barSlide = new BehaviorSubject<boolean>(false);

@@ -1239,7 +1239,7 @@ module.exports = "\n.modal-window {\n    position: absolute;\n    background-col
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"showCoverPopUp\" style=\"text-align: center;\">\n  <div id=\"open-modal\" class=\"modal-window\">\n    <div *ngIf=\"!coverSubmissionLoader\">\n      <a (click)=\"showCoverPopUp = false\" title=\"Close\" class=\"modal-close\">&times;</a>\n      <h2>Report Cover</h2>\n      <div style=\"margin: 0 7px 0 0px;\">\n        <img (click)=\"decrementReportCover()\" class=\"minus\" src=\"./assets/images/minus.png\">\n        <span class=\"coverHeading\">${{reportCoverValue}}</span>\n        <img (click)=\"incrementReportCover()\" class=\"plus\" src=\"./assets/images/plus.png\">\n      </div>\n\n      <div (click)=\"reportCover()\" style=\"text-align: center\">\n        <span style=\"margin: 7px 0px 0px 0; width:200px; font-size:14px;\" class=\"btn btn--full\">Submit</span>\n      </div>\n\n    </div>\n    <div *ngIf=\"coverSubmissionLoader\">\n      <div style=\"width:100%;\">\n        <div class=\"checkmarkHolder\">\n          <!-- <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" x=\"0px\"\n                      y=\"0px\" viewBox=\"0, 0, 100, 100\" id=\"checkmark\">\n                      <g transform=\"\">\n                        <circle id=\"path\" class=\"path\" fill=\"none\" stroke=\"#F2C843\" stroke-width=\"4\" stroke-miterlimit=\"10\" cx=\"50\" cy=\"50\" r=\"44\" />\n                        <circle id=\"fill\" class=\"fill\" fill=\"none\" stroke=\"#F2C843\" stroke-width=\"4\" stroke-miterlimit=\"10\" cx=\"50\" cy=\"50\" r=\"44\" />\n                        <polyline id=\"check\" class=\"check\" fill=\"none\" stroke=\"#F2C843\" stroke-width=\"8\" stroke-linecap=\"round\" stroke-miterlimit=\"10\" points=\"70,35 45,65 30,52  \"\n                        />\n                      </g>\n                    </svg> -->\n\n          <div id=\"circleLoader\" class=\"circle-loader\">\n            <div id=\"checkLoader\" class=\"checkmarkHidden draw\"></div>\n          </div>\n\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div *ngIf=\"showFriendPopUp\" style=\"text-align: center;\">\n    <div id=\"open-modal\" class=\"modal-window\">\n      <div>\n        <a (click)=\"showFriendPopUp = false\" title=\"Close\" class=\"modal-close\">&times;</a>\n        <h2>{{friendUser.firstName}} {{friendUser.lastName}}</h2>\n        <div *ngIf=\"!isFriend && showRequestButton\">\n            <span *ngIf=\"!isRequestOut && !isRequestIn\" (click)=\"sendFriendRequest()\" style=\"margin: 10px 0px 10px 0; width:300px; font-size:14px;\" class=\"btn btn--full\">Add Friend</span>  \n            <span *ngIf=\"isRequestOut\" style=\"margin: 10px 0px 10px 0; width:300px; font-size:14px;\" class=\"btn btn--full\">Friend Request Sent!</span>  \n            <span *ngIf=\"isRequestIn\" (click)=\"acceptFriendRequest()\" style=\"margin: 10px 0px 10px 0; width:300px; font-size:14px;\" class=\"btn btn--full\">Accept Friend Request</span>  \n          </div>\n      </div>\n    </div>\n  </div>"
+module.exports = "<div *ngIf=\"showCoverPopUp\" style=\"text-align: center;\">\n  <div id=\"open-modal\" class=\"modal-window\">\n    <div *ngIf=\"!coverSubmissionLoader\">\n      <a (click)=\"showCoverPopUp = false\" title=\"Close\" class=\"modal-close\">&times;</a>\n      <h2>Report Cover</h2>\n      <div style=\"margin: 0 7px 0 0px;\">\n        <img (click)=\"decrementReportCover()\" class=\"minus\" src=\"./assets/images/minus.png\">\n        <span class=\"coverHeading\">${{reportCoverValue}}</span>\n        <img (click)=\"incrementReportCover()\" class=\"plus\" src=\"./assets/images/plus.png\">\n      </div>\n\n      <div (click)=\"reportCover()\" style=\"text-align: center\">\n        <span style=\"margin: 7px 0px 0px 0; width:200px; font-size:14px;\" class=\"btn btn--full\">Submit</span>\n      </div>\n\n    </div>\n    <div *ngIf=\"coverSubmissionLoader\">\n      <div style=\"width:100%;\">\n        <div class=\"checkmarkHolder\">\n          <!-- <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" x=\"0px\"\n                      y=\"0px\" viewBox=\"0, 0, 100, 100\" id=\"checkmark\">\n                      <g transform=\"\">\n                        <circle id=\"path\" class=\"path\" fill=\"none\" stroke=\"#F2C843\" stroke-width=\"4\" stroke-miterlimit=\"10\" cx=\"50\" cy=\"50\" r=\"44\" />\n                        <circle id=\"fill\" class=\"fill\" fill=\"none\" stroke=\"#F2C843\" stroke-width=\"4\" stroke-miterlimit=\"10\" cx=\"50\" cy=\"50\" r=\"44\" />\n                        <polyline id=\"check\" class=\"check\" fill=\"none\" stroke=\"#F2C843\" stroke-width=\"8\" stroke-linecap=\"round\" stroke-miterlimit=\"10\" points=\"70,35 45,65 30,52  \"\n                        />\n                      </g>\n                    </svg> -->\n\n          <div id=\"circleLoader\" class=\"circle-loader\">\n            <div id=\"checkLoader\" class=\"checkmarkHidden draw\"></div>\n          </div>\n\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div *ngIf=\"showFriendPopUp\" style=\"text-align: center;\">\n  <div id=\"open-modal\" class=\"modal-window\">\n    <div>\n      <a (click)=\"hideFriendPopUp()\" title=\"Close\" class=\"modal-close\">&times;</a>\n      <h2>{{friendUser.firstName}} {{friendUser.lastName}}</h2>\n      <div *ngIf=\"!isFriend && showRequestButton\">\n        <span *ngIf=\"!isRequestOut && !isRequestIn\" (click)=\"sendFriendRequest()\"\n          style=\"margin: 10px 0px 10px 0; width:300px; font-size:14px;\" class=\"btn btn--full\">Add Friend</span>\n        <span *ngIf=\"isRequestOut\" style=\"margin: 10px 0px 10px 0; width:300px; font-size:14px;\"\n          class=\"btn btn--full\">Friend Request Sent!</span>\n        <span *ngIf=\"isRequestIn\" (click)=\"acceptFriendRequest()\"\n          style=\"margin: 10px 0px 10px 0; width:300px; font-size:14px;\" class=\"btn btn--full\">Accept Friend\n          Request</span>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Profile Pic Editing -->\n<div *ngIf=\"showProfilePicEditing\" style=\"text-align: center;\">\n  <div id=\"open-modal\" class=\"modal-window\" style=\"z-index: 11000;\">\n    <div style=\"bottom: 100px;\">\n      <a (click)=\"hideProfilePicEditing()\" title=\"Close\" class=\"modal-close\">&times;</a>\n      <input type=\"file\" (change)=\"fileChangeEvent($event)\" accept=\"image/*\" />\n      <div>\n          <image-cropper style=\"max-height: 350px;\" [imageChangedEvent]=\"imageChangedEvent\" [maintainAspectRatio]=\"true\" [aspectRatio]=\"4 / 3\"\n          [resizeToWidth]=\"128\" format=\"png\" (imageCropped)=\"imageCropped($event)\" (imageLoaded)=\"imageLoaded()\"\n          (cropperReady)=\"cropperReady()\" (loadImageFailed)=\"loadImageFailed()\"></image-cropper>\n      </div>\n      <!-- <img [src]=\"croppedImage\" /> -->\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -1259,6 +1259,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../_services/auth.service */ "./src/app/_services/auth.service.ts");
 /* harmony import */ var _angular_fire_database__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/fire/database */ "./node_modules/@angular/fire/database/index.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _angular_fire_storage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/fire/storage */ "./node_modules/@angular/fire/storage/index.js");
+
 
 
 
@@ -1266,10 +1268,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var PopupComponent = /** @class */ (function () {
-    function PopupComponent(mainService, authService, db) {
+    function PopupComponent(mainService, authService, db, storage) {
         this.mainService = mainService;
         this.authService = authService;
         this.db = db;
+        this.storage = storage;
         //Cover Variables
         this.showCoverPopUp = false;
         this.reportCoverValue = 0;
@@ -1281,6 +1284,31 @@ var PopupComponent = /** @class */ (function () {
         this.isFriend = false;
         this.isRequestOut = false;
         this.isRequestIn = false;
+        //Profile Pic Editing Variables
+        this.showProfilePicEditing = false;
+        /* Utility function to convert a canvas to a BLOB */
+        this.dataURLToBlob = function (dataURL) {
+            var raw;
+            var BASE64_MARKER = ';base64,';
+            if (dataURL.indexOf(BASE64_MARKER) == -1) {
+                var parts = dataURL.split(',');
+                var contentType = parts[0].split(':')[1];
+                raw = parts[1];
+                return new Blob([raw], { type: contentType });
+            }
+            var parts = dataURL.split(BASE64_MARKER);
+            var contentType = parts[0].split(':')[1];
+            raw = window.atob(parts[1]);
+            var rawLength = raw.length;
+            var uInt8Array = new Uint8Array(rawLength);
+            for (var i = 0; i < rawLength; ++i) {
+                uInt8Array[i] = raw.charCodeAt(i);
+            }
+            return new Blob([uInt8Array], { type: contentType });
+        };
+        /* End Utility function to convert a canvas to a BLOB      */
+        this.imageChangedEvent = '';
+        this.croppedImage = '';
     }
     PopupComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1300,18 +1328,11 @@ var PopupComponent = /** @class */ (function () {
                 //Load data 
                 _this.loadUserFriendStatus();
                 _this.showFriendPopUp = true;
-                // //If user is friend activate friend mode
-                // if(this.authService.currentUser.friendIds.indexOf(this.friendUser.uid) > -1){
-                //   this.isFriend = true;
-                // }
-                // else {
-                //   // if user is request activate request mode
-                //   if(this.authService.currentUser.friendRequestOut.indexOf(this.friendUser.uid) > -1){
-                //     this.isRequestOut = true;
-                //   } else { // if user is request in activate
-                //     if(this.authService.currentUser.friendRequestIn.indexOf(this.friendUser.uid) > -1) this.isRequestIn = true;
-                //   }
-                // } 
+            }
+        });
+        this.mainService.showProfilePicEditing.subscribe(function (value) {
+            if (value == true) {
+                _this.showProfilePicEditing = true;
             }
         });
     };
@@ -1392,6 +1413,99 @@ var PopupComponent = /** @class */ (function () {
         this.isFriend = true;
         this.authService.acceptFriendRequest(this.friendUser.uid);
     };
+    // Profile Pic Editing
+    PopupComponent.prototype.hideProfilePicEditing = function () {
+        this.showProfilePicEditing = false;
+        this.mainService.showProfilePicEditing.next(false);
+    };
+    PopupComponent.prototype.photoFail = function (msg) {
+        console.log(msg);
+    };
+    PopupComponent.prototype.takePhoto = function () {
+        // console.log("Take Photo");
+        // let opts = {
+        //   quality: 80,
+        //   destinationType: Camera.DestinationType.NATIVE_URI,
+        //   sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+        //   mediaType: Camera.MediaType.PICTURE,
+        //   encodingType: Camera.EncodingType.JPEG,
+        //   cameraDirection: Camera.Direction.BACK,
+        //   targetWidth: 400,
+        //   targetHeight: 300
+        // };
+        // navigator.camera.getPicture(this.photoSuccess, this.photoFail, opts);
+    };
+    PopupComponent.prototype.registerNewCandidate = function (event) {
+        // const file = event.target.files[0];
+        // const filePath = 'Taco Tuesday';
+        // const fileRef = this.storage.ref(filePath);
+        // const task = this.storage.upload(filePath, file);
+        // Read in file
+        var file = event.target.files[0];
+        var self = this;
+        // Ensure it's an image
+        if (file.type.match(/image.*/)) {
+            console.log('An image has been loaded');
+            // Load the image
+            var reader = new FileReader();
+            reader.onload = function (readerEvent) {
+                var image = new Image();
+                image.onload = function (imageEvent) {
+                    // Resize the image
+                    var canvas = document.createElement('canvas'), max_size = 300, // TODO : pull max size from a site config
+                    width = image.width, height = image.height;
+                    if (width > height) {
+                        if (width > max_size) {
+                            height *= max_size / width;
+                            width = max_size;
+                        }
+                    }
+                    else {
+                        if (height > max_size) {
+                            width *= max_size / height;
+                            height = max_size;
+                        }
+                    }
+                    //Override 
+                    width = max_size;
+                    height = max_size;
+                    canvas.width = width;
+                    canvas.height = height;
+                    canvas.getContext('2d').drawImage(image, 0, 0, width, height);
+                    var dataUrl = canvas.toDataURL('image/jpeg');
+                    var resizedImage = self.dataURLToBlob(dataUrl);
+                    //File upload to firebase
+                    var uploadFile = resizedImage;
+                    var filePath = 'profilePics/' + self.authService.currentUser.uid;
+                    var fileRef = self.storage.ref(filePath);
+                    var task = self.storage.upload(filePath, uploadFile);
+                    fileRef.getDownloadURL().subscribe(function (url) {
+                        console.log('File Uploaded!');
+                        self.authService.setProfilePicture(url);
+                        //self.avatarImage = url;
+                        alert('done');
+                    });
+                };
+                image.src = readerEvent.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+    PopupComponent.prototype.fileChangeEvent = function (event) {
+        this.imageChangedEvent = event;
+    };
+    PopupComponent.prototype.imageCropped = function (event) {
+        this.croppedImage = event.base64;
+    };
+    PopupComponent.prototype.imageLoaded = function () {
+        // show cropper
+    };
+    PopupComponent.prototype.cropperReady = function () {
+        // cropper ready
+    };
+    PopupComponent.prototype.loadImageFailed = function () {
+        // show message
+    };
     PopupComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-popup',
@@ -1400,7 +1514,8 @@ var PopupComponent = /** @class */ (function () {
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_main_service__WEBPACK_IMPORTED_MODULE_2__["MainService"],
             _services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"],
-            _angular_fire_database__WEBPACK_IMPORTED_MODULE_4__["AngularFireDatabase"]])
+            _angular_fire_database__WEBPACK_IMPORTED_MODULE_4__["AngularFireDatabase"],
+            _angular_fire_storage__WEBPACK_IMPORTED_MODULE_6__["AngularFireStorage"]])
     ], PopupComponent);
     return PopupComponent;
 }());
@@ -1483,7 +1598,7 @@ module.exports = ".out{\n    -webkit-transform: translateX(0%);\n    transform: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div  id=\"userSlide\" class=\"panel panel-right panel-reveal out\" >\n  <div class=\"user_login_info\">\n\n    <div class=\"user_thumb\">\n\n      <div class=\"user_details\">\n        <p>Welcome, <span>{{authService.currentUser.firstName}}</span></p>\n      </div>\n      <div (click)=\"takePhoto()\" class=\"user_avatar\"><img style=\"height: 100px;\" id=\"avatar\" src={{avatarImage}} alt=\"\" title=\"\" /></div>\n    </div>\n\n    <ul>\n      <li>{{con}}</li>\n    </ul>\n\n    <input type=\"file\" (change)=\"fileChangeEvent($event)\" accept=\"image/*\" />\n    <image-cropper [imageChangedEvent]=\"imageChangedEvent\" [maintainAspectRatio]=\"true\" [aspectRatio]=\"4 / 3\" [resizeToWidth]=\"128\"\n      format=\"png\" (imageCropped)=\"imageCropped($event)\" (imageLoaded)=\"imageLoaded()\" (cropperReady)=\"cropperReady()\" (loadImageFailed)=\"loadImageFailed()\"></image-cropper>\n    <!-- <img [src]=\"croppedImage\" /> -->\n\n    <nav class=\"user-nav\">\n      <ul>\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/settings.png\" alt=\"\" title=\"\" /><span>Account\n              Settings</span></a></li>\n        <!-- <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/briefcase.png\" alt=\"\" title=\"\" /><span>My\n              Account</span></a></li> -->\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/users.png\" alt=\"\"\n              title=\"\" /><span>Friends</span><strong>12</strong></a></li>\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/love.png\" alt=\"\"\n              title=\"\" /><span>Liked Bars</span><strong>5</strong></a></li>\n        <li><a (click)=\"logout()\"><img src=\"./assets/images/icons/gray/lock.png\" alt=\"\" title=\"\" /><span>Logout</span></a></li>\n      </ul>\n    </nav>\n  </div>\n</div>\n\n\n\n"
+module.exports = "<div  id=\"userSlide\" class=\"panel panel-right panel-reveal out\" >\n  <div class=\"user_login_info\">\n\n    <div class=\"user_thumb\">\n\n      <div class=\"user_details\">\n        <p>Welcome, <span>{{authService.currentUser.firstName}}</span></p>\n      </div>\n      <div (click)=\"openPicEditing()\" class=\"user_avatar\"><img style=\"height: 100px;\" id=\"avatar\" src={{avatarImage}} alt=\"\" title=\"\" /></div>\n    </div>\n\n    <ul>\n      <li>{{con}}</li>\n    </ul>\n\n    <input type=\"file\" (change)=\"fileChangeEvent($event)\" accept=\"image/*\" />\n    <image-cropper [imageChangedEvent]=\"imageChangedEvent\" [maintainAspectRatio]=\"true\" [aspectRatio]=\"4 / 3\" [resizeToWidth]=\"128\"\n      format=\"png\" (imageCropped)=\"imageCropped($event)\" (imageLoaded)=\"imageLoaded()\" (cropperReady)=\"cropperReady()\" (loadImageFailed)=\"loadImageFailed()\"></image-cropper>\n    <!-- <img [src]=\"croppedImage\" /> -->\n\n    <nav class=\"user-nav\">\n      <ul>\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/settings.png\" alt=\"\" title=\"\" /><span>Account\n              Settings</span></a></li>\n        <!-- <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/briefcase.png\" alt=\"\" title=\"\" /><span>My\n              Account</span></a></li> -->\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/users.png\" alt=\"\"\n              title=\"\" /><span>Friends</span><strong>12</strong></a></li>\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/love.png\" alt=\"\"\n              title=\"\" /><span>Liked Bars</span><strong>5</strong></a></li>\n        <li><a (click)=\"logout()\"><img src=\"./assets/images/icons/gray/lock.png\" alt=\"\" title=\"\" /><span>Logout</span></a></li>\n      </ul>\n    </nav>\n  </div>\n</div>\n\n\n\n"
 
 /***/ }),
 
@@ -1518,28 +1633,6 @@ var UserSlideComponent = /** @class */ (function () {
         this.storage = storage;
         this.slideInLogin = true;
         this.avatarImage = "./assets/images/avatar3.jpg";
-        /* Utility function to convert a canvas to a BLOB */
-        this.dataURLToBlob = function (dataURL) {
-            var BASE64_MARKER = ';base64,';
-            if (dataURL.indexOf(BASE64_MARKER) == -1) {
-                var parts = dataURL.split(',');
-                var contentType = parts[0].split(':')[1];
-                var raw = parts[1];
-                return new Blob([raw], { type: contentType });
-            }
-            var parts = dataURL.split(BASE64_MARKER);
-            var contentType = parts[0].split(':')[1];
-            var raw = window.atob(parts[1]);
-            var rawLength = raw.length;
-            var uInt8Array = new Uint8Array(rawLength);
-            for (var i = 0; i < rawLength; ++i) {
-                uInt8Array[i] = raw.charCodeAt(i);
-            }
-            return new Blob([uInt8Array], { type: contentType });
-        };
-        /* End Utility function to convert a canvas to a BLOB      */
-        this.imageChangedEvent = '';
-        this.croppedImage = '';
     }
     UserSlideComponent.prototype.ngOnInit = function () {
         //Set profile picture if not null
@@ -1578,93 +1671,8 @@ var UserSlideComponent = /** @class */ (function () {
         // this.mainService.changeUserSlide();
         // this.router.navigateByUrl('/login');
     };
-    UserSlideComponent.prototype.photoFail = function (msg) {
-        console.log(msg);
-    };
-    UserSlideComponent.prototype.takePhoto = function () {
-        // console.log("Take Photo");
-        // let opts = {
-        //   quality: 80,
-        //   destinationType: Camera.DestinationType.NATIVE_URI,
-        //   sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-        //   mediaType: Camera.MediaType.PICTURE,
-        //   encodingType: Camera.EncodingType.JPEG,
-        //   cameraDirection: Camera.Direction.BACK,
-        //   targetWidth: 400,
-        //   targetHeight: 300
-        // };
-        // navigator.camera.getPicture(this.photoSuccess, this.photoFail, opts);
-    };
-    UserSlideComponent.prototype.registerNewCandidate = function (event) {
-        // const file = event.target.files[0];
-        // const filePath = 'Taco Tuesday';
-        // const fileRef = this.storage.ref(filePath);
-        // const task = this.storage.upload(filePath, file);
-        // Read in file
-        var file = event.target.files[0];
-        var self = this;
-        // Ensure it's an image
-        if (file.type.match(/image.*/)) {
-            console.log('An image has been loaded');
-            // Load the image
-            var reader = new FileReader();
-            reader.onload = function (readerEvent) {
-                var image = new Image();
-                image.onload = function (imageEvent) {
-                    // Resize the image
-                    var canvas = document.createElement('canvas'), max_size = 300, // TODO : pull max size from a site config
-                    width = image.width, height = image.height;
-                    if (width > height) {
-                        if (width > max_size) {
-                            height *= max_size / width;
-                            width = max_size;
-                        }
-                    }
-                    else {
-                        if (height > max_size) {
-                            width *= max_size / height;
-                            height = max_size;
-                        }
-                    }
-                    //Override 
-                    width = max_size;
-                    height = max_size;
-                    canvas.width = width;
-                    canvas.height = height;
-                    canvas.getContext('2d').drawImage(image, 0, 0, width, height);
-                    var dataUrl = canvas.toDataURL('image/jpeg');
-                    var resizedImage = self.dataURLToBlob(dataUrl);
-                    //File upload to firebase
-                    var uploadFile = resizedImage;
-                    var filePath = 'profilePics/' + self.authService.currentUser.uid;
-                    var fileRef = self.storage.ref(filePath);
-                    var task = self.storage.upload(filePath, uploadFile);
-                    fileRef.getDownloadURL().subscribe(function (url) {
-                        console.log('File Uploaded!');
-                        self.authService.setProfilePicture(url);
-                        self.avatarImage = url;
-                        alert('done');
-                    });
-                };
-                image.src = readerEvent.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-    };
-    UserSlideComponent.prototype.fileChangeEvent = function (event) {
-        this.imageChangedEvent = event;
-    };
-    UserSlideComponent.prototype.imageCropped = function (event) {
-        this.croppedImage = event.base64;
-    };
-    UserSlideComponent.prototype.imageLoaded = function () {
-        // show cropper
-    };
-    UserSlideComponent.prototype.cropperReady = function () {
-        // cropper ready
-    };
-    UserSlideComponent.prototype.loadImageFailed = function () {
-        // show message
+    UserSlideComponent.prototype.openPicEditing = function () {
+        this.mainService.showProfilePicEditing.next(true);
     };
     UserSlideComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -3481,6 +3489,7 @@ var MainService = /** @class */ (function () {
         this.reportCoverValue = 0;
         this.showFriendPopUp = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](false);
         this.friendPopUpUser = null;
+        this.showProfilePicEditing = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](false);
         this.barSlide = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](false);
         this.barSlideSearch = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](false);
         this.currentPage = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](-1);
@@ -3943,29 +3952,24 @@ var environment = {
 /*!*********************!*\
   !*** ./src/main.ts ***!
   \*********************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser-dynamic */ "./node_modules/@angular/platform-browser-dynamic/fesm5/platform-browser-dynamic.js");
-/* harmony import */ var _app_app_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/app.module */ "./src/app/app.module.ts");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./environments/environment */ "./src/environments/environment.ts");
-/* harmony import */ var fastclick__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! fastclick */ "./node_modules/fastclick/lib/fastclick.js");
-/* harmony import */ var fastclick__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(fastclick__WEBPACK_IMPORTED_MODULE_4__);
 
-
-
-
-
-fastclick__WEBPACK_IMPORTED_MODULE_4__["attach"](document.body);
-if (_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].production) {
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["enableProdMode"])();
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var platform_browser_dynamic_1 = __webpack_require__(/*! @angular/platform-browser-dynamic */ "./node_modules/@angular/platform-browser-dynamic/fesm5/platform-browser-dynamic.js");
+var app_module_1 = __webpack_require__(/*! ./app/app.module */ "./src/app/app.module.ts");
+var environment_1 = __webpack_require__(/*! ./environments/environment */ "./src/environments/environment.ts");
+var fastClick = __webpack_require__(/*! fastclick */ "./node_modules/fastclick/lib/fastclick.js");
+fastClick.attach(document.body);
+if (environment_1.environment.production) {
+    core_1.enableProdMode();
 }
-Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_2__["AppModule"])
+platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(app_module_1.AppModule)
     .catch(function (err) { return console.error(err); });
-
+//# sourceMappingURL=main.js.map
 
 /***/ }),
 
@@ -3976,7 +3980,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/josephmalafronte/Repos/BarCrawlV3/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Joseph\Documents\Repos\BarCrawlV3Repoo\BarCrawlV3\src\main.ts */"./src/main.ts");
 
 
 /***/ })

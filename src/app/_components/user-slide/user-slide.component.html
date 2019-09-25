@@ -6,7 +6,7 @@
       <div class="user_details">
         <p>Welcome, <span>{{authService.currentUser.firstName}}</span></p>
       </div>
-      <div (click)="takePhoto()" class="user_avatar"><img style="height: 100px;" id="avatar" src={{avatarImage}} alt="" title="" /></div>
+      <div (click)="openPicEditing()" class="user_avatar"><img style="height: 100px;" id="avatar" src={{avatarImage}} alt="" title="" /></div>
     </div>
 
     <ul>
