@@ -241,14 +241,17 @@ export class PopupComponent implements OnInit {
                 //File upload to firebase
                 const uploadFile = resizedImage;
                 const filePath = 'profilePics/' + self.authService.currentUser.uid;
-                const fileRef = self.storage.ref(filePath);
-                const task = self.storage.upload(filePath, uploadFile);
-                fileRef.getDownloadURL().subscribe(url => {
-                  console.log('File Uploaded!');
-                  console.log(url);
-                  self.authService.setProfilePicture(url);
-                  //self.avatarImage = url;
+                
+                self.storage.upload(filePath, uploadFile).then( _ => {
+                  const fileRef = self.storage.ref(filePath);
+                  fileRef.getDownloadURL().subscribe(url => {
+                    console.log('File Uploaded!');
+                    console.log(url);
+                    self.authService.setProfilePicture(url);
+                    //self.avatarImage = url;
+                  });
                 });
+
             }
             image.src = readerEvent.target.result as string;
         }

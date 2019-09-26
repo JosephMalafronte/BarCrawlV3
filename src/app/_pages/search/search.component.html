@@ -71,8 +71,8 @@
       <li (click) = "openFriendPopUp(userRes.about)">
         <div style="padding-bottom: 10px;">
           <span class="features_list_span">
-            <!-- <img src={{userRes.barPicture1Url}} alt="" title="" /> -->
-            <span class="features_list_span_text">{{userRes.about.firstName}}</span>
+            <img src="{{userRes.about.profilePicUrl == 'null'? './assets/images/users/blank_profile.png' : userRes.about.profilePicUrl}}" alt="" title="" />
+            <span class="features_list_span_text" style="font-size: 110%;">{{userRes.about.firstName}} {{userRes.about.lastName}}</span>
           </span>
         </div>
       </li>

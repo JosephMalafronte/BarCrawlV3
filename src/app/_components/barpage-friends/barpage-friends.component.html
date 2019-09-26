@@ -18,7 +18,7 @@
       <li (click)="openFriendPopUp(friend)">
         <div style="padding-bottom: 10px;">
           <span class="features_list_span">
-              <img src="{{friend.profilePicUrl}}">
+              <img src="{{friend.profilePicUrl == 'null'? './assets/images/users/blank_profile.png' : friend.profilePicUrl}}">
               <span class="features_list_span_text" style="font-size: 110%;">{{friend.firstName}} {{friend.lastName}} </span> 
           </span>
         </div>

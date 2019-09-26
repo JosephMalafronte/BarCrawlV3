@@ -21,7 +21,7 @@ export class UserSlideComponent implements OnInit {
 
   slideInLogin: boolean = true;
 
-  avatarImage: string = "./assets/images/avatar3.jpg";
+  avatarImage: string = "./assets/images/users/blank_profile.png";
 
   uploadPercent: Observable<number>;
   downloadURL: Observable<string>;

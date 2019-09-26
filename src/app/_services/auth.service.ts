@@ -302,6 +302,7 @@ export class AuthService {
   }
 
   setProfilePicture(url: string) {
+    console.log('set');
     this.db.object('userInfo/' + this.currentUser.uid +'/about/profilePicUrl').set(url);
     this.currentUser.profilePicUrl = url;
     this.profilePicUrlChange.next(url);

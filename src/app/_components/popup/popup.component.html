@@ -64,7 +64,7 @@
         <h2>Edit Profile Picture</h2>
 
         <div *ngIf="showCurrentAvatar" style="margin-top: 20px;">
-            <div ><img style="max-width: 100%" src={{currentAvatarUrl}}></div>
+            <div ><img style="max-width: 100%" src="{{currentAvatarUrl == 'null'? './assets/images/users/blank_profile.png' : currentAvatarUrl}}"></div>
   
             <div class="upload-btn-wrapper">
                 <span style="margin: 10px 0px 10px 0; width:150px; font-size:14px;" class="btn btn--full">Change Picture</span>

@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthService} from '../../_services/auth.service';
 import {MainService} from '../../_services/main.service';
 import { User } from '../../_models/User.Model';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Component({
@@ -104,17 +105,45 @@ export class SearchComponent implements OnInit {
     else if(this.activeSearchPage == 1){
       if(this.lastSearchedUsers==term) return;
 
+      var firstNames = [];
+      var lastNames = [];
+
+      var finishedLoadingNumber: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+      finishedLoadingNumber.subscribe(value => {
+        if(value == 2){
+          //Remove duplicates from first names
+          firstNames = firstNames.filter(value => {
+            return lastNames.indexOf(value) == -1;
+          })
+          this.userResults = firstNames.concat(lastNames);
+        }
+      });
+
       this.db.list('userInfo', ref => ref.orderByChild('about/firstName').limitToFirst(10).startAt(term).endAt(term + "\uf8ff")).valueChanges().subscribe((result:any[]) => {
-        console.log(result);
+        //console.log(result);
         for(var i=0; i<result.length;i++){
           if(result[i].about.userName == this.auth.currentUser.userName){
             result.splice(i,1);
             break;
           }
         }
-        this.userResults = result;
-        this.lastSearchedUsers = term;
+        firstNames = result;
+        finishedLoadingNumber.next(finishedLoadingNumber.getValue()+1);
       });
+
+      //Last name search as well may add more late
+      this.db.list('userInfo', ref => ref.orderByChild('about/lastName').limitToFirst(10).startAt(term).endAt(term + "\uf8ff")).valueChanges().subscribe((result:any[]) => {
+       // console.log(result);
+        for(var i=0; i<result.length;i++){
+          if(result[i].about.userName == this.auth.currentUser.userName){
+            result.splice(i,1);
+            break;
+          }
+        }
+        lastNames = result;
+        finishedLoadingNumber.next(finishedLoadingNumber.getValue()+1);
+      });
+      this.lastSearchedUsers = term;
     }
     
 
