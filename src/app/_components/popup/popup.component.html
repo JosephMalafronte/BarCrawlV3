@@ -58,38 +58,45 @@
 <!-- Profile Pic Editing -->
 <div *ngIf="showProfilePicEditing" style="text-align: center;">
   <div id="open-modal" class="modal-window" style="z-index: 11000;">
-    <div style="bottom: 100px;">
+    <div  style="bottom: 100px; padding-bottom: 1rem;">
       <a (click)="hideProfilePicEditing()" title="Close" class="modal-close">&times;</a>
+      <div *ngIf="!submittingProfilePic">
+        <h2>Edit Profile Picture</h2>
 
-
-      <div *ngIf="showCurrentAvatar" style="margin-top: 20px;">
-          <div ><img src={{currentAvatarUrl}}></div>
-
-          <div class="upload-btn-wrapper">
-              <span style="margin: 10px 0px 10px 0; width:150px; font-size:14px;" class="btn btn--full">Change Picture</span>
-              <input type="file" name="myfile" (change)="fileChangeEvent($event)" accept="image/*" />
+        <div *ngIf="showCurrentAvatar" style="margin-top: 20px;">
+            <div ><img style="max-width: 100%" src={{currentAvatarUrl}}></div>
+  
+            <div class="upload-btn-wrapper">
+                <span style="margin: 10px 0px 10px 0; width:150px; font-size:14px;" class="btn btn--full">Change Picture</span>
+                <input type="file" name="myfile" (change)="fileChangeEvent($event)" accept="image/*" />
+              </div>
+        </div>
+  
+        <div *ngIf="!showCurrentAvatar" style="margin-top: 20px;">
+            <div>
+                <image-cropper style="max-height: 350px;" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1 / 1"
+                [resizeToWidth]="300" format="jpeg" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()"></image-cropper>
             </div>
+            <span (click)="doneEditing()" style="margin: 20px 0px 0px 0; width:150px; font-size:14px;" class="btn btn--full">Done</span>
+        </div>
       </div>
 
-      <div *ngIf="!showCurrentAvatar" style="margin-top: 20px;">
-          <div>
-              <image-cropper style="max-height: 350px;" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
-              [resizeToWidth]="128" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
-              (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()"></image-cropper>
+      <div *ngIf="submittingProfilePic">
+        <div style="width:100%;">
+          <div class="checkmarkHolder">
+  
+            <div id="circleLoader" class="circle-loader">
+              <div id="checkLoader" class="checkmarkHidden draw"></div>
+            </div>
+  
           </div>
-          <span style="margin: 20px 0px -20px 0; width:150px; font-size:14px;" class="btn btn--full">Done</span>
+        </div>
       </div>
       
-
-      <!-- <span (click)="changePicture()" style="margin: 10px 0px 10px 0; width:300px; font-size:14px;" class="btn btn--full">Change Picture</span>
-
-      <div style='height: 0px;width:0px; overflow:hidden;'><input id="upfile" type="file" value="upload" (change)="fileChangeEvent($event)" accept="image/*"/></div>
-      <div>
-          <image-cropper style="max-height: 350px;" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
-          [resizeToWidth]="128" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
-          (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()"></image-cropper>
-      </div> -->
-      <!-- <img [src]="croppedImage" /> -->
+      
     </div>
+
+    
   </div>
 </div>

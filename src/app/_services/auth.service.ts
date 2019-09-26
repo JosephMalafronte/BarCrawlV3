@@ -22,6 +22,9 @@ export class AuthService {
   db: AngularFireDatabase;
   subUser: boolean = false;
 
+  //Profile Changes
+  profilePicUrlChange: BehaviorSubject<string> = new BehaviorSubject<string>("");
+
 
   constructor(private mainService: MainService, dbA: AngularFireDatabase, public afAuth: AngularFireAuth) {
     this.af = afAuth;
@@ -301,6 +304,7 @@ export class AuthService {
   setProfilePicture(url: string) {
     this.db.object('userInfo/' + this.currentUser.uid +'/about/profilePicUrl').set(url);
     this.currentUser.profilePicUrl = url;
+    this.profilePicUrlChange.next(url);
   }
 
 

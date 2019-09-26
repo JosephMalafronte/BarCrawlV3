@@ -9,6 +9,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 
 
+
 @Component({
   selector: 'app-popup',
   templateUrl: './popup.component.html',
@@ -34,6 +35,7 @@ export class PopupComponent implements OnInit {
   showProfilePicEditing: boolean = false;
   currentAvatarUrl: string = "";
   showCurrentAvatar: boolean = true;
+  submittingProfilePic: boolean=false;
 
   constructor(
     private mainService: MainService, 
@@ -69,6 +71,7 @@ export class PopupComponent implements OnInit {
     this.mainService.showProfilePicEditing.subscribe( value => {
       if(value == true){
         this.showCurrentAvatar = true;
+        this.submittingProfilePic = false;
         this.currentAvatarUrl = this.authService.currentUser.profilePicUrl;
 
         this.showProfilePicEditing = true;
@@ -186,20 +189,9 @@ export class PopupComponent implements OnInit {
     this.mainService.showProfilePicEditing.next(false);
   }
 
-  
 
-  photoFail(msg): any{
-    console.log(msg);
-  }
 
-  registerNewCandidate(event){
-    // const file = event.target.files[0];
-    // const filePath = 'Taco Tuesday';
-    // const fileRef = this.storage.ref(filePath);
-    // const task = this.storage.upload(filePath, file);
-
-    // Read in file
-    var file = event.target.files[0];
+  resizeAndUpload(file){
     var self = this;
 
     // Ensure it's an image
@@ -207,34 +199,43 @@ export class PopupComponent implements OnInit {
         console.log('An image has been loaded');
 
         // Load the image
-        var reader = new FileReader();
+        var reader:any = new FileReader();
         reader.onload = function (readerEvent) {
-            var image = new Image();
+            var image:any = new Image();
             image.onload = function (imageEvent) {
 
                 // Resize the image
                 var canvas = document.createElement('canvas'),
-                    max_size = 300,// TODO : pull max size from a site config
-                    width = image.width,
-                    height = image.height;
-                if (width > height) {
-                    if (width > max_size) {
-                        height *= max_size / width;
-                        width = max_size;
-                    }
-                } else {
-                    if (height > max_size) {
-                        width *= max_size / height;
-                        height = max_size;
-                    }
-                }
-                //Override 
-                width = max_size;
-                height = max_size;
+                max_size = 5000,// TODO : pull max size from a site config
+                width = image.width,
+                height = image.height;
+
+                //DO NOT DELETE BELOW CODE!!
+                // if (width > height) {
+                //     if (width > max_size) {
+                //         height *= max_size / width;
+                //         width = max_size;
+                //     }
+                // } else {
+                //     if (height > max_size) {
+                //         width *= max_size / height;
+                //         height = max_size;
+                //     }
+                // }
+                // //Override 
+                // width = max_size;
+                // height = max_size;
+
+                //Because above code is commented no actual resizing occurs but
+                // we can still do a quality drop below
+
+                //Number between 0 to 1 for image quality. Higher is more quality
+                var imageQuality: number = .92;
+
                 canvas.width = width;
                 canvas.height = height;
                 canvas.getContext('2d').drawImage(image, 0, 0, width, height);
-                var dataUrl = canvas.toDataURL('image/jpeg');
+                var dataUrl = canvas.toDataURL('image/jpeg', imageQuality);
                 var resizedImage = self.dataURLToBlob(dataUrl);
 
                 //File upload to firebase
@@ -244,10 +245,43 @@ export class PopupComponent implements OnInit {
                 const task = self.storage.upload(filePath, uploadFile);
                 fileRef.getDownloadURL().subscribe(url => {
                   console.log('File Uploaded!');
+                  console.log(url);
                   self.authService.setProfilePicture(url);
                   //self.avatarImage = url;
-                  alert('done');
                 });
+            }
+            image.src = readerEvent.target.result as string;
+        }
+        reader.readAsDataURL(file);
+    }
+  }
+
+  lowerFileQuality(file) {
+    var self = this;
+
+    // Ensure it's an image
+    if(file.type.match(/image.*/)) {
+        console.log('An image has been loaded');
+
+        // Load the image
+        var reader:any = new FileReader();
+        reader.onload = function (readerEvent) {
+            var image:any = new Image();
+            image.onload = function (imageEvent) {
+
+                // Resize the image
+                var canvas = document.createElement('canvas'),
+                width = image.width,
+                height = image.height;
+
+                var imageQuality: number = .5;
+
+                canvas.width = width;
+                canvas.height = height;
+                canvas.getContext('2d').drawImage(image, 0, 0, width, height);
+                var dataUrl = canvas.toDataURL('image/jpeg', imageQuality);
+                console.log(dataUrl);
+                self.imageBase64 = dataUrl;
             }
             image.src = readerEvent.target.result as string;
         }
@@ -283,13 +317,18 @@ export class PopupComponent implements OnInit {
   }
   /* End Utility function to convert a canvas to a BLOB      */
 
-
+  //Try to compress before showing in image cropper
+  imageBase64: any = '';
   imageChangedEvent: any = '';
+
   croppedImage: any = '';
   
   fileChangeEvent(event: any): void {
       this.showCurrentAvatar = false;
       this.imageChangedEvent = event;
+
+      // console.log(event.target.files[0]);
+      // this.lowerFileQuality(event.target.files[0]);
   }
   imageCropped(event: ImageCroppedEvent) {
       this.croppedImage = event.base64;
@@ -303,6 +342,37 @@ export class PopupComponent implements OnInit {
   loadImageFailed() {
       // show message
   }
+
+  doneEditing(){
+    this.submittingProfilePic = true;
+    var self = this;
+
+    setTimeout(function() {
+      // document.getElementById('check').classList.add('check-complete');
+      // document.getElementById('fill').classList.add('fill-complete');
+
+
+      document.getElementById('circleLoader').classList.add('load-complete');
+      document.getElementById('checkLoader').classList.remove('checkmarkHidden');
+      document.getElementById('checkLoader').classList.add('checkmark');
+      
+      setTimeout(function () {
+        self.showProfilePicEditing = false;
+        self.submittingProfilePic = false;
+      }, 1000);
+    }, 750);
+    this.resizeAndUpload(this.dataURLToBlob(this.croppedImage));
+  }
+
+  blobToFile = (theBlob: Blob, fileName:string): File => {
+    var b: any = theBlob;
+    //A Blob() is almost a File() - it's just missing the two properties below which we will add
+    b.lastModifiedDate = new Date();
+    b.name = fileName;
+
+    //Cast to a File() type
+    return <File>theBlob;
+}
 
 
 }

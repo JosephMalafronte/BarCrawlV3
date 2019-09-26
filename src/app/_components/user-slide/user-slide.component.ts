@@ -45,12 +45,24 @@ export class UserSlideComponent implements OnInit {
     if(!this.authService.currentUser.profilePicUrl.toLowerCase().includes("null")){
       this.avatarImage = this.authService.currentUser.profilePicUrl;
     }
+    this.profilePicChangeListerner();
   }
 
   ngAfterViewInit(){
     document.getElementById("userSlide").classList.add("hidden");
     document.getElementById("userSlide").classList.add("out");
     this.userSlideInit();
+  }
+
+  profilePicChangeListerner(){
+    this.authService.profilePicUrlChange.subscribe(value => {
+      if(value == "") return;
+      console.log("Change");
+      setTimeout(_ => {
+        this.avatarImage = value;
+      }, 2000)
+      this.avatarImage = "";
+    })
   }
 
   userSlideInit(){

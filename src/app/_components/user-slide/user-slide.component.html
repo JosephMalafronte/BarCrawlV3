@@ -9,15 +9,6 @@
       <div (click)="openPicEditing()" class="user_avatar"><img style="height: 100px;" id="avatar" src={{avatarImage}} alt="" title="" /></div>
     </div>
 
-    <ul>
-      <li>{{con}}</li>
-    </ul>
-
-    <input type="file" (change)="fileChangeEvent($event)" accept="image/*" />
-    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3" [resizeToWidth]="128"
-      format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()"></image-cropper>
-    <!-- <img [src]="croppedImage" /> -->
-
     <nav class="user-nav">
       <ul>
         <li><a href="features.html"><img src="./assets/images/icons/gray/settings.png" alt="" title="" /><span>Account

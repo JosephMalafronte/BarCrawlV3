@@ -1239,7 +1239,7 @@ module.exports = "\n.modal-window {\n    position: absolute;\n    background-col
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"showCoverPopUp\" style=\"text-align: center;\">\n  <div id=\"open-modal\" class=\"modal-window\">\n    <div *ngIf=\"!coverSubmissionLoader\">\n      <a (click)=\"showCoverPopUp = false\" title=\"Close\" class=\"modal-close\">&times;</a>\n      <h2>Report Cover</h2>\n      <div style=\"margin: 0 7px 0 0px;\">\n        <img (click)=\"decrementReportCover()\" class=\"minus\" src=\"./assets/images/minus.png\">\n        <span class=\"coverHeading\">${{reportCoverValue}}</span>\n        <img (click)=\"incrementReportCover()\" class=\"plus\" src=\"./assets/images/plus.png\">\n      </div>\n\n      <div (click)=\"reportCover()\" style=\"text-align: center\">\n        <span style=\"margin: 7px 0px 0px 0; width:200px; font-size:14px;\" class=\"btn btn--full\">Submit</span>\n      </div>\n\n    </div>\n    <div *ngIf=\"coverSubmissionLoader\">\n      <div style=\"width:100%;\">\n        <div class=\"checkmarkHolder\">\n          <!-- <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" x=\"0px\"\n                      y=\"0px\" viewBox=\"0, 0, 100, 100\" id=\"checkmark\">\n                      <g transform=\"\">\n                        <circle id=\"path\" class=\"path\" fill=\"none\" stroke=\"#F2C843\" stroke-width=\"4\" stroke-miterlimit=\"10\" cx=\"50\" cy=\"50\" r=\"44\" />\n                        <circle id=\"fill\" class=\"fill\" fill=\"none\" stroke=\"#F2C843\" stroke-width=\"4\" stroke-miterlimit=\"10\" cx=\"50\" cy=\"50\" r=\"44\" />\n                        <polyline id=\"check\" class=\"check\" fill=\"none\" stroke=\"#F2C843\" stroke-width=\"8\" stroke-linecap=\"round\" stroke-miterlimit=\"10\" points=\"70,35 45,65 30,52  \"\n                        />\n                      </g>\n                    </svg> -->\n\n          <div id=\"circleLoader\" class=\"circle-loader\">\n            <div id=\"checkLoader\" class=\"checkmarkHidden draw\"></div>\n          </div>\n\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div *ngIf=\"showFriendPopUp\" style=\"text-align: center;\">\n  <div id=\"open-modal\" class=\"modal-window\">\n    <div>\n      <a (click)=\"hideFriendPopUp()\" title=\"Close\" class=\"modal-close\">&times;</a>\n      <h2>{{friendUser.firstName}} {{friendUser.lastName}}</h2>\n      <div *ngIf=\"!isFriend && showRequestButton\">\n        <span *ngIf=\"!isRequestOut && !isRequestIn\" (click)=\"sendFriendRequest()\"\n          style=\"margin: 10px 0px 10px 0; width:300px; font-size:14px;\" class=\"btn btn--full\">Add Friend</span>\n        <span *ngIf=\"isRequestOut\" style=\"margin: 10px 0px 10px 0; width:300px; font-size:14px;\"\n          class=\"btn btn--full\">Friend Request Sent!</span>\n        <span *ngIf=\"isRequestIn\" (click)=\"acceptFriendRequest()\"\n          style=\"margin: 10px 0px 10px 0; width:300px; font-size:14px;\" class=\"btn btn--full\">Accept Friend\n          Request</span>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Profile Pic Editing -->\n<div *ngIf=\"showProfilePicEditing\" style=\"text-align: center;\">\n  <div id=\"open-modal\" class=\"modal-window\" style=\"z-index: 11000;\">\n    <div style=\"bottom: 100px;\">\n      <a (click)=\"hideProfilePicEditing()\" title=\"Close\" class=\"modal-close\">&times;</a>\n\n\n      <div *ngIf=\"showCurrentAvatar\" style=\"margin-top: 20px;\">\n          <div ><img src={{currentAvatarUrl}}></div>\n\n          <div class=\"upload-btn-wrapper\">\n              <span style=\"margin: 10px 0px 10px 0; width:150px; font-size:14px;\" class=\"btn btn--full\">Change Picture</span>\n              <input type=\"file\" name=\"myfile\" (change)=\"fileChangeEvent($event)\" accept=\"image/*\" />\n            </div>\n      </div>\n\n      <div *ngIf=\"!showCurrentAvatar\" style=\"margin-top: 20px;\">\n          <div>\n              <image-cropper style=\"max-height: 350px;\" [imageChangedEvent]=\"imageChangedEvent\" [maintainAspectRatio]=\"true\" [aspectRatio]=\"4 / 3\"\n              [resizeToWidth]=\"128\" format=\"png\" (imageCropped)=\"imageCropped($event)\" (imageLoaded)=\"imageLoaded()\"\n              (cropperReady)=\"cropperReady()\" (loadImageFailed)=\"loadImageFailed()\"></image-cropper>\n          </div>\n          <span style=\"margin: 20px 0px -20px 0; width:150px; font-size:14px;\" class=\"btn btn--full\">Done</span>\n      </div>\n      \n\n      <!-- <span (click)=\"changePicture()\" style=\"margin: 10px 0px 10px 0; width:300px; font-size:14px;\" class=\"btn btn--full\">Change Picture</span>\n\n      <div style='height: 0px;width:0px; overflow:hidden;'><input id=\"upfile\" type=\"file\" value=\"upload\" (change)=\"fileChangeEvent($event)\" accept=\"image/*\"/></div>\n      <div>\n          <image-cropper style=\"max-height: 350px;\" [imageChangedEvent]=\"imageChangedEvent\" [maintainAspectRatio]=\"true\" [aspectRatio]=\"4 / 3\"\n          [resizeToWidth]=\"128\" format=\"png\" (imageCropped)=\"imageCropped($event)\" (imageLoaded)=\"imageLoaded()\"\n          (cropperReady)=\"cropperReady()\" (loadImageFailed)=\"loadImageFailed()\"></image-cropper>\n      </div> -->\n      <!-- <img [src]=\"croppedImage\" /> -->\n    </div>\n  </div>\n</div>"
+module.exports = "<div *ngIf=\"showCoverPopUp\" style=\"text-align: center;\">\n  <div id=\"open-modal\" class=\"modal-window\">\n    <div *ngIf=\"!coverSubmissionLoader\">\n      <a (click)=\"showCoverPopUp = false\" title=\"Close\" class=\"modal-close\">&times;</a>\n      <h2>Report Cover</h2>\n      <div style=\"margin: 0 7px 0 0px;\">\n        <img (click)=\"decrementReportCover()\" class=\"minus\" src=\"./assets/images/minus.png\">\n        <span class=\"coverHeading\">${{reportCoverValue}}</span>\n        <img (click)=\"incrementReportCover()\" class=\"plus\" src=\"./assets/images/plus.png\">\n      </div>\n\n      <div (click)=\"reportCover()\" style=\"text-align: center\">\n        <span style=\"margin: 7px 0px 0px 0; width:200px; font-size:14px;\" class=\"btn btn--full\">Submit</span>\n      </div>\n\n    </div>\n    <div *ngIf=\"coverSubmissionLoader\">\n      <div style=\"width:100%;\">\n        <div class=\"checkmarkHolder\">\n          <!-- <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" xml:space=\"preserve\" x=\"0px\"\n                      y=\"0px\" viewBox=\"0, 0, 100, 100\" id=\"checkmark\">\n                      <g transform=\"\">\n                        <circle id=\"path\" class=\"path\" fill=\"none\" stroke=\"#F2C843\" stroke-width=\"4\" stroke-miterlimit=\"10\" cx=\"50\" cy=\"50\" r=\"44\" />\n                        <circle id=\"fill\" class=\"fill\" fill=\"none\" stroke=\"#F2C843\" stroke-width=\"4\" stroke-miterlimit=\"10\" cx=\"50\" cy=\"50\" r=\"44\" />\n                        <polyline id=\"check\" class=\"check\" fill=\"none\" stroke=\"#F2C843\" stroke-width=\"8\" stroke-linecap=\"round\" stroke-miterlimit=\"10\" points=\"70,35 45,65 30,52  \"\n                        />\n                      </g>\n                    </svg> -->\n\n          <div id=\"circleLoader\" class=\"circle-loader\">\n            <div id=\"checkLoader\" class=\"checkmarkHidden draw\"></div>\n          </div>\n\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div *ngIf=\"showFriendPopUp\" style=\"text-align: center;\">\n  <div id=\"open-modal\" class=\"modal-window\">\n    <div>\n      <a (click)=\"hideFriendPopUp()\" title=\"Close\" class=\"modal-close\">&times;</a>\n      <h2>{{friendUser.firstName}} {{friendUser.lastName}}</h2>\n      <div *ngIf=\"!isFriend && showRequestButton\">\n        <span *ngIf=\"!isRequestOut && !isRequestIn\" (click)=\"sendFriendRequest()\"\n          style=\"margin: 10px 0px 10px 0; width:300px; font-size:14px;\" class=\"btn btn--full\">Add Friend</span>\n        <span *ngIf=\"isRequestOut\" style=\"margin: 10px 0px 10px 0; width:300px; font-size:14px;\"\n          class=\"btn btn--full\">Friend Request Sent!</span>\n        <span *ngIf=\"isRequestIn\" (click)=\"acceptFriendRequest()\"\n          style=\"margin: 10px 0px 10px 0; width:300px; font-size:14px;\" class=\"btn btn--full\">Accept Friend\n          Request</span>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Profile Pic Editing -->\n<div *ngIf=\"showProfilePicEditing\" style=\"text-align: center;\">\n  <div id=\"open-modal\" class=\"modal-window\" style=\"z-index: 11000;\">\n    <div  style=\"bottom: 100px; padding-bottom: 1rem;\">\n      <a (click)=\"hideProfilePicEditing()\" title=\"Close\" class=\"modal-close\">&times;</a>\n      <div *ngIf=\"!submittingProfilePic\">\n        <h2>Edit Profile Picture</h2>\n\n        <div *ngIf=\"showCurrentAvatar\" style=\"margin-top: 20px;\">\n            <div ><img style=\"max-width: 100%\" src={{currentAvatarUrl}}></div>\n  \n            <div class=\"upload-btn-wrapper\">\n                <span style=\"margin: 10px 0px 10px 0; width:150px; font-size:14px;\" class=\"btn btn--full\">Change Picture</span>\n                <input type=\"file\" name=\"myfile\" (change)=\"fileChangeEvent($event)\" accept=\"image/*\" />\n              </div>\n        </div>\n  \n        <div *ngIf=\"!showCurrentAvatar\" style=\"margin-top: 20px;\">\n            <div>\n                <image-cropper style=\"max-height: 350px;\" [imageChangedEvent]=\"imageChangedEvent\" [maintainAspectRatio]=\"true\" [aspectRatio]=\"1 / 1\"\n                [resizeToWidth]=\"300\" format=\"jpeg\" (imageCropped)=\"imageCropped($event)\" (imageLoaded)=\"imageLoaded()\"\n                (cropperReady)=\"cropperReady()\" (loadImageFailed)=\"loadImageFailed()\"></image-cropper>\n            </div>\n            <span (click)=\"doneEditing()\" style=\"margin: 20px 0px 0px 0; width:150px; font-size:14px;\" class=\"btn btn--full\">Done</span>\n        </div>\n      </div>\n\n      <div *ngIf=\"submittingProfilePic\">\n        <div style=\"width:100%;\">\n          <div class=\"checkmarkHolder\">\n  \n            <div id=\"circleLoader\" class=\"circle-loader\">\n              <div id=\"checkLoader\" class=\"checkmarkHidden draw\"></div>\n            </div>\n  \n          </div>\n        </div>\n      </div>\n      \n      \n    </div>\n\n    \n  </div>\n</div>"
 
 /***/ }),
 
@@ -1288,6 +1288,7 @@ var PopupComponent = /** @class */ (function () {
         this.showProfilePicEditing = false;
         this.currentAvatarUrl = "";
         this.showCurrentAvatar = true;
+        this.submittingProfilePic = false;
         /* Utility function to convert a canvas to a BLOB */
         this.dataURLToBlob = function (dataURL) {
             var raw;
@@ -1309,8 +1310,18 @@ var PopupComponent = /** @class */ (function () {
             return new Blob([uInt8Array], { type: contentType });
         };
         /* End Utility function to convert a canvas to a BLOB      */
+        //Try to compress before showing in image cropper
+        this.imageBase64 = '';
         this.imageChangedEvent = '';
         this.croppedImage = '';
+        this.blobToFile = function (theBlob, fileName) {
+            var b = theBlob;
+            //A Blob() is almost a File() - it's just missing the two properties below which we will add
+            b.lastModifiedDate = new Date();
+            b.name = fileName;
+            //Cast to a File() type
+            return theBlob;
+        };
     }
     PopupComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1335,6 +1346,7 @@ var PopupComponent = /** @class */ (function () {
         this.mainService.showProfilePicEditing.subscribe(function (value) {
             if (value == true) {
                 _this.showCurrentAvatar = true;
+                _this.submittingProfilePic = false;
                 _this.currentAvatarUrl = _this.authService.currentUser.profilePicUrl;
                 _this.showProfilePicEditing = true;
             }
@@ -1422,16 +1434,7 @@ var PopupComponent = /** @class */ (function () {
         this.showProfilePicEditing = false;
         this.mainService.showProfilePicEditing.next(false);
     };
-    PopupComponent.prototype.photoFail = function (msg) {
-        console.log(msg);
-    };
-    PopupComponent.prototype.registerNewCandidate = function (event) {
-        // const file = event.target.files[0];
-        // const filePath = 'Taco Tuesday';
-        // const fileRef = this.storage.ref(filePath);
-        // const task = this.storage.upload(filePath, file);
-        // Read in file
-        var file = event.target.files[0];
+    PopupComponent.prototype.resizeAndUpload = function (file) {
         var self = this;
         // Ensure it's an image
         if (file.type.match(/image.*/)) {
@@ -1442,27 +1445,31 @@ var PopupComponent = /** @class */ (function () {
                 var image = new Image();
                 image.onload = function (imageEvent) {
                     // Resize the image
-                    var canvas = document.createElement('canvas'), max_size = 300, // TODO : pull max size from a site config
+                    var canvas = document.createElement('canvas'), max_size = 5000, // TODO : pull max size from a site config
                     width = image.width, height = image.height;
-                    if (width > height) {
-                        if (width > max_size) {
-                            height *= max_size / width;
-                            width = max_size;
-                        }
-                    }
-                    else {
-                        if (height > max_size) {
-                            width *= max_size / height;
-                            height = max_size;
-                        }
-                    }
-                    //Override 
-                    width = max_size;
-                    height = max_size;
+                    //DO NOT DELETE BELOW CODE!!
+                    // if (width > height) {
+                    //     if (width > max_size) {
+                    //         height *= max_size / width;
+                    //         width = max_size;
+                    //     }
+                    // } else {
+                    //     if (height > max_size) {
+                    //         width *= max_size / height;
+                    //         height = max_size;
+                    //     }
+                    // }
+                    // //Override 
+                    // width = max_size;
+                    // height = max_size;
+                    //Because above code is commented no actual resizing occurs but
+                    // we can still do a quality drop below
+                    //Number between 0 to 1 for image quality. Higher is more quality
+                    var imageQuality = .92;
                     canvas.width = width;
                     canvas.height = height;
                     canvas.getContext('2d').drawImage(image, 0, 0, width, height);
-                    var dataUrl = canvas.toDataURL('image/jpeg');
+                    var dataUrl = canvas.toDataURL('image/jpeg', imageQuality);
                     var resizedImage = self.dataURLToBlob(dataUrl);
                     //File upload to firebase
                     var uploadFile = resizedImage;
@@ -1471,10 +1478,35 @@ var PopupComponent = /** @class */ (function () {
                     var task = self.storage.upload(filePath, uploadFile);
                     fileRef.getDownloadURL().subscribe(function (url) {
                         console.log('File Uploaded!');
+                        console.log(url);
                         self.authService.setProfilePicture(url);
                         //self.avatarImage = url;
-                        alert('done');
                     });
+                };
+                image.src = readerEvent.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+    PopupComponent.prototype.lowerFileQuality = function (file) {
+        var self = this;
+        // Ensure it's an image
+        if (file.type.match(/image.*/)) {
+            console.log('An image has been loaded');
+            // Load the image
+            var reader = new FileReader();
+            reader.onload = function (readerEvent) {
+                var image = new Image();
+                image.onload = function (imageEvent) {
+                    // Resize the image
+                    var canvas = document.createElement('canvas'), width = image.width, height = image.height;
+                    var imageQuality = .5;
+                    canvas.width = width;
+                    canvas.height = height;
+                    canvas.getContext('2d').drawImage(image, 0, 0, width, height);
+                    var dataUrl = canvas.toDataURL('image/jpeg', imageQuality);
+                    console.log(dataUrl);
+                    self.imageBase64 = dataUrl;
                 };
                 image.src = readerEvent.target.result;
             };
@@ -1484,6 +1516,8 @@ var PopupComponent = /** @class */ (function () {
     PopupComponent.prototype.fileChangeEvent = function (event) {
         this.showCurrentAvatar = false;
         this.imageChangedEvent = event;
+        // console.log(event.target.files[0]);
+        // this.lowerFileQuality(event.target.files[0]);
     };
     PopupComponent.prototype.imageCropped = function (event) {
         this.croppedImage = event.base64;
@@ -1496,6 +1530,22 @@ var PopupComponent = /** @class */ (function () {
     };
     PopupComponent.prototype.loadImageFailed = function () {
         // show message
+    };
+    PopupComponent.prototype.doneEditing = function () {
+        this.submittingProfilePic = true;
+        var self = this;
+        setTimeout(function () {
+            // document.getElementById('check').classList.add('check-complete');
+            // document.getElementById('fill').classList.add('fill-complete');
+            document.getElementById('circleLoader').classList.add('load-complete');
+            document.getElementById('checkLoader').classList.remove('checkmarkHidden');
+            document.getElementById('checkLoader').classList.add('checkmark');
+            setTimeout(function () {
+                self.showProfilePicEditing = false;
+                self.submittingProfilePic = false;
+            }, 1000);
+        }, 750);
+        this.resizeAndUpload(this.dataURLToBlob(this.croppedImage));
     };
     PopupComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1589,7 +1639,7 @@ module.exports = ".out{\n    -webkit-transform: translateX(0%);\n    transform: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div  id=\"userSlide\" class=\"panel panel-right panel-reveal out\" >\n  <div class=\"user_login_info\">\n\n    <div class=\"user_thumb\">\n\n      <div class=\"user_details\">\n        <p>Welcome, <span>{{authService.currentUser.firstName}}</span></p>\n      </div>\n      <div (click)=\"openPicEditing()\" class=\"user_avatar\"><img style=\"height: 100px;\" id=\"avatar\" src={{avatarImage}} alt=\"\" title=\"\" /></div>\n    </div>\n\n    <ul>\n      <li>{{con}}</li>\n    </ul>\n\n    <input type=\"file\" (change)=\"fileChangeEvent($event)\" accept=\"image/*\" />\n    <image-cropper [imageChangedEvent]=\"imageChangedEvent\" [maintainAspectRatio]=\"true\" [aspectRatio]=\"4 / 3\" [resizeToWidth]=\"128\"\n      format=\"png\" (imageCropped)=\"imageCropped($event)\" (imageLoaded)=\"imageLoaded()\" (cropperReady)=\"cropperReady()\" (loadImageFailed)=\"loadImageFailed()\"></image-cropper>\n    <!-- <img [src]=\"croppedImage\" /> -->\n\n    <nav class=\"user-nav\">\n      <ul>\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/settings.png\" alt=\"\" title=\"\" /><span>Account\n              Settings</span></a></li>\n        <!-- <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/briefcase.png\" alt=\"\" title=\"\" /><span>My\n              Account</span></a></li> -->\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/users.png\" alt=\"\"\n              title=\"\" /><span>Friends</span><strong>12</strong></a></li>\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/love.png\" alt=\"\"\n              title=\"\" /><span>Liked Bars</span><strong>5</strong></a></li>\n        <li><a (click)=\"logout()\"><img src=\"./assets/images/icons/gray/lock.png\" alt=\"\" title=\"\" /><span>Logout</span></a></li>\n      </ul>\n    </nav>\n  </div>\n</div>\n\n\n\n"
+module.exports = "<div  id=\"userSlide\" class=\"panel panel-right panel-reveal out\" >\n  <div class=\"user_login_info\">\n\n    <div class=\"user_thumb\">\n\n      <div class=\"user_details\">\n        <p>Welcome, <span>{{authService.currentUser.firstName}}</span></p>\n      </div>\n      <div (click)=\"openPicEditing()\" class=\"user_avatar\"><img style=\"height: 100px;\" id=\"avatar\" src={{avatarImage}} alt=\"\" title=\"\" /></div>\n    </div>\n\n    <nav class=\"user-nav\">\n      <ul>\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/settings.png\" alt=\"\" title=\"\" /><span>Account\n              Settings</span></a></li>\n        <!-- <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/briefcase.png\" alt=\"\" title=\"\" /><span>My\n              Account</span></a></li> -->\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/users.png\" alt=\"\"\n              title=\"\" /><span>Friends</span><strong>12</strong></a></li>\n        <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/love.png\" alt=\"\"\n              title=\"\" /><span>Liked Bars</span><strong>5</strong></a></li>\n        <li><a (click)=\"logout()\"><img src=\"./assets/images/icons/gray/lock.png\" alt=\"\" title=\"\" /><span>Logout</span></a></li>\n      </ul>\n    </nav>\n  </div>\n</div>\n\n\n\n"
 
 /***/ }),
 
@@ -1631,11 +1681,24 @@ var UserSlideComponent = /** @class */ (function () {
         if (!this.authService.currentUser.profilePicUrl.toLowerCase().includes("null")) {
             this.avatarImage = this.authService.currentUser.profilePicUrl;
         }
+        this.profilePicChangeListerner();
     };
     UserSlideComponent.prototype.ngAfterViewInit = function () {
         document.getElementById("userSlide").classList.add("hidden");
         document.getElementById("userSlide").classList.add("out");
         this.userSlideInit();
+    };
+    UserSlideComponent.prototype.profilePicChangeListerner = function () {
+        var _this = this;
+        this.authService.profilePicUrlChange.subscribe(function (value) {
+            if (value == "")
+                return;
+            console.log("Change");
+            setTimeout(function (_) {
+                _this.avatarImage = value;
+            }, 2000);
+            _this.avatarImage = "";
+        });
     };
     UserSlideComponent.prototype.userSlideInit = function () {
         var _this = this;
@@ -3175,6 +3238,8 @@ var AuthService = /** @class */ (function () {
         this.authStateValue = false;
         this.loadingFriendData = new rxjs__WEBPACK_IMPORTED_MODULE_5__["BehaviorSubject"]("None");
         this.subUser = false;
+        //Profile Changes
+        this.profilePicUrlChange = new rxjs__WEBPACK_IMPORTED_MODULE_5__["BehaviorSubject"]("");
         this.af = afAuth;
         this.db = dbA;
         this.authStateSet = new rxjs__WEBPACK_IMPORTED_MODULE_5__["BehaviorSubject"](false);
@@ -3393,6 +3458,7 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.setProfilePicture = function (url) {
         this.db.object('userInfo/' + this.currentUser.uid + '/about/profilePicUrl').set(url);
         this.currentUser.profilePicUrl = url;
+        this.profilePicUrlChange.next(url);
     };
     AuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -3976,7 +4042,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/josephmalafronte/Repos/BarCrawlV3/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Joseph\Documents\Repos\BarCrawlV3Repoo\BarCrawlV3\src\main.ts */"./src/main.ts");
 
 
 /***/ })
