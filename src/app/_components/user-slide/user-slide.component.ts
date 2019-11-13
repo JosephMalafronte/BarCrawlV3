@@ -96,5 +96,9 @@ export class UserSlideComponent implements OnInit {
     this.mainService.showProfilePicEditing.next(true);
   }
 
+  userSlideSelect(num: number){
+    this.mainService.userSlideClick.next(num);
+  }
+
 
 }

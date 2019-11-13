@@ -1,3 +1,14 @@
-<p style="margin-top: 20%">
-  settings works!
-</p>
+<div style="margin-top: 20%; text-align: center;">
+  <h4 style="font-weight: bold; font-size: 30px;">SETTINGS</h4>
+  <div class="loginform">
+
+    <label style="display: inline-block">First Name:</label>
+    <input id="changeFirstName" (click)="focus('changeFirstName')" type="text" [(ngModel)]="firstName" class="form_input required"
+      placeholder="First Name" />
+
+
+    <p style="text-align: left; color:red;" *ngIf="passwordsDoNotMatch">Passwords do not match.</p>
+
+
+  </div>
+</div>

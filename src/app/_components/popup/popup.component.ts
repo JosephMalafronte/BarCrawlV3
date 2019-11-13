@@ -7,7 +7,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { take } from 'rxjs/operators';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
-
+import { forkJoin, Observable, BehaviorSubject } from 'rxjs';  // RxJS 6 syntax
 
 
 @Component({
@@ -17,6 +17,7 @@ import { ImageCroppedEvent } from 'ngx-image-cropper';
 })
 export class PopupComponent implements OnInit {
 
+  isLoading: boolean = false;
 
   //Cover Variables
   showCoverPopUp: boolean = false;
@@ -63,6 +64,7 @@ export class PopupComponent implements OnInit {
         this.friendUser = this.mainService.friendPopUpUser;
 
         //Load data 
+        this.isLoading = true;
         this.loadUserFriendStatus();
         this.showFriendPopUp = true;
       }
@@ -78,6 +80,13 @@ export class PopupComponent implements OnInit {
       }
     })
 
+    this.mainService.hideAllPopUps.subscribe( value=> {
+      if(value == true) {
+        this.hideAllPopups();
+        this.mainService.hideAllPopUps.next(false);
+      } 
+    })
+
   }
 
   loadUserFriendStatus() {
@@ -91,26 +100,20 @@ export class PopupComponent implements OnInit {
 
     this.db.object('/userInfo/'+this.authService.currentUser.uid + '/friends/' + this.friendUser.uid).valueChanges().pipe(take(1)).subscribe(object => {
       if(object) {
-        this.isFriend = this.showRequestButton = false;
-        return;
+        this.isFriend = true;
+        this.showRequestButton = false;
+        this.isLoading = false;
       }
       else {
-        this.showRequestButton = true;
-        return;
-      }
-    });
-
-    this.db.object('/userInfo/'+this.authService.currentUser.uid + '/friendRequestOut/' + this.friendUser.uid).valueChanges().pipe(take(1)).subscribe(object => {
-      if(object) {
-        this.isRequestOut = this.showRequestButton = true;
-        return;
-      }
-    });
-
-    this.db.object('/userInfo/'+this.authService.currentUser.uid + '/friendRequestIn/' + this.friendUser.uid).valueChanges().pipe(take(1)).subscribe(object => {
-      if(object) {
-        this.isRequestIn = this.showRequestButton = true;
-        return;
+        var requestOutTask = this.db.object('/userInfo/'+this.authService.currentUser.uid + '/friendRequestOut/' + this.friendUser.uid).valueChanges().pipe(take(1));
+        var requestInTask = this.db.object('/userInfo/'+this.authService.currentUser.uid + '/friendRequestIn/' + this.friendUser.uid).valueChanges().pipe(take(1));
+        var fork = forkJoin([requestOutTask, requestInTask]);
+        fork.subscribe(result => {
+          if(result[0]) this.isRequestOut = true;
+          if(result[1]) this.isRequestIn = true;
+          this.showRequestButton = true;
+          this.isLoading = false;
+        });
       }
     });
   }
@@ -375,7 +378,13 @@ export class PopupComponent implements OnInit {
 
     //Cast to a File() type
     return <File>theBlob;
-}
+  }
+
+  hideAllPopups() {
+    this.showCoverPopUp = false;
+    this.showFriendPopUp = false;
+  }
+
 
 
 }

@@ -39,18 +39,28 @@
 
 <div *ngIf="showFriendPopUp" style="text-align: center;">
   <div id="open-modal" class="modal-window">
-    <div>
+    <div style="margin: 45% 0 0 7%">
       <a (click)="hideFriendPopUp()" title="Close" class="modal-close">&times;</a>
-      <h2>{{friendUser.firstName}} {{friendUser.lastName}}</h2>
-      <div *ngIf="!isFriend && showRequestButton">
-        <span *ngIf="!isRequestOut && !isRequestIn" (click)="sendFriendRequest()"
-          style="margin: 10px 0px 10px 0; width:300px; font-size:14px;" class="btn btn--full">Add Friend</span>
-        <span *ngIf="isRequestOut" style="margin: 10px 0px 10px 0; width:300px; font-size:14px;"
-          class="btn btn--full">Friend Request Sent!</span>
-        <span *ngIf="isRequestIn" (click)="acceptFriendRequest()"
-          style="margin: 10px 0px 10px 0; width:300px; font-size:14px;" class="btn btn--full">Accept Friend
-          Request</span>
+
+      <div *ngIf="!isLoading">
+        <br />
+        <img src="{{friendUser.profilePicUrl == 'null'? './assets/images/users/blank_profile.png' : friendUser.profilePicUrl}}" class="profilePic">
+        <h2 style="margin: 0 0 0 0">{{friendUser.firstName}} {{friendUser.lastName}}</h2>
+        <p>{{friendUser.userName}}</p>
+
+        <div *ngIf="!isFriend && showRequestButton">
+          <span *ngIf="!isRequestOut && !isRequestIn" (click)="sendFriendRequest()" style="margin: 10px 0px 10px 0; width:300px; font-size:14px;"
+            class="btn btn--full">Add Friend</span>
+          <span *ngIf="isRequestOut" style="margin: 10px 0px 10px 0; width:300px; font-size:14px;" class="btn btn--full">Friend Request Sent!</span>
+          <span *ngIf="isRequestIn" (click)="acceptFriendRequest()" style="margin: 10px 0px 10px 0; width:300px; font-size:14px;" class="btn btn--full">Accept Friend Request
+          </span>
+        </div>
+        <div *ngIf="isFriend">
+          <span style="margin: 10px 0px 10px 0; width:300px; font-size:16px;" class="btn btn--full">View Bars Attending Tonight</span>
+          <span style="margin: 0px 0px 0px 0; width:300px; font-size:16px;" class="btn btn--full">View Friends List</span>
+        </div>
       </div>
+
     </div>
   </div>
 </div>
@@ -58,45 +68,47 @@
 <!-- Profile Pic Editing -->
 <div *ngIf="showProfilePicEditing" style="text-align: center;">
   <div id="open-modal" class="modal-window" style="z-index: 11000;">
-    <div  style="bottom: 100px; padding-bottom: 1rem;">
+    <div style="bottom: 100px; padding-bottom: 1rem;">
       <a (click)="hideProfilePicEditing()" title="Close" class="modal-close">&times;</a>
       <div *ngIf="!submittingProfilePic">
         <h2>Edit Profile Picture</h2>
 
         <div *ngIf="showCurrentAvatar" style="margin-top: 20px;">
-            <div ><img style="max-width: 100%" src="{{currentAvatarUrl == 'null'? './assets/images/users/blank_profile.png' : currentAvatarUrl}}"></div>
-  
-            <div class="upload-btn-wrapper">
-                <span style="margin: 10px 0px 10px 0; width:150px; font-size:14px;" class="btn btn--full">Change Picture</span>
-                <input type="file" name="myfile" (change)="fileChangeEvent($event)" accept="image/*" />
-              </div>
+          <div>
+            <img style="max-width: 100%" src="{{currentAvatarUrl == 'null'? './assets/images/users/blank_profile.png' : currentAvatarUrl}}">
+          </div>
+
+          <div class="upload-btn-wrapper">
+            <span style="margin: 10px 0px 10px 0; width:150px; font-size:14px;" class="btn btn--full">Change Picture</span>
+            <input type="file" name="myfile" (change)="fileChangeEvent($event)" accept="image/*" />
+          </div>
         </div>
-  
+
         <div *ngIf="!showCurrentAvatar" style="margin-top: 20px;">
-            <div>
-                <image-cropper style="max-height: 350px;" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1 / 1"
-                [resizeToWidth]="300" format="jpeg" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
-                (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()"></image-cropper>
-            </div>
-            <span (click)="doneEditing()" style="margin: 20px 0px 0px 0; width:150px; font-size:14px;" class="btn btn--full">Done</span>
+          <div>
+            <image-cropper style="max-height: 350px;" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1 / 1"
+              [resizeToWidth]="300" format="jpeg" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
+              (loadImageFailed)="loadImageFailed()"></image-cropper>
+          </div>
+          <span (click)="doneEditing()" style="margin: 20px 0px 0px 0; width:150px; font-size:14px;" class="btn btn--full">Done</span>
         </div>
       </div>
 
       <div *ngIf="submittingProfilePic">
         <div style="width:100%;">
           <div class="checkmarkHolder">
-  
+
             <div id="circleLoader" class="circle-loader">
               <div id="checkLoader" class="checkmarkHidden draw"></div>
             </div>
-  
+
           </div>
         </div>
       </div>
-      
-      
+
+
     </div>
 
-    
+
   </div>
 </div>

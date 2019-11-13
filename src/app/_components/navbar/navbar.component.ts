@@ -13,6 +13,23 @@ export class NavbarComponent implements OnInit {
   constructor(private mainService: MainService) { }
 
   ngOnInit() {
+    this.mainService.userSlideClick.subscribe(value => {
+      if(value > -1){
+        switch (value){
+          case 0: 
+            this.icon0Click();
+            break;
+          case 1:
+            this.icon1Click(); break;
+          case 2:
+            this.icon2Click(); break;
+          case 3:
+            this.icon3Click(); break;
+          case 4:
+            this.icon4Click(); break;
+        }
+      }
+    })
   }
 
 

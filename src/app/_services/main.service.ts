@@ -37,6 +37,10 @@ export class MainService {
   showFriendPopUp: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   friendPopUpUser: User = null;
   showProfilePicEditing: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  hideAllPopUps: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+  //User slide pagechanges
+  userSlideClick: BehaviorSubject<number> = new BehaviorSubject<number>(-1);
 
   constructor(private router: Router) {
     this.barSlide = new BehaviorSubject<boolean>(false);
@@ -65,6 +69,8 @@ export class MainService {
   changePage(num: number){
     if(this.userSlideValue == true) this.changeUserSlide();
     if(this.currentPageValue == num) return;
+
+    this.hideAllPopUps.next(true);
 
     //Saved state pages mneed to log their url
     if(this.router.url.includes("/main/barlist")) this.barlistUrl = this.router.url;
