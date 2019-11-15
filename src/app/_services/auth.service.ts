@@ -69,6 +69,7 @@ export class AuthService {
 
       //Get About Info
       this.currentUser.firstName = userInfo.about.firstName;
+      this.currentUser.lastName = userInfo.about.lastName;
       this.currentUser.profilePicUrl = userInfo.about.profilePicUrl;
 
       //Mark As Finished

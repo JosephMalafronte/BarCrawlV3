@@ -329,10 +329,6 @@ export class BarpageCoverComponent implements OnInit {
     }
   
   
-    
-  
-  
-  
     convertArrayJson(array: number[]){
       return '[' + array.toString() + ']';
     }

@@ -3219,7 +3219,7 @@ var SearchComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHAvX3BhZ2VzL3NldHRpbmdzL3NldHRpbmdzLmNvbXBvbmVudC5jc3MifQ== */"
+module.exports = ".center-screen {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    text-align: center;\n    min-height: 100vh;\n  }\n\n.circle-loader {\n    margin-bottom: 0;\n    border: 3px solid rgba(0, 0, 0, 0.2);\n    border-left-color: #F2C843;\n    -webkit-animation: loader-spin 1.2s infinite linear;\n            animation: loader-spin 1.2s infinite linear;\n    position: relative;\n    display: inline-block;\n    vertical-align: top;\n    border-radius: 50%;\n    width: 7em;\n    height: 7em;\n  }\n\n.load-complete {\n    -webkit-animation: none;\n    animation: none;\n    border-color: #F2C843;\n    transition: border 500ms ease-out;\n  }\n\n.checkmarkHidden {\n    display: none;\n  }\n\n.checkmark{\n    display:auto;\n  }\n\n.checkmark.draw:after {\n    -webkit-animation-duration: 800ms;\n            animation-duration: 800ms;\n    -webkit-animation-timing-function: ease;\n            animation-timing-function: ease;\n    -webkit-animation-name: checkmark;\n            animation-name: checkmark;\n    -webkit-transform: scaleX(-1) rotate(135deg);\n            transform: scaleX(-1) rotate(135deg);\n  }\n\n.checkmark:after {\n    opacity: 1;\n    height: 3.5em;\n    width: 1.75em;\n    -webkit-transform-origin: left top;\n            transform-origin: left top;\n    border-right: 4px solid #F2C843;\n    border-top: 4px solid #F2C843;\n    content: '';\n    left: 1.75em;\n    top: 3.5em;\n    position: absolute;\n  }\n\n@-webkit-keyframes loader-spin {\n    0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n   }\n    100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n   }\n  }\n\n@keyframes loader-spin {\n    0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n   }\n    100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n   }\n  }\n\n@-webkit-keyframes checkmark {\n    0% {\n        height: 0;\n        width: 0;\n        opacity: 1;\n   }\n    20% {\n        height: 0;\n        width: 1.75em;\n        opacity: 1;\n   }\n    40% {\n        height: 3.5em;\n        width: 1.75em;\n        opacity: 1;\n   }\n    100% {\n        height: 3.5em;\n        width: 1.75em;\n        opacity: 1;\n   }\n  }\n\n@keyframes checkmark {\n    0% {\n        height: 0;\n        width: 0;\n        opacity: 1;\n   }\n    20% {\n        height: 0;\n        width: 1.75em;\n        opacity: 1;\n   }\n    40% {\n        height: 3.5em;\n        width: 1.75em;\n        opacity: 1;\n   }\n    100% {\n        height: 3.5em;\n        width: 1.75em;\n        opacity: 1;\n   }\n  }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9fcGFnZXMvc2V0dGluZ3Mvc2V0dGluZ3MuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGFBQWE7SUFDYixzQkFBc0I7SUFDdEIsdUJBQXVCO0lBQ3ZCLG1CQUFtQjtJQUNuQixrQkFBa0I7SUFDbEIsaUJBQWlCO0VBQ25COztBQUVGO0lBQ0ksZ0JBQWdCO0lBQ2hCLG9DQUFvQztJQUNwQywwQkFBMEI7SUFDMUIsbURBQTJDO1lBQTNDLDJDQUEyQztJQUMzQyxrQkFBa0I7SUFDbEIscUJBQXFCO0lBQ3JCLG1CQUFtQjtJQUNuQixrQkFBa0I7SUFDbEIsVUFBVTtJQUNWLFdBQVc7RUFDYjs7QUFDQTtJQUNFLHVCQUF1QjtJQUN2QixlQUFlO0lBQ2YscUJBQXFCO0lBQ3JCLGlDQUFpQztFQUNuQzs7QUFDQTtJQUNFLGFBQWE7RUFDZjs7QUFDQTtJQUNFLFlBQVk7RUFDZDs7QUFDQTtJQUNFLGlDQUF5QjtZQUF6Qix5QkFBeUI7SUFDekIsdUNBQStCO1lBQS9CLCtCQUErQjtJQUMvQixpQ0FBeUI7WUFBekIseUJBQXlCO0lBQ3pCLDRDQUFvQztZQUFwQyxvQ0FBb0M7RUFDdEM7O0FBQ0E7SUFDRSxVQUFVO0lBQ1YsYUFBYTtJQUNiLGFBQWE7SUFDYixrQ0FBMEI7WUFBMUIsMEJBQTBCO0lBQzFCLCtCQUErQjtJQUMvQiw2QkFBNkI7SUFDN0IsV0FBVztJQUNYLFlBQVk7SUFDWixVQUFVO0lBQ1Ysa0JBQWtCO0VBQ3BCOztBQUlBO0lBQ0U7UUFDSSwrQkFBdUI7Z0JBQXZCLHVCQUF1QjtHQUM1QjtJQUNDO1FBQ0ksaUNBQXlCO2dCQUF6Qix5QkFBeUI7R0FDOUI7RUFDRDs7QUFQQTtJQUNFO1FBQ0ksK0JBQXVCO2dCQUF2Qix1QkFBdUI7R0FDNUI7SUFDQztRQUNJLGlDQUF5QjtnQkFBekIseUJBQXlCO0dBQzlCO0VBQ0Q7O0FBQ0E7SUFDRTtRQUNJLFNBQVM7UUFDVCxRQUFRO1FBQ1IsVUFBVTtHQUNmO0lBQ0M7UUFDSSxTQUFTO1FBQ1QsYUFBYTtRQUNiLFVBQVU7R0FDZjtJQUNDO1FBQ0ksYUFBYTtRQUNiLGFBQWE7UUFDYixVQUFVO0dBQ2Y7SUFDQztRQUNJLGFBQWE7UUFDYixhQUFhO1FBQ2IsVUFBVTtHQUNmO0VBQ0Q7O0FBckJBO0lBQ0U7UUFDSSxTQUFTO1FBQ1QsUUFBUTtRQUNSLFVBQVU7R0FDZjtJQUNDO1FBQ0ksU0FBUztRQUNULGFBQWE7UUFDYixVQUFVO0dBQ2Y7SUFDQztRQUNJLGFBQWE7UUFDYixhQUFhO1FBQ2IsVUFBVTtHQUNmO0lBQ0M7UUFDSSxhQUFhO1FBQ2IsYUFBYTtRQUNiLFVBQVU7R0FDZjtFQUNEIiwiZmlsZSI6ImFwcC9fcGFnZXMvc2V0dGluZ3Mvc2V0dGluZ3MuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jZW50ZXItc2NyZWVuIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgbWluLWhlaWdodDogMTAwdmg7XG4gIH1cblxuLmNpcmNsZS1sb2FkZXIge1xuICAgIG1hcmdpbi1ib3R0b206IDA7XG4gICAgYm9yZGVyOiAzcHggc29saWQgcmdiYSgwLCAwLCAwLCAwLjIpO1xuICAgIGJvcmRlci1sZWZ0LWNvbG9yOiAjRjJDODQzO1xuICAgIGFuaW1hdGlvbjogbG9hZGVyLXNwaW4gMS4ycyBpbmZpbml0ZSBsaW5lYXI7XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgICB2ZXJ0aWNhbC1hbGlnbjogdG9wO1xuICAgIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgICB3aWR0aDogN2VtO1xuICAgIGhlaWdodDogN2VtO1xuICB9XG4gIC5sb2FkLWNvbXBsZXRlIHtcbiAgICAtd2Via2l0LWFuaW1hdGlvbjogbm9uZTtcbiAgICBhbmltYXRpb246IG5vbmU7XG4gICAgYm9yZGVyLWNvbG9yOiAjRjJDODQzO1xuICAgIHRyYW5zaXRpb246IGJvcmRlciA1MDBtcyBlYXNlLW91dDtcbiAgfVxuICAuY2hlY2ttYXJrSGlkZGVuIHtcbiAgICBkaXNwbGF5OiBub25lO1xuICB9XG4gIC5jaGVja21hcmt7XG4gICAgZGlzcGxheTphdXRvO1xuICB9XG4gIC5jaGVja21hcmsuZHJhdzphZnRlciB7XG4gICAgYW5pbWF0aW9uLWR1cmF0aW9uOiA4MDBtcztcbiAgICBhbmltYXRpb24tdGltaW5nLWZ1bmN0aW9uOiBlYXNlO1xuICAgIGFuaW1hdGlvbi1uYW1lOiBjaGVja21hcms7XG4gICAgdHJhbnNmb3JtOiBzY2FsZVgoLTEpIHJvdGF0ZSgxMzVkZWcpO1xuICB9XG4gIC5jaGVja21hcms6YWZ0ZXIge1xuICAgIG9wYWNpdHk6IDE7XG4gICAgaGVpZ2h0OiAzLjVlbTtcbiAgICB3aWR0aDogMS43NWVtO1xuICAgIHRyYW5zZm9ybS1vcmlnaW46IGxlZnQgdG9wO1xuICAgIGJvcmRlci1yaWdodDogNHB4IHNvbGlkICNGMkM4NDM7XG4gICAgYm9yZGVyLXRvcDogNHB4IHNvbGlkICNGMkM4NDM7XG4gICAgY29udGVudDogJyc7XG4gICAgbGVmdDogMS43NWVtO1xuICAgIHRvcDogMy41ZW07XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICB9XG4gIFxuICBcbiAgXG4gIEBrZXlmcmFtZXMgbG9hZGVyLXNwaW4ge1xuICAgIDAlIHtcbiAgICAgICAgdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7XG4gICB9XG4gICAgMTAwJSB7XG4gICAgICAgIHRyYW5zZm9ybTogcm90YXRlKDM2MGRlZyk7XG4gICB9XG4gIH1cbiAgQGtleWZyYW1lcyBjaGVja21hcmsge1xuICAgIDAlIHtcbiAgICAgICAgaGVpZ2h0OiAwO1xuICAgICAgICB3aWR0aDogMDtcbiAgICAgICAgb3BhY2l0eTogMTtcbiAgIH1cbiAgICAyMCUge1xuICAgICAgICBoZWlnaHQ6IDA7XG4gICAgICAgIHdpZHRoOiAxLjc1ZW07XG4gICAgICAgIG9wYWNpdHk6IDE7XG4gICB9XG4gICAgNDAlIHtcbiAgICAgICAgaGVpZ2h0OiAzLjVlbTtcbiAgICAgICAgd2lkdGg6IDEuNzVlbTtcbiAgICAgICAgb3BhY2l0eTogMTtcbiAgIH1cbiAgICAxMDAlIHtcbiAgICAgICAgaGVpZ2h0OiAzLjVlbTtcbiAgICAgICAgd2lkdGg6IDEuNzVlbTtcbiAgICAgICAgb3BhY2l0eTogMTtcbiAgIH1cbiAgfVxuIl19 */"
 
 /***/ }),
 
@@ -3230,7 +3230,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"margin-top: 20%; text-align: center;\">\n  <h4 style=\"font-weight: bold; font-size: 30px;\">SETTINGS</h4>\n  <div class=\"loginform\">\n\n    <label style=\"display: inline-block\">First Name:</label>\n    <input id=\"changeFirstName\" (click)=\"focus('changeFirstName')\" type=\"text\" [(ngModel)]=\"firstName\" class=\"form_input required\"\n      placeholder=\"First Name\" />\n\n\n    <p style=\"text-align: left; color:red;\" *ngIf=\"passwordsDoNotMatch\">Passwords do not match.</p>\n\n\n  </div>\n</div>"
+module.exports = "<div *ngIf=\"!isLoading\">\n  <div style=\"margin-top: 20%; text-align: center; padding-bottom: 20%;\">\n    <h4 style=\"font-weight: bold; font-size: 30px;\">SETTINGS</h4>\n    <div class=\"loginform\" style=\"display: inline-flex;\">\n      <label style=\"display: inline-block; width:150px; font-weight: bold; padding-top: 10px;\">First Name:</label>\n      <input style=\"display: inline-block; margin-right: 36px;\" id=\"changeFirstName\" (click)=\"focus('changeFirstName')\" type=\"text\"\n        [(ngModel)]=\"firstName\" class=\"form_input required\" placeholder=\"First Name\" />\n    </div>\n    <div class=\"loginform\" style=\"display: inline-flex;\">\n      <label style=\"display: inline-block; width:150px; font-weight: bold; padding-top: 10px;\">Last Name:</label>\n      <input style=\"display: inline-block; margin-right: 36px;\" id=\"changeLastName\" (click)=\"focus('changeLastName')\" type=\"text\"\n        [(ngModel)]=\"lastName\" class=\"form_input required\" placeholder=\"Last Name\" />\n    </div>\n\n    <div class=\"loginform\" style=\"display: inline-flex;\">\n      <div style=\"width: 94%;\">\n        <input (click)=\"saveChanges()\" readonly=\"readonly\" class=\"form_submit\" value=\"SAVE CHANGES\" />\n      </div>\n    </div>\n\n    <h4 style=\"font-weight: bold; font-size: 30px; padding-top: 30px;\">TESTING FEEDBACK</h4>\n    <div class=\"loginform\" style=\"display: inline-flex;\">\n      <label style=\"display: inline-block; width:110px; font-weight: bold; padding-top: 10px; text-align: left;\">Report Issue:</label>\n      <textarea [(ngModel)]=\"bugReport\" style=\"border: solid 2px black; height: 110px;\" name=\"message\" rows=\"10\" cols=\"30\" placeholder=\"Enter information about the bug.\"></textarea>\n    </div>\n\n    <div class=\"loginform\" style=\"display: inline-flex;\">\n      <div style=\"width: 94%;\">\n        <input (click)=\"submitBug()\" readonly=\"readonly\" class=\"form_submit\" value=\"SUBMIT BUG\" />\n      </div>\n    </div>\n\n    <div class=\"loginform\" style=\"display: inline-flex;\">\n      <label style=\"display: inline-block; width:110px; font-weight: bold; padding-top: 10px; text-align: left;\">Recommend Feature:</label>\n      <textarea [(ngModel)]=\"featureRequest\" style=\"border: solid 2px black; height: 110px;\" name=\"message\" rows=\"10\" cols=\"30\" placeholder=\"Enter information about your feature recommendation.\"></textarea>\n    </div>\n\n    <div class=\"loginform\" style=\"display: inline-flex;\">\n      <div style=\"width: 94%;\">\n        <input (click)=\"submitFeatureRequest()\" readonly=\"readonly\" class=\"form_submit\" value=\"SUBMIT FEATURE REQUEST\" />\n      </div>\n    </div>\n\n  </div>\n</div>\n\n<!--Loading-->\n<div *ngIf=\"isLoading\" class=\"center-screen\">\n  <div id=\"circleLoader\" class=\"circle-loader\">\n    <div id=\"checkLoader\" class=\"checkmarkHidden draw\"></div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -3246,12 +3246,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SettingsComponent", function() { return SettingsComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../_services/auth.service */ "./src/app/_services/auth.service.ts");
+/* harmony import */ var _angular_fire_database__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/fire/database */ "./node_modules/@angular/fire/database/index.js");
+
+
 
 
 var SettingsComponent = /** @class */ (function () {
-    function SettingsComponent() {
+    function SettingsComponent(authService, db) {
+        this.authService = authService;
+        this.db = db;
+        this.isLoading = false;
     }
     SettingsComponent.prototype.ngOnInit = function () {
+        this.user = this.authService.currentUser;
+        console.log(this.user);
+        this.firstName = this.user.firstName;
+        this.lastName = this.user.lastName;
     };
     SettingsComponent.prototype.focus = function (id) {
         document.getElementById(id).focus();
@@ -3260,13 +3271,51 @@ var SettingsComponent = /** @class */ (function () {
                 this.blur();
         });
     };
+    SettingsComponent.prototype.saveChanges = function () {
+        this.isLoading = true;
+        var self = this;
+        setTimeout(function () {
+            self.stopLoadingAnimation();
+        }, 5000);
+    };
+    SettingsComponent.prototype.submitBug = function () {
+        var _this = this;
+        this.isLoading = true;
+        var test = this.db.database.ref('/testing/bugReports').push({
+            userId: this.authService.currentUser.uid,
+            fullName: this.authService.currentUser.firstName + ' ' + this.authService.currentUser.lastName,
+            text: this.bugReport
+        }).then(function (ref) {
+            _this.stopLoadingAnimation();
+        });
+    };
+    SettingsComponent.prototype.submitFeatureRequest = function () {
+        var _this = this;
+        this.isLoading = true;
+        var test = this.db.database.ref('/testing/featureRequest').push({
+            userId: this.authService.currentUser.uid,
+            fullName: this.authService.currentUser.firstName + ' ' + this.authService.currentUser.lastName,
+            text: this.featureRequest
+        }).then(function (ref) {
+            _this.stopLoadingAnimation();
+        });
+    };
+    SettingsComponent.prototype.stopLoadingAnimation = function () {
+        var _this = this;
+        document.getElementById('circleLoader').classList.add('load-complete');
+        document.getElementById('checkLoader').classList.remove('checkmarkHidden');
+        document.getElementById('checkLoader').classList.add('checkmark');
+        setTimeout(function (_) {
+            _this.isLoading = false;
+        }, 1000);
+    };
     SettingsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-settings',
             template: __webpack_require__(/*! ./settings.component.html */ "./src/app/_pages/settings/settings.component.html"),
             styles: [__webpack_require__(/*! ./settings.component.css */ "./src/app/_pages/settings/settings.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _angular_fire_database__WEBPACK_IMPORTED_MODULE_3__["AngularFireDatabase"]])
     ], SettingsComponent);
     return SettingsComponent;
 }());
@@ -3347,6 +3396,7 @@ var AuthService = /** @class */ (function () {
             _this.listenForFriendRequest();
             //Get About Info
             _this.currentUser.firstName = userInfo.about.firstName;
+            _this.currentUser.lastName = userInfo.about.lastName;
             _this.currentUser.profilePicUrl = userInfo.about.profilePicUrl;
             //Mark As Finished
             _this.authStateValue = true;
