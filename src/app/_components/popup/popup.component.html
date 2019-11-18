@@ -17,20 +17,9 @@
     <div *ngIf="coverSubmissionLoader">
       <div style="width:100%;">
         <div class="checkmarkHolder">
-          <!-- <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" x="0px"
-                      y="0px" viewBox="0, 0, 100, 100" id="checkmark">
-                      <g transform="">
-                        <circle id="path" class="path" fill="none" stroke="#F2C843" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="44" />
-                        <circle id="fill" class="fill" fill="none" stroke="#F2C843" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="44" />
-                        <polyline id="check" class="check" fill="none" stroke="#F2C843" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10" points="70,35 45,65 30,52  "
-                        />
-                      </g>
-                    </svg> -->
-
           <div id="circleLoader" class="circle-loader">
             <div id="checkLoader" class="checkmarkHidden draw"></div>
           </div>
-
         </div>
       </div>
     </div>
@@ -40,9 +29,10 @@
 <div *ngIf="showFriendPopUp" style="text-align: center;">
   <div id="open-modal" class="modal-window">
     <div style="margin: 45% 0 0 7%">
+      <a *ngIf="!isLoading && showBars" style="left: 0px; top:3px;" (click)="backFromBars()" title="Close" class="modal-close" >&#8592;</a>
       <a (click)="hideFriendPopUp()" title="Close" class="modal-close">&times;</a>
 
-      <div *ngIf="!isLoading">
+      <div *ngIf="!isLoading && !showFriends && !showBars">
         <br />
         <img src="{{friendUser.profilePicUrl == 'null'? './assets/images/users/blank_profile.png' : friendUser.profilePicUrl}}" class="profilePic">
         <h2 style="margin: 0 0 0 0">{{friendUser.firstName}} {{friendUser.lastName}}</h2>
@@ -56,10 +46,49 @@
           </span>
         </div>
         <div *ngIf="isFriend">
-          <span style="margin: 10px 0px 10px 0; width:300px; font-size:16px;" class="btn btn--full">View Bars Attending Tonight</span>
-          <span style="margin: 0px 0px 0px 0; width:300px; font-size:16px;" class="btn btn--full">View Friends List</span>
+          <span (click)="activateBars()" style="margin: 10px 0px 10px 0; width:300px; font-size:16px;" class="btn btn--full">View Bars Attending Tonight</span>
+          <span (click)="activateFriends()" style="margin: 0px 0px 0px 0; width:300px; font-size:16px;" class="btn btn--full">View Friends List</span>
         </div>
       </div>
+
+      <div *ngIf="!isLoading && showBars">
+        <div style="padding: 10px 0 0 0; border-bottom:1px black solid;">
+          <h3 style="padding: 0 0 0 0;">
+            <span>Bars Attending Tonight</span>
+          </h3>
+        </div>
+          <div style="height: 200px; padding: 0 0 20px 0; margin-top: 30px;" id="pages_maincontent" [hidden]="isLoading">
+            <div class="page_single layout_fullwidth_padding">
+              <ul class="features_list" style="padding: 0px 0 0 0; position:relative">
+                <li *ngFor="let barPage of friendUserBars">
+                  <div style="padding-bottom: 10px;">
+                    <span class="features_list_span">
+                      <img style="width:20%;" src="{{barPage.barPicture1Url}}">
+                      <span class="features_list_span_text" style="font-size: 110%;">{{barPage.barName}}</span>
+                    </span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+        </div>
+
+        <div style="padding-bottom:200px;"></div>
+      </div>
+
+      <div *ngIf="!isLoading && showFriends">
+        <div style="padding: 10px 0 0 0; border-bottom:1px black solid;">
+          <h3 style="padding: 0 0 0 0;">
+            <span>Friends List</span>
+          </h3>
+        </div>
+      </div>
+
+      <div *ngIf="isLoading">
+        <div id="circleLoader" class="circle-loader">
+          <div id="checkLoader" class="checkmarkHidden draw"></div>
+        </div>
+      </div>
+
 
     </div>
   </div>

@@ -28,9 +28,13 @@ export class PopupComponent implements OnInit {
   showFriendPopUp: boolean = false;
   showRequestButton: boolean = false;
   friendUser: User = null;
+  friendUserBars: any[] = [];
+  friendUserFriends: any[] = [];
   isFriend: boolean = false;
   isRequestOut: boolean = false;
   isRequestIn: boolean = false;
+  showBars: boolean = false;
+  showFriends: boolean = false;
 
   //Profile Pic Editing Variables
   showProfilePicEditing: boolean = false;
@@ -66,6 +70,8 @@ export class PopupComponent implements OnInit {
         //Load data 
         this.isLoading = true;
         this.loadUserFriendStatus();
+        this.showBars = false;
+        this.showFriends = false;
         this.showFriendPopUp = true;
       }
     })
@@ -184,6 +190,48 @@ export class PopupComponent implements OnInit {
 
     this.authService.acceptFriendRequest(this.friendUser.uid);
   }
+
+  activateBars(){
+    this.isLoading = true;
+    this.friendUserBars = [];
+    this.showBars = true;
+    this.db.list("barPages").valueChanges().pipe(take(1)).subscribe((result:any) => {
+      
+      result.forEach(barPage => {
+        if(this.friendUser.barsAttending.indexOf(barPage.barId) >= 0){
+          this.friendUserBars.push(barPage);
+        }
+      });
+      this.isLoading = false;
+    });
+  }
+
+  backFromBars() {
+    this.showBars = false;
+  }
+
+  activateFriends(){
+    this.isLoading = true;
+    this.friendUserFriends = [];
+    this.showFriends = true;
+    this.db.list("userInfo/" + this.friendUser.uid +"/friends").valueChanges().pipe(take(1)).subscribe((result: any) => {
+      this.friendUser.friendIds = result;
+      let requestArray = [];
+      for(var i=0; i<result.length; i++){
+        let id: string = result[i];
+        var request = this.db.object('userInfo/' + id + '/about').valueChanges().pipe(take(1));
+        requestArray.push(request);
+      }
+
+      forkJoin(requestArray).subscribe( responseList => {
+        responseList.forEach(friend => {
+          this.friendUserFriends.push(friend);
+        });
+        console.log(this.friendUserFriends);
+      });
+    })
+  }
+
 
 
   // Profile Pic Editing
@@ -384,6 +432,7 @@ export class PopupComponent implements OnInit {
     this.showCoverPopUp = false;
     this.showFriendPopUp = false;
   }
+
 
 
 

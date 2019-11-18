@@ -39,7 +39,8 @@ export class SettingsComponent implements OnInit {
 
     //Set checkmarks (find better way to do this in future)
     if(this.authService.currentUser.locationTracking) {
-      document.getElementById("trackLocationCheckbox").setAttribute("clicked", "true");
+      const ele = document.getElementById("trackLocationCheckbox") as HTMLInputElement;
+      ele.checked = true;
       this.trackLocation = true;
     }
   }
