@@ -1,4 +1,4 @@
-<div *ngIf="!isLoading">
+<div [hidden]="isLoading">
   <div style="margin-top: 20%; text-align: center; padding-bottom: 20%;">
     <h4 style="font-weight: bold; font-size: 30px;">SETTINGS</h4>
     <div class="loginform" style="display: inline-flex;">
@@ -10,6 +10,23 @@
       <label style="display: inline-block; width:150px; font-weight: bold; padding-top: 10px;">Last Name:</label>
       <input style="display: inline-block; margin-right: 36px;" id="changeLastName" (click)="focus('changeLastName')" type="text"
         [(ngModel)]="lastName" class="form_input required" placeholder="Last Name" />
+    </div>
+
+    <div class="loginform" style="display: inline-flex;">
+        <label style="display: inline-block; width:150px; font-weight: bold; padding-top: 10px;">Username:</label>
+        <input style="display: inline-block; margin-right: 36px;" id="changeUsername" (click)="focus('changeUsername')" type="text"
+          [(ngModel)]="userName" class="form_input required" placeholder="Username" />
+      </div>
+
+    <div class="loginform" style="display: inline-flex;">
+      <label style="display: inline-block; width:200px; text-align: left; font-weight: bold; padding: 10px 0px 0px 10px;">Enable Location Sharing for Bar Capacity Tracking:</label>
+      <!-- Rounded switch -->
+      <div style="padding: 3% 0 0 18%" (click)="locationTrackingSwitch()">
+          <label class="switch">
+              <input id="trackLocationCheckbox" type="checkbox">
+              <span class="slider round"></span>
+            </label>
+      </div>
     </div>
 
     <div class="loginform" style="display: inline-flex;">
@@ -32,7 +49,8 @@
 
     <div class="loginform" style="display: inline-flex;">
       <label style="display: inline-block; width:110px; font-weight: bold; padding-top: 10px; text-align: left;">Recommend Feature:</label>
-      <textarea [(ngModel)]="featureRequest" style="border: solid 2px black; height: 110px;" name="message" rows="10" cols="30" placeholder="Enter information about your feature recommendation."></textarea>
+      <textarea [(ngModel)]="featureRequest" style="border: solid 2px black; height: 110px;" name="message" rows="10" cols="30"
+        placeholder="Enter information about your feature recommendation."></textarea>
     </div>
 
     <div class="loginform" style="display: inline-flex;">

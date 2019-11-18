@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../_services/auth.service';
 import {User} from '../../_models/User.Model';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { take } from 'rxjs/operators';
 
 
 @Component({
@@ -15,10 +16,14 @@ export class SettingsComponent implements OnInit {
   user: User;
   firstName: string;
   lastName: string;
+  userName: string;
   bugReport: string;
   featureRequest: string;
 
   isLoading: boolean = false;
+
+  //Switches
+  trackLocation: boolean = false;
 
   constructor(private authService: AuthService, private db: AngularFireDatabase) { }
 
@@ -27,6 +32,16 @@ export class SettingsComponent implements OnInit {
     console.log(this.user);
     this.firstName = this.user.firstName;
     this.lastName = this.user.lastName;
+
+    //Shave off the @ sign
+    if(this.user.userName[0] == '@') this.userName = this.user.userName.substr(1);
+    else this.userName = this.user.userName;
+
+    //Set checkmarks (find better way to do this in future)
+    if(this.authService.currentUser.locationTracking) {
+      document.getElementById("trackLocationCheckbox").setAttribute("clicked", "true");
+      this.trackLocation = true;
+    }
   }
 
   focus(id: string){
@@ -40,10 +55,24 @@ export class SettingsComponent implements OnInit {
   saveChanges() {
     this.isLoading = true;
 
-    var self = this;
-    setTimeout(function () {
-      self.stopLoadingAnimation();
-    }, 5000);
+    this.db.object('/userInfo/' + this.user.uid).valueChanges().pipe(take(1)).subscribe((userObject: any) => {
+      userObject.about.firstName = this.firstName;
+      this.authService.currentUser.firstName = this.firstName;
+      userObject.about.lastName = this.lastName;
+      this.authService.currentUser.lastName = this.lastName;
+      userObject.about.userName = this.userName;
+      this.authService.currentUser.userName = this.userName;
+      userObject.settings.locationTracking = this.trackLocation;
+      this.authService.currentUser.locationTracking = this.trackLocation;
+
+      console.log(userObject);
+
+      this.db.object('/userInfo/' + this.user.uid).set(userObject).then(_ => {
+      this.stopLoadingAnimation();
+        
+      });
+    });
+
   }
 
   submitBug() {
@@ -75,6 +104,18 @@ export class SettingsComponent implements OnInit {
     setTimeout(_ => {
       this.isLoading = false;
     }, 1000);
+  }
+
+  duplicateStop: boolean = false;
+  locationTrackingSwitch(){
+    if(this.duplicateStop == true) {
+      this.duplicateStop = false;
+      return;
+    }
+    else this.duplicateStop = true;
+    this.trackLocation = !this.trackLocation;
+    console.log(this.trackLocation);
+    document.getElementById("trackLocationCheckbox").click();
   }
 
 

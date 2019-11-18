@@ -72,6 +72,10 @@ export class AuthService {
       this.currentUser.lastName = userInfo.about.lastName;
       this.currentUser.profilePicUrl = userInfo.about.profilePicUrl;
 
+      //Set settings
+      if(userInfo.settings.locationTracking) this.currentUser.locationTracking = userInfo.settings.locationTracking;
+      else this.currentUser.locationTracking = false;
+
       //Mark As Finished
       this.authStateValue = true;
       this.authStateSet.next(true);

@@ -19,6 +19,9 @@ export class User {
     //Attending
     barsAttending: number[] = [];
 
+    //Settings
+    locationTracking: boolean;
+
 
     constructor(auth?: any){
         // If constructing without auth just create blank user
