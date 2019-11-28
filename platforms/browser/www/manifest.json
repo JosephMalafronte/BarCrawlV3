@@ -6,62 +6,6 @@
   "version": "io.cordova.hellocordova",
   "description": "BarCrawl v4.0",
   "author": "Joseph Malafronte",
-  "icons": [
-    {
-      "src": "AppStore/AppIcon1024.png",
-      "type": "image/png",
-      "sizes": "180x180"
-    },
-    {
-      "src": "AppStore/AppIcon1024.png",
-      "type": "image/png",
-      "sizes": "60x60"
-    },
-    {
-      "src": "AppStore/AppIcon1024.png",
-      "type": "image/png",
-      "sizes": "76x76"
-    },
-    {
-      "src": "AppStore/AppIcon1024.png",
-      "type": "image/png",
-      "sizes": "152x152"
-    },
-    {
-      "src": "AppStore/AppIcon1024.png",
-      "type": "image/png",
-      "sizes": "167x167"
-    },
-    {
-      "src": "AppStore/AppIcon1024.png",
-      "type": "image/png",
-      "sizes": "29x29"
-    },
-    {
-      "src": "AppStore/AppIcon1024.png",
-      "type": "image/png",
-      "sizes": "58x58"
-    },
-    {
-      "src": "AppStore/AppIcon1024.png",
-      "type": "image/png",
-      "sizes": "87x87"
-    },
-    {
-      "src": "AppStore/AppIcon1024.png",
-      "type": "image/png",
-      "sizes": "40x40"
-    },
-    {
-      "src": "AppStore/AppIcon1024.png",
-      "type": "image/png",
-      "sizes": "80x80"
-    },
-    {
-      "src": "AppStore/AppIcon1024.png",
-      "type": "image/png",
-      "sizes": "120x120"
-    }
-  ],
+  "icons": [],
   "start_url": "index.html"
 }

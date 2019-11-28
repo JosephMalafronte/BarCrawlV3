@@ -15,15 +15,4 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <icon height="180" platform="ios" src="AppStore/AppIcon1024.png" width="180" />
-    <icon height="60" platform="ios" src="AppStore/AppIcon1024.png" width="60" />
-    <icon height="76" platform="ios" src="AppStore/AppIcon1024.png" width="76" />
-    <icon height="152" platform="ios" src="AppStore/AppIcon1024.png" width="152" />
-    <icon height="167" platform="ios" src="AppStore/AppIcon1024.png" width="167" />
-    <icon height="29" platform="ios" src="AppStore/AppIcon1024.png" width="29" />
-    <icon height="58" platform="ios" src="AppStore/AppIcon1024.png" width="58" />
-    <icon height="87" platform="ios" src="AppStore/AppIcon1024.png" width="87" />
-    <icon height="40" platform="ios" src="AppStore/AppIcon1024.png" width="40" />
-    <icon height="80" platform="ios" src="AppStore/AppIcon1024.png" width="80" />
-    <icon height="120" platform="ios" src="AppStore/AppIcon1024.png" width="120" />
 </widget>
