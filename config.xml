@@ -22,10 +22,9 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
-        <icon src="AppStore/AppIcon1024.png" width="180" height="180" />
+        <icon src="AppStore/AppIcon1024.png" width="1024" height="1024" />
     </platform>
 
-    <icon src="AppStore/AppIcon1024.png" width="1024" height="1024" />
 
     <engine name="browser" spec="~5.0.4" />
 </widget>
