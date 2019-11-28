@@ -37,6 +37,7 @@ export class MainScrollComponent implements OnInit {
 
   ngOnInit() {
     this.getBarCards();
+    console.log(this.authService.currentUser);
   }
 
 

@@ -8,7 +8,6 @@ import { take } from 'rxjs/operators';
 import { MainService } from './main.service';
 
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -73,7 +72,7 @@ export class AuthService {
       this.currentUser.profilePicUrl = userInfo.about.profilePicUrl;
 
       //Set settings
-      if(userInfo.settings.locationTracking) this.currentUser.locationTracking = userInfo.settings.locationTracking;
+      if(userInfo.settings) this.currentUser.locationTracking = userInfo.settings.locationTracking;
       else this.currentUser.locationTracking = false;
 
       //Mark As Finished
@@ -113,6 +112,9 @@ export class AuthService {
         email: user.email,
         profilePicUrl: "null",
         uid: user.uid
+      },
+      settings: {
+        locationTracking: false
       }
     });
   }

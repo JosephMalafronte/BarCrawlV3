@@ -52,7 +52,6 @@ export class SettingsComponent implements OnInit {
     });
   }
 
-
   saveChanges() {
     this.isLoading = true;
 
@@ -61,16 +60,19 @@ export class SettingsComponent implements OnInit {
       this.authService.currentUser.firstName = this.firstName;
       userObject.about.lastName = this.lastName;
       this.authService.currentUser.lastName = this.lastName;
+
+      if(this.userName[0] != '@') this.userName = "@" + this.userName;
       userObject.about.userName = this.userName;
       this.authService.currentUser.userName = this.userName;
+
+
       userObject.settings.locationTracking = this.trackLocation;
       this.authService.currentUser.locationTracking = this.trackLocation;
 
       console.log(userObject);
 
       this.db.object('/userInfo/' + this.user.uid).set(userObject).then(_ => {
-      this.stopLoadingAnimation();
-        
+        this.stopLoadingAnimation(); 
       });
     });
 

@@ -33,8 +33,15 @@ export class PopupComponent implements OnInit {
   isFriend: boolean = false;
   isRequestOut: boolean = false;
   isRequestIn: boolean = false;
+  showUnfriend: boolean = false;
   showBars: boolean = false;
   showFriends: boolean = false;
+  showFriendOfFriend: boolean = false;
+  friendOfFriendUser: any = null;
+  friendOfFriendIsFriend: boolean = false;
+  showFriendOfFriendRequestButton: boolean = false;
+  friendOfFriendIsRequestIn: boolean = false;
+  friendOfFriendIsRequestOut: boolean = false;
 
   //Profile Pic Editing Variables
   showProfilePicEditing: boolean = false;
@@ -72,6 +79,12 @@ export class PopupComponent implements OnInit {
         this.loadUserFriendStatus();
         this.showBars = false;
         this.showFriends = false;
+        this.showFriendOfFriend = false;
+        this.friendOfFriendIsFriend = false;
+        this.showFriendOfFriendRequestButton = false;
+        this.friendOfFriendIsRequestIn = false;
+        this.friendOfFriendIsRequestOut = false;
+        this.showUnfriend = false;
         this.showFriendPopUp = true;
       }
     })
@@ -122,6 +135,15 @@ export class PopupComponent implements OnInit {
         });
       }
     });
+  }
+
+  unFriend(){
+    this.isLoading = true;
+    this.db.database.ref("userInfo/" + this.authService.currentUser.uid + "/friends/"+ this.friendUser.uid).remove();
+    this.db.database.ref("userInfo/" + this.friendUser.uid + "/friends/"+ this.authService.currentUser.uid).remove();
+    this.authService.currentUser.friendIds.splice(this.authService.currentUser.friendIds.indexOf(this.friendUser.uid), 1);
+
+    this.loadUserFriendStatus();
   }
 
 
@@ -225,12 +247,85 @@ export class PopupComponent implements OnInit {
 
       forkJoin(requestArray).subscribe( responseList => {
         responseList.forEach(friend => {
-          this.friendUserFriends.push(friend);
+          if(friend.uid != this.authService.currentUser.uid) this.friendUserFriends.push(friend);
         });
-        console.log(this.friendUserFriends);
+        console.log()
+        this.isLoading = false;
       });
     })
   }
+
+  activateFriendOfFriend(user) {
+    this.isLoading = true;
+    this.friendOfFriendUser = user;
+    this.showFriends = false;
+    this.loadFriendOfFriendStatus();
+  }
+
+  loadFriendOfFriendStatus() {
+
+    //Check all three sources
+
+    this.showFriendOfFriendRequestButton = false;            
+    this.friendOfFriendIsFriend = false;
+    this.friendOfFriendIsRequestIn = false;
+    this.friendOfFriendIsRequestOut = false;
+
+    this.db.object('/userInfo/'+this.authService.currentUser.uid + '/friends/' + this.friendOfFriendUser.uid).valueChanges().pipe(take(1)).subscribe(object => {
+      if(object) {
+        this.friendOfFriendIsFriend = true;
+        this.showFriendOfFriendRequestButton = false;
+        this.showFriendOfFriend = true;
+        console.log(this.friendOfFriendUser);
+        this.isLoading = false;
+      }
+      else {
+        var requestOutTask = this.db.object('/userInfo/'+this.authService.currentUser.uid + '/friendRequestOut/' + this.friendOfFriendUser.uid).valueChanges().pipe(take(1));
+        var requestInTask = this.db.object('/userInfo/'+this.authService.currentUser.uid + '/friendRequestIn/' + this.friendOfFriendUser.uid).valueChanges().pipe(take(1));
+        var fork = forkJoin([requestOutTask, requestInTask]);
+        fork.subscribe(result => {
+          if(result[0]) this.friendOfFriendIsRequestOut = true;
+          if(result[1]) this.friendOfFriendIsRequestIn = true;
+          this.showFriendOfFriendRequestButton = true;
+          this.showFriendOfFriend = true;
+          this.isLoading = false;
+        });
+      }
+    });
+  }
+
+  sendFriendOfFriendRequest() {
+    this.authService.currentUser.friendRequestOut.push(this.friendOfFriendUser.uid);
+    this.friendOfFriendIsRequestOut = true;
+    this.authService.submitFriendRequest(this.friendOfFriendUser.uid);
+  }
+
+  acceptFriendOfFriendRequest() {
+    var arr = this.authService.currentUser.friendRequestIn;
+    arr.splice(arr.indexOf(this.friendOfFriendUser.uid), 1);
+
+    this.authService.currentUser.friendIds.push(this.friendOfFriendUser.uid);
+    this.authService.addFriendData(this.friendOfFriendUser.uid);
+
+    this.friendOfFriendIsRequestIn = false;
+    this.friendOfFriendIsFriend = true;
+
+    this.authService.acceptFriendRequest(this.friendOfFriendUser.uid);
+  }
+
+  back(){
+    if(this.showBars) {
+      this.showBars = false;
+    }
+    else if(this.showFriends){
+      this.showFriends = false;
+    }
+    else if (this.showFriendOfFriend) {
+      this.showFriendOfFriend = false;
+      this.showFriends = true;
+    }
+  }
+
 
 
 

@@ -29,10 +29,11 @@
 <div *ngIf="showFriendPopUp" style="text-align: center;">
   <div id="open-modal" class="modal-window">
     <div style="margin: 45% 0 0 7%">
-      <a *ngIf="!isLoading && showBars" style="left: 0px; top:3px;" (click)="backFromBars()" title="Close" class="modal-close" >&#8592;</a>
+      <a *ngIf="!isLoading && (showBars || showFriends || showFriendOfFriend)" style="left: 0px; top:3px;" (click)="back()" title="Close"
+        class="modal-close">&#8592;</a>
       <a (click)="hideFriendPopUp()" title="Close" class="modal-close">&times;</a>
 
-      <div *ngIf="!isLoading && !showFriends && !showBars">
+      <div *ngIf="!isLoading && !showFriends && !showBars && !showFriendOfFriend">
         <br />
         <img src="{{friendUser.profilePicUrl == 'null'? './assets/images/users/blank_profile.png' : friendUser.profilePicUrl}}" class="profilePic">
         <h2 style="margin: 0 0 0 0">{{friendUser.firstName}} {{friendUser.lastName}}</h2>
@@ -46,8 +47,16 @@
           </span>
         </div>
         <div *ngIf="isFriend">
-          <span (click)="activateBars()" style="margin: 10px 0px 10px 0; width:300px; font-size:16px;" class="btn btn--full">View Bars Attending Tonight</span>
-          <span (click)="activateFriends()" style="margin: 0px 0px 0px 0; width:300px; font-size:16px;" class="btn btn--full">View Friends List</span>
+          <div style="width: 80%; text-align: center; padding-left: 12%;" *ngIf="showUnfriend">
+            <h5 style="padding:5px;"> Are you sure you wish to remove this friend?</h5>
+            <span (click)="showUnfriend = false" style="margin: 0px;" class="btn btn--full unfriendButton">Cancel</span>
+            <span (click)="unFriend()" style="margin: 10px 0 0 0; border: 1px solid red; color: red;" class="btn btn--full unfriendButton">Remove Friend</span>
+          </div>
+          <div *ngIf="!showUnfriend">
+            <span (click)="activateBars()" style="margin: 10px 0px 10px 0; width:300px; font-size:16px;" class="btn btn--full">View Bars Attending Tonight</span>
+            <span (click)="activateFriends()" style="margin: 0px 0px 0px 0; width:300px; font-size:16px;" class="btn btn--full">View Friends List</span>
+            <span (click)="showUnfriend = true" class="btn btn--full unfriendButton">Remove Friend?</span>
+          </div>
         </div>
       </div>
 
@@ -57,19 +66,19 @@
             <span>Bars Attending Tonight</span>
           </h3>
         </div>
-          <div style="height: 200px; padding: 0 0 20px 0; margin-top: 30px;" id="pages_maincontent" [hidden]="isLoading">
-            <div class="page_single layout_fullwidth_padding">
-              <ul class="features_list" style="padding: 0px 0 0 0; position:relative">
-                <li *ngFor="let barPage of friendUserBars">
-                  <div style="padding-bottom: 10px;">
-                    <span class="features_list_span">
-                      <img style="width:20%;" src="{{barPage.barPicture1Url}}">
-                      <span class="features_list_span_text" style="font-size: 110%;">{{barPage.barName}}</span>
-                    </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+        <div style="height: 200px; padding: 0 0 20px 0; margin-top: 30px;" id="pages_maincontent" [hidden]="isLoading">
+          <div class="page_single layout_fullwidth_padding">
+            <ul class="features_list" style="padding: 0px 0 0 0; position:relative">
+              <li *ngFor="let barPage of friendUserBars">
+                <div style="padding-bottom: 10px;">
+                  <span class="features_list_span">
+                    <img style="width:20%;" src="{{barPage.barPicture1Url}}">
+                    <span class="features_list_span_text" style="font-size: 110%;">{{barPage.barName}}</span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div style="padding-bottom:200px;"></div>
@@ -80,6 +89,38 @@
           <h3 style="padding: 0 0 0 0;">
             <span>Friends List</span>
           </h3>
+        </div>
+        <div style="height: 200px; padding: 0 0 20px 0; margin-top: 30px;" id="pages_maincontent" [hidden]="isLoading">
+          <div class="page_single layout_fullwidth_padding">
+            <ul class="features_list" style="padding: 0px 0 0 0; position:relative">
+              <li style="margin: 5px 0 5px 0; padding-bottom: 5px;" *ngFor="let friend of friendUserFriends">
+                <div (click)="activateFriendOfFriend(friend)" style="padding-bottom: 10px;">
+                  <span class="features_list_span">
+                    <img src="{{friend.profilePicUrl}}">
+                    <span class="features_list_span_text" style="font-size: 110%;">{{friend.firstName}} {{friend.lastName}}</span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div style="padding-bottom:200px;"></div>
+      </div>
+
+      <div *ngIf="!isLoading && showFriendOfFriend">
+        <br />
+        <img src="{{friendOfFriendUser.profilePicUrl == 'null'? './assets/images/users/blank_profile.png' : friendOfFriendUser.profilePicUrl}}"
+          class="profilePic">
+        <h2 style="margin: 0 0 0 0">{{friendOfFriendUser.firstName}} {{friendOfFriendUser.lastName}}</h2>
+        <p>{{friendOfFriendUser.userName}}</p>
+
+        <div *ngIf="!friendOfFriendIsFriend && showFriendOfFriendRequestButton">
+          <span *ngIf="!friendOfFriendIsRequestOut && !friendOfFriendIsRequestIn" (click)="sendFriendOfFriendRequest()" style="margin: 10px 0px 10px 0; width:300px; font-size:14px;"
+            class="btn btn--full">Add Friend</span>
+          <span *ngIf="friendOfFriendIsRequestOut" style="margin: 10px 0px 10px 0; width:300px; font-size:14px;" class="btn btn--full">Friend Request Sent!</span>
+          <span *ngIf="friendOfFriendIsRequestIn" (click)="acceptFriendOfFriendRequest()" style="margin: 10px 0px 10px 0; width:300px; font-size:14px;"
+            class="btn btn--full">Accept Friend Request
+          </span>
         </div>
       </div>
 
