@@ -25,28 +25,7 @@
         <icon src="AppStore/AppIcon1024.png" width="180" height="180" />
     </platform>
 
-    <!-- iPhone 6 / 6+ -->
-    <icon src="AppStore/AppIcon1024.png" platform="ios" width="180" height="180" />
-
-    <!-- iPhone / iPod Touch  -->
-    <icon src="AppStore/AppIcon1024.png" platform="ios" width="60" height="60" />
-    <icon src="AppStore/AppIcon1024.png" platform="ios" width="120" height="120" />
-
-    <!-- iPad -->
-    <icon src="AppStore/AppIcon1024.png" platform="ios" width="76" height="76" />
-    <icon src="AppStore/AppIcon1024.png" platform="ios" width="152" height="152" />
-    <icon src="AppStore/AppIcon1024.png" platform="ios" width="167" height="167" />
-
-    <!-- Settings Icon -->
-    <icon src="AppStore/AppIcon1024.png" platform="ios" width="29" height="29" />
-    <icon src="AppStore/AppIcon1024.png" platform="ios" width="58" height="58" />
-    <icon src="AppStore/AppIcon1024.png" platform="ios" width="87" height="87" />
-
-    <!-- Spotlight Icon -->
-    <icon src="AppStore/AppIcon1024.png" platform="ios" width="40" height="40" />
-    <icon src="AppStore/AppIcon1024.png" platform="ios" width="80" height="80" />
-    <icon src="AppStore/AppIcon1024.png" platform="ios" width="120" height="120" />
-
+    <icon src="AppStore/AppIcon1024.png" width="1024" height="1024" />
 
     <engine name="browser" spec="~5.0.4" />
 </widget>
