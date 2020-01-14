@@ -22,6 +22,36 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <!-- iOS 8.0+ -->
+        <!-- iPhone 6 Plus  -->
+        <icon src="AppStore/AppIcon180.png" width="180" height="180" />
+        <!-- iOS 7.0+ -->
+        <!-- iPhone / iPod Touch  -->
+        <icon src="AppStore/AppIcon60.png" width="60" height="60" />
+        <icon src="AppStore/AppIcon120.png" width="120" height="120" />
+        <!-- iPad -->
+        <icon src="AppStore/AppIcon76.png" width="76" height="76" />
+        <icon src="AppStore/AppIcon152.png" width="152" height="152" />
+        <!-- Spotlight Icon -->
+        <icon src="AppStore/AppIcon40.png" width="40" height="40" />
+        <icon src="AppStore/AppIcon80.png" width="80" height="80" />
+        <!-- iOS 6.1 -->
+        <!-- iPhone / iPod Touch -->
+        <icon src="AppStore/AppIcon57.png" width="57" height="57" />
+        <icon src="AppStore/AppIcon114.png" width="114" height="114" />
+        <!-- iPad -->
+        <icon src="AppStore/AppIcon72.png" width="72" height="72" />
+        <icon src="AppStore/AppIcon144.png" width="144" height="144" />
+        <!-- iPad Pro -->
+        <icon src="AppStore/AppIcon167.png" width="167" height="167" />
+        <!-- iPhone Spotlight and Settings Icon -->
+        <icon src="AppStore/AppIcon29.png" width="29" height="29" />
+        <icon src="AppStore/AppIcon58.png" width="58" height="58" />
+        <icon src="AppStore/AppIcon87.png" width="87" height="87" />
+        <!-- iPad Spotlight and Settings Icon -->
+        <icon src="AppStore/AppIcon50.png" width="50" height="50" />
+        <icon src="AppStore/AppIcon100.png" width="100" height="100" />
+
         <icon src="AppStore/AppIcon1024.png" width="1024" height="1024" />
     </platform>
 
