@@ -9,6 +9,10 @@
         "parents": {
           "/*": [
             {
+              "xml": "<feature name=\"BuildInfo\"><param name=\"ios-package\" value=\"CDVBuildInfo\" /></feature>",
+              "count": 1
+            },
+            {
               "xml": "<feature name=\"Camera\"><param name=\"ios-package\" value=\"CDVCamera\" /></feature>",
               "count": 1
             },
@@ -19,20 +23,6 @@
             {
               "xml": "<feature name=\"File\"><param name=\"ios-package\" value=\"CDVFile\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
-            },
-            {
-              "xml": "<feature name=\"ImagePicker\"><param name=\"ios-package\" value=\"SOSPicker\" /></feature>",
-              "count": 1
-            }
-          ]
-        }
-      },
-      "*-Info.plist": {
-        "parents": {
-          "NSPhotoLibraryUsageDescription": [
-            {
-              "xml": "<string> </string>",
-              "count": 1
             }
           ]
         }
@@ -40,7 +30,7 @@
     }
   },
   "installed_plugins": {
-    "cordova-plugin-whitelist": {
+    "cordova-plugin-buildinfo": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
     "cordova-plugin-camera": {
@@ -48,14 +38,18 @@
     },
     "cordova-plugin-file": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
-    "cordova-plugin-telerik-imagepicker": {
-      "PHOTO_LIBRARY_USAGE_DESCRIPTION": " ",
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     }
   },
   "dependent_plugins": {},
   "modules": [
+    {
+      "id": "cordova-plugin-buildinfo.BuildInfo",
+      "file": "plugins/cordova-plugin-buildinfo/www/buildinfo.js",
+      "pluginId": "cordova-plugin-buildinfo",
+      "clobbers": [
+        "BuildInfo"
+      ]
+    },
     {
       "id": "cordova-plugin-camera.Camera",
       "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
@@ -260,20 +254,11 @@
         "cordova"
       ],
       "runs": true
-    },
-    {
-      "id": "cordova-plugin-telerik-imagepicker.ImagePicker",
-      "file": "plugins/cordova-plugin-telerik-imagepicker/www/imagepicker.js",
-      "pluginId": "cordova-plugin-telerik-imagepicker",
-      "clobbers": [
-        "plugins.imagePicker"
-      ]
     }
   ],
   "plugin_metadata": {
-    "cordova-plugin-whitelist": "1.3.3",
+    "cordova-plugin-buildinfo": "2.0.2",
     "cordova-plugin-camera": "4.1.0",
-    "cordova-plugin-file": "6.0.2",
-    "cordova-plugin-telerik-imagepicker": "2.3.3"
+    "cordova-plugin-file": "6.0.2"
   }
 }

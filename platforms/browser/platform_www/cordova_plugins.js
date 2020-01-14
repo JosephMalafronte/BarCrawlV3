@@ -9,14 +9,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/cordova-plugin-firebase-authentication/www/FirebaseAuthentication.js",
-        "id": "cordova-plugin-firebase-authentication.FirebaseAuthentication",
-        "pluginId": "cordova-plugin-firebase-authentication",
-        "merges": [
-            "cordova.plugins.firebase.auth"
-        ]
-    },
-    {
         "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
         "id": "cordova-plugin-camera.Camera",
         "pluginId": "cordova-plugin-camera",
@@ -239,7 +231,6 @@ module.exports.metadata =
 {
     "cordova-plugin-whitelist": "1.3.3",
     "cordova-plugin-buildinfo": "2.0.2",
-    "cordova-plugin-firebase-authentication": "1.1.2",
     "cordova-plugin-camera": "4.1.0",
     "cordova-plugin-file": "6.0.2",
     "cordova-plugin-telerik-imagepicker": "2.3.3"

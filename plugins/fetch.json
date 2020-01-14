@@ -7,14 +7,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-firebase-authentication": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-firebase-authentication@^1.1.2"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-plugin-buildinfo": {
     "source": {
       "type": "registry",

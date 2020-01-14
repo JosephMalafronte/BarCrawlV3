@@ -22,7 +22,6 @@ var Q = require('q');
 var fs = require('fs');
 var path = require('path');
 var shell = require('shelljs');
-var xcode = require('xcode');
 var unorm = require('unorm');
 var plist = require('plist');
 var URL = require('url');
@@ -35,6 +34,7 @@ var PlatformMunger = require('cordova-common').ConfigChanges.PlatformMunger;
 var PluginInfoProvider = require('cordova-common').PluginInfoProvider;
 var FileUpdater = require('cordova-common').FileUpdater;
 var projectFile = require('./projectFile');
+var xcode = require('xcode');
 
 // launch storyboard and related constants
 var LAUNCHIMAGE_BUILD_SETTING = 'ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME';
@@ -224,7 +224,7 @@ function updateProject (platformConfig, locations) {
 
     /* eslint-disable no-tabs */
     // Write out the plist file with the same formatting as Xcode does
-    var info_contents = plist.build(infoPlist, { indent: '	', offset: -1 });
+    var info_contents = plist.build(infoPlist, { indent: '\t', offset: -1 });
     /* eslint-enable no-tabs */
 
     info_contents = info_contents.replace(/<string>[\s\r\n]*<\/string>/g, '<string></string>');
@@ -281,46 +281,63 @@ function handleBuildSettings (platformConfig, locations, infoPlist) {
     var deploymentTarget = platformConfig.getPreference('deployment-target', 'ios');
     var needUpdatedBuildSettingsForLaunchStoryboard = checkIfBuildSettingsNeedUpdatedForLaunchStoryboard(platformConfig, infoPlist);
     var swiftVersion = platformConfig.getPreference('SwiftVersion', 'ios');
+    var wkWebViewOnly = platformConfig.getPreference('WKWebViewOnly');
 
-    var proj = new xcode.project(locations.pbxproj); /* eslint new-cap : 0 */
+    var project;
 
     try {
-        proj.parseSync();
+        project = projectFile.parse(locations);
     } catch (err) {
         return Q.reject(new CordovaError('Could not parse ' + locations.pbxproj + ': ' + err));
     }
 
-    var origPkg = proj.getBuildProperty('PRODUCT_BUNDLE_IDENTIFIER');
+    var origPkg = project.xcode.getBuildProperty('PRODUCT_BUNDLE_IDENTIFIER');
 
     // no build settings provided and we don't need to update build settings for launch storyboards,
     // then we don't need to parse and update .pbxproj file
-    if (origPkg === pkg && !targetDevice && !deploymentTarget && !needUpdatedBuildSettingsForLaunchStoryboard && !swiftVersion) {
+    if (origPkg === pkg && !targetDevice && !deploymentTarget && !needUpdatedBuildSettingsForLaunchStoryboard && !swiftVersion && !wkWebViewOnly) {
         return Q();
     }
 
     if (origPkg !== pkg) {
         events.emit('verbose', 'Set PRODUCT_BUNDLE_IDENTIFIER to ' + pkg + '.');
-        proj.updateBuildProperty('PRODUCT_BUNDLE_IDENTIFIER', pkg);
+        project.xcode.updateBuildProperty('PRODUCT_BUNDLE_IDENTIFIER', pkg);
     }
 
     if (targetDevice) {
         events.emit('verbose', 'Set TARGETED_DEVICE_FAMILY to ' + targetDevice + '.');
-        proj.updateBuildProperty('TARGETED_DEVICE_FAMILY', targetDevice);
+        project.xcode.updateBuildProperty('TARGETED_DEVICE_FAMILY', targetDevice);
     }
 
     if (deploymentTarget) {
         events.emit('verbose', 'Set IPHONEOS_DEPLOYMENT_TARGET to "' + deploymentTarget + '".');
-        proj.updateBuildProperty('IPHONEOS_DEPLOYMENT_TARGET', deploymentTarget);
+        project.xcode.updateBuildProperty('IPHONEOS_DEPLOYMENT_TARGET', deploymentTarget);
     }
 
     if (swiftVersion) {
         events.emit('verbose', 'Set SwiftVersion to "' + swiftVersion + '".');
-        proj.updateBuildProperty('SWIFT_VERSION', swiftVersion);
+        project.xcode.updateBuildProperty('SWIFT_VERSION', swiftVersion);
+    }
+    if (wkWebViewOnly) {
+        var wkwebviewValue = '1';
+        if (wkWebViewOnly === 'true') {
+            events.emit('verbose', 'Set WK_WEB_VIEW_ONLY.');
+        } else {
+            wkwebviewValue = '0';
+            events.emit('verbose', 'Unset WK_WEB_VIEW_ONLY.');
+        }
+        project.xcode.updateBuildProperty('WK_WEB_VIEW_ONLY', wkwebviewValue);
+        var cordovaLibXcodePath = path.join(locations.root, 'CordovaLib', 'CordovaLib.xcodeproj');
+        var pbxPath = path.join(cordovaLibXcodePath, 'project.pbxproj');
+        var xcodeproj = xcode.project(pbxPath);
+        xcodeproj.parseSync();
+        xcodeproj.updateBuildProperty('WK_WEB_VIEW_ONLY', wkwebviewValue);
+        fs.writeFileSync(pbxPath, xcodeproj.writeSync());
     }
 
-    updateBuildSettingsForLaunchStoryboard(proj, platformConfig, infoPlist);
+    updateBuildSettingsForLaunchStoryboard(project.xcode, platformConfig, infoPlist);
 
-    fs.writeFileSync(locations.pbxproj, proj.writeSync(), 'utf-8');
+    project.write();
 
     return Q();
 }
@@ -962,7 +979,7 @@ function processAccessAndAllowNavigationEntries (config) {
     var allow_navigations = config.getAllowNavigations();
 
     return allow_navigations
-        // we concat allow_navigations and accesses, after processing accesses
+    // we concat allow_navigations and accesses, after processing accesses
         .concat(accesses.map(function (obj) {
             // map accesses to a common key interface using 'href', not origin
             obj.href = obj.origin;
@@ -1053,7 +1070,9 @@ function parseWhitelistUrlForATS (url, options) {
         var subdomain1 = '/*.'; // wildcard in hostname
         var subdomain2 = '*://*.'; // wildcard in hostname and protocol
         var subdomain3 = '*://'; // wildcard in protocol only
-        if (href.pathname.indexOf(subdomain1) === 0) {
+        if (!href.pathname) {
+            return null;
+        } else if (href.pathname.indexOf(subdomain1) === 0) {
             retObj.NSIncludesSubdomains = true;
             retObj.Hostname = href.pathname.substring(subdomain1.length);
         } else if (href.pathname.indexOf(subdomain2) === 0) {
