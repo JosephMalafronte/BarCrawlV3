@@ -20,16 +20,17 @@
           [(ngModel)]="userName" class="form_input required" placeholder="Username" />
       </div>
 
-      <div class="loginform" style="display: inline-flex;">
+
+      <!-- LOCATION TRACKING SWITCH -->
+      <!-- <div class="loginform" style="display: inline-flex;">
         <label style="display: inline-block; width:200px; text-align: left; font-weight: bold; padding: 10px 0px 0px 10px;">Enable Location Sharing for Bar Capacity Tracking:</label>
-        <!-- Rounded switch -->
         <div style="padding: 3% 0 0 18%" (click)="locationTrackingSwitch()">
           <label class="switch">
             <input id="trackLocationCheckbox" type="checkbox">
             <span class="slider round"></span>
           </label>
         </div>
-      </div>
+      </div> -->
 
       <div class="loginform" style="display: inline-flex;">
         <div style="width: 94%;">
@@ -58,6 +59,18 @@
       <div class="loginform" style="display: inline-flex;">
         <div style="width: 94%;">
           <input (click)="submitFeatureRequest()" readonly="readonly" class="form_submit" value="SUBMIT FEATURE REQUEST" />
+        </div>
+      </div>
+
+      <div class="loginform" style="display: inline-flex;">
+        <label style="display: inline-block; width:110px; font-weight: bold; padding-top: 10px; text-align: left;">Suggest Bar or Bar Deals:</label>
+        <textarea [(ngModel)]="barSuggestion" style="border: solid 2px black; height: 110px;" name="message" rows="10" cols="30"
+          placeholder="Any bars you would like to see added? Any daily deals that are missing?"></textarea>
+      </div>
+
+      <div class="loginform" style="display: inline-flex;">
+        <div style="width: 94%;">
+          <input (click)="submitBarSuggestion()" readonly="readonly" class="form_submit" value="SUBMIT BAR SUGGESTION" />
         </div>
       </div>
 

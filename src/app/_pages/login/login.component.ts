@@ -18,8 +18,9 @@ declare var $ : any;
 })
 export class LoginComponent implements OnInit {
 
-  logInUsername: string = 'test@test.com';
-  logInPassword: string = '124577';
+  logInUsername: string = "";
+  logInPassword: string = "";
+  logInError: string = "";
   createFirstName: string = "";
   createLastName: string = "";
   createUsername: string = "";
@@ -52,6 +53,7 @@ export class LoginComponent implements OnInit {
 
   logIn() {
     this.isLoading = true;
+    this.logInError = "";
 
     this.authService.logIn(this.logInUsername,this.logInPassword).then(
       (success) => {
@@ -73,8 +75,17 @@ export class LoginComponent implements OnInit {
 
       }).catch(
       (err) => {
+        this.isLoading = false;
         console.log(err);
-        //this.error = err;
+        if(err.code=="auth/invalid-email"){
+          this.logInError = "The email address is improperly formatted";
+        }
+        else if(err.code == "auth/wrong-password"){
+          this.logInError = "Incorrect username or password"
+        }
+        else {
+          this.logInError = "Error logging in";
+        }
       });
   }
 

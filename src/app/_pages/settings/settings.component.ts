@@ -19,6 +19,7 @@ export class SettingsComponent implements OnInit {
   userName: string;
   bugReport: string;
   featureRequest: string;
+  barSuggestion: string;
 
   isLoading: boolean = false;
 
@@ -95,6 +96,17 @@ export class SettingsComponent implements OnInit {
       userId: this.authService.currentUser.uid,
       fullName: this.authService.currentUser.firstName + ' ' + this.authService.currentUser.lastName,
       text: this.featureRequest
+    }).then(ref => {
+      this.stopLoadingAnimation();
+    });
+  }
+
+  submitBarSuggestion(){
+    this.isLoading = true;
+    var test = this.db.database.ref('/testing/barSuggestion').push({
+      userId: this.authService.currentUser.uid,
+      fullName: this.authService.currentUser.firstName + ' ' + this.authService.currentUser.lastName,
+      text: this.barSuggestion
     }).then(ref => {
       this.stopLoadingAnimation();
     });

@@ -1,39 +1,39 @@
 {
-  "prepare_queue": {
-    "installed": [],
-    "uninstalled": []
-  },
-  "config_munge": {
-    "files": {
-      "config.xml": {
-        "parents": {
-          "/*": [
-            {
-              "xml": "<feature name=\"BuildInfo\"><param name=\"ios-package\" value=\"CDVBuildInfo\" /></feature>",
-              "count": 1
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"BuildInfo\"><param name=\"ios-package\" value=\"CDVBuildInfo\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
             }
-          ]
         }
-      }
+    },
+    "installed_plugins": {
+        "cordova-plugin-buildinfo": {
+            "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "id": "cordova-plugin-buildinfo.BuildInfo",
+            "file": "plugins/cordova-plugin-buildinfo/www/buildinfo.js",
+            "pluginId": "cordova-plugin-buildinfo",
+            "clobbers": [
+                "BuildInfo"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "cordova-plugin-buildinfo": "2.0.2"
     }
-  },
-  "installed_plugins": {
-    "cordova-plugin-buildinfo": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    }
-  },
-  "dependent_plugins": {},
-  "modules": [
-    {
-      "id": "cordova-plugin-buildinfo.BuildInfo",
-      "file": "plugins/cordova-plugin-buildinfo/www/buildinfo.js",
-      "pluginId": "cordova-plugin-buildinfo",
-      "clobbers": [
-        "BuildInfo"
-      ]
-    }
-  ],
-  "plugin_metadata": {
-    "cordova-plugin-buildinfo": "2.0.2"
-  }
 }

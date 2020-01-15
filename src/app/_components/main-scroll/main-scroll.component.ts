@@ -24,6 +24,11 @@ export class MainScrollComponent implements OnInit {
 
   //BarCards
   barCards = [];
+  allBarCards = [];
+
+  cardsPerPage = 7; //Hardcoded value by preference
+  curPage = 1;
+  maxPage = 1;
 
   db: AngularFireDatabase;
 
@@ -43,8 +48,26 @@ export class MainScrollComponent implements OnInit {
 
   getBarCards() {
     this.db.list('barCards/' + this.dayOfTheWeek).valueChanges().subscribe(result => {
-      this.barCards = result;
+      this.allBarCards = result;
+      this.maxPage = Math.ceil(this.allBarCards.length / this.cardsPerPage);
+      this.pageChange(1);
     });
+  }
+
+  pageChange(pageNum: number) {
+    if(pageNum > this.maxPage || pageNum < 1) return;
+
+    var tempList = [];
+    this.barCards = [];
+    var start = (pageNum-1) * this.cardsPerPage;
+    var length = this.allBarCards.length-start;
+    var limit = (Math.min(length, this.cardsPerPage)) + start;
+    for(var i = start; i<limit; i++){
+      tempList.push(this.allBarCards[i]);
+    }
+
+    this.barCards = tempList;
+    this.curPage = pageNum;
   }
 
 
