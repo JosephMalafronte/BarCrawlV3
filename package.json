@@ -36,9 +36,6 @@
     "cordova-browser": "^5.0.4",
     "cordova-ios": "^5.1.1",
     "cordova-plugin-buildinfo": "2.0.2",
-    "cordova-plugin-camera": "^4.1.0",
-    "cordova-plugin-file": "^6.0.2",
-    "cordova-plugin-telerik-imagepicker": "^2.3.3",
     "cordova-plugin-whitelist": "1",
     "core-js": "^2.5.4",
     "fastclick": "^1.0.6",
@@ -74,12 +71,7 @@
   },
   "cordova": {
     "plugins": {
-      "cordova-plugin-whitelist": {},
-      "cordova-plugin-camera": {},
-      "cordova-plugin-file": {},
-      "cordova-plugin-telerik-imagepicker": {
-        "PHOTO_LIBRARY_USAGE_DESCRIPTION": " "
-      }
+      "cordova-plugin-whitelist": {}
     },
     "platforms": [
       "browser"
