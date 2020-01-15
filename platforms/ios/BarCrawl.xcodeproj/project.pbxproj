@@ -16,7 +16,6 @@
 		52E3DAF5406F49E0B122F404 /* CDVBuildInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D4C09B590F41B5AD6A3349 /* CDVBuildInfo.m */; };
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
 		BE4FBB7CF7DA2B3B63E11428 /* libPods-BarCrawl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B188524F2A5B2517CD464092 /* libPods-BarCrawl.a */; };
-		B0316A547C014F74B8F6E971 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 426D9307F63447FEB9334BE1 /* CDVStatusBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,8 +66,6 @@
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = BarCrawl/config.xml; sourceTree = "<group>"; };
-		426D9307F63447FEB9334BE1 /* CDVStatusBar.m */ = {isa = PBXFileReference; name = "CDVStatusBar.m"; path = "cordova-plugin-statusbar/CDVStatusBar.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		4A4DCE1C5A5E481690ABEE63 /* CDVStatusBar.h */ = {isa = PBXFileReference; name = "CDVStatusBar.h"; path = "cordova-plugin-statusbar/CDVStatusBar.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,8 +175,6 @@
 			children = (
 				C5D4C09B590F41B5AD6A3349 /* CDVBuildInfo.m */,
 				74E1044BD5EB45B49E86B8F6 /* CDVBuildInfo.h */,
-				426D9307F63447FEB9334BE1 /* CDVStatusBar.m */,
-				4A4DCE1C5A5E481690ABEE63 /* CDVStatusBar.h */,
 			);
 			name = Plugins;
 			path = BarCrawl/Plugins;
@@ -364,7 +359,6 @@
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				52E3DAF5406F49E0B122F404 /* CDVBuildInfo.m in Sources */,
-				B0316A547C014F74B8F6E971 /* CDVStatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
