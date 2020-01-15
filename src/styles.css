@@ -52,8 +52,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 body {
   line-height: 1;
   overflow-x: hidden;
-  padding-top: constant(safe-area-inset-top); /* iOS 11.0 */
-  padding-top: env(safe-area-inset-top); /* iOS 11.2 */
+
 }
 ol, ul {
 	list-style: none;
@@ -142,6 +141,8 @@ overflow-x: hidden;
 }
 body {
 font-family: 'Roboto', sans-serif;
+padding-top: constant(safe-area-inset-top); /* iOS 11.0 */
+padding-top: env(safe-area-inset-top); /* iOS 11.2 */
 margin: 0;
 padding: 0;
 color: #232323;
