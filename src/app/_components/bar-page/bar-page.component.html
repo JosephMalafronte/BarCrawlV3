@@ -1,7 +1,7 @@
 <div class="slideInPage" [@slideInBarTrigger]="slideInBar">
   <app-full-loading *ngIf="isLoading" [loadingType]="0"></app-full-loading>
 
-  <div id="slider_maincontent">
+  <div id="slider_maincontent" style="top: constant(safe-area-inset-top); top: env(safe-area-inset-top);">
 
     <h2 class="page_title_slide">{{barName}}</h2>
     <div (click)="markAttending()">
