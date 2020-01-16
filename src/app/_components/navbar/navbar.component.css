@@ -1,0 +1,10 @@
+@media only screen 
+    and (width : 375px) 
+    and (height : 812px)
+    and (orientation : portrait)  
+    and (-webkit-device-pixel-ratio : 3) { 
+
+        .navbarIphoneX{
+            margin-bottom: calc(env(safe-area-inset-bottom) - 25px);
+        }
+    }

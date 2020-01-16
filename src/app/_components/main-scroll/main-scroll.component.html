@@ -5,7 +5,7 @@
   <div class="page_single layout_fullwidth_padding">
 
     <!-- For each here -->
-    <ul class="shop_items">
+    <ul class="shop_items" style="margin-bottom: env(safe-area-inset-bottom);">
 
       <!-- BAR CARD -->
       <li id="barCard" *ngFor="let barCard of barCards" (click)="onBarCardClick($event,barCard.barId)">
