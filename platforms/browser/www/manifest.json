@@ -7,6 +7,5 @@
   "description": "BarCrawl v4.0",
   "author": "Joseph Malafronte",
   "icons": [],
-  "start_url": "index.html",
-  "theme_color": "#FFFAFA"
+  "start_url": "index.html"
 }

@@ -9,6 +9,7 @@
     </author>
     <content src="index.html" />
     <preference name="phonegap-version" value="cli-9.0.0" />
+    <preference name="StatusBarStyle" value="lightcontent" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -50,5 +51,4 @@
     <engine name="browser" spec="~5.0.4" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova-plugin-buildinfo" spec="~2.0.2" />
-    <preference name="StatusBarBackgroundColor" value="#FFFAFA" />
 </widget>

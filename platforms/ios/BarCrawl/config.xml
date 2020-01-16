@@ -81,7 +81,6 @@
     <preference name="PaginationBreakingMode" value="page" />
     <preference name="PaginationMode" value="unpaginated" />
     <preference name="StatusBarOverlaysWebView" value="true" />
-    <preference name="StatusBarStyle" value="lightcontent" />
     <preference name="phonegap-version" value="cli-9.0.0" />
-    <preference name="StatusBarBackgroundColor" value="#FFFAFA" />
+    <preference name="StatusBarStyle" value="lightcontent" />
 </widget>
