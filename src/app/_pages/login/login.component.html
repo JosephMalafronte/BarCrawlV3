@@ -1,15 +1,18 @@
 <body id="mobile_wrap" class="accelerateMe">
 
-  <div class="navbar navbar--fixed navbar--fixed-top navbar--bg" style="background-color:black; z-index: 1001;">
+  <!-- <div class="navbar navbar--fixed navbar--fixed-top navbar--bg" style="top: constant(safe-area-inset-top); top: env(safe-area-inset-top);background-color:black; z-index: 1001;">
     <div class="navbar__col navbar__col--title">
       <a href="index.html">
         <img src="./assets/images/TextLogo.png" width="150px" style="padding-top:16px; padding-left: 35px;">
       </a>
     </div>
 
-  </div>
+  </div> -->
+
+
 
   <div [hidden]="isLoading">
+    <!-- <img src="./assets/images/TextLogo.png" width="150px" style="padding-top:16px;"> -->
     <!-- Login Popup -->
     <div class="popup popup-login" style="z-index: 1000;">
       <div class="content-block">
@@ -21,7 +24,7 @@
         <div class="loginblock" style="top: 23%;">
 
           <div class="collapse show" id="login">
-            <h4 style="font-weight: bold; font-size: 30px;">LOGIN TEST 1</h4>
+            <h4 style="font-weight: bold; font-size: 30px;">LOGIN</h4>
             <p *ngIf="logInError.length > 0" style="color: red">{{logInError}}</p>
             <div class="loginform">
               <input id="logInEmail" (click)="focus('logInEmail')" type="text" [(ngModel)]="logInUsername" name="Username" class="form_input required"

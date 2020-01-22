@@ -28,6 +28,7 @@ export class UserSlideComponent implements OnInit {
 
   con: string;
 
+  screenHeight: any;
 
   //AuthService used in html
   constructor(
@@ -40,6 +41,9 @@ export class UserSlideComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.screenHeight = window.screen.height;
+
     //Set profile picture if not null
     console.log(this.authService.currentUser);
     if(!this.authService.currentUser.profilePicUrl.toLowerCase().includes("null")){

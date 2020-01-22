@@ -6,6 +6,7 @@ import { BarCard } from '../models';
 import { forkJoin, Observable, BehaviorSubject } from 'rxjs';  // RxJS 6 syntax
 import { take } from 'rxjs/operators';
 import { MainService } from './main.service';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -25,7 +26,7 @@ export class AuthService {
   profilePicUrlChange: BehaviorSubject<string> = new BehaviorSubject<string>("");
 
 
-  constructor(private mainService: MainService, dbA: AngularFireDatabase, public afAuth: AngularFireAuth) {
+  constructor(private mainService: MainService, dbA: AngularFireDatabase, public afAuth: AngularFireAuth, private router: Router) {
     this.af = afAuth;
     this.db = dbA;
     this.authStateSet = new BehaviorSubject<boolean>(false);
@@ -125,13 +126,25 @@ export class AuthService {
     return this.afAuth.auth.signInWithEmailAndPassword(email,password);
   }
 
+  // keep startup url (in case your app is an SPA with html5 url routing)
+  initialHref: any = window.location.href;
+
+  restartApplication() {
+    window.location = this.initialHref;
+  }
+
   logOut(){
 
-    this.afAuth.auth.signOut();
+    let doc = document as any;
+
+    this.afAuth.auth.signOut().then(_ => {
+      doc.location = "index.html";
+    });
     // Refresh page to wipe all info, might need to rework later
 
-    window.location.href="index.html";
-
+    //window.location.href="index.html";
+    //this.router.navigate(["/login"]);
+    
   }
 
   createUser(email: string, password: string) {
