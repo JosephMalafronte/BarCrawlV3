@@ -219,10 +219,15 @@ export class BarpageCoverComponent implements OnInit {
         var coverMode = this.getMode(JSON.parse(result.cover));
         insert.cover = coverMode;
   
-        var waitMode = this.getMode(JSON.parse(result.waitTimes));
-        insert.wait = waitMode;
-        if(insert.wait == 0) insert.waitString = "No Line";
-        else insert.waitString = insert.wait.toString() + ' Minutes';
+
+        //TODO: Update in future to calculate mode reported status
+        var packedStringArray = result.howPacked;
+        insert.waitString = packedStringArray[0];
+
+        // var waitMode = this.getMode(JSON.parse(result.waitTimes));
+        // insert.wait = waitMode;
+        // if(insert.wait == 0) insert.waitString = "No Line";
+        // else insert.waitString = insert.wait.toString() + ' Minutes';
         
         insert.hour = result.hour;
   

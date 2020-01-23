@@ -38,14 +38,10 @@
 
     </ul>
 
-    <div *ngIf = "maxPage != 1" class="shop_pagination">
+    <div *ngIf = "maxPage != 1" class="shop_pagination bottomButtons">
       <a (click)="pageChange(curPage-1)" class="prev_shop">PREV PAGE</a>
       <span class="shop_pagenr">{{curPage}}/{{maxPage}}</span>
       <a (click)="pageChange(curPage+1)" class="next_shop">NEXT PAGE</a>
-      <br />
-      <br />
-      <br />
-      <br />
     </div>
 
 

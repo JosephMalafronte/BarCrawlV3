@@ -118,4 +118,15 @@ export class MainService {
     this.showFriendPopUp.next(false);
   }
 
+
+  iphoneHeight: number = 0;
+  iphoneVersion: string = "old";
+  setIphoneScreen(){
+    this.iphoneHeight = window.screen.height;
+
+    if(this.iphoneHeight == 896) this.iphoneVersion = "new";
+    else if(this.iphoneHeight == 812) this.iphoneVersion = "new";
+
+  }
+
 }

@@ -13,6 +13,11 @@ export class NavbarComponent implements OnInit {
   constructor(private mainService: MainService) { }
 
   ngOnInit() {
+
+    if(this.mainService.iphoneVersion != "new"){
+      document.getElementById("navbar").classList.remove("navbarNewIphone");
+    }
+
     this.mainService.userSlideClick.subscribe(value => {
       if(value > -1){
         switch (value){

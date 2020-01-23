@@ -1,29 +1,50 @@
-<div  id="userSlide" class="panel panel-right panel-reveal out" >
+<div id="userSlide" class="panel panel-right panel-reveal out">
   <div class="user_login_info">
 
     <div class="user_thumb">
 
       <div class="user_details">
-        <p>Welcome {{screenHeight}}, <span>{{authService.currentUser.firstName}}</span></p>
+        <p>Welcome,
+          <span>{{authService.currentUser.firstName}}</span>
+        </p>
       </div>
-      <div (click)="openPicEditing()" class="user_avatar"><img style="height: 100px;" id="avatar" src={{avatarImage}} alt="" title="" /></div>
+      <div (click)="openPicEditing()" class="user_avatar">
+        <img style="height: 100px;" id="avatar" src={{avatarImage}} alt="" title="" />
+      </div>
     </div>
 
     <nav class="user-nav">
       <ul>
-        <li><a (click)="userSlideSelect(4)"><img src="./assets/images/icons/gray/settings.png" alt="" title="" /><span>Account
-              Settings</span></a></li>
+        <li>
+          <a (click)="userSlideSelect(4)">
+            <img src="./assets/images/icons/gray/settings.png" alt="" title="" />
+            <span>Account Settings
+            </span>
+          </a>
+        </li>
         <!-- <li><a href="features.html"><img src="./assets/images/icons/gray/briefcase.png" alt="" title="" /><span>My
               Account</span></a></li> -->
-        <li><a (click)="userSlideSelect(2)"><img src="./assets/images/icons/gray/users.png" alt=""
-              title="" /><span>Friends</span><strong>12</strong></a></li>
-        <li><a (click)="userSlideSelect(3)"><img src="./assets/images/icons/gray/love.png" alt=""
-              title="" /><span>Liked Bars</span><strong>5</strong></a></li>
-        <li><a (click)="logout()"><img src="./assets/images/icons/gray/lock.png" alt="" title="" /><span>Logout</span></a></li>
+        <li>
+          <a (click)="userSlideSelect(2)">
+            <img src="./assets/images/icons/gray/users.png" alt="" title="" />
+            <span>Friends</span>
+            <!-- <strong>12</strong> -->
+          </a>
+        </li>
+        <li>
+          <a (click)="userSlideSelect(3)">
+            <img src="./assets/images/icons/gray/love.png" alt="" title="" />
+            <span>Liked Bars</span>
+            <!-- <strong>5</strong> -->
+          </a>
+        </li>
+        <li>
+          <a (click)="logout()">
+            <img src="./assets/images/icons/gray/lock.png" alt="" title="" />
+            <span>Logout</span>
+          </a>
+        </li>
       </ul>
     </nav>
   </div>
 </div>
-
-
-

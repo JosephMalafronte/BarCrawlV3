@@ -6,6 +6,7 @@ import { User } from '../../_models/User.Model';
 import {AuthService} from '../../_services/auth.service';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators'
+import { MainService } from '../../_services/main.service';
 
 declare var $ : any;
 
@@ -35,12 +36,15 @@ export class LoginComponent implements OnInit {
 
 
 
-  constructor(private authService: AuthService , private router: Router) {
+  constructor(
+    private authService: AuthService, 
+    private router: Router,
+    private mainService: MainService
+    ) {
 
    }
 
   ngOnInit() {
-
 
   }
 

@@ -7,6 +7,7 @@ import { BarCard} from '../../models';
 
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
+import { DateDirective } from '../../_directives/date.directive';
 
 @Component({
   selector: 'app-main-scroll',
@@ -36,11 +37,13 @@ export class MainScrollComponent implements OnInit {
   constructor(
     dbA: AngularFireDatabase, 
     private authService: AuthService,
+    private dateDirective: DateDirective
   ) { 
     this.db = dbA;
   }
 
   ngOnInit() {
+    this.dayOfTheWeek = this.dateDirective.getDayOfWeek();
     this.getBarCards();
     console.log(this.authService.currentUser);
   }
@@ -49,6 +52,11 @@ export class MainScrollComponent implements OnInit {
   getBarCards() {
     this.db.list('barCards/' + this.dayOfTheWeek).valueChanges().subscribe(result => {
       this.allBarCards = result;
+
+      this.allBarCards = this.allBarCards.sort((a,b): any => {
+        return a.orderRank - b.orderRank;
+      });
+
       this.maxPage = Math.ceil(this.allBarCards.length / this.cardsPerPage);
       this.pageChange(1);
     });

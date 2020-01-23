@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainService } from './_services/main.service';
 declare var device;
 
 @Component({
@@ -8,8 +9,17 @@ declare var device;
 })
 export class AppComponent {
   title = 'BarCrawlV3';
-  ngOnInit() { 
 
+  constructor(private mainService: MainService){
+
+  }
+
+  ngOnInit() { 
+    this.mainService.setIphoneScreen();
+
+    if(this.mainService.iphoneVersion != "new"){
+      document.getElementById("newiPhoneHeader").classList.remove("newiPhoneHeader");
+    }
   } 
   
 }
