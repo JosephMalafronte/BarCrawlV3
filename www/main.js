@@ -245,7 +245,7 @@ module.exports = ".barPageLike {\n    position: absolute;\n    top:9px;\n    rig
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div [hidden]=\"!hidePage\" class=\"loadingHolder\">\n    <div class=\"lds-ring\"><div></div><div></div><div></div><div></div></div>\n</div>\n\n\n<div [hidden]=\"hidePage\" style=\"padding-top:50px;\">\n    <h3 class=\"currentBarCover\">${{currentEstCover}}\n      <br />\n      <span>Current Reported Cover</span>\n    </h3>\n\n    <div (click)=\"toggleCoverPopUp()\" style=\"text-align: center\">\n      <span style=\"margin: 10px 0px 10px 0; width:300px; font-size:14px;\" class=\"btn btn--full\">Report Cover</span>\n    </div>\n\n\n\n\n    <h5 style=\"padding: 0 0 0px 0; border-bottom: 1px black solid;\">Projected Cover by Hour</h5>\n    <div style=\"margin: 7px 10px 0 10px;\">\n      <ul class=\"responsive_table\" style=\"width:100%; text-align: center; padding-bottom: 30px;\">\n        <li class=\"table_row\" style=\"background-color: #636158;  color: white;\">\n          <div class=\"table_section_small\">Hour</div>\n          <div class=\"table_section\">Price</div>\n          <div class=\"table_section\">How Packed?</div>\n        </li>\n        <div *ngIf=\"showHourlyEstimates\">\n          <li class=\"table_row\" *ngFor=\"let est of hourlyEstimates\" style=\"background-color:#f5f5f4;\">\n            <div class=\"table_section_small\">{{est.hourString}}</div>\n            <div class=\"table_section\">${{est.cover}}</div>\n            <div class=\"table_section\">{{est.waitString}}</div>\n          </li>\n        </div>\n\n\n      </ul>\n    </div>\n\n\n\n\n  </div>"
+module.exports = "<div [hidden]=\"!hidePage\" class=\"loadingHolder\">\n    <div class=\"lds-ring\"><div></div><div></div><div></div><div></div></div>\n</div>\n\n\n<div [hidden]=\"hidePage\" style=\"padding-top:50px;\">\n    <h3 class=\"currentBarCover\">${{currentEstCover}}\n      <br />\n      <span>Current Reported Cover</span>\n    </h3>\n\n    <div (click)=\"toggleCoverPopUp()\" style=\"text-align: center\">\n      <span style=\"margin: 10px 0px 10px 0; width:300px; font-size:14px;\" class=\"btn btn--full\">Report Cover</span>\n    </div>\n\n\n\n\n    <h5 style=\"text-align: center; padding: 20px 0 0px 0; border-bottom: 1px black solid;\">Estimated Cover Based On Past Reports</h5>\n    <div style=\"margin: 7px 10px 0 10px;\">\n      <ul class=\"responsive_table\" style=\"width:100%; text-align: center; padding-bottom: 30px;\">\n        <li class=\"table_row\" style=\"background-color: #636158;  color: white;\">\n          <div class=\"table_section_small\">Hour</div>\n          <div class=\"table_section\">Price</div>\n          <div class=\"table_section\">How Packed?</div>\n        </li>\n        <div *ngIf=\"showHourlyEstimates\">\n          <li class=\"table_row\" *ngFor=\"let est of hourlyEstimates\" style=\"background-color:#f5f5f4;\">\n            <div class=\"table_section_small\">{{est.hourString}}</div>\n            <div class=\"table_section\">${{est.cover}}</div>\n            <div class=\"table_section\">{{est.waitString}}</div>\n          </li>\n        </div>\n\n\n      </ul>\n    </div>\n\n\n\n\n  </div>"
 
 /***/ }),
 
@@ -292,8 +292,8 @@ var BarpageCoverComponent = /** @class */ (function () {
         this.db = _dbA;
         this.dateDirective = _dateDirective;
         this.barpageService = _barpageService;
-        //this.dayOfTheWeek = _dateDirective.getDayOfWeek();
-        this.dayOfTheWeek = "Wednesday";
+        this.dayOfTheWeek = _dateDirective.getDayOfWeek();
+        //this.dayOfTheWeek = "Wednesday";
         var self = this;
         setInterval(function () {
             self.numberSinceRefresh = 0;
@@ -337,11 +337,12 @@ var BarpageCoverComponent = /** @class */ (function () {
         this.currentHour = date.getHours();
         this.currentHourString = this.currentHour.toString() + 'time';
         //USE THIS WHEN NOT TESTIng
-        // if(this.currentHour < 5) {
-        //   this.coverDayOfTheWeek = this.dateDirective.backOneDay(this.dayOfTheWeek);
-        // }
-        // else this.coverDayOfTheWeek = this.dayOfTheWeek;
-        this.coverDayOfTheWeek = "Wednesday";
+        if (this.currentHour < 5) {
+            this.coverDayOfTheWeek = this.dateDirective.backOneDay(this.dayOfTheWeek);
+        }
+        else
+            this.coverDayOfTheWeek = this.dayOfTheWeek;
+        //this.coverDayOfTheWeek = "Wednesday";
     };
     BarpageCoverComponent.prototype.cleanCoverDatabase = function () {
         var currentMonth = this.currentDate.getMonth() + 1;
@@ -353,7 +354,7 @@ var BarpageCoverComponent = /** @class */ (function () {
         var needToUpdate = false;
         if (currentMonth != postedDateMonth)
             notValidDate = true;
-        if (currentMonth == postedDateMonth && dayDif > 1 && dayDif < 0)
+        if (currentMonth == postedDateMonth && dayDif != 0)
             notValidDate = true;
         var lastRecordedHour = +this.coverResult.lastHour;
         if (notValidDate == true) {
@@ -589,8 +590,8 @@ var BarpageDealsComponent = /** @class */ (function () {
         this.db = _dbA;
         this.dateDirective = _dateDirective;
         this.barpageService = _barpageService;
-        //this.dayOfTheWeek = _dateDirective.getDayOfWeek();
-        this.dayOfTheWeek = "Wednesday";
+        this.dayOfTheWeek = _dateDirective.getDayOfWeek();
+        //this.dayOfTheWeek = "Wednesday";
     }
     BarpageDealsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1166,7 +1167,7 @@ module.exports = "\n.navbarNewIphone{\n    margin-bottom: constant(safe-area-ins
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--       NAVBAR       -->\n<div id=\"navbar\" class=\"swiper-container-toolbar swiper-toolbar navbarNewIphone\" style=\"background-color:black; \">\n  <div class=\"swiper-pagination-toolbar\"></div>\n  <div class=\"swiper-wrapper\">\n    <div class=\"swiper-slide toolbar-icon\">\n      <span class=\"toolbar-icon-span\" id=\"toolbarHome\"  (click)=\"icon0Click()\">\n        <img src=\"./assets/images/icons/white/categories.png\"alt=\"\" title=\"\" />\n      </span>\n      <span class=\"toolbar-icon-span\" id=\"toolbarSearch\" (click)=\"icon1Click()\">\n        <img src=\"./assets/images/icons/white/search.png\"  alt=\"\" title=\"\" />\n      </span>\n      <span class=\"toolbar-icon-span\" id=\"friendsPage\" (click)=\"icon2Click()\">\n        <img style=\"width: 125%;\" src=\"./assets/images/icons/white/users.png\" alt=\"\" title=\"\" />\n      </span>\n      <span class=\"toolbar-icon-span\" (click)=\"icon3Click()\">\n        <img src=\"./assets/images/icons/white/love.png\" alt=\"\" title=\"\" />\n      </span>\n      <span class=\"toolbar-icon-span\" (click)=\"icon4Click()\">\n        <img src=\"./assets/images/icons/white/settings.png\" alt=\"\" title=\"\" />\n      </span>\n    </div>\n  </div>\n</div>"
+module.exports = "<!--       NAVBAR       -->\n<div id=\"navbar\" class=\"swiper-container-toolbar swiper-toolbar navbarNewIphone\" style=\"background-color:black; \">\n  <div class=\"swiper-pagination-toolbar\"></div>\n  <div class=\"swiper-wrapper\">\n    <div class=\"swiper-slide toolbar-icon\">\n      <div *ngIf=\"showUsersAlert\" style=\"position: absolute; left: 53%; z-index: 10000;\">\n        <img style=\"width:11%;\" src=\"./assets/images/icons/white/exclamation.png\" />\n      </div>\n      <span class=\"toolbar-icon-span\" id=\"toolbarHome\" (click)=\"icon0Click()\">\n        <img src=\"./assets/images/icons/white/categories.png\" alt=\"\" title=\"\" />\n      </span>\n      <span class=\"toolbar-icon-span\" id=\"toolbarSearch\" (click)=\"icon1Click()\">\n        <img src=\"./assets/images/icons/white/search.png\" alt=\"\" title=\"\" />\n      </span>\n      <span class=\"toolbar-icon-span\" id=\"friendsPage\" (click)=\"icon2Click()\">\n        <img style=\"width: 125%;\" src=\"./assets/images/icons/white/users.png\" alt=\"\" title=\"\" />\n      </span>\n      <span class=\"toolbar-icon-span\" (click)=\"icon3Click()\">\n        <img src=\"./assets/images/icons/white/love.png\" alt=\"\" title=\"\" />\n      </span>\n      <span class=\"toolbar-icon-span\" (click)=\"icon4Click()\">\n        <img src=\"./assets/images/icons/white/settings.png\" alt=\"\" title=\"\" />\n      </span>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -1183,15 +1184,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_main_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../_services/main.service */ "./src/app/_services/main.service.ts");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../_services/auth.service */ "./src/app/_services/auth.service.ts");
+
 
 
 
 var NavbarComponent = /** @class */ (function () {
-    function NavbarComponent(mainService) {
+    function NavbarComponent(mainService, authService) {
         this.mainService = mainService;
+        this.authService = authService;
+        this.showUsersAlert = false;
     }
     NavbarComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.authService.showUsersAlert.subscribe(function (value) {
+            _this.showUsersAlert = value;
+        });
         if (this.mainService.iphoneVersion != "new") {
             document.getElementById("navbar").classList.remove("navbarNewIphone");
         }
@@ -1267,7 +1275,7 @@ var NavbarComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./navbar.component.html */ "./src/app/_components/navbar/navbar.component.html"),
             styles: [__webpack_require__(/*! ./navbar.component.css */ "./src/app/_components/navbar/navbar.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_main_service__WEBPACK_IMPORTED_MODULE_2__["MainService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_main_service__WEBPACK_IMPORTED_MODULE_2__["MainService"], _services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]])
     ], NavbarComponent);
     return NavbarComponent;
 }());
@@ -3203,7 +3211,7 @@ var MainModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "input[type=text].instaSearch {\n    font-family: proxima-nove, 'Helvetica Neue', Arial, Helvetica, sans-serif;\n    font-size: 15px;\n    font-weight: 300;\n    letter-spacing: .5px;\n    height: 30px;\n    border-radius: 15px;\n    text-align: left;\n    padding-left: 40%;\n    border: 1px solid #edeeee;\n    background: #fafafa;\n    background-image: url('glass.png');\n    background-repeat: no-repeat;\n    background-size: 13px 13px;\n    background-position: 38% 47%;\n    outline: none;\n    width: 55%;\n    margin-top: 10px;\n    margin-bottom: 15px;\n    color: #c9cbcc;\n}\ninput[type=text]:focus.instaSearch {\n    text-align: left;\n    padding-left: 30px;\n    width:88%;\n    background: #ffffff;\n    background-image: url('glass.png');\n    background-repeat: no-repeat;\n    background-size: 13px 13px;\n    background-position: 15px 7px;\n    color: #000;\n}\ninput:focus::-webkit-input-placeholder {\n     color: #c9cbcc;\n}\ninput:focus::-moz-placeholder {\n     color: #c9cbcc;\n}\ninput:focus::-moz-placeholder {   /* Older versions of Firefox */\n     color: #c9cbcc;\n}\ninput:focus::-ms-input-placeholder { \n     color: #c9cbcc;\n}\n.searchWrap{\n    padding-top: 20%;\n    padding-left: 4%;\n}\n/* Add a black background color to the top navigation */\n.topnav {\n    margin-top: 50px;\n    position: absolute;\n    width: 100%;\n    right: 0%;\n    background-color: transparent;\n    overflow: hidden;\n  }\n.adjust {\n    padding-left: 0px;\n    padding-right: 0px;\n}\n/* Style the links inside the navigation bar */\n.holder  {\n    float: left;\n    color: black;\n    text-align: center;\n    padding: 3px 0px;\n    width: 50%;\n    text-decoration: none;\n    font-size: 17px;\n}\n/* Add a color to the active/current link */\n.active {\n    background-color: transparent;\n    color: black;\n    border-bottom: 2px black solid;\n}\n.barHolder{\n    position: absolute;\n    width:100%;\n    -webkit-transform: translateX(0%);\n\t\t\ttransform: translateX(0%);\n\ttransition: -webkit-transform 300ms linear;\n\ttransition: transform 300ms linear;\n\ttransition: transform 300ms linear, -webkit-transform 300ms linear;\n\twill-change: transform;\n\n}\n.bHHidden{\n    -webkit-transform: translateX(-100%);\n    transform: translateX(-100%);\n    transition: -webkit-transform 300ms linear;\n    transition: transform 300ms linear;\n    transition: transform 300ms linear, -webkit-transform 300ms linear;\n    will-change: transform;\n}\n.userHolder{\n    position: absolute;\n    width:100%;\n    -webkit-transform: translateX(100%);\n\t\t\ttransform: translateX(100%);\n\ttransition: -webkit-transform 300ms linear;\n\ttransition: transform 300ms linear;\n\ttransition: transform 300ms linear, -webkit-transform 300ms linear;\n    will-change: transform;\n}\n.uHOpen{\n    -webkit-transform: translateX(0%);\n    transform: translateX(0%);\n    transition: -webkit-transform 300ms linear;\n    transition: transform 300ms linear;\n    transition: transform 300ms linear, -webkit-transform 300ms linear;\n    will-change: transform;\n}\n.displayNone{\n    display: none;\n}\n.displayInherit{\n    display:inherit;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9fcGFnZXMvc2VhcmNoL3NlYXJjaC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0kseUVBQXlFO0lBQ3pFLGVBQWU7SUFDZixnQkFBZ0I7SUFDaEIsb0JBQW9CO0lBQ3BCLFlBQVk7SUFDWixtQkFBbUI7SUFDbkIsZ0JBQWdCO0lBQ2hCLGlCQUFpQjtJQUNqQix5QkFBeUI7SUFDekIsbUJBQW1CO0lBQ25CLGtDQUF5RDtJQUN6RCw0QkFBNEI7SUFDNUIsMEJBQTBCO0lBQzFCLDRCQUE0QjtJQUM1QixhQUFhO0lBQ2IsVUFBVTtJQUNWLGdCQUFnQjtJQUNoQixtQkFBbUI7SUFDbkIsY0FBYztBQUNsQjtBQUNBO0lBQ0ksZ0JBQWdCO0lBQ2hCLGtCQUFrQjtJQUNsQixTQUFTO0lBQ1QsbUJBQW1CO0lBQ25CLGtDQUF5RDtJQUN6RCw0QkFBNEI7SUFDNUIsMEJBQTBCO0lBQzFCLDZCQUE2QjtJQUM3QixXQUFXO0FBQ2Y7QUFFQTtLQUNLLGNBQWM7QUFDbkI7QUFDQTtLQUNLLGNBQWM7QUFDbkI7QUFDQSxrQ0FBa0MsOEJBQThCO0tBQzNELGNBQWM7QUFDbkI7QUFDQTtLQUNLLGNBQWM7QUFDbkI7QUFFQTtJQUNJLGdCQUFnQjtJQUNoQixnQkFBZ0I7QUFDcEI7QUFFQSx1REFBdUQ7QUFDdkQ7SUFDSSxnQkFBZ0I7SUFDaEIsa0JBQWtCO0lBQ2xCLFdBQVc7SUFDWCxTQUFTO0lBQ1QsNkJBQTZCO0lBQzdCLGdCQUFnQjtFQUNsQjtBQUVGO0lBQ0ksaUJBQWlCO0lBQ2pCLGtCQUFrQjtBQUN0QjtBQUVBLDhDQUE4QztBQUM5QztJQUNJLFdBQVc7SUFDWCxZQUFZO0lBQ1osa0JBQWtCO0lBQ2xCLGdCQUFnQjtJQUNoQixVQUFVO0lBQ1YscUJBQXFCO0lBQ3JCLGVBQWU7QUFDbkI7QUFHQSwyQ0FBMkM7QUFDM0M7SUFDSSw2QkFBNkI7SUFDN0IsWUFBWTtJQUNaLDhCQUE4QjtBQUNsQztBQUdBO0lBQ0ksa0JBQWtCO0lBQ2xCLFVBQVU7SUFDVixpQ0FBaUM7R0FDbEMseUJBQXlCO0NBQzNCLDBDQUFrQztDQUFsQyxrQ0FBa0M7Q0FBbEMsa0VBQWtDO0NBQ2xDLHNCQUFzQjs7QUFFdkI7QUFFQTtJQUNJLG9DQUFvQztJQUNwQyw0QkFBNEI7SUFDNUIsMENBQWtDO0lBQWxDLGtDQUFrQztJQUFsQyxrRUFBa0M7SUFDbEMsc0JBQXNCO0FBQzFCO0FBRUE7SUFDSSxrQkFBa0I7SUFDbEIsVUFBVTtJQUNWLG1DQUFtQztHQUNwQywyQkFBMkI7Q0FDN0IsMENBQWtDO0NBQWxDLGtDQUFrQztDQUFsQyxrRUFBa0M7SUFDL0Isc0JBQXNCO0FBQzFCO0FBRUE7SUFDSSxpQ0FBaUM7SUFDakMseUJBQXlCO0lBQ3pCLDBDQUFrQztJQUFsQyxrQ0FBa0M7SUFBbEMsa0VBQWtDO0lBQ2xDLHNCQUFzQjtBQUMxQjtBQUVBO0lBQ0ksYUFBYTtBQUNqQjtBQUVBO0lBQ0ksZUFBZTtBQUNuQiIsImZpbGUiOiJhcHAvX3BhZ2VzL3NlYXJjaC9zZWFyY2guY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbImlucHV0W3R5cGU9dGV4dF0uaW5zdGFTZWFyY2gge1xuICAgIGZvbnQtZmFtaWx5OiBwcm94aW1hLW5vdmUsICdIZWx2ZXRpY2EgTmV1ZScsIEFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWY7XG4gICAgZm9udC1zaXplOiAxNXB4O1xuICAgIGZvbnQtd2VpZ2h0OiAzMDA7XG4gICAgbGV0dGVyLXNwYWNpbmc6IC41cHg7XG4gICAgaGVpZ2h0OiAzMHB4O1xuICAgIGJvcmRlci1yYWRpdXM6IDE1cHg7XG4gICAgdGV4dC1hbGlnbjogbGVmdDtcbiAgICBwYWRkaW5nLWxlZnQ6IDQwJTtcbiAgICBib3JkZXI6IDFweCBzb2xpZCAjZWRlZWVlO1xuICAgIGJhY2tncm91bmQ6ICNmYWZhZmE7XG4gICAgYmFja2dyb3VuZC1pbWFnZTogdXJsKCcuLi8uLi8uLi9hc3NldHMvaW1hZ2VzL2dsYXNzLnBuZycpO1xuICAgIGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7XG4gICAgYmFja2dyb3VuZC1zaXplOiAxM3B4IDEzcHg7XG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogMzglIDQ3JTtcbiAgICBvdXRsaW5lOiBub25lO1xuICAgIHdpZHRoOiA1NSU7XG4gICAgbWFyZ2luLXRvcDogMTBweDtcbiAgICBtYXJnaW4tYm90dG9tOiAxNXB4O1xuICAgIGNvbG9yOiAjYzljYmNjO1xufVxuaW5wdXRbdHlwZT10ZXh0XTpmb2N1cy5pbnN0YVNlYXJjaCB7XG4gICAgdGV4dC1hbGlnbjogbGVmdDtcbiAgICBwYWRkaW5nLWxlZnQ6IDMwcHg7XG4gICAgd2lkdGg6ODglO1xuICAgIGJhY2tncm91bmQ6ICNmZmZmZmY7XG4gICAgYmFja2dyb3VuZC1pbWFnZTogdXJsKFwiLi4vLi4vLi4vYXNzZXRzL2ltYWdlcy9nbGFzcy5wbmdcIik7XG4gICAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDtcbiAgICBiYWNrZ3JvdW5kLXNpemU6IDEzcHggMTNweDtcbiAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiAxNXB4IDdweDtcbiAgICBjb2xvcjogIzAwMDtcbn1cbiBcbmlucHV0OmZvY3VzOjotd2Via2l0LWlucHV0LXBsYWNlaG9sZGVyIHtcbiAgICAgY29sb3I6ICNjOWNiY2M7XG59XG5pbnB1dDpmb2N1czo6LW1vei1wbGFjZWhvbGRlciB7XG4gICAgIGNvbG9yOiAjYzljYmNjO1xufVxuaW5wdXQ6Zm9jdXM6Oi1tb3otcGxhY2Vob2xkZXIgeyAgIC8qIE9sZGVyIHZlcnNpb25zIG9mIEZpcmVmb3ggKi9cbiAgICAgY29sb3I6ICNjOWNiY2M7XG59XG5pbnB1dDpmb2N1czo6LW1zLWlucHV0LXBsYWNlaG9sZGVyIHsgXG4gICAgIGNvbG9yOiAjYzljYmNjO1xufVxuXG4uc2VhcmNoV3JhcHtcbiAgICBwYWRkaW5nLXRvcDogMjAlO1xuICAgIHBhZGRpbmctbGVmdDogNCU7XG59XG5cbi8qIEFkZCBhIGJsYWNrIGJhY2tncm91bmQgY29sb3IgdG8gdGhlIHRvcCBuYXZpZ2F0aW9uICovXG4udG9wbmF2IHtcbiAgICBtYXJnaW4tdG9wOiA1MHB4O1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICB3aWR0aDogMTAwJTtcbiAgICByaWdodDogMCU7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7XG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgfVxuXG4uYWRqdXN0IHtcbiAgICBwYWRkaW5nLWxlZnQ6IDBweDtcbiAgICBwYWRkaW5nLXJpZ2h0OiAwcHg7XG59XG4gIFxuLyogU3R5bGUgdGhlIGxpbmtzIGluc2lkZSB0aGUgbmF2aWdhdGlvbiBiYXIgKi9cbi5ob2xkZXIgIHtcbiAgICBmbG9hdDogbGVmdDtcbiAgICBjb2xvcjogYmxhY2s7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIHBhZGRpbmc6IDNweCAwcHg7XG4gICAgd2lkdGg6IDUwJTtcbiAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG4gICAgZm9udC1zaXplOiAxN3B4O1xufVxuXG5cbi8qIEFkZCBhIGNvbG9yIHRvIHRoZSBhY3RpdmUvY3VycmVudCBsaW5rICovXG4uYWN0aXZlIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB0cmFuc3BhcmVudDtcbiAgICBjb2xvcjogYmxhY2s7XG4gICAgYm9yZGVyLWJvdHRvbTogMnB4IGJsYWNrIHNvbGlkO1xufVxuXG5cbi5iYXJIb2xkZXJ7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHdpZHRoOjEwMCU7XG4gICAgLXdlYmtpdC10cmFuc2Zvcm06IHRyYW5zbGF0ZVgoMCUpO1xuXHRcdFx0dHJhbnNmb3JtOiB0cmFuc2xhdGVYKDAlKTtcblx0dHJhbnNpdGlvbjogdHJhbnNmb3JtIDMwMG1zIGxpbmVhcjtcblx0d2lsbC1jaGFuZ2U6IHRyYW5zZm9ybTtcblxufVxuXG4uYkhIaWRkZW57XG4gICAgLXdlYmtpdC10cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLTEwMCUpO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgtMTAwJSk7XG4gICAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDMwMG1zIGxpbmVhcjtcbiAgICB3aWxsLWNoYW5nZTogdHJhbnNmb3JtO1xufVxuXG4udXNlckhvbGRlcntcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgd2lkdGg6MTAwJTtcbiAgICAtd2Via2l0LXRyYW5zZm9ybTogdHJhbnNsYXRlWCgxMDAlKTtcblx0XHRcdHRyYW5zZm9ybTogdHJhbnNsYXRlWCgxMDAlKTtcblx0dHJhbnNpdGlvbjogdHJhbnNmb3JtIDMwMG1zIGxpbmVhcjtcbiAgICB3aWxsLWNoYW5nZTogdHJhbnNmb3JtO1xufVxuXG4udUhPcGVue1xuICAgIC13ZWJraXQtdHJhbnNmb3JtOiB0cmFuc2xhdGVYKDAlKTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoMCUpO1xuICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAzMDBtcyBsaW5lYXI7XG4gICAgd2lsbC1jaGFuZ2U6IHRyYW5zZm9ybTtcbn1cblxuLmRpc3BsYXlOb25le1xuICAgIGRpc3BsYXk6IG5vbmU7XG59XG5cbi5kaXNwbGF5SW5oZXJpdHtcbiAgICBkaXNwbGF5OmluaGVyaXQ7XG59XG4iXX0= */"
+module.exports = "input[type=text].instaSearch {\n    font-family: proxima-nove, 'Helvetica Neue', Arial, Helvetica, sans-serif;\n    font-size: 15px;\n    font-weight: 300;\n    letter-spacing: .5px;\n    height: 30px;\n    border-radius: 15px;\n    text-align: left;\n    padding-left: 40%;\n    border: 1px solid #edeeee;\n    background: #fafafa;\n    background-image: url('glass.png');\n    background-repeat: no-repeat;\n    background-size: 13px 13px;\n    background-position: 38% 47%;\n    outline: none;\n    width: 55%;\n    margin-top: 10px;\n    margin-bottom: 15px;\n}\ninput[type=text]:focus.instaSearch {\n    text-align: left;\n    padding-left: 30px;\n    width:88%;\n    background: #ffffff;\n    background-image: url('glass.png');\n    background-repeat: no-repeat;\n    background-size: 13px 13px;\n    background-position: 15px 7px;\n    color: #000;\n}\ninput:focus::-webkit-input-placeholder {\n     color: #c9cbcc;\n}\ninput:focus::-moz-placeholder {\n     color: #c9cbcc;\n}\ninput:focus::-moz-placeholder {   /* Older versions of Firefox */\n     color: #c9cbcc;\n}\ninput:focus::-ms-input-placeholder { \n     color: #c9cbcc;\n}\n.searchWrap{\n    padding-top: 20%;\n    padding-left: 4%;\n}\n/* Add a black background color to the top navigation */\n.topnav {\n    margin-top: 50px;\n    position: absolute;\n    width: 100%;\n    right: 0%;\n    background-color: transparent;\n    overflow: hidden;\n  }\n.adjust {\n    padding-left: 0px;\n    padding-right: 0px;\n}\n/* Style the links inside the navigation bar */\n.holder  {\n    float: left;\n    color: black;\n    text-align: center;\n    padding: 3px 0px;\n    width: 50%;\n    text-decoration: none;\n    font-size: 17px;\n}\n/* Add a color to the active/current link */\n.active {\n    background-color: transparent;\n    color: black;\n    border-bottom: 2px black solid;\n}\n.barHolder{\n    position: absolute;\n    width:100%;\n    -webkit-transform: translateX(0%);\n\t\t\ttransform: translateX(0%);\n\ttransition: -webkit-transform 300ms linear;\n\ttransition: transform 300ms linear;\n\ttransition: transform 300ms linear, -webkit-transform 300ms linear;\n\twill-change: transform;\n\n}\n.bHHidden{\n    -webkit-transform: translateX(-100%);\n    transform: translateX(-100%);\n    transition: -webkit-transform 300ms linear;\n    transition: transform 300ms linear;\n    transition: transform 300ms linear, -webkit-transform 300ms linear;\n    will-change: transform;\n}\n.userHolder{\n    position: absolute;\n    width:100%;\n    -webkit-transform: translateX(100%);\n\t\t\ttransform: translateX(100%);\n\ttransition: -webkit-transform 300ms linear;\n\ttransition: transform 300ms linear;\n\ttransition: transform 300ms linear, -webkit-transform 300ms linear;\n    will-change: transform;\n}\n.uHOpen{\n    -webkit-transform: translateX(0%);\n    transform: translateX(0%);\n    transition: -webkit-transform 300ms linear;\n    transition: transform 300ms linear;\n    transition: transform 300ms linear, -webkit-transform 300ms linear;\n    will-change: transform;\n}\n.displayNone{\n    display: none;\n}\n.displayInherit{\n    display:inherit;\n}\n.lightText {\n    color: #c9cbcc;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC9fcGFnZXMvc2VhcmNoL3NlYXJjaC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0kseUVBQXlFO0lBQ3pFLGVBQWU7SUFDZixnQkFBZ0I7SUFDaEIsb0JBQW9CO0lBQ3BCLFlBQVk7SUFDWixtQkFBbUI7SUFDbkIsZ0JBQWdCO0lBQ2hCLGlCQUFpQjtJQUNqQix5QkFBeUI7SUFDekIsbUJBQW1CO0lBQ25CLGtDQUF5RDtJQUN6RCw0QkFBNEI7SUFDNUIsMEJBQTBCO0lBQzFCLDRCQUE0QjtJQUM1QixhQUFhO0lBQ2IsVUFBVTtJQUNWLGdCQUFnQjtJQUNoQixtQkFBbUI7QUFDdkI7QUFDQTtJQUNJLGdCQUFnQjtJQUNoQixrQkFBa0I7SUFDbEIsU0FBUztJQUNULG1CQUFtQjtJQUNuQixrQ0FBeUQ7SUFDekQsNEJBQTRCO0lBQzVCLDBCQUEwQjtJQUMxQiw2QkFBNkI7SUFDN0IsV0FBVztBQUNmO0FBRUE7S0FDSyxjQUFjO0FBQ25CO0FBQ0E7S0FDSyxjQUFjO0FBQ25CO0FBQ0Esa0NBQWtDLDhCQUE4QjtLQUMzRCxjQUFjO0FBQ25CO0FBQ0E7S0FDSyxjQUFjO0FBQ25CO0FBRUE7SUFDSSxnQkFBZ0I7SUFDaEIsZ0JBQWdCO0FBQ3BCO0FBRUEsdURBQXVEO0FBQ3ZEO0lBQ0ksZ0JBQWdCO0lBQ2hCLGtCQUFrQjtJQUNsQixXQUFXO0lBQ1gsU0FBUztJQUNULDZCQUE2QjtJQUM3QixnQkFBZ0I7RUFDbEI7QUFFRjtJQUNJLGlCQUFpQjtJQUNqQixrQkFBa0I7QUFDdEI7QUFFQSw4Q0FBOEM7QUFDOUM7SUFDSSxXQUFXO0lBQ1gsWUFBWTtJQUNaLGtCQUFrQjtJQUNsQixnQkFBZ0I7SUFDaEIsVUFBVTtJQUNWLHFCQUFxQjtJQUNyQixlQUFlO0FBQ25CO0FBR0EsMkNBQTJDO0FBQzNDO0lBQ0ksNkJBQTZCO0lBQzdCLFlBQVk7SUFDWiw4QkFBOEI7QUFDbEM7QUFHQTtJQUNJLGtCQUFrQjtJQUNsQixVQUFVO0lBQ1YsaUNBQWlDO0dBQ2xDLHlCQUF5QjtDQUMzQiwwQ0FBa0M7Q0FBbEMsa0NBQWtDO0NBQWxDLGtFQUFrQztDQUNsQyxzQkFBc0I7O0FBRXZCO0FBRUE7SUFDSSxvQ0FBb0M7SUFDcEMsNEJBQTRCO0lBQzVCLDBDQUFrQztJQUFsQyxrQ0FBa0M7SUFBbEMsa0VBQWtDO0lBQ2xDLHNCQUFzQjtBQUMxQjtBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLFVBQVU7SUFDVixtQ0FBbUM7R0FDcEMsMkJBQTJCO0NBQzdCLDBDQUFrQztDQUFsQyxrQ0FBa0M7Q0FBbEMsa0VBQWtDO0lBQy9CLHNCQUFzQjtBQUMxQjtBQUVBO0lBQ0ksaUNBQWlDO0lBQ2pDLHlCQUF5QjtJQUN6QiwwQ0FBa0M7SUFBbEMsa0NBQWtDO0lBQWxDLGtFQUFrQztJQUNsQyxzQkFBc0I7QUFDMUI7QUFFQTtJQUNJLGFBQWE7QUFDakI7QUFFQTtJQUNJLGVBQWU7QUFDbkI7QUFFQTtJQUNJLGNBQWM7QUFDbEIiLCJmaWxlIjoiYXBwL19wYWdlcy9zZWFyY2gvc2VhcmNoLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpbnB1dFt0eXBlPXRleHRdLmluc3RhU2VhcmNoIHtcbiAgICBmb250LWZhbWlseTogcHJveGltYS1ub3ZlLCAnSGVsdmV0aWNhIE5ldWUnLCBBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmO1xuICAgIGZvbnQtc2l6ZTogMTVweDtcbiAgICBmb250LXdlaWdodDogMzAwO1xuICAgIGxldHRlci1zcGFjaW5nOiAuNXB4O1xuICAgIGhlaWdodDogMzBweDtcbiAgICBib3JkZXItcmFkaXVzOiAxNXB4O1xuICAgIHRleHQtYWxpZ246IGxlZnQ7XG4gICAgcGFkZGluZy1sZWZ0OiA0MCU7XG4gICAgYm9yZGVyOiAxcHggc29saWQgI2VkZWVlZTtcbiAgICBiYWNrZ3JvdW5kOiAjZmFmYWZhO1xuICAgIGJhY2tncm91bmQtaW1hZ2U6IHVybCgnLi4vLi4vLi4vYXNzZXRzL2ltYWdlcy9nbGFzcy5wbmcnKTtcbiAgICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xuICAgIGJhY2tncm91bmQtc2l6ZTogMTNweCAxM3B4O1xuICAgIGJhY2tncm91bmQtcG9zaXRpb246IDM4JSA0NyU7XG4gICAgb3V0bGluZTogbm9uZTtcbiAgICB3aWR0aDogNTUlO1xuICAgIG1hcmdpbi10b3A6IDEwcHg7XG4gICAgbWFyZ2luLWJvdHRvbTogMTVweDtcbn1cbmlucHV0W3R5cGU9dGV4dF06Zm9jdXMuaW5zdGFTZWFyY2gge1xuICAgIHRleHQtYWxpZ246IGxlZnQ7XG4gICAgcGFkZGluZy1sZWZ0OiAzMHB4O1xuICAgIHdpZHRoOjg4JTtcbiAgICBiYWNrZ3JvdW5kOiAjZmZmZmZmO1xuICAgIGJhY2tncm91bmQtaW1hZ2U6IHVybChcIi4uLy4uLy4uL2Fzc2V0cy9pbWFnZXMvZ2xhc3MucG5nXCIpO1xuICAgIGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7XG4gICAgYmFja2dyb3VuZC1zaXplOiAxM3B4IDEzcHg7XG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogMTVweCA3cHg7XG4gICAgY29sb3I6ICMwMDA7XG59XG4gXG5pbnB1dDpmb2N1czo6LXdlYmtpdC1pbnB1dC1wbGFjZWhvbGRlciB7XG4gICAgIGNvbG9yOiAjYzljYmNjO1xufVxuaW5wdXQ6Zm9jdXM6Oi1tb3otcGxhY2Vob2xkZXIge1xuICAgICBjb2xvcjogI2M5Y2JjYztcbn1cbmlucHV0OmZvY3VzOjotbW96LXBsYWNlaG9sZGVyIHsgICAvKiBPbGRlciB2ZXJzaW9ucyBvZiBGaXJlZm94ICovXG4gICAgIGNvbG9yOiAjYzljYmNjO1xufVxuaW5wdXQ6Zm9jdXM6Oi1tcy1pbnB1dC1wbGFjZWhvbGRlciB7IFxuICAgICBjb2xvcjogI2M5Y2JjYztcbn1cblxuLnNlYXJjaFdyYXB7XG4gICAgcGFkZGluZy10b3A6IDIwJTtcbiAgICBwYWRkaW5nLWxlZnQ6IDQlO1xufVxuXG4vKiBBZGQgYSBibGFjayBiYWNrZ3JvdW5kIGNvbG9yIHRvIHRoZSB0b3AgbmF2aWdhdGlvbiAqL1xuLnRvcG5hdiB7XG4gICAgbWFyZ2luLXRvcDogNTBweDtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgcmlnaHQ6IDAlO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHRyYW5zcGFyZW50O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG4gIH1cblxuLmFkanVzdCB7XG4gICAgcGFkZGluZy1sZWZ0OiAwcHg7XG4gICAgcGFkZGluZy1yaWdodDogMHB4O1xufVxuICBcbi8qIFN0eWxlIHRoZSBsaW5rcyBpbnNpZGUgdGhlIG5hdmlnYXRpb24gYmFyICovXG4uaG9sZGVyICB7XG4gICAgZmxvYXQ6IGxlZnQ7XG4gICAgY29sb3I6IGJsYWNrO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBwYWRkaW5nOiAzcHggMHB4O1xuICAgIHdpZHRoOiA1MCU7XG4gICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICAgIGZvbnQtc2l6ZTogMTdweDtcbn1cblxuXG4vKiBBZGQgYSBjb2xvciB0byB0aGUgYWN0aXZlL2N1cnJlbnQgbGluayAqL1xuLmFjdGl2ZSB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7XG4gICAgY29sb3I6IGJsYWNrO1xuICAgIGJvcmRlci1ib3R0b206IDJweCBibGFjayBzb2xpZDtcbn1cblxuXG4uYmFySG9sZGVye1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICB3aWR0aDoxMDAlO1xuICAgIC13ZWJraXQtdHJhbnNmb3JtOiB0cmFuc2xhdGVYKDAlKTtcblx0XHRcdHRyYW5zZm9ybTogdHJhbnNsYXRlWCgwJSk7XG5cdHRyYW5zaXRpb246IHRyYW5zZm9ybSAzMDBtcyBsaW5lYXI7XG5cdHdpbGwtY2hhbmdlOiB0cmFuc2Zvcm07XG5cbn1cblxuLmJISGlkZGVue1xuICAgIC13ZWJraXQtdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC0xMDAlKTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLTEwMCUpO1xuICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAzMDBtcyBsaW5lYXI7XG4gICAgd2lsbC1jaGFuZ2U6IHRyYW5zZm9ybTtcbn1cblxuLnVzZXJIb2xkZXJ7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHdpZHRoOjEwMCU7XG4gICAgLXdlYmtpdC10cmFuc2Zvcm06IHRyYW5zbGF0ZVgoMTAwJSk7XG5cdFx0XHR0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoMTAwJSk7XG5cdHRyYW5zaXRpb246IHRyYW5zZm9ybSAzMDBtcyBsaW5lYXI7XG4gICAgd2lsbC1jaGFuZ2U6IHRyYW5zZm9ybTtcbn1cblxuLnVIT3BlbntcbiAgICAtd2Via2l0LXRyYW5zZm9ybTogdHJhbnNsYXRlWCgwJSk7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKDAlKTtcbiAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMzAwbXMgbGluZWFyO1xuICAgIHdpbGwtY2hhbmdlOiB0cmFuc2Zvcm07XG59XG5cbi5kaXNwbGF5Tm9uZXtcbiAgICBkaXNwbGF5OiBub25lO1xufVxuXG4uZGlzcGxheUluaGVyaXR7XG4gICAgZGlzcGxheTppbmhlcml0O1xufVxuXG4ubGlnaHRUZXh0IHtcbiAgICBjb2xvcjogI2M5Y2JjYztcbn0iXX0= */"
 
 /***/ }),
 
@@ -3214,7 +3222,7 @@ module.exports = "input[type=text].instaSearch {\n    font-family: proxima-nove,
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-bar-page *ngIf=\"showBarPage\" [barPageIdChange]=\"barPageId\" [slideInBar]=\"barSlide\" [location]=\"'search'\">\n</app-bar-page>\n\n\n\n<div class=\"topnav\">\n  <div class=\"adjust\">\n    <div (click)=\"setActiveSearchPage(0)\" [className]=\"activeNavIcon(0)? 'holder active'  : 'holder'\">\n      <span>Bars</span>\n    </div>\n    <div (click)=\"setActiveSearchPage(1)\" [className]=\"activeNavIcon(1)? 'holder active'  : 'holder'\">\n      <span>Users</span>\n    </div>\n  </div>\n</div>\n\n<div class=\"searchWrap\">\n\n  <input (click)=\"focus()\" (focusout)=\"search()\" [(ngModel)]=\"searchString\" type=\"text\" id=\"subject\" class=\"instaSearch\"\n    value=\"\" placeholder=\"Search\">\n\n</div>\n\n\n\n<div class=\"barHolder\" id=\"barHolder\">\n  <!-- For each here -->\n  <div style=\"width:92%; margin: 0 4%;\">\n    <ul class=\"shop_items\">\n\n      <!-- BAR CARD -->\n      <li id=\"barCard\" *ngFor=\"let barCard of barResults\" (click)=\"onBarCardClick($event,barCard.barId)\">\n        <div class=\"shop_thumb\">\n          <img src={{barCard.barPictureUrl}} alt=\"\" title=\"\" class=\"barCardPic\" />\n        </div>\n        <div class=\"shop_item_details\">\n          <h4>{{barCard.barName}}</h4>\n          <ul class=\"features_list\" style=\"padding: 0% 0 0 0;\">\n            <li>\n              <span class=\"features_list_span\">\n                <img src={{barCard.highlight1Icon}} alt=\"\" title=\"\" />\n                <span class=\"features_list_span_text\">{{barCard.highlight1}}</span>\n              </span>\n            </li>\n            <li>\n              <span class=\"features_list_span\">\n                <img src={{barCard.highlight2Icon}} alt=\"\" title=\"\" />\n                <span class=\"features_list_span_text\">{{barCard.highlight2}}</span>\n              </span>\n            </li>\n          </ul>\n          <span class=\"open-popup shopfav\" (click)=\"likeBar(barCard)\">\n            <!-- <app-like></app-like> -->\n            <img id=\"like\"\n              [src]=\"checkLikedStatus(barCard)? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'\"\n              alt=\"\" title=\"\" />\n          </span>\n        </div>\n      </li>\n\n\n    </ul>\n  </div>\n</div>\n\n\n\n<div class=\"userHolder\" id=\"userHolder\">\n  <div id=\"headDeals\">\n    <ul class=\"features_list\" *ngFor=\"let userRes of userResults\" style=\"padding: 0px 0 0 0; position:relative\">\n      <li (click) = \"openFriendPopUp(userRes.about)\">\n        <div style=\"padding-bottom: 10px;\">\n          <span class=\"features_list_span\">\n            <img src=\"{{userRes.about.profilePicUrl == 'null'? './assets/images/users/blank_profile.png' : userRes.about.profilePicUrl}}\" alt=\"\" title=\"\" />\n            <span class=\"features_list_span_text\" style=\"font-size: 110%;\">{{userRes.about.firstName}} {{userRes.about.lastName}}</span>\n          </span>\n        </div>\n      </li>\n    </ul>\n  </div>\n</div>"
+module.exports = "<app-bar-page *ngIf=\"showBarPage\" [barPageIdChange]=\"barPageId\" [slideInBar]=\"barSlide\" [location]=\"'search'\">\n</app-bar-page>\n\n\n\n<div class=\"topnav\">\n  <div class=\"adjust\">\n    <div (click)=\"setActiveSearchPage(0)\" [className]=\"activeNavIcon(0)? 'holder active'  : 'holder'\">\n      <span>Bars</span>\n    </div>\n    <div (click)=\"setActiveSearchPage(1)\" [className]=\"activeNavIcon(1)? 'holder active'  : 'holder'\">\n      <span>Users</span>\n    </div>\n  </div>\n</div>\n\n<div class=\"searchWrap\">\n\n  <input (click)=\"focus()\" (focusout)=\"search()\" [(ngModel)]=\"searchString\" type=\"text\" id=\"subject\" class=\"instaSearch lightText\"\n    value=\"\" placeholder=\"Search\">\n\n</div>\n\n\n\n<div class=\"barHolder\" id=\"barHolder\">\n  <!-- For each here -->\n  <div style=\"width:92%; margin: 0 4%;\">\n    <ul class=\"shop_items\">\n\n      <!-- BAR CARD -->\n      <li id=\"barCard\" *ngFor=\"let barCard of barResults\" (click)=\"onBarCardClick($event,barCard.barId)\">\n        <div class=\"shop_thumb\">\n          <img src={{barCard.barPictureUrl}} alt=\"\" title=\"\" class=\"barCardPic\" />\n        </div>\n        <div class=\"shop_item_details\">\n          <h4>{{barCard.barName}}</h4>\n          <ul class=\"features_list\" style=\"padding: 0% 0 0 0;\">\n            <li>\n              <span class=\"features_list_span\">\n                <img src={{barCard.highlight1Icon}} alt=\"\" title=\"\" />\n                <span class=\"features_list_span_text\">{{barCard.highlight1}}</span>\n              </span>\n            </li>\n            <li>\n              <span class=\"features_list_span\">\n                <img src={{barCard.highlight2Icon}} alt=\"\" title=\"\" />\n                <span class=\"features_list_span_text\">{{barCard.highlight2}}</span>\n              </span>\n            </li>\n          </ul>\n          <span class=\"open-popup shopfav\" (click)=\"likeBar(barCard)\">\n            <!-- <app-like></app-like> -->\n            <img id=\"like\"\n              [src]=\"checkLikedStatus(barCard)? './assets/images/icons/black/lovefilledblack.png' : './assets/images/icons/black/love.png'\"\n              alt=\"\" title=\"\" />\n          </span>\n        </div>\n      </li>\n\n\n    </ul>\n  </div>\n</div>\n\n\n\n<div class=\"userHolder\" id=\"userHolder\">\n  <div id=\"headDeals\">\n    <ul class=\"features_list\" *ngFor=\"let userRes of userResults\" style=\"padding: 0px 0 0 0; position:relative\">\n      <li (click) = \"openFriendPopUp(userRes.about)\">\n        <div style=\"padding-bottom: 10px;\">\n          <span class=\"features_list_span\">\n            <img src=\"{{userRes.about.profilePicUrl == 'null'? './assets/images/users/blank_profile.png' : userRes.about.profilePicUrl}}\" alt=\"\" title=\"\" />\n            <span class=\"features_list_span_text\" style=\"font-size: 110%;\">{{userRes.about.firstName}} {{userRes.about.lastName}}</span>\n          </span>\n        </div>\n      </li>\n    </ul>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -3303,6 +3311,7 @@ var SearchComponent = /** @class */ (function () {
         var term = this.searchString;
         if (term == "")
             return;
+        document.getElementById("subject").classList.remove("lightText");
         //Convert string
         term = term.toLowerCase();
         term = term.charAt(0).toUpperCase() + term.slice(1);
@@ -3320,39 +3329,63 @@ var SearchComponent = /** @class */ (function () {
         else if (this.activeSearchPage == 1) {
             if (this.lastSearchedUsers == term)
                 return;
+            term = term.toLowerCase();
             var firstNames = [];
             var lastNames = [];
+            var userNames = [];
             var finishedLoadingNumber = new rxjs__WEBPACK_IMPORTED_MODULE_6__["BehaviorSubject"](0);
             finishedLoadingNumber.subscribe(function (value) {
-                if (value == 2) {
-                    //Remove duplicates from first names
-                    firstNames = firstNames.filter(function (value) {
-                        return lastNames.indexOf(value) == -1;
+                if (value == 3) {
+                    //Remove duplicates 
+                    lastNames = lastNames.filter(function (value) {
+                        for (var i = 0; i < userNames.length; i++) {
+                            if (userNames[i].about.uid == value.about.uid)
+                                return false;
+                        }
+                        return true;
                     });
-                    _this.userResults = firstNames.concat(lastNames);
+                    firstNames = firstNames.filter(function (value) {
+                        for (var i = 0; i < lastNames.length; i++) {
+                            if (lastNames[i].about.uid == value.about.uid)
+                                return false;
+                        }
+                        return true;
+                    });
+                    firstNames = firstNames.filter(function (value) {
+                        for (var i = 0; i < userNames.length; i++) {
+                            if (userNames[i].about.uid == value.about.uid)
+                                return false;
+                        }
+                        return true;
+                    });
+                    var results = firstNames.concat(lastNames);
+                    results = results.concat(userNames);
+                    results = results.filter(function (value) {
+                        if (value.about.uid != _this.auth.currentUser.uid)
+                            return true;
+                    });
+                    _this.userResults = results;
                 }
             });
-            this.db.list('userInfo', function (ref) { return ref.orderByChild('about/firstName').limitToFirst(10).startAt(term).endAt(term + "\uf8ff"); }).valueChanges().subscribe(function (result) {
-                //console.log(result);
-                for (var i = 0; i < result.length; i++) {
-                    if (result[i].about.userName == _this.auth.currentUser.userName) {
-                        result.splice(i, 1);
-                        break;
-                    }
-                }
+            this.db.list('userInfo', function (ref) { return ref.orderByChild('about/search/firstName').limitToFirst(10).startAt(term).endAt(term + "\uf8ff"); }).valueChanges().subscribe(function (result) {
                 firstNames = result;
                 finishedLoadingNumber.next(finishedLoadingNumber.getValue() + 1);
             });
             //Last name search as well may add more late
-            this.db.list('userInfo', function (ref) { return ref.orderByChild('about/lastName').limitToFirst(10).startAt(term).endAt(term + "\uf8ff"); }).valueChanges().subscribe(function (result) {
-                // console.log(result);
-                for (var i = 0; i < result.length; i++) {
-                    if (result[i].about.userName == _this.auth.currentUser.userName) {
-                        result.splice(i, 1);
-                        break;
-                    }
-                }
+            this.db.list('userInfo', function (ref) { return ref.orderByChild('about/search/lastName').limitToFirst(10).startAt(term).endAt(term + "\uf8ff"); }).valueChanges().subscribe(function (result) {
                 lastNames = result;
+                finishedLoadingNumber.next(finishedLoadingNumber.getValue() + 1);
+            });
+            var userTerm = "";
+            if (term[0] == '@') {
+                userTerm = term;
+            }
+            else {
+                userTerm = "@" + term;
+            }
+            //user name search as well may add more late
+            this.db.list('userInfo', function (ref) { return ref.orderByChild('about/search/userName').limitToFirst(10).startAt(userTerm).endAt(userTerm + "\uf8ff"); }).valueChanges().subscribe(function (result) {
+                userNames = result;
                 finishedLoadingNumber.next(finishedLoadingNumber.getValue() + 1);
             });
             this.lastSearchedUsers = term;
@@ -3592,6 +3625,7 @@ var AuthService = /** @class */ (function () {
         this.authStateValue = false;
         this.loadingFriendData = new rxjs__WEBPACK_IMPORTED_MODULE_5__["BehaviorSubject"]("None");
         this.subUser = false;
+        this.showUsersAlert = new rxjs__WEBPACK_IMPORTED_MODULE_5__["BehaviorSubject"](false);
         //Profile Changes
         this.profilePicUrlChange = new rxjs__WEBPACK_IMPORTED_MODULE_5__["BehaviorSubject"]("");
         // keep startup url (in case your app is an SPA with html5 url routing)
@@ -3667,7 +3701,12 @@ var AuthService = /** @class */ (function () {
                 userName: user.userName,
                 email: user.email,
                 profilePicUrl: "null",
-                uid: user.uid
+                uid: user.uid,
+                search: {
+                    firstName: user.firstName.toLowerCase(),
+                    lastName: user.lastName.toLowerCase(),
+                    userName: user.userName.toLowerCase()
+                }
             },
             settings: {
                 locationTracking: false
@@ -3808,9 +3847,11 @@ var AuthService = /** @class */ (function () {
         this.db.object('/userInfo/' + this.currentUser.uid + '/friendRequestIn').valueChanges().subscribe(function (object) {
             if (!object) {
                 _this.currentUser.friendRequestIn = [];
+                _this.showUsersAlert.next(false);
                 return;
             }
             _this.currentUser.friendRequestIn = Object.keys(object).map(function (key) { return object[key]; });
+            _this.showUsersAlert.next(true);
         });
     };
     AuthService.prototype.submitFriendRequest = function (uid) {

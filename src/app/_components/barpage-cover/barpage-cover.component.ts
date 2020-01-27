@@ -58,8 +58,8 @@ export class BarpageCoverComponent implements OnInit {
     this.dateDirective = _dateDirective;
     this.barpageService = _barpageService;
 
-    //this.dayOfTheWeek = _dateDirective.getDayOfWeek();
-    this.dayOfTheWeek = "Wednesday";
+    this.dayOfTheWeek = _dateDirective.getDayOfWeek();
+    //this.dayOfTheWeek = "Wednesday";
 
     var self = this;
 
@@ -124,12 +124,12 @@ export class BarpageCoverComponent implements OnInit {
   
   
       //USE THIS WHEN NOT TESTIng
-      // if(this.currentHour < 5) {
-      //   this.coverDayOfTheWeek = this.dateDirective.backOneDay(this.dayOfTheWeek);
-      // }
-      // else this.coverDayOfTheWeek = this.dayOfTheWeek;
+      if(this.currentHour < 5) {
+        this.coverDayOfTheWeek = this.dateDirective.backOneDay(this.dayOfTheWeek);
+      }
+      else this.coverDayOfTheWeek = this.dayOfTheWeek;
   
-      this.coverDayOfTheWeek = "Wednesday";
+      //this.coverDayOfTheWeek = "Wednesday";
   
   
     }
@@ -144,7 +144,7 @@ export class BarpageCoverComponent implements OnInit {
       var notValidDate = false;
       var needToUpdate = false;
       if(currentMonth != postedDateMonth) notValidDate = true;
-      if(currentMonth == postedDateMonth && dayDif> 1 && dayDif < 0) notValidDate = true;
+      if(currentMonth == postedDateMonth && dayDif != 0) notValidDate = true;
   
       var lastRecordedHour = +this.coverResult.lastHour;
   

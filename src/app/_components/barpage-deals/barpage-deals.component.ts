@@ -48,8 +48,8 @@ export class BarpageDealsComponent implements OnInit {
     this.dateDirective = _dateDirective;
     this.barpageService = _barpageService;
 
-    //this.dayOfTheWeek = _dateDirective.getDayOfWeek();
-    this.dayOfTheWeek = "Wednesday";
+    this.dayOfTheWeek = _dateDirective.getDayOfWeek();
+    //this.dayOfTheWeek = "Wednesday";
   }
 
   ngOnInit() {

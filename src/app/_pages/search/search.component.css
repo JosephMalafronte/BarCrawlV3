@@ -17,7 +17,6 @@ input[type=text].instaSearch {
     width: 55%;
     margin-top: 10px;
     margin-bottom: 15px;
-    color: #c9cbcc;
 }
 input[type=text]:focus.instaSearch {
     text-align: left;
@@ -123,4 +122,8 @@ input:focus::-ms-input-placeholder {
 
 .displayInherit{
     display:inherit;
+}
+
+.lightText {
+    color: #c9cbcc;
 }

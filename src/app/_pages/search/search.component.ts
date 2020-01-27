@@ -83,6 +83,8 @@ export class SearchComponent implements OnInit {
     var term = this.searchString;
 
     if(term == "") return;
+
+    document.getElementById("subject").classList.remove("lightText");
     
 
     //Convert string
@@ -105,44 +107,71 @@ export class SearchComponent implements OnInit {
     else if(this.activeSearchPage == 1){
       if(this.lastSearchedUsers==term) return;
 
+      term = term.toLowerCase();
+
       var firstNames = [];
       var lastNames = [];
+      var userNames = [];
 
       var finishedLoadingNumber: BehaviorSubject<number> = new BehaviorSubject<number>(0);
       finishedLoadingNumber.subscribe(value => {
-        if(value == 2){
-          //Remove duplicates from first names
+        if(value == 3){
+          //Remove duplicates 
+
+          lastNames = lastNames.filter(value => {
+            for(var i = 0;i<userNames.length; i++){
+              if(userNames[i].about.uid == value.about.uid) return false;
+            }
+            return true;
+          });
+
           firstNames = firstNames.filter(value => {
-            return lastNames.indexOf(value) == -1;
-          })
-          this.userResults = firstNames.concat(lastNames);
+            for(var i = 0;i<lastNames.length; i++){
+              if(lastNames[i].about.uid == value.about.uid) return false;
+            }
+            return true;
+          });
+
+          firstNames = firstNames.filter(value => {
+            for(var i = 0;i<userNames.length; i++){
+              if(userNames[i].about.uid == value.about.uid) return false;
+            }
+            return true;
+          });
+          
+          var results = firstNames.concat(lastNames);
+          results = results.concat(userNames);
+          results = results.filter(value => {
+            if(value.about.uid != this.auth.currentUser.uid) return true;
+          });
+          this.userResults = results;
         }
       });
 
-      this.db.list('userInfo', ref => ref.orderByChild('about/firstName').limitToFirst(10).startAt(term).endAt(term + "\uf8ff")).valueChanges().subscribe((result:any[]) => {
-        //console.log(result);
-        for(var i=0; i<result.length;i++){
-          if(result[i].about.userName == this.auth.currentUser.userName){
-            result.splice(i,1);
-            break;
-          }
-        }
+      this.db.list('userInfo', ref => ref.orderByChild('about/search/firstName').limitToFirst(10).startAt(term).endAt(term + "\uf8ff")).valueChanges().subscribe((result:any[]) => {
         firstNames = result;
         finishedLoadingNumber.next(finishedLoadingNumber.getValue()+1);
       });
 
       //Last name search as well may add more late
-      this.db.list('userInfo', ref => ref.orderByChild('about/lastName').limitToFirst(10).startAt(term).endAt(term + "\uf8ff")).valueChanges().subscribe((result:any[]) => {
-       // console.log(result);
-        for(var i=0; i<result.length;i++){
-          if(result[i].about.userName == this.auth.currentUser.userName){
-            result.splice(i,1);
-            break;
-          }
-        }
+      this.db.list('userInfo', ref => ref.orderByChild('about/search/lastName').limitToFirst(10).startAt(term).endAt(term + "\uf8ff")).valueChanges().subscribe((result:any[]) => {
         lastNames = result;
         finishedLoadingNumber.next(finishedLoadingNumber.getValue()+1);
       });
+
+      var userTerm = "";
+      if(term[0] == '@'){
+        userTerm = term;
+      } else {
+        userTerm = "@" + term;
+      }
+
+      //user name search as well may add more late
+      this.db.list('userInfo', ref => ref.orderByChild('about/search/userName').limitToFirst(10).startAt(userTerm).endAt(userTerm + "\uf8ff")).valueChanges().subscribe((result:any[]) => {
+         userNames = result;
+         finishedLoadingNumber.next(finishedLoadingNumber.getValue()+1);
+       });
+
       this.lastSearchedUsers = term;
     }
     

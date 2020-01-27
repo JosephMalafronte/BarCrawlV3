@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {MainService} from '../../_services/main.service';
+import { AuthService } from '../../_services/auth.service';
 
 
 @Component({
@@ -9,10 +10,15 @@ import {MainService} from '../../_services/main.service';
 })
 export class NavbarComponent implements OnInit {
 
+  showUsersAlert: boolean = false;
 
-  constructor(private mainService: MainService) { }
+  constructor(private mainService: MainService, private authService: AuthService) { }
 
   ngOnInit() {
+
+    this.authService.showUsersAlert.subscribe(value=> {
+      this.showUsersAlert = value;
+    });
 
     if(this.mainService.iphoneVersion != "new"){
       document.getElementById("navbar").classList.remove("navbarNewIphone");

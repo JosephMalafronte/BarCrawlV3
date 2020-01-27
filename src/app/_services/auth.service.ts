@@ -3,7 +3,7 @@ import { AngularFireAuth} from "angularfire2/auth";
 import { AngularFireDatabase } from '@angular/fire/database';
 import { User } from '../_models/User.Model';
 import { BarCard } from '../models';
-import { forkJoin, Observable, BehaviorSubject } from 'rxjs';  // RxJS 6 syntax
+import { forkJoin, Observable, BehaviorSubject, Subject } from 'rxjs';  // RxJS 6 syntax
 import { take } from 'rxjs/operators';
 import { MainService } from './main.service';
 import { Router } from '@angular/router';
@@ -21,6 +21,7 @@ export class AuthService {
   af: AngularFireAuth;
   db: AngularFireDatabase;
   subUser: boolean = false;
+  showUsersAlert: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   //Profile Changes
   profilePicUrlChange: BehaviorSubject<string> = new BehaviorSubject<string>("");
@@ -112,7 +113,12 @@ export class AuthService {
         userName: user.userName,
         email: user.email,
         profilePicUrl: "null",
-        uid: user.uid
+        uid: user.uid,
+        search: {
+          firstName: user.firstName.toLowerCase(),
+          lastName: user.lastName.toLowerCase(),
+          userName: user.userName.toLowerCase()
+        }
       },
       settings: {
         locationTracking: false
@@ -294,10 +300,12 @@ export class AuthService {
     this.db.object('/userInfo/' + this.currentUser.uid + '/friendRequestIn').valueChanges().subscribe(object => {
       if(!object){
         this.currentUser.friendRequestIn = [];
+        this.showUsersAlert.next(false);
         return;
       } 
 
       this.currentUser.friendRequestIn = Object.keys(object).map(key => object[key]);
+      this.showUsersAlert.next(true);
     });
 
   }

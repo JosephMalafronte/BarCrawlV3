@@ -3,11 +3,14 @@
   <div class="swiper-pagination-toolbar"></div>
   <div class="swiper-wrapper">
     <div class="swiper-slide toolbar-icon">
-      <span class="toolbar-icon-span" id="toolbarHome"  (click)="icon0Click()">
-        <img src="./assets/images/icons/white/categories.png"alt="" title="" />
+      <div *ngIf="showUsersAlert" style="position: absolute; left: 53%; z-index: 10000;">
+        <img style="width:11%;" src="./assets/images/icons/white/exclamation.png" />
+      </div>
+      <span class="toolbar-icon-span" id="toolbarHome" (click)="icon0Click()">
+        <img src="./assets/images/icons/white/categories.png" alt="" title="" />
       </span>
       <span class="toolbar-icon-span" id="toolbarSearch" (click)="icon1Click()">
-        <img src="./assets/images/icons/white/search.png"  alt="" title="" />
+        <img src="./assets/images/icons/white/search.png" alt="" title="" />
       </span>
       <span class="toolbar-icon-span" id="friendsPage" (click)="icon2Click()">
         <img style="width: 125%;" src="./assets/images/icons/white/users.png" alt="" title="" />
