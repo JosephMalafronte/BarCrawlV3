@@ -1878,7 +1878,7 @@ var UserSlideComponent = /** @class */ (function () {
         this.router = router;
         this.storage = storage;
         this.slideInLogin = true;
-        this.avatarImage = "./assets/images/users/blank_profile.png";
+        this.avatarImage = "./assets/images/users/blank_profile_add.png";
     }
     UserSlideComponent.prototype.ngOnInit = function () {
         this.screenHeight = window.screen.height;
