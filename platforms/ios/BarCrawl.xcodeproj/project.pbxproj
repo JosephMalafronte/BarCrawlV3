@@ -8,16 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
+		0EE6654AFD7043CD9D8E5BF4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 035D1746C46F4E88B077081A /* GoogleService-Info.plist */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		2505B1ED59D1463D8FA8EFF3 /* AppDelegate+FirebasePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = C6ECD41E4E5C45E58546C9A7 /* AppDelegate+FirebasePlugin.m */; };
 		301BF552109A68D80062928A /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF535109A57CC0062928A /* libCordova.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		302D95F114D2391D003F00A1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 302D95EF14D2391D003F00A1 /* MainViewController.m */; };
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
-		347F093CDF6255A81AF6128D /* Pods_BarCrawl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38BFEDF72EDB15DF4CC4E5BB /* Pods_BarCrawl.framework */; };
+		52E3DAF5406F49E0B122F404 /* CDVBuildInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D4C09B590F41B5AD6A3349 /* CDVBuildInfo.m */; };
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
-		B597FF6B07674B95ABCBF8D0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B45B50DA8BA45A6A624E4A3 /* GoogleService-Info.plist */; };
-		BE051D0B9DA14E4CBF62484C /* FirebasePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D2586F0471C4AFEA3F03003 /* FirebasePlugin.m */; };
+		AF205368B07ABA50CA5D4ED4 /* Pods_BarCrawl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6076E4F6450A9D365A8EABD /* Pods_BarCrawl.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,12 +45,11 @@
 
 /* Begin PBXFileReference section */
 		0207DA571B56EA530066E2B4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = BarCrawl/Images.xcassets; sourceTree = SOURCE_ROOT; };
-		18E0EC18D247430398C7AC6B /* AppDelegate+FirebasePlugin.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "AppDelegate+FirebasePlugin.h"; path = "cordova-plugin-firebasex/AppDelegate+FirebasePlugin.h"; sourceTree = "<group>"; };
+		035D1746C46F4E88B077081A /* GoogleService-Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* BarCrawl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarCrawl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2D2586F0471C4AFEA3F03003 /* FirebasePlugin.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = FirebasePlugin.m; path = "cordova-plugin-firebasex/FirebasePlugin.m"; sourceTree = "<group>"; };
 		301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CordovaLib.xcodeproj; path = CordovaLib/CordovaLib.xcodeproj; sourceTree = "<group>"; };
 		301BF56E109A69640062928A /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = SOURCE_ROOT; };
 		302D95EE14D2391D003F00A1 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -61,16 +59,15 @@
 		3047A5101AB8059700498E2A /* build-release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "build-release.xcconfig"; path = "cordova/build-release.xcconfig"; sourceTree = SOURCE_ROOT; };
 		3047A5111AB8059700498E2A /* build.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = build.xcconfig; path = cordova/build.xcconfig; sourceTree = SOURCE_ROOT; };
 		32CA4F630368D1EE00C91783 /* BarCrawl-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BarCrawl-Prefix.pch"; sourceTree = "<group>"; };
-		38BFEDF72EDB15DF4CC4E5BB /* Pods_BarCrawl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BarCrawl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B45B50DA8BA45A6A624E4A3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		65EE6C59DE25CE9F8EACD45B /* Pods-BarCrawl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BarCrawl.release.xcconfig"; path = "Pods/Target Support Files/Pods-BarCrawl/Pods-BarCrawl.release.xcconfig"; sourceTree = "<group>"; };
 		6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CDVLaunchScreen.storyboard; path = BarCrawl/CDVLaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
-		7A927D2B9A46A112E602D309 /* Pods-BarCrawl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BarCrawl.debug.xcconfig"; path = "Target Support Files/Pods-BarCrawl/Pods-BarCrawl.debug.xcconfig"; sourceTree = "<group>"; };
-		7DD7ABACA842417981211430 /* FirebasePlugin.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = FirebasePlugin.h; path = "cordova-plugin-firebasex/FirebasePlugin.h"; sourceTree = "<group>"; };
+		74E1044BD5EB45B49E86B8F6 /* CDVBuildInfo.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVBuildInfo.h; path = "cordova-plugin-buildinfo/CDVBuildInfo.h"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* BarCrawl-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "BarCrawl-Info.plist"; path = "BarCrawl/BarCrawl-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = SOURCE_ROOT; };
-		C6ECD41E4E5C45E58546C9A7 /* AppDelegate+FirebasePlugin.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = "AppDelegate+FirebasePlugin.m"; path = "cordova-plugin-firebasex/AppDelegate+FirebasePlugin.m"; sourceTree = "<group>"; };
-		D904129BBA92156D26C9C96D /* Pods-BarCrawl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BarCrawl.release.xcconfig"; path = "Target Support Files/Pods-BarCrawl/Pods-BarCrawl.release.xcconfig"; sourceTree = "<group>"; };
+		C5D4C09B590F41B5AD6A3349 /* CDVBuildInfo.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVBuildInfo.m; path = "cordova-plugin-buildinfo/CDVBuildInfo.m"; sourceTree = "<group>"; };
+		D6076E4F6450A9D365A8EABD /* Pods_BarCrawl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BarCrawl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
+		EB9519AEA45621D887DF2148 /* Pods-BarCrawl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BarCrawl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BarCrawl/Pods-BarCrawl.debug.xcconfig"; sourceTree = "<group>"; };
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = BarCrawl/config.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,7 +78,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
-				347F093CDF6255A81AF6128D /* Pods_BarCrawl.framework in Frameworks */,
+				AF205368B07ABA50CA5D4ED4 /* Pods_BarCrawl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +119,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				AACAF29752A1356663AAE28C /* Pods */,
+				CEB1FA5D53B595E03472E4B2 /* Pods */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -145,7 +142,7 @@
 				3047A50E1AB8057F00498E2A /* config */,
 				8D1107310486CEB800E47090 /* BarCrawl-Info.plist */,
 				6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */,
-				3B45B50DA8BA45A6A624E4A3 /* GoogleService-Info.plist */,
+				035D1746C46F4E88B077081A /* GoogleService-Info.plist */,
 			);
 			name = Resources;
 			path = BarCrawl/Resources;
@@ -154,7 +151,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				38BFEDF72EDB15DF4CC4E5BB /* Pods_BarCrawl.framework */,
+				D6076E4F6450A9D365A8EABD /* Pods_BarCrawl.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -181,23 +178,20 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				C6ECD41E4E5C45E58546C9A7 /* AppDelegate+FirebasePlugin.m */,
-				2D2586F0471C4AFEA3F03003 /* FirebasePlugin.m */,
-				18E0EC18D247430398C7AC6B /* AppDelegate+FirebasePlugin.h */,
-				7DD7ABACA842417981211430 /* FirebasePlugin.h */,
+				C5D4C09B590F41B5AD6A3349 /* CDVBuildInfo.m */,
+				74E1044BD5EB45B49E86B8F6 /* CDVBuildInfo.h */,
 			);
 			name = Plugins;
 			path = BarCrawl/Plugins;
 			sourceTree = SOURCE_ROOT;
 		};
-		AACAF29752A1356663AAE28C /* Pods */ = {
+		CEB1FA5D53B595E03472E4B2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7A927D2B9A46A112E602D309 /* Pods-BarCrawl.debug.xcconfig */,
-				D904129BBA92156D26C9C96D /* Pods-BarCrawl.release.xcconfig */,
+				EB9519AEA45621D887DF2148 /* Pods-BarCrawl.debug.xcconfig */,
+				65EE6C59DE25CE9F8EACD45B /* Pods-BarCrawl.release.xcconfig */,
 			);
 			name = Pods;
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		EB87FDF11871DA420020F90C /* Staging */ = {
@@ -216,13 +210,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "BarCrawl" */;
 			buildPhases = (
-				78A50CCBB229736AC730CFEE /* [CP] Check Pods Manifest.lock */,
+				30FAB8FAD90F2DF3D790359E /* [CP] Check Pods Manifest.lock */,
 				304B58A110DAC018002A0835 /* Copy www directory */,
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
-				8571FB15CFC2A68875A13278 /* [CP] Embed Pods Frameworks */,
-				35A0C8CC000846C8A5690C82 /* "Crashlytics" */,
 			);
 			buildRules = (
 			);
@@ -255,7 +247,6 @@
 			knownRegions = (
 				English,
 				en,
-				Base,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA;
 			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
@@ -298,7 +289,7 @@
 				302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */,
 				0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */,
 				6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */,
-				B597FF6B07674B95ABCBF8D0 /* GoogleService-Info.plist in Resources */,
+				0EE6654AFD7043CD9D8E5BF4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,68 +311,22 @@
 			shellScript = "\"$SRCROOT/BarCrawl/Scripts/copy-www-build-step.sh\"";
 			showEnvVarsInLog = 0;
 		};
-		78A50CCBB229736AC730CFEE /* [CP] Check Pods Manifest.lock */ = {
+		30FAB8FAD90F2DF3D790359E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-BarCrawl-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8571FB15CFC2A68875A13278 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BarCrawl/Pods-BarCrawl-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BarCrawl/Pods-BarCrawl-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		35A0C8CC000846C8A5690C82 /* "Crashlytics" */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
-			);
-			name = "Crashlytics";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -394,8 +339,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
-				2505B1ED59D1463D8FA8EFF3 /* AppDelegate+FirebasePlugin.m in Sources */,
-				BE051D0B9DA14E4CBF62484C /* FirebasePlugin.m in Sources */,
+				52E3DAF5406F49E0B122F404 /* CDVBuildInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,7 +372,7 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "BarCrawl/BarCrawl-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks $(inherited)";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.josephmalafronte.barcrawl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -451,7 +395,7 @@
 				GCC_VERSION = "";
 				INFOPLIST_FILE = "BarCrawl/BarCrawl-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks $(inherited)";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.josephmalafronte.barcrawl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -493,7 +437,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks $(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.josephmalafronte.barcrawl;
 				SDKROOT = iphoneos;
@@ -536,7 +479,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks $(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.josephmalafronte.barcrawl;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;

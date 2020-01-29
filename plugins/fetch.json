@@ -39,16 +39,12 @@
     "is_top_level": false,
     "variables": {}
   },
-  "cordova-plugin-firebasex": {
+  "phonegap-plugin-push": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-firebasex"
+      "id": "phonegap-plugin-push@2.3.0"
     },
     "is_top_level": true,
-    "variables": {
-      "FIREBASE_ANALYTICS_COLLECTION_ENABLED": "true",
-      "FIREBASE_PERFORMANCE_COLLECTION_ENABLED": "true",
-      "FIREBASE_CRASHLYTICS_COLLECTION_ENABLED": "true"
-    }
+    "variables": {}
   }
 }

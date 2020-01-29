@@ -16,19 +16,9 @@
     "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
-    "cordova-plugin-firebasex": {
-      "FIREBASE_ANALYTICS_COLLECTION_ENABLED": "true",
-      "FIREBASE_PERFORMANCE_COLLECTION_ENABLED": "true",
-      "FIREBASE_CRASHLYTICS_COLLECTION_ENABLED": "true",
+    "phonegap-plugin-push": {
       "PACKAGE_NAME": "com.josephmalafronte.barcrawl"
     }
   },
-  "dependent_plugins": {
-    "cordova-plugin-androidx": {
-      "PACKAGE_NAME": "com.josephmalafronte.barcrawl"
-    },
-    "cordova-plugin-androidx-adapter": {
-      "PACKAGE_NAME": "com.josephmalafronte.barcrawl"
-    }
-  }
+  "dependent_plugins": {}
 }

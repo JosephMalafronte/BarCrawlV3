@@ -50,11 +50,9 @@
     </dict>
     <key>UILaunchStoryboardName</key>
     <string>CDVLaunchScreen</string>
-    <key>FirebaseScreenReportingEnabled</key>
-    <true/>
     <key>UIBackgroundModes</key>
     <array>
-      <string>remote-notification</string>
+      <string>voip</string>
     </array>
   </dict>
 </plist>

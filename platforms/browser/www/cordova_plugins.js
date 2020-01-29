@@ -21,6 +21,22 @@ module.exports = [
         "id": "cordova-plugin-statusbar.StatusBarProxy",
         "pluginId": "cordova-plugin-statusbar",
         "runs": true
+    },
+    {
+        "file": "plugins/phonegap-plugin-push/www/push.js",
+        "id": "phonegap-plugin-push.PushNotification",
+        "pluginId": "phonegap-plugin-push",
+        "clobbers": [
+            "PushNotification"
+        ]
+    },
+    {
+        "file": "plugins/phonegap-plugin-push/www/browser/push.js",
+        "id": "phonegap-plugin-push.BrowserPush",
+        "pluginId": "phonegap-plugin-push",
+        "clobbers": [
+            "PushNotification"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -29,9 +45,7 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.3.3",
     "cordova-plugin-buildinfo": "2.0.2",
     "cordova-plugin-statusbar": "2.4.3",
-    "cordova-plugin-androidx": "1.0.2",
-    "cordova-plugin-androidx-adapter": "1.1.0",
-    "cordova-plugin-firebasex": "7.0.2"
+    "phonegap-plugin-push": "2.3.0"
 }
 // BOTTOM OF METADATA
 });

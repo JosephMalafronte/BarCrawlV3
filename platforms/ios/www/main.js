@@ -1086,13 +1086,11 @@ var MainScrollComponent = /** @class */ (function () {
     MainScrollComponent.prototype.ngOnInit = function () {
         console.log('taco1');
         //Get notification permission
-        window.FirebasePlugin.grantPermission(function (hasPermission) {
-            console.log("Permission was " + (hasPermission ? "granted" : "denied"));
+        var push = PushNotification.init({
+            ios: {
+                voip: true
+            }
         });
-        console.log('taco2');
-        // window.FirebasePlugin.hasPermission(function (hasPermission) {
-        //   console.log("Permission is " + (hasPermission ? "granted" : "denied"));
-        // });
         console.log('taco3');
         this.getNotificationToken();
         console.log('taco4');
@@ -1101,32 +1099,31 @@ var MainScrollComponent = /** @class */ (function () {
         console.log(this.authService.currentUser);
     };
     MainScrollComponent.prototype.getNotificationToken = function () {
-        var _this = this;
         var refString = 'userInfo/' + this.authService.currentUser.uid + '/notificationTokens';
         this.db.list(refString).valueChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["take"])(1)).subscribe(function (value) {
             //If there are no tokens in the database set the curret one
             if (value == null || value.length == 0) {
-                window.FirebasePlugin.getToken(function (fcmToken) {
-                    if (fcmToken == null) {
-                        console.log("No token assigned yet");
-                        return;
-                    }
-                    console.log("Succesfully got Token");
-                    console.log(fcmToken);
-                    _this.db.list(refString).push(fcmToken);
-                }, function (error) {
-                    console.log("Error Retrieving Token:");
-                    console.error(error);
-                });
+                // window.FirebasePlugin.getToken(fcmToken => {
+                //   if (fcmToken == null) {
+                //     console.log("No token assigned yet");
+                //     return;
+                //   }
+                //   console.log("Succesfully got Token");
+                //   console.log(fcmToken);
+                //   this.db.list(refString).push(fcmToken);
+                // }, function (error) {
+                //   console.log("Error Retrieving Token:");
+                //   console.error(error);
+                // });
             }
         });
         //Runs anytime the user has a new token
-        window.FirebasePlugin.onTokenRefresh(function (fcmToken) {
-            console.log("Refresh Token");
-            _this.db.list(refString).push(fcmToken);
-        }, function (error) {
-            console.error(error);
-        });
+        // window.FirebasePlugin.onTokenRefresh(fcmToken => {
+        //   console.log("Refresh Token");
+        //   this.db.list(refString).push(fcmToken);
+        // }, function (error) {
+        //   console.error(error);
+        // });
     };
     MainScrollComponent.prototype.getBarCards = function () {
         var _this = this;
@@ -1886,7 +1883,7 @@ module.exports = ".out{\n    -webkit-transform: translateX(0%);\n    transform: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"userSlide\" class=\"panel panel-right panel-reveal out\">\n  <div class=\"user_login_info\">\n\n    <div class=\"user_thumb\">\n\n      <div class=\"user_details\">\n        <p>Welcome,\n          <span>{{authService.currentUser.firstName}}</span>\n        </p>\n      </div>\n      <div (click)=\"openPicEditing()\" class=\"user_avatar\">\n        <img style=\"height: 100px;\" id=\"avatar\" src={{avatarImage}} alt=\"\" title=\"\" />\n      </div>\n    </div>\n\n    <nav class=\"user-nav\">\n      <ul>\n        <li>\n          <a (click)=\"userSlideSelect(4)\">\n            <img src=\"./assets/images/icons/gray/settings.png\" alt=\"\" title=\"\" />\n            <span>Account Settings\n            </span>\n          </a>\n        </li>\n        <!-- <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/briefcase.png\" alt=\"\" title=\"\" /><span>My\n              Account</span></a></li> -->\n        <li>\n          <a (click)=\"userSlideSelect(2)\">\n            <img src=\"./assets/images/icons/gray/users.png\" alt=\"\" title=\"\" />\n            <span>Friends</span>\n            <!-- <strong>12</strong> -->\n          </a>\n        </li>\n        <li>\n          <a (click)=\"userSlideSelect(3)\">\n            <img src=\"./assets/images/icons/gray/love.png\" alt=\"\" title=\"\" />\n            <span>Liked Bars</span>\n            <!-- <strong>5</strong> -->\n          </a>\n        </li>\n        <li>\n          <a (click)=\"logout()\">\n            <img src=\"./assets/images/icons/gray/lock.png\" alt=\"\" title=\"\" />\n            <span>Logout</span>\n          </a>\n        </li>\n      </ul>\n    </nav>\n  </div>\n</div>"
+module.exports = "<div id=\"userSlide\" class=\"panel panel-right panel-reveal out\">\n  <div class=\"user_login_info\">\n\n    <div class=\"user_thumb\">\n\n      <div class=\"user_details\">\n        <p>Welcome test6,\n          <span>{{authService.currentUser.firstName}}</span>\n        </p>\n      </div>\n      <div (click)=\"openPicEditing()\" class=\"user_avatar\">\n        <img style=\"height: 100px;\" id=\"avatar\" src={{avatarImage}} alt=\"\" title=\"\" />\n      </div>\n    </div>\n\n    <nav class=\"user-nav\">\n      <ul>\n        <li>\n          <a (click)=\"userSlideSelect(4)\">\n            <img src=\"./assets/images/icons/gray/settings.png\" alt=\"\" title=\"\" />\n            <span>Account Settings\n            </span>\n          </a>\n        </li>\n        <!-- <li><a href=\"features.html\"><img src=\"./assets/images/icons/gray/briefcase.png\" alt=\"\" title=\"\" /><span>My\n              Account</span></a></li> -->\n        <li>\n          <a (click)=\"userSlideSelect(2)\">\n            <img src=\"./assets/images/icons/gray/users.png\" alt=\"\" title=\"\" />\n            <span>Friends</span>\n            <!-- <strong>12</strong> -->\n          </a>\n        </li>\n        <li>\n          <a (click)=\"userSlideSelect(3)\">\n            <img src=\"./assets/images/icons/gray/love.png\" alt=\"\" title=\"\" />\n            <span>Liked Bars</span>\n            <!-- <strong>5</strong> -->\n          </a>\n        </li>\n        <li>\n          <a (click)=\"logout()\">\n            <img src=\"./assets/images/icons/gray/lock.png\" alt=\"\" title=\"\" />\n            <span>Logout</span>\n          </a>\n        </li>\n      </ul>\n    </nav>\n  </div>\n</div>"
 
 /***/ }),
 

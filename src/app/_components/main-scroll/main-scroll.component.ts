@@ -11,7 +11,7 @@ import { DateDirective } from '../../_directives/date.directive';
 import { take } from 'rxjs/operators';
 
 
-declare let window: any;
+declare let PushNotification: any;
 
 
 @Component({
@@ -52,15 +52,12 @@ export class MainScrollComponent implements OnInit {
     console.log('taco1');
 
     //Get notification permission
-    window.FirebasePlugin.grantPermission(function (hasPermission) {
-      console.log("Permission was " + (hasPermission ? "granted" : "denied"));
+    const push = PushNotification.init({
+      ios: {
+        voip: true
+      }
     });
-    console.log('taco2');
     
-
-    // window.FirebasePlugin.hasPermission(function (hasPermission) {
-    //   console.log("Permission is " + (hasPermission ? "granted" : "denied"));
-    // });
 
     console.log('taco3');
     
@@ -82,30 +79,30 @@ export class MainScrollComponent implements OnInit {
     this.db.list(refString).valueChanges().pipe(take(1)).subscribe(value => {
       //If there are no tokens in the database set the curret one
       if (value == null || value.length == 0) {
-        window.FirebasePlugin.getToken(fcmToken => {
+        // window.FirebasePlugin.getToken(fcmToken => {
 
-          if (fcmToken == null) {
-            console.log("No token assigned yet");
-            return;
-          }
+        //   if (fcmToken == null) {
+        //     console.log("No token assigned yet");
+        //     return;
+        //   }
 
-          console.log("Succesfully got Token");
-          console.log(fcmToken);
-          this.db.list(refString).push(fcmToken);
-        }, function (error) {
-          console.log("Error Retrieving Token:");
-          console.error(error);
-        });
+        //   console.log("Succesfully got Token");
+        //   console.log(fcmToken);
+        //   this.db.list(refString).push(fcmToken);
+        // }, function (error) {
+        //   console.log("Error Retrieving Token:");
+        //   console.error(error);
+        // });
       }
     });
 
     //Runs anytime the user has a new token
-    window.FirebasePlugin.onTokenRefresh(fcmToken => {
-      console.log("Refresh Token");
-      this.db.list(refString).push(fcmToken);
-    }, function (error) {
-      console.error(error);
-    });
+    // window.FirebasePlugin.onTokenRefresh(fcmToken => {
+    //   console.log("Refresh Token");
+    //   this.db.list(refString).push(fcmToken);
+    // }, function (error) {
+    //   console.error(error);
+    // });
 
   }
 

@@ -35,10 +35,7 @@
     "bootstrap": "^4.3.1",
     "cordova-browser": "^5.0.4",
     "cordova-ios": "^5.1.1",
-    "cordova-plugin-androidx": "^1.0.2",
-    "cordova-plugin-androidx-adapter": "^1.1.0",
     "cordova-plugin-buildinfo": "2.0.2",
-    "cordova-plugin-firebasex": "^7.0.2",
     "cordova-plugin-statusbar": "^2.4.3",
     "cordova-plugin-whitelist": "1",
     "core-js": "^2.5.4",
@@ -47,6 +44,7 @@
     "jquery": "^3.4.1",
     "ngx-image-cropper": "^1.4.1",
     "npm-install-all": "^1.1.21",
+    "phonegap-plugin-push": "^2.3.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
@@ -78,11 +76,7 @@
       "cordova-plugin-whitelist": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-buildinfo": {},
-      "cordova-plugin-firebasex": {
-        "FIREBASE_ANALYTICS_COLLECTION_ENABLED": "true",
-        "FIREBASE_PERFORMANCE_COLLECTION_ENABLED": "true",
-        "FIREBASE_CRASHLYTICS_COLLECTION_ENABLED": "true"
-      }
+      "phonegap-plugin-push": {}
     },
     "platforms": [
       "browser"
