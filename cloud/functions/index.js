@@ -28,7 +28,7 @@ exports.clearAttendingBars = functions.https.onRequest((req, res) => {
         var data = snapshot.val();
 
         //Go through all users
-        Object.keys(data).forEach(function(key,index) {
+        Object.keys(data).forEach(function (key, index) {
             // key: the name of the object key
             // index: the ordinal position of the key within the object 
 
@@ -42,8 +42,73 @@ exports.clearAttendingBars = functions.https.onRequest((req, res) => {
             //send back response 
             res.redirect(200);
         });
-        
+
     });
 
-    
+
+});
+
+exports.sendFriendNotification = functions.database.ref('/userInfo/{recepientId}/friendRequestIn/{senderId}').onWrite(async (change, context) => {
+    const recepientId = context.params.recepientId;
+    const senderId = context.params.senderId;
+
+    // If un-follow we exit the function.
+    if (!change.after.val()) {
+        return console.log('User ', senderId, 'un-followed user', recepientId);
+    }
+
+    console.log('We have a new friend request UID:', senderId, 'for user:', recepientId);
+
+    const getDeviceTokensPromise = admin.database().ref('userInfo/' + recepientId +'/notificationTokens').once('value');
+
+    const getSenderProfilePromise = admin.database().ref('userInfo/' + senderId + '/about').once('value');
+
+    // The snapshot to the user's tokens.
+    let tokensSnapshot;
+
+    // The array containing all the user's tokens.
+    let tokens = [];
+
+    const results = await Promise.all([getDeviceTokensPromise, getSenderProfilePromise]);
+    tokensSnapshot = results[0];
+    const sender = results[1].val();
+
+    // Check if there are any device tokens.
+    if (!tokensSnapshot.hasChildren()) {
+        return console.log('There are no notification tokens to send to.');
+    }
+
+    console.log('There are', tokensSnapshot.numChildren(), 'tokens to send notifications to.');
+    console.log('Fetched sender profile', sender);
+
+    // Notification details.
+    const payload = {
+        notification: {
+            title: 'You have a new friend request!',
+            body: sender.firstName + " " + sender.lastName + " sent you a request.",
+            icon: "https://firebasestorage.googleapis.com/v0/b/barcrawlv01.appspot.com/o/AppIcon100.png?alt=media&token=63b62367-2aa5-485c-bae9-ac459e5b35ba"
+        }
+    };
+
+    tokensSnapshot.forEach(child => {
+        tokens.push(child.val());
+    });
+
+    // Send notifications to all tokens.
+    const response = await admin.messaging().sendToDevice(tokens, payload);
+    // For each message check if there was an error.
+    const tokensToRemove = [];
+    response.results.forEach((result, index) => {
+      const error = result.error;
+      if (error) {
+        console.error('Failure sending notification to', tokens[index], error);
+        // Cleanup the tokens who are not registered anymore.
+        if (error.code === 'messaging/invalid-registration-token' ||
+            error.code === 'messaging/registration-token-not-registered') {
+          tokensToRemove.push(tokensSnapshot.ref.child(tokens[index]).remove());
+        }
+      }
+    });
+    return Promise.all(tokensToRemove);
+
 });

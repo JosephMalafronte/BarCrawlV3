@@ -1061,6 +1061,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../_services/auth.service */ "./src/app/_services/auth.service.ts");
 /* harmony import */ var _angular_fire_database__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/fire/database */ "./node_modules/@angular/fire/database/index.js");
 /* harmony import */ var _directives_date_directive__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../_directives/date.directive */ "./src/app/_directives/date.directive.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+
 
 
 
@@ -1082,9 +1084,45 @@ var MainScrollComponent = /** @class */ (function () {
         this.db = dbA;
     }
     MainScrollComponent.prototype.ngOnInit = function () {
+        //Get notification permission
+        window.FirebasePlugin.grantPermission(function (hasPermission) {
+            console.log("Permission was " + (hasPermission ? "granted" : "denied"));
+        });
+        // window.FirebasePlugin.hasPermission(function (hasPermission) {
+        //   console.log("Permission is " + (hasPermission ? "granted" : "denied"));
+        // });
+        this.getNotificationToken();
         this.dayOfTheWeek = this.dateDirective.getDayOfWeek();
         this.getBarCards();
         console.log(this.authService.currentUser);
+    };
+    MainScrollComponent.prototype.getNotificationToken = function () {
+        var _this = this;
+        var refString = 'userInfo/' + this.authService.currentUser.uid + '/notificationTokens';
+        var currentTokens = this.db.list(refString).valueChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["take"])(1)).subscribe(function (value) {
+            //If there are no tokens in the database set the curret one
+            if (value.length == 0) {
+                window.FirebasePlugin.getToken(function (fcmToken) {
+                    if (fcmToken == null) {
+                        console.log("No token assigned yet");
+                        return;
+                    }
+                    console.log("Succesfully got Token");
+                    console.log(fcmToken);
+                    _this.db.list(refString).push(fcmToken);
+                }, function (error) {
+                    console.log("Error Retrieving Token:");
+                    console.error(error);
+                });
+            }
+        });
+        //Runs anytime the user has a new token
+        window.FirebasePlugin.onTokenRefresh(function (fcmToken) {
+            console.log(fcmToken);
+            _this.db.list(refString).push(fcmToken);
+        }, function (error) {
+            console.error(error);
+        });
     };
     MainScrollComponent.prototype.getBarCards = function () {
         var _this = this;

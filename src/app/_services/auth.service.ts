@@ -294,6 +294,8 @@ export class AuthService {
       break;
     }    
 
+    
+
   }
 
   listenForFriendRequest(){

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>CLIENT_ID</key>
+    <string>742879583749-akf076ae1l6j1792ng7irjubo9l8273q.apps.googleusercontent.com</string>
+    <key>REVERSED_CLIENT_ID</key>
+    <string>com.googleusercontent.apps.742879583749-akf076ae1l6j1792ng7irjubo9l8273q</string>
+    <key>API_KEY</key>
+    <string>AIzaSyAAH9mfhWvwkUsFQsAJU-q8NRFPlEJ5gEk</string>
+    <key>GCM_SENDER_ID</key>
+    <string>742879583749</string>
+    <key>PLIST_VERSION</key>
+    <string>1</string>
+    <key>BUNDLE_ID</key>
+    <string>com.josephmalafronte.barcrawl</string>
+    <key>PROJECT_ID</key>
+    <string>barcrawlv01</string>
+    <key>STORAGE_BUCKET</key>
+    <string>barcrawlv01.appspot.com</string>
+    <key>IS_ADS_ENABLED</key>
+    <false/>
+    <key>IS_ANALYTICS_ENABLED</key>
+    <false/>
+    <key>IS_APPINVITE_ENABLED</key>
+    <true/>
+    <key>IS_GCM_ENABLED</key>
+    <true/>
+    <key>IS_SIGNIN_ENABLED</key>
+    <true/>
+    <key>GOOGLE_APP_ID</key>
+    <string>1:742879583749:ios:5cf8bc687a77ee0542066c</string>
+    <key>DATABASE_URL</key>
+    <string>https://barcrawlv01.firebaseio.com</string>
+    <key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
+    <string>true</string>
+    <key>FIREBASE_PERFORMANCE_COLLECTION_ENABLED</key>
+    <string>true</string>
+    <key>FIREBASE_CRASHLYTICS_COLLECTION_ENABLED</key>
+    <string>true</string>
+  </dict>
+</plist>

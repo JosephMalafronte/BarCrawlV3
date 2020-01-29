@@ -3,7 +3,7 @@
   "display": "standalone",
   "name": "BarCrawl",
   "short_name": "BarCrawl",
-  "version": "io.cordova.hellocordova",
+  "version": "com.josephmalafronte.barcrawl",
   "description": "BarCrawl is an app for finding local bar deals and connecting with friends!",
   "author": "Joseph Malafronte",
   "icons": [],
