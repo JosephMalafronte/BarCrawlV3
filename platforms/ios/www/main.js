@@ -1084,14 +1084,18 @@ var MainScrollComponent = /** @class */ (function () {
         this.db = dbA;
     }
     MainScrollComponent.prototype.ngOnInit = function () {
+        console.log('taco1');
         //Get notification permission
         window.FirebasePlugin.grantPermission(function (hasPermission) {
             console.log("Permission was " + (hasPermission ? "granted" : "denied"));
         });
+        console.log('taco2');
         // window.FirebasePlugin.hasPermission(function (hasPermission) {
         //   console.log("Permission is " + (hasPermission ? "granted" : "denied"));
         // });
+        console.log('taco3');
         this.getNotificationToken();
+        console.log('taco4');
         this.dayOfTheWeek = this.dateDirective.getDayOfWeek();
         this.getBarCards();
         console.log(this.authService.currentUser);
@@ -1099,9 +1103,9 @@ var MainScrollComponent = /** @class */ (function () {
     MainScrollComponent.prototype.getNotificationToken = function () {
         var _this = this;
         var refString = 'userInfo/' + this.authService.currentUser.uid + '/notificationTokens';
-        var currentTokens = this.db.list(refString).valueChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["take"])(1)).subscribe(function (value) {
+        this.db.list(refString).valueChanges().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["take"])(1)).subscribe(function (value) {
             //If there are no tokens in the database set the curret one
-            if (value.length == 0) {
+            if (value == null || value.length == 0) {
                 window.FirebasePlugin.getToken(function (fcmToken) {
                     if (fcmToken == null) {
                         console.log("No token assigned yet");
@@ -1118,7 +1122,7 @@ var MainScrollComponent = /** @class */ (function () {
         });
         //Runs anytime the user has a new token
         window.FirebasePlugin.onTokenRefresh(function (fcmToken) {
-            console.log(fcmToken);
+            console.log("Refresh Token");
             _this.db.list(refString).push(fcmToken);
         }, function (error) {
             console.error(error);

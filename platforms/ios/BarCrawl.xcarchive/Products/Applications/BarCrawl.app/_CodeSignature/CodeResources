@@ -102,15 +102,15 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		/HJ0q3wbVDhRDsGuOSKV5mlnKf8=
+		nT3/RqNyfhLK+o5Qzjt6mg3vmEg=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib/objects-13.0+.nib</key>
 		<data>
-		HOr3wzY/RApkqCSvPY/24MgVeuk=
+		9wD0GLWbo+ffz5CCgKKoJO09dSA=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib/runtime.nib</key>
 		<data>
-		OVdkcgXv+v/giEM75Slv1LrzuJo=
+		yQkSbGACf5n3VGWdyAsjY4rgYfA=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -118,15 +118,15 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib/objects-13.0+.nib</key>
 		<data>
-		dzlPpRmcBJH5rDUaH1fzV7fMbhE=
+		ieiin3cTYENPfcKfMryzzW9l1gA=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib/runtime.nib</key>
 		<data>
-		TryOh2A5/RJhm6/IV2oeBKZn7to=
+		b4UX7x1Mx4+4IexhjjMAhiZjYQ0=
 		</data>
 		<key>Frameworks/GTMSessionFetcher.framework/GTMSessionFetcher</key>
 		<data>
-		iQ6qnXL/KFXk8V1Oi5Fhdccdr3w=
+		4NvAwTUkFJS2Zs+jCm6T7DozcJ0=
 		</data>
 		<key>Frameworks/GTMSessionFetcher.framework/Info.plist</key>
 		<data>
@@ -138,7 +138,7 @@
 		</data>
 		<key>Frameworks/GoogleToolboxForMac.framework/GoogleToolboxForMac</key>
 		<data>
-		mCSCH7+zpKUODdGjLyZhhjjLqf4=
+		l/7Z143mWacQHgsuxghb5oeqKvU=
 		</data>
 		<key>Frameworks/GoogleToolboxForMac.framework/Info.plist</key>
 		<data>
@@ -150,7 +150,7 @@
 		</data>
 		<key>Frameworks/GoogleUtilities.framework/GoogleUtilities</key>
 		<data>
-		uuHpTLpAJaDANgN+QpTG7OpQddk=
+		UWRCs3mEpvq7pYZ5LXMRm3xNxkE=
 		</data>
 		<key>Frameworks/GoogleUtilities.framework/Info.plist</key>
 		<data>
@@ -170,7 +170,7 @@
 		</data>
 		<key>Frameworks/nanopb.framework/nanopb</key>
 		<data>
-		xv+JusskekcmHssxPqflaC3toAY=
+		GVmt7LOooW/QUNlPdZD20bn6QQw=
 		</data>
 		<key>Frameworks/protobuf.framework/Info.plist</key>
 		<data>
@@ -182,7 +182,7 @@
 		</data>
 		<key>Frameworks/protobuf.framework/protobuf</key>
 		<data>
-		/MOVskrqVlCZ+MH5IDet18qq8y4=
+		/pqxJa4KYrB3HWtISjvGu3vv69M=
 		</data>
 		<key>GoogleService-Info.plist</key>
 		<data>
@@ -194,11 +194,11 @@
 		</data>
 		<key>MainViewController.nib/objects-13.0+.nib</key>
 		<data>
-		bvBZWMDQPwrPNxVOHAFV0YPUo/M=
+		B0JGcdsP6GDjTm2s9l1HnWA9UUo=
 		</data>
 		<key>MainViewController.nib/runtime.nib</key>
 		<data>
-		Yr0FkKF7sLDZSClI+ULUAP3wZuw=
+		mmIJ7d+jtKZbUAvOTFZnNrsDlqw=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -206,7 +206,7 @@
 		</data>
 		<key>config.xml</key>
 		<data>
-		VCp6bq9ocWTnbtSpdDaUtFEngTw=
+		Dj0YlKV0w85FVg57zTnoFA+jzws=
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
@@ -1402,7 +1402,7 @@
 		</data>
 		<key>www/cordova_plugins.js</key>
 		<data>
-		10pacGp4OJZZ6mptoNBjudPcxgs=
+		5fLeODOU0wWVw9ibFU4n/M/n6XE=
 		</data>
 		<key>www/date.png</key>
 		<data>
@@ -1442,11 +1442,11 @@
 		</data>
 		<key>www/main.js</key>
 		<data>
-		F1U9Wc3rXVgHevLVXf2ZBCpTSog=
+		Z6MRcH74b2ENmsQxiomlhJTQyo4=
 		</data>
 		<key>www/main.js.map</key>
 		<data>
-		QTus0NqhPajRFFdv7NU2y7wxuT0=
+		9+L6FRFjYRNlmLCPFx8pn2UHQjs=
 		</data>
 		<key>www/nav-next.png</key>
 		<data>
@@ -1456,17 +1456,9 @@
 		<data>
 		+n5smGBU/wD1kyRhtQIaGeApnWk=
 		</data>
-		<key>www/plugins/cordova-plugin-buildinfo/www/buildinfo.js</key>
-		<data>
-		hysihtcrc8HaKluer4GF6otvkZI=
-		</data>
 		<key>www/plugins/cordova-plugin-firebasex/www/firebase.js</key>
 		<data>
 		Hejuo2UgLvzZRKCOATwy3VIdtFA=
-		</data>
-		<key>www/plugins/cordova-plugin-statusbar/www/statusbar.js</key>
-		<data>
-		HziXpqJBPTHIl6qne1lRWvRuots=
 		</data>
 		<key>www/polyfills.js</key>
 		<data>
@@ -1803,33 +1795,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			/HJ0q3wbVDhRDsGuOSKV5mlnKf8=
+			nT3/RqNyfhLK+o5Qzjt6mg3vmEg=
 			</data>
 			<key>hash2</key>
 			<data>
-			ndYMpuzUHkyYrtZtURRjeMZmTi/u3BAfn1649pcIqLA=
+			rYMGKCaHfiCWNbpLCVDV9dJ6ozc6Smr3B0HUIWna7Gk=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib/objects-13.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			HOr3wzY/RApkqCSvPY/24MgVeuk=
+			9wD0GLWbo+ffz5CCgKKoJO09dSA=
 			</data>
 			<key>hash2</key>
 			<data>
-			1qQKPcG/WCrdYpwZjyuQ9lCbWKmsKpMiY+GnL6LRZDE=
+			W8ERvWJiNIjjwgcrOEoDZQ7ezIsFslviARP/C4BNDxw=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			OVdkcgXv+v/giEM75Slv1LrzuJo=
+			yQkSbGACf5n3VGWdyAsjY4rgYfA=
 			</data>
 			<key>hash2</key>
 			<data>
-			T8k7Jfr/isXVWwsRNulmamZwOgFYTTBko+/+hzv1aV0=
+			44pWlwODcURG8x+7as1ewZjguDPtzJqw+A20R26uvtU=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
@@ -1847,33 +1839,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			dzlPpRmcBJH5rDUaH1fzV7fMbhE=
+			ieiin3cTYENPfcKfMryzzW9l1gA=
 			</data>
 			<key>hash2</key>
 			<data>
-			usKNhHOXPYcbmH7rmcW12ThZ98M1eHvAfkHF/EnZR/c=
+			+Nnl4O43dmXRUW4W90VazpJb0kC9BfAEAzvaigo5QhQ=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			TryOh2A5/RJhm6/IV2oeBKZn7to=
+			b4UX7x1Mx4+4IexhjjMAhiZjYQ0=
 			</data>
 			<key>hash2</key>
 			<data>
-			WiT6oJHeW0JZPhLBfl8VI308GFUFjH2lysZ/C0OUY/I=
+			ybQnFqRufA37nEOl8GRm+bG8YvwGIlw9LWMmpljXY4M=
 			</data>
 		</dict>
 		<key>Frameworks/GTMSessionFetcher.framework/GTMSessionFetcher</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			iQ6qnXL/KFXk8V1Oi5Fhdccdr3w=
+			4NvAwTUkFJS2Zs+jCm6T7DozcJ0=
 			</data>
 			<key>hash2</key>
 			<data>
-			ilwpSrH51jokmq2Er6Dlkjgi/m7SB+jRwehWJm/nAsA=
+			gRdkr0bCZi24KPMWeuIF7Vvyy90zhqCE3/mNuyDxr3w=
 			</data>
 		</dict>
 		<key>Frameworks/GTMSessionFetcher.framework/Info.plist</key>
@@ -1902,11 +1894,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			mCSCH7+zpKUODdGjLyZhhjjLqf4=
+			l/7Z143mWacQHgsuxghb5oeqKvU=
 			</data>
 			<key>hash2</key>
 			<data>
-			bUjIgTFIHdTttj6Xb/Clc/tg8X9PpnQmsw4UgKDFbYM=
+			h98SrSj0BN1ELjMYOccyW3YlKCj0UQIbKlYBoYPLEEM=
 			</data>
 		</dict>
 		<key>Frameworks/GoogleToolboxForMac.framework/Info.plist</key>
@@ -1935,11 +1927,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			uuHpTLpAJaDANgN+QpTG7OpQddk=
+			UWRCs3mEpvq7pYZ5LXMRm3xNxkE=
 			</data>
 			<key>hash2</key>
 			<data>
-			lNGuXre3b8/s8+yYK+SDnp8cKMbW3qiVnc+6lCCFmKw=
+			Q3tDCw4+wEzdogvPNQ9ZZGIyMF3U/4Wz4OiNZjKEMpo=
 			</data>
 		</dict>
 		<key>Frameworks/GoogleUtilities.framework/Info.plist</key>
@@ -1990,11 +1982,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xv+JusskekcmHssxPqflaC3toAY=
+			GVmt7LOooW/QUNlPdZD20bn6QQw=
 			</data>
 			<key>hash2</key>
 			<data>
-			O4Ye15QGcJCgY+Dj9AzsBYaLM+r98p0cYiDpPMakvqs=
+			AfCzrHvJkVbFfY8JFdsbnNsjp18WINK06uwjdaz26h0=
 			</data>
 		</dict>
 		<key>Frameworks/protobuf.framework/Info.plist</key>
@@ -2023,11 +2015,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			/MOVskrqVlCZ+MH5IDet18qq8y4=
+			/pqxJa4KYrB3HWtISjvGu3vv69M=
 			</data>
 			<key>hash2</key>
 			<data>
-			+Phh1w7UIYH11lNcCz4/IR5WwpQuOW3fgL66M6mCpdQ=
+			nxP2LcHCDsBJ0T9bBxOJ85FM2tJWDfvF2BI5ftlRwDA=
 			</data>
 		</dict>
 		<key>GoogleService-Info.plist</key>
@@ -2045,33 +2037,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			bvBZWMDQPwrPNxVOHAFV0YPUo/M=
+			B0JGcdsP6GDjTm2s9l1HnWA9UUo=
 			</data>
 			<key>hash2</key>
 			<data>
-			wB9LCT+StrWpmgLxWD89w+zM43Gog0QkWHddZnzvQAU=
+			mTUvgWwCgT7jrYVElrgNwdHYncJRUWOoWOYi2brv4RE=
 			</data>
 		</dict>
 		<key>MainViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Yr0FkKF7sLDZSClI+ULUAP3wZuw=
+			mmIJ7d+jtKZbUAvOTFZnNrsDlqw=
 			</data>
 			<key>hash2</key>
 			<data>
-			qQu1S9U2DyXqBhQnLFsApwrFOr5xrROuZWnNwukz8Xo=
+			Zy6o2xEOe8Qe70NKlaX3TX+uarnisc3Z/86HGOLHN88=
 			</data>
 		</dict>
 		<key>config.xml</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			VCp6bq9ocWTnbtSpdDaUtFEngTw=
+			Dj0YlKV0w85FVg57zTnoFA+jzws=
 			</data>
 			<key>hash2</key>
 			<data>
-			+Qax0BNqUSfdqqv89VOkrWCXt9SFQlzucy9fGsZ3DNQ=
+			A3nqhl0SpJKYW8XaiLKbJwIHyiWBEM/c5LBAnjbIUoo=
 			</data>
 		</dict>
 		<key>embedded.mobileprovision</key>
@@ -5356,11 +5348,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			10pacGp4OJZZ6mptoNBjudPcxgs=
+			5fLeODOU0wWVw9ibFU4n/M/n6XE=
 			</data>
 			<key>hash2</key>
 			<data>
-			y8CAXZ22nPcmyiucuaSVot+IXyBk31uceimZ6AoDJY0=
+			S9Cu7HCN4xcsvU3cVCqnifiKblDdApO/oCQNnHkEgPI=
 			</data>
 		</dict>
 		<key>www/date.png</key>
@@ -5466,22 +5458,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			F1U9Wc3rXVgHevLVXf2ZBCpTSog=
+			Z6MRcH74b2ENmsQxiomlhJTQyo4=
 			</data>
 			<key>hash2</key>
 			<data>
-			AHkJDbae8YlJcByQe9AM2C2vOkEvPX9fjdtu31e2wI8=
+			O7+ZbNGPZe7a4Gbg3oeoVYM3q0Rx1UC4GpLlYhzEBYk=
 			</data>
 		</dict>
 		<key>www/main.js.map</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			QTus0NqhPajRFFdv7NU2y7wxuT0=
+			9+L6FRFjYRNlmLCPFx8pn2UHQjs=
 			</data>
 			<key>hash2</key>
 			<data>
-			Qj3aUJVzCV7vpSbNauVWWbNxfacS90RH4YGeZZHlou8=
+			MX7Oe4mXQFxlA90cuE7wKs47+5zXSX7WVez69F60AU0=
 			</data>
 		</dict>
 		<key>www/nav-next.png</key>
@@ -5506,17 +5498,6 @@
 			m+04FS7DsjplyeBwuKJ7ao+4VUu60v50j1FAIPTzOtE=
 			</data>
 		</dict>
-		<key>www/plugins/cordova-plugin-buildinfo/www/buildinfo.js</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			hysihtcrc8HaKluer4GF6otvkZI=
-			</data>
-			<key>hash2</key>
-			<data>
-			TQK2CSuAFDyzh7Jbkpj4rCykW+tJ4emq3n11RBjwqhs=
-			</data>
-		</dict>
 		<key>www/plugins/cordova-plugin-firebasex/www/firebase.js</key>
 		<dict>
 			<key>hash</key>
@@ -5526,17 +5507,6 @@
 			<key>hash2</key>
 			<data>
 			rd5F2rqLTVwiMluLeXBCfn5Lfc+JXKwGnlYpYKtGFGs=
-			</data>
-		</dict>
-		<key>www/plugins/cordova-plugin-statusbar/www/statusbar.js</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			HziXpqJBPTHIl6qne1lRWvRuots=
-			</data>
-			<key>hash2</key>
-			<data>
-			rmEzcFdHfjWWorWJEWCULGXJxFhiV0+sewncVRyFpHk=
 			</data>
 		</dict>
 		<key>www/polyfills.js</key>

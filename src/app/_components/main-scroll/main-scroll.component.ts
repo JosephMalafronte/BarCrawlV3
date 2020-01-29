@@ -49,18 +49,26 @@ export class MainScrollComponent implements OnInit {
 
   ngOnInit() {
 
+    console.log('taco1');
+
     //Get notification permission
     window.FirebasePlugin.grantPermission(function (hasPermission) {
       console.log("Permission was " + (hasPermission ? "granted" : "denied"));
     });
+    console.log('taco2');
+    
 
     // window.FirebasePlugin.hasPermission(function (hasPermission) {
     //   console.log("Permission is " + (hasPermission ? "granted" : "denied"));
     // });
 
+    console.log('taco3');
+    
 
     this.getNotificationToken();
 
+    console.log('taco4');
+    
 
     this.dayOfTheWeek = this.dateDirective.getDayOfWeek();
     this.getBarCards();
@@ -71,9 +79,9 @@ export class MainScrollComponent implements OnInit {
   getNotificationToken() {
     var refString = 'userInfo/' + this.authService.currentUser.uid + '/notificationTokens';
 
-    var currentTokens = this.db.list(refString).valueChanges().pipe(take(1)).subscribe(value => {
+    this.db.list(refString).valueChanges().pipe(take(1)).subscribe(value => {
       //If there are no tokens in the database set the curret one
-      if (value.length == 0) {
+      if (value == null || value.length == 0) {
         window.FirebasePlugin.getToken(fcmToken => {
 
           if (fcmToken == null) {
@@ -93,7 +101,7 @@ export class MainScrollComponent implements OnInit {
 
     //Runs anytime the user has a new token
     window.FirebasePlugin.onTokenRefresh(fcmToken => {
-      console.log(fcmToken);
+      console.log("Refresh Token");
       this.db.list(refString).push(fcmToken);
     }, function (error) {
       console.error(error);
